@@ -958,6 +958,20 @@
     background:rgba(19,32,48,0.55); padding:5px 10px; border-radius:20px;
     pointer-events:none; letter-spacing:0.04em;
   }
+
+  .lang-switch{
+    display:flex; align-items:center; gap:2px;
+    font-family:'JetBrains Mono', monospace; font-size:0.7rem;
+    margin-left:18px; letter-spacing:0.03em;
+  }
+  .lang-switch a{
+    padding:4px 6px; color:rgba(247,245,240,0.45); text-decoration:none;
+    transition:color .2s ease;
+  }
+  .lang-switch a:hover{ color:var(--teal-bright); }
+  .lang-switch a.active{ color:var(--teal-bright); font-weight:600; }
+  .lang-switch span{ color:rgba(247,245,240,0.25); }
+  @media (max-width:900px){ .lang-switch{ margin-left:8px; } }
 </style>
 </head>
 <body>
@@ -973,7 +987,7 @@
       <a href="#journal">Journal</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
-    <a href="#kontakt" class="nav-cta">Angebot anfragen</a>
+    <div class="lang-switch"><a href="index.html" class="active">DE</a><span>|</span><a href="index-en.html">EN</a><span>|</span><a href="index-fr.html">FR</a></div><a href="#kontakt" class="nav-cta">Angebot anfragen</a>
   </div>
 </header>
 
