@@ -7,7 +7,7 @@
  *   3. Die Anfrage wird als neue Zeile in dieser Tabelle eingetragen (Liste mit Status).
  *
  * Einrichtung: siehe Anleitung (Einrichtung_Anfragen.md). Kurz:
- *   Google Tabelle "BTO Anfragen" anlegen → Erweiterungen → Apps Script → diesen Code einfügen
+ *   Google Tabelle "BTO Anfragen" öffnen (liegt schon in Drive von info@) → Erweiterungen → Apps Script → diesen Code einfügen
  *   → SECRET unten setzen → Funktion "testAnfrage" einmal ausführen (Berechtigungen erlauben)
  *   → Bereitstellen → Neue Bereitstellung → Web-App (Ausführen als: Ich, Zugriff: Jeder) → URL kopieren.
  */
@@ -95,9 +95,21 @@ function verarbeiten_(d) {
 function blatt_() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   let sh = ss.getSheetByName(CONFIG.BLATT);
+  // Vorbereitete Tabelle: erstes Blatt hat schon die Kopfzeile → umbenennen und formatieren
+  const erstes = ss.getSheets()[0];
+  if (!sh && erstes && erstes.getRange(1, 1).getValue() === SPALTEN[0]) {
+    sh = erstes.setName(CONFIG.BLATT);
+    formatieren_(sh);
+  }
   if (!sh) {
     sh = ss.insertSheet(CONFIG.BLATT);
     sh.appendRow(SPALTEN);
+    formatieren_(sh);
+  }
+  return sh;
+}
+
+function formatieren_(sh) {
     sh.setFrozenRows(1);
     sh.getRange(1, 1, 1, SPALTEN.length).setFontWeight('bold').setBackground('#132030').setFontColor('#f7f5f0');
     sh.setColumnWidths(1, SPALTEN.length, 140);
@@ -105,8 +117,6 @@ function blatt_() {
     sh.getRange('A:A').setNumberFormat('dd.MM.yyyy HH:mm');
     const regel = SpreadsheetApp.newDataValidation().requireValueInList(STATUS, true).setAllowInvalid(true).build();
     sh.getRange(2, 2, 1000, 1).setDataValidation(regel);
-  }
-  return sh;
 }
 
 // Schutz gegen Formeln aus Formularfeldern (z. B. "=HYPERLINK(...)")
