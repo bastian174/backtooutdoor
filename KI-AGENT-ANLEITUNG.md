@@ -22,15 +22,15 @@ Test: `https://backtooutdoor.com/api/chat` im Browser öffnen → `"aktiv":true`
 ## Optional
 | Variable | Wofür |
 |---|---|
-| `LEAD_WEBHOOK_URL` | Jede Anfrage aus dem Chat automatisch weiterleiten, z. B. per Make/Zapier → E-Mail, Google Sheet oder CRM |
+| `LEAD_WEBHOOK_URL` + `LEAD_SECRET` | Google-Apps-Script: Mail an info@, automatische Antwort an den Anfragenden, Eintrag in die Tabelle „BTO Anfragen“ (Anleitung: Einrichtung_Anfragen.md) |
+| `MEDIA_KIT_URL` | Link zum Media-Kit-PDF, wird bei Media-Kit-Anfragen automatisch mitgeschickt |
 | `BOOKING_URL` | Link zu deiner Terminbuchung (z. B. Google-Kalender-Terminbuchungsseite) – der Agent bietet dann direkt Termine an |
 | `ANTHROPIC_MODEL` | Standard `claude-haiku-4-5` (schnell, günstig). Nur ändern, wenn nötig |
 
-Ohne Webhook landen Anfragen, die der Agent im KI-Modus aufnimmt, in **Vercel → Logs** (Suche nach „NEUER LEAD“) – deshalb Webhook empfohlen.
+Ohne Webhook öffnet das Formular beim Besucher das E-Mail-Programm (Anfrage an info@). Anfragen aus dem KI-Chat stehen dann nur in **Vercel → Logs** (Suche nach „NEUER LEAD“).
 
 ## Wissen ändern
 In `api/chat.js` den Block `WISSEN` bearbeiten (z. B. neue Referenz, neues Paket) → hochladen → fertig.
 
-## Buttons mit dem Chat verknüpfen (optional)
-Jeder Button kann den Agenten öffnen:
-`<a href="#kontakt" onclick="BTOAgent.open('Ich möchte ein kostenloses Gespräch');return false;">Kostenloses Gespräch vereinbaren</a>`
+## Buttons
+Alle Buttons mit Ziel `#kontakt` oder `#mediakit` (Klasse `btn` oder `nav-cta`) öffnen automatisch das passende Formular im Chat. Eigener Button: `data-bto="Media Kit"`, `data-bto="Angebot"` oder `data-bto="Erstgespräch"` als Attribut setzen.

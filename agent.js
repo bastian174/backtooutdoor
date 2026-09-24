@@ -5,6 +5,7 @@
   if (window.__btoAgent) return; window.__btoAgent = true;
 
   var API = "/api/chat";
+  var LEAD_API = "/api/lead";
   var MAIL = "info@backtooutdoor.com";
   var PHONE = "+43 (0)660 8422053";
   var WA = "https://wa.me/436608422053";
@@ -19,7 +20,7 @@
       ph: "Nachricht schreiben …", send: "Senden", open: "Fragen? Chat öffnen", close: "Chat schließen",
       note: "KI-Assistent – Antworten können Fehler enthalten. ", privacy: "Datenschutz",
       err: "Da ist gerade etwas schiefgelaufen. Schreib uns gern direkt an " + MAIL + ".",
-      form: { title: "Kostenloses Erstgespräch anfragen", name: "Name *", firma: "Firma / Betrieb", email: "E-Mail *", typ: "Wir sind …", typen: ["Hotel", "Tourenanbieter", "Outdoor-Marke", "Destination", "Sonstiges"], msg: "Worum geht es? (Region, Zeitraum, Idee)", submit: "Anfrage senden", cancel: "Abbrechen", ok: "Danke! Dein E-Mail-Programm öffnet sich mit der fertigen Anfrage – einfach absenden. Wir melden uns innerhalb von zwei Werktagen.", req: "Bitte Name und eine gültige E-Mail angeben." },
+      form: { title: "Kostenloses Erstgespräch anfragen", name: "Name *", firma: "Firma / Betrieb", email: "E-Mail *", typ: "Wir sind …", typen: ["Hotel", "Tourenanbieter", "Outdoor-Marke", "Destination", "Sonstiges"], msg: "Worum geht es? (Region, Zeitraum, Idee)", tel: "Telefon (optional)", submit: "Anfrage senden", sending: "Wird gesendet …", cancel: "Abbrechen", ok: "Danke! Deine Anfrage ist bei uns angekommen. Du bekommst gleich eine Bestätigung per E-Mail – schau bitte auch im Spam-Ordner nach. Basti meldet sich persönlich bei dir.", fail: "Das Senden hat gerade nicht geklappt. Dein E-Mail-Programm öffnet sich mit der fertigen Anfrage – einfach absenden.", req: "Bitte Name und eine gültige E-Mail angeben.", titles: { "Erstgespräch": "Kostenloses Erstgespräch anfragen", "Angebot": "Angebot anfragen", "Media Kit": "Media Kit anfordern" } },
       subject: "Anfrage über den Website-Chat"
     },
     en: {
@@ -29,7 +30,7 @@
       ph: "Write a message …", send: "Send", open: "Questions? Open chat", close: "Close chat",
       note: "AI assistant – answers may contain mistakes. ", privacy: "Privacy",
       err: "Something went wrong. Feel free to email us at " + MAIL + ".",
-      form: { title: "Request a free intro call", name: "Name *", firma: "Company", email: "Email *", typ: "We are a …", typen: ["Hotel", "Tour operator", "Outdoor brand", "Destination", "Other"], msg: "What is it about? (region, timing, idea)", submit: "Send request", cancel: "Cancel", ok: "Thanks! Your email app opens with the request ready – just hit send. We'll reply within two working days.", req: "Please enter your name and a valid email." },
+      form: { title: "Request a free intro call", name: "Name *", firma: "Company", email: "Email *", typ: "We are a …", typen: ["Hotel", "Tour operator", "Outdoor brand", "Destination", "Other"], msg: "What is it about? (region, timing, idea)", tel: "Phone (optional)", submit: "Send request", sending: "Sending …", cancel: "Cancel", ok: "Thanks! Your request has arrived. You'll get a confirmation email in a moment – please also check your spam folder. Basti will get back to you personally.", fail: "Sending didn't work just now. Your email app opens with the request ready – just hit send.", req: "Please enter your name and a valid email.", titles: { "Erstgespräch": "Request a free intro call", "Angebot": "Request a quote", "Media Kit": "Request the media kit" } },
       subject: "Enquiry via website chat"
     },
     fr: {
@@ -39,7 +40,7 @@
       ph: "Écrire un message …", send: "Envoyer", open: "Des questions ? Ouvrir le chat", close: "Fermer le chat",
       note: "Assistant IA – les réponses peuvent contenir des erreurs. ", privacy: "Confidentialité",
       err: "Un problème est survenu. Écrivez-nous à " + MAIL + ".",
-      form: { title: "Demander un premier échange gratuit", name: "Nom *", firma: "Entreprise", email: "E-mail *", typ: "Nous sommes …", typen: ["Hôtel", "Prestataire d'activités", "Marque outdoor", "Destination", "Autre"], msg: "De quoi s'agit-il ? (région, période, idée)", submit: "Envoyer la demande", cancel: "Annuler", ok: "Merci ! Votre messagerie s'ouvre avec la demande prête – il suffit de l'envoyer. Réponse sous deux jours ouvrés.", req: "Merci d'indiquer votre nom et un e-mail valide." },
+      form: { title: "Demander un premier échange gratuit", name: "Nom *", firma: "Entreprise", email: "E-mail *", typ: "Nous sommes …", typen: ["Hôtel", "Prestataire d'activités", "Marque outdoor", "Destination", "Autre"], msg: "De quoi s'agit-il ? (région, période, idée)", tel: "Téléphone (facultatif)", submit: "Envoyer la demande", sending: "Envoi …", cancel: "Annuler", ok: "Merci ! Votre demande est bien arrivée. Vous recevrez une confirmation par e-mail dans un instant (pensez à vérifier les spams). Basti vous répondra personnellement.", fail: "L'envoi n'a pas fonctionné. Votre messagerie s'ouvre avec la demande prête – il suffit de l'envoyer.", req: "Merci d'indiquer votre nom et un e-mail valide.", titles: { "Erstgespräch": "Demander un premier échange gratuit", "Angebot": "Demander un devis", "Media Kit": "Recevoir le media kit" } },
       subject: "Demande via le chat du site"
     }
   }[lang];
@@ -47,6 +48,7 @@
   /* ---------- Offline-FAQ (wenn kein API-Key hinterlegt ist) ---------- */
   var FAQ = {
     de: [
+      [/leitfaden|guide|anleitung|selbst (filmen|drehen)|tipps/i, "Unseren Gratis-Leitfaden „5 Reels, die aus Interessenten Gäste machen“ (für Tourenanbieter & Hotels, mit Hook-Beispielen und Dreh-Checkliste) findest du hier: <a href=\"/leitfaden.html\">/leitfaden.html</a> – kostenlos, ohne Anmeldung."],
       [/preis|kost|budget|teuer|tagessatz|€|euro/i, "Unsere Preise sind individuell – sie hängen davon ab, wie groß eure Touren sind, wie oft ihr Content braucht und ob es um ein einzelnes Erlebnis oder eine laufende Partnerschaft geht. Nach einem kurzen, kostenlosen Gespräch (ca. 15 Min.) bekommt ihr ein passendes Angebot. Soll ich dir das Anfrageformular öffnen?", "form"],
       [/media ?kit|pdf|unterlagen/i, "Gern! Das Media Kit (Leistungen, Ablauf, Referenzarbeiten) schicken wir per E-Mail. Trag einfach kurz deine Daten ein.", "form"],
       [/gespräch|termin|call|anfrage|angebot|kontakt|buchen|zusammenarbeit/i, "Sehr gern – das Erstgespräch ist kostenlos, unverbindlich und dauert ca. 15 Minuten. Trag kurz deine Daten ein, wir melden uns innerhalb von zwei Werktagen.", "form"],
@@ -179,7 +181,7 @@
     if (state.messages.length > 2) return;
     T.chips.forEach(function (c, i) {
       var b = el("button", "bto-chip", esc(c)); b.type = "button";
-      b.onclick = function () { if (i >= 2 && mode !== "ai") { push("user", c); showForm(); } else ask(c); };
+      b.onclick = function () { if (i >= 2) { push("user", c); showForm(i === 3 ? "Media Kit" : "Erstgespräch"); } else ask(c); };
       chips.appendChild(b);
     });
   }
@@ -198,27 +200,36 @@
     return { text: FALLBACK, form: true };
   }
 
-  function showForm() {
-    if (log.querySelector(".bto-f")) return;
+  function showForm(wunsch) {
+    wunsch = wunsch || "Erstgespräch";
+    var old = log.querySelector(".bto-f"); if (old) old.remove();
     var F = T.form;
     var f = el("form", "bto-f");
-    f.innerHTML = "<b>" + F.title + "</b>" +
+    f.innerHTML = "<b>" + (F.titles[wunsch] || F.title) + "</b>" +
       '<div class="row"><input name="name" placeholder="' + F.name + '" autocomplete="name"><input name="firma" placeholder="' + F.firma + '" autocomplete="organization"></div>' +
-      '<input name="email" type="email" placeholder="' + F.email + '" autocomplete="email">' +
+      '<div class="row"><input name="email" type="email" placeholder="' + F.email + '" autocomplete="email"><input name="telefon" type="tel" placeholder="' + F.tel + '" autocomplete="tel"></div>' +
       '<select name="typ"><option value="">' + F.typ + "</option>" + F.typen.map(function (x) { return "<option>" + x + "</option>"; }).join("") + "</select>" +
       '<textarea name="msg" rows="3" placeholder="' + F.msg + '"></textarea>' +
+      '<input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">' +
       '<div class="e">' + F.req + "</div>" +
-      '<div class="row"><button class="bto-btn g" type="button">' + F.cancel + '</button><button class="bto-btn" type="submit">' + F.submit + "</button></div>";
+      '<div class="row"><button class="bto-btn g" type="button">' + F.cancel + '</button><button class="bto-btn s" type="submit">' + F.submit + "</button></div>";
+    var t0 = Date.now();
     f.querySelector(".g").onclick = function () { f.remove(); };
     f.onsubmit = function (ev) {
       ev.preventDefault();
-      var d = {}; ["name", "firma", "email", "typ", "msg"].forEach(function (k) { d[k] = f.elements[k].value.trim(); });
-      if (!d.name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) { f.querySelector(".e").style.display = "block"; return; }
+      var d = {}; ["name", "firma", "email", "telefon", "typ", "msg", "website"].forEach(function (k) { d[k] = f.elements[k].value.trim(); });
+      if (!d.name || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) { f.querySelector(".e").style.display = "block"; return; }
       var verlauf = state.messages.filter(function (m) { return !m.trusted; }).map(function (m) { return (m.role === "user" ? "Besucher: " : "Assistent: ") + m.content; }).join("\n");
-      var bodyTxt = "Name: " + d.name + "\nFirma: " + (d.firma || "-") + "\nE-Mail: " + d.email + "\nTyp: " + (d.typ || "-") + "\nSeite: " + location.pathname + "\n\nAnliegen:\n" + (d.msg || "-") + (verlauf ? "\n\n--- Chatverlauf ---\n" + verlauf.slice(-1500) : "");
-      window.location.href = "mailto:" + MAIL + "?subject=" + encodeURIComponent(T.subject + (d.firma ? " – " + d.firma : "")) + "&body=" + encodeURIComponent(bodyTxt);
-      f.remove();
-      push("assistant", F.ok, true);
+      var btn = f.querySelector(".s"); btn.disabled = true; btn.textContent = F.sending;
+      var payload = { name: d.name, firma: d.firma, email: d.email, telefon: d.telefon, typ: d.typ, wunsch: wunsch, anliegen: d.msg, verlauf: verlauf.slice(-3000), seite: location.pathname, lang: lang, website: d.website, t: t0 };
+      function mailFallback() {
+        var bodyTxt = "Wunsch: " + wunsch + "\nName: " + d.name + "\nFirma: " + (d.firma || "-") + "\nE-Mail: " + d.email + "\nTelefon: " + (d.telefon || "-") + "\nTyp: " + (d.typ || "-") + "\nSeite: " + location.pathname + "\n\nAnliegen:\n" + (d.msg || "-");
+        window.location.href = "mailto:" + MAIL + "?subject=" + encodeURIComponent(wunsch + " – " + T.subject + (d.firma ? " – " + d.firma : "")) + "&body=" + encodeURIComponent(bodyTxt);
+      }
+      fetch(LEAD_API, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload) })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || !j.ok) throw new Error(r.status); return j; }); })
+        .then(function () { f.remove(); push("assistant", F.ok, true); })
+        .catch(function () { f.remove(); push("assistant", F.fail, true); mailFallback(); });
     };
     log.appendChild(f); log.scrollTop = log.scrollHeight;
     setTimeout(function () { f.elements.name.focus(); }, 50);
@@ -253,7 +264,31 @@
   ta.addEventListener("input", function () { ta.style.height = "auto"; ta.style.height = Math.min(ta.scrollHeight, 110) + "px"; });
 
   // Öffentliche Mini-API, z. B. für Buttons: onclick="BTOAgent.open('Ich möchte ein Gespräch')"
-  window.BTOAgent = { open: function (msg) { setOpen(true); if (msg) ask(msg); } };
+  window.BTOAgent = {
+    open: function (msg) { setOpen(true); if (msg) ask(msg); },
+    form: function (wunsch) { setOpen(true); showForm(wunsch); }
+  };
+
+  // Website-Buttons ("Angebot anfragen", "Media Kit anfordern", "Projekt besprechen", "Kostenloses Gespräch vereinbaren")
+  // öffnen direkt das passende Anfrageformular im Chat. Normale Links (z. B. "Kontakt" im Menü) bleiben unverändert.
+  function wunschFuer(a) {
+    if (a.hasAttribute("data-bto")) return a.getAttribute("data-bto");
+    var href = a.getAttribute("href") || "";
+    var isCta = /#(kontakt|contact|mediakit)$/i.test(href) && (a.classList.contains("btn") || a.classList.contains("nav-cta"));
+    if (!isCta) return null;
+    var t = (a.textContent || "").toLowerCase();
+    if (/media ?kit/.test(t)) return "Media Kit";
+    if (/angebot|quote|devis|offer/.test(t)) return "Angebot";
+    return "Erstgespräch";
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a");
+    if (!a || e.defaultPrevented || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    var w = wunschFuer(a);
+    if (!w) return;
+    e.preventDefault();
+    window.BTOAgent.form(w);
+  });
 
   render();
   if (state.open) setOpen(true);
