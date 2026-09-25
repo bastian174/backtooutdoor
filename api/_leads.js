@@ -4,7 +4,7 @@
 //           (3) die Anfrage in die Google-Tabelle "BTO Anfragen" einträgt.
 //
 // Umgebungsvariablen (Vercel):
-//   LEAD_WEBHOOK_URL  – Web-App-URL des Google Apps Scripts (Pflicht für automatischen Versand)
+//   LEAD_WEBHOOK_URL  – optional: Web-App-URL des Google Apps Scripts (mit Anfragen-Tabelle). Ohne: Versand per FormSubmit an info@
 //   LEAD_SECRET       – beliebiges Passwort, identisch im Apps Script (Schutz gegen Fremdaufrufe)
 //   ANTHROPIC_API_KEY – optional: persönliche KI-Antwort statt Standardvorlage
 //   MEDIA_KIT_URL     – optional: Link zum Media-Kit-PDF, wird bei Media-Kit-Anfragen mitgeschickt
@@ -101,7 +101,7 @@ async function verarbeiteLead(input, lang) {
 
   console.log("NEUER LEAD", JSON.stringify({ ...payload, secret: undefined }));
   const url = process.env.LEAD_WEBHOOK_URL;
-  if (!url) return { ok: false, fehler: "kein_webhook", lead };
+  if (!url) return perMail(payload); // ohne Google-Apps-Script: Versand per FormSubmit direkt an info@
   try {
     const r = await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload), redirect: "follow" });
     const txt = await r.text();
@@ -112,6 +112,52 @@ async function verarbeiteLead(input, lang) {
   } catch (e) {
     console.error("Webhook-Fehler", e.message);
     return { ok: false, fehler: "webhook" };
+  }
+}
+
+// Versand ohne Einrichtung über FormSubmit (formsubmit.co):
+//   – info@ bekommt jede Anfrage als Mail (Tabelle mit allen Daten)
+//   – der Anfragende bekommt automatisch die Antwort-Mail (_autoresponse)
+// Einmalig nötig: Bei der ALLERERSTEN Anfrage schickt FormSubmit eine Mail "Activate Form" an info@ → Link anklicken.
+const INFO_MAIL = process.env.INFO_MAIL || "info@backtooutdoor.com";
+async function perMail(p) {
+  try {
+    const r = await fetch("https://formsubmit.co/ajax/" + INFO_MAIL, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        origin: "https://backtooutdoor.com",
+        referer: "https://backtooutdoor.com/",
+      },
+      body: JSON.stringify({
+        _subject: `Neue Anfrage: ${p.name}${p.firma ? " (" + p.firma + ")" : ""} – ${p.wunsch}`,
+        _template: "table",
+        _captcha: "false",
+        _replyto: p.email,
+        _autoresponse: p.antwort_text,
+        Eingang: new Date(p.zeit).toLocaleString("de-AT", { timeZone: "Europe/Vienna" }),
+        Name: p.name,
+        Firma: p.firma || "-",
+        email: p.email,
+        Telefon: p.telefon || "-",
+        Typ: p.typ || "-",
+        Wunsch: p.wunsch,
+        Anliegen: p.anliegen || "-",
+        Seite: p.seite || "-",
+        Quelle: p.quelle,
+        Sprache: p.sprache,
+        "Chatverlauf": p.verlauf || "-",
+      }),
+    });
+    const txt = await r.text();
+    let j = {};
+    try { j = JSON.parse(txt); } catch (e) {}
+    if (!r.ok || String(j.success) !== "true") throw new Error("FormSubmit " + r.status + " " + txt.slice(0, 200));
+    return { ok: true, beantwortet: true };
+  } catch (e) {
+    console.error("Mail-Versand fehlgeschlagen", e.message);
+    return { ok: false, fehler: "mail" };
   }
 }
 
