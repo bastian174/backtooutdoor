@@ -1,9 +1,11 @@
 // Back to Outdoor – KI-Agent (Vercel Serverless Function)
 // Endpunkt: POST /api/chat   Body: { messages: [{role:"user"|"assistant", content:"..."}], page: "/index.html", lang: "de" }
 //
-// Benötigte Umgebungsvariablen in Vercel (Project → Settings → Environment Variables):
-//   ANTHROPIC_API_KEY   (Pflicht)  – API-Key von console.anthropic.com
-//   ANTHROPIC_MODEL     (optional) – Standard: claude-haiku-4-5 (schnell + günstig)
+// Umgebungsvariablen in Vercel (Project → Settings → Environment Variables):
+//   GEMINI_API_KEY      (Pflicht)  – kostenloser Key aus Google AI Studio (aistudio.google.com → "Get API key")
+//   GEMINI_MODEL        (optional) – Standard: gemini-2.5-flash
+//   ANTHROPIC_API_KEY   (optional) – falls später Claude genutzt werden soll; wird nur verwendet, wenn KEIN Gemini-Key gesetzt ist
+//   ANTHROPIC_MODEL     (optional) – Standard: claude-haiku-4-5
 //   LEAD_WEBHOOK_URL / LEAD_SECRET – Google Apps Script für Mail an info@, Auto-Antwort und Anfragen-Liste (siehe api/_leads.js)
 //   BOOKING_URL         (optional) – Link zur Terminbuchung (z. B. Google-Kalender-Terminbuchungsseite)
 
@@ -104,6 +106,12 @@ async function sendLead(lead, meta) {
   return { ok: r.ok, bestaetigung_per_mail: !!r.ok, hinweis: r.ok ? "Anfrage übermittelt, Antwort-Mail ist unterwegs" : "Übermittlung fehlgeschlagen – bitte Besucher bitten, an info@backtooutdoor.com zu schreiben" };
 }
 
+function anbieter() {
+  if (process.env.GEMINI_API_KEY) return "gemini";
+  if (process.env.ANTHROPIC_API_KEY) return "claude";
+  return null;
+}
+
 async function callClaude(body) {
   const r = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
@@ -116,6 +124,72 @@ async function callClaude(body) {
   });
   if (!r.ok) throw new Error(`Anthropic API ${r.status}: ${await r.text()}`);
   return r.json();
+}
+
+async function callGemini(model, body) {
+  const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`, {
+    method: "POST",
+    headers: { "content-type": "application/json", "x-goog-api-key": process.env.GEMINI_API_KEY },
+    body: JSON.stringify(body),
+  });
+  if (!r.ok) throw new Error(`Gemini API ${r.status}: ${await r.text()}`);
+  return r.json();
+}
+
+// Gesprächsschleife mit Gemini (inkl. Tool "lead_erfassen")
+async function mitGemini({ messages, system, meta }) {
+  const model = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+  const tools = [{ functionDeclarations: TOOLS.map((t) => ({ name: t.name, description: t.description, parameters: t.input_schema })) }];
+  const contents = messages.map((m) => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.content }] }));
+  let leadGesendet = false;
+  for (let i = 0; i < 3; i++) {
+    const data = await callGemini(model, {
+      systemInstruction: { parts: [{ text: system }] },
+      contents,
+      tools,
+      generationConfig: { maxOutputTokens: 800, temperature: 0.6, thinkingConfig: { thinkingBudget: 0 } },
+    });
+    const content = data.candidates && data.candidates[0] && data.candidates[0].content;
+    const parts = (content && content.parts) || [];
+    const calls = parts.filter((p) => p.functionCall);
+    if (!calls.length) {
+      const text = parts.filter((p) => typeof p.text === "string" && !p.thought).map((p) => p.text).join("\n").trim();
+      return { reply: text, lead: leadGesendet };
+    }
+    contents.push({ role: "model", parts });
+    const antworten = [];
+    for (const c of calls) {
+      const r = await sendLead(c.functionCall.args || {}, meta);
+      leadGesendet = leadGesendet || r.ok;
+      antworten.push({ functionResponse: { name: c.functionCall.name, response: r } });
+    }
+    contents.push({ role: "user", parts: antworten });
+  }
+  return { reply: "Danke! Wir haben deine Anfrage erhalten und melden uns innerhalb von zwei Werktagen.", lead: leadGesendet };
+}
+
+// Gesprächsschleife mit Claude (Fallback)
+async function mitClaude({ messages, system, meta }) {
+  const model = process.env.ANTHROPIC_MODEL || "claude-haiku-4-5";
+  const convo = messages.slice();
+  let leadGesendet = false;
+  for (let i = 0; i < 3; i++) {
+    const data = await callClaude({ model, max_tokens: 600, system, tools: TOOLS, messages: convo });
+    const toolUses = (data.content || []).filter((b) => b.type === "tool_use");
+    if (data.stop_reason !== "tool_use" || !toolUses.length) {
+      const text = (data.content || []).filter((b) => b.type === "text").map((b) => b.text).join("\n").trim();
+      return { reply: text, lead: leadGesendet };
+    }
+    convo.push({ role: "assistant", content: data.content });
+    const results = [];
+    for (const tu of toolUses) {
+      const r = await sendLead(tu.input || {}, meta);
+      leadGesendet = leadGesendet || r.ok;
+      results.push({ type: "tool_result", tool_use_id: tu.id, content: JSON.stringify(r) });
+    }
+    convo.push({ role: "user", content: results });
+  }
+  return { reply: "Danke! Wir haben deine Anfrage erhalten und melden uns innerhalb von zwei Werktagen.", lead: leadGesendet };
 }
 
 function clean(messages) {
@@ -137,9 +211,10 @@ function clean(messages) {
 
 module.exports = async function handler(req, res) {
   res.setHeader("Cache-Control", "no-store");
-  if (req.method === "GET") return res.status(200).json({ ok: true, aktiv: !!process.env.ANTHROPIC_API_KEY, booking: process.env.BOOKING_URL || null });
+  const kiAnbieter = anbieter();
+  if (req.method === "GET") return res.status(200).json({ ok: true, aktiv: !!kiAnbieter, anbieter: kiAnbieter, booking: process.env.BOOKING_URL || null });
   if (req.method !== "POST") return res.status(405).json({ error: "Nur POST" });
-  if (!process.env.ANTHROPIC_API_KEY) return res.status(503).json({ error: "kein_api_key" });
+  if (!kiAnbieter) return res.status(503).json({ error: "kein_api_key" });
 
   let body = req.body;
   if (typeof body === "string") { try { body = JSON.parse(body); } catch { body = {}; } }
@@ -149,28 +224,12 @@ module.exports = async function handler(req, res) {
   const lang = ["de", "en", "fr"].includes(body.lang) ? body.lang : "de";
   const page = String(body.page || "").slice(0, 100);
   const system = systemPrompt(lang, page, process.env.BOOKING_URL);
-  const model = process.env.ANTHROPIC_MODEL || "claude-haiku-4-5";
+  const meta = { page, lang, verlauf: messages.map((m) => `${m.role}: ${m.content}`).join("\n").slice(-4000) };
 
   try {
-    let convo = messages.slice();
-    let leadGesendet = false;
-    for (let i = 0; i < 3; i++) {
-      const data = await callClaude({ model, max_tokens: 600, system, tools: TOOLS, messages: convo });
-      const toolUses = (data.content || []).filter((b) => b.type === "tool_use");
-      if (data.stop_reason !== "tool_use" || !toolUses.length) {
-        const text = (data.content || []).filter((b) => b.type === "text").map((b) => b.text).join("\n").trim();
-        return res.status(200).json({ reply: text, lead: leadGesendet });
-      }
-      convo.push({ role: "assistant", content: data.content });
-      const results = [];
-      for (const tu of toolUses) {
-        const r = await sendLead(tu.input || {}, { page, lang, verlauf: messages.map((m) => `${m.role}: ${m.content}`).join("\n").slice(-4000) });
-        leadGesendet = leadGesendet || r.ok;
-        results.push({ type: "tool_result", tool_use_id: tu.id, content: JSON.stringify(r) });
-      }
-      convo.push({ role: "user", content: results });
-    }
-    return res.status(200).json({ reply: "Danke! Wir haben deine Anfrage erhalten und melden uns innerhalb von zwei Werktagen.", lead: leadGesendet });
+    const out = kiAnbieter === "gemini" ? await mitGemini({ messages, system, meta }) : await mitClaude({ messages, system, meta });
+    if (!out.reply) throw new Error("Leere Antwort vom KI-Modell");
+    return res.status(200).json(out);
   } catch (e) {
     console.error(e);
     return res.status(502).json({ error: "agent_fehler" });
