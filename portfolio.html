@@ -701,6 +701,39 @@
     padding:4px 10px;
     border-radius:20px;
   }
+  .portfolio-tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:48px;
+  }
+  .portfolio-tab{
+    font-family:'Work Sans', sans-serif;
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:rgba(247,245,240,0.7);
+    background:transparent;
+    border:1px solid var(--line-light);
+    padding:10px 22px;
+    border-radius:24px;
+    cursor:pointer;
+    transition:background .2s ease, border-color .2s ease, color .2s ease;
+  }
+  .portfolio-tab:hover{
+    border-color:var(--teal-bright);
+    color:var(--foam);
+  }
+  .portfolio-tab.active{
+    background:var(--teal-bright);
+    border-color:var(--teal-bright);
+    color:#fff;
+  }
+  .portfolio-region.is-hidden,
+  .motion-section.is-hidden{
+    display:none;
+  }
   .portfolio-banner{
     width:100%;
     aspect-ratio:2.6/1;
@@ -1013,7 +1046,14 @@
       <p class="section-note">Eine Auswahl unserer Arbeiten vor Ort. Preise sind individuell – für ein Angebot einfach anfragen.</p>
     </div>
 
-    <div class="portfolio-region reveal">
+    <div class="portfolio-tabs" role="tablist">
+      <button type="button" class="portfolio-tab active" data-filter="all">Alle</button>
+      <button type="button" class="portfolio-tab" data-filter="commercial">Commercial</button>
+      <button type="button" class="portfolio-tab" data-filter="lifestyle">Lifestyle</button>
+      <button type="button" class="portfolio-tab" data-filter="motion">Motion</button>
+    </div>
+
+    <div class="portfolio-region reveal" data-category="commercial">
       <div class="portfolio-region-head">
         <h3>Verdon, Frankreich</h3>
         <div class="tag-row">
@@ -1033,7 +1073,7 @@
       <p class="portfolio-region-caption">Mehrtägige Begleitung für einen internationalen Tourenanbieter, Verdon.</p>
     </div>
 
-    <div class="portfolio-region reveal">
+    <div class="portfolio-region reveal" data-category="commercial">
       <div class="portfolio-region-head">
         <h3>Salzburg, Österreich</h3>
         <div class="tag-row">
@@ -1052,7 +1092,7 @@
       <p class="portfolio-region-caption">Torrent Outdoor — Wildwasser-Content am Heimatfluss, Salzburger Land.</p>
     </div>
 
-    <div class="portfolio-region reveal">
+    <div class="portfolio-region reveal" data-category="commercial">
       <div class="portfolio-region-head">
         <h3>Steiermark / Gesäuse</h3>
         <div class="tag-row">
@@ -1069,7 +1109,7 @@
     </div>
 
 
-    <div class="portfolio-region reveal">
+    <div class="portfolio-region reveal" data-category="lifestyle">
       <div class="portfolio-region-head">
         <h3>Namibia</h3>
         <div class="tag-row">
@@ -1090,7 +1130,7 @@
       <p class="portfolio-region-caption">Reise- und Safari-Content für eine Gästefarm in Namibia.</p>
     </div>
 
-    <div class="motion-section reveal">
+    <div class="motion-section reveal" data-category="motion">
       <div class="motion-section-head">
         <h3>Motion</h3>
         <p>Bewegtbild aus unseren Produktionen — Reels und Kurzclips, die zeigen, wie unser Content in Bewegung wirkt.</p>
@@ -1115,7 +1155,26 @@
   <a href="index.html">Zur Website</a> · <a href="https://www.instagram.com/backtooutdoor/">Instagram</a> · <a href="mailto:info@backtooutdoor.com">info@backtooutdoor.com</a>
 </div>
 
-<style id="bto-mobile-fix">@media (max-width:560px){.nav-cta{display:none!important}.lang-switch{margin-left:0!important;gap:2px}}html,body{overflow-x:clip}</style>
-<script src="/agent.js" defer></script>
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.portfolio-tab');
+  var items = document.querySelectorAll('.portfolio-region, .motion-section');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      var filter = tab.getAttribute('data-filter');
+      items.forEach(function(item){
+        if(filter === 'all' || item.getAttribute('data-category') === filter){
+          item.classList.remove('is-hidden');
+        } else {
+          item.classList.add('is-hidden');
+        }
+      });
+    });
+  });
+})();
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
