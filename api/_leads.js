@@ -116,10 +116,12 @@ async function verarbeiteLead(input, lang) {
 }
 
 // Versand ohne Einrichtung über FormSubmit (formsubmit.co):
-//   – info@ bekommt jede Anfrage als Mail (Tabelle mit allen Daten)
+//   – INFO_MAIL bekommt jede Anfrage als Mail (Tabelle mit allen Daten), INFO_MAIL_CC (optional) als Kopie
 //   – der Anfragende bekommt automatisch die Antwort-Mail (_autoresponse)
-// Einmalig nötig: Bei der ALLERERSTEN Anfrage schickt FormSubmit eine Mail "Activate Form" an info@ → Link anklicken.
+// Einmalig nötig: Bei der ALLERERSTEN Anfrage an eine NEUE Adresse schickt FormSubmit eine Mail "Activate Form"
+// an genau diese Adresse (auch Spam-Ordner prüfen!) → Link anklicken. Erst danach kommen echte Anfragen durch.
 const INFO_MAIL = process.env.INFO_MAIL || "info@backtooutdoor.com";
+const INFO_MAIL_CC = (process.env.INFO_MAIL_CC || "").split(",").map((s) => s.trim()).filter(Boolean).join(",");
 async function perMail(p) {
   try {
     const r = await fetch("https://formsubmit.co/ajax/" + INFO_MAIL, {
@@ -136,6 +138,7 @@ async function perMail(p) {
         _captcha: "false",
         _replyto: p.email,
         _autoresponse: p.antwort_text,
+        ...(INFO_MAIL_CC ? { _cc: INFO_MAIL_CC } : {}),
         Eingang: new Date(p.zeit).toLocaleString("de-AT", { timeZone: "Europe/Vienna" }),
         Name: p.name,
         Firma: p.firma || "-",
