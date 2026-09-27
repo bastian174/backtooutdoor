@@ -54,6 +54,15 @@ function verarbeiten_(d) {
   if (d.antwort_betreff && d.antwort_text) {
     const opts = { name: CONFIG.ABSENDER_NAME, replyTo: CONFIG.INFO_MAIL, cc: CONFIG.INFO_MAIL_CC || undefined };
     if (CONFIG.ABSENDER_ADRESSE && GmailApp.getAliases().indexOf(CONFIG.ABSENDER_ADRESSE) >= 0) opts.from = CONFIG.ABSENDER_ADRESSE;
+    // Media Kit als echten PDF-Anhang mitschicken (nicht nur als Link)
+    if (d.media_kit_url) {
+      try {
+        const pdf = UrlFetchApp.fetch(d.media_kit_url, { muteHttpExceptions: true }).getBlob().setName('Back-to-Outdoor-Media-Kit.pdf');
+        opts.attachments = [pdf];
+      } catch (err) {
+        Logger.log('Media-Kit-PDF konnte nicht geladen werden: ' + err.message);
+      }
+    }
     if (CONFIG.AUTO_ANTWORT) {
       GmailApp.sendEmail(d.email, d.antwort_betreff, d.antwort_text, opts);
       status = 'Beantwortet';

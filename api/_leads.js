@@ -24,12 +24,12 @@ function vorlage(lead, lang) {
   if (lang === "en") {
     return {
       betreff: mk ? "Your Back to Outdoor media kit" : "Thanks for your enquiry – Back to Outdoor",
-      text: `Hi ${n},\n\nthanks for reaching out${lead.firma ? " on behalf of " + lead.firma : ""}! ${mk ? (mkUrl ? "Here is our media kit: " + mkUrl + "\n\n" : "We'll send you our media kit personally shortly.\n\n") : ""}We'd love to hear more about your plans. The easiest next step is a short, free call (about 15 minutes)${book ? " – you can pick a time here: " + book : " – just reply with two or three times that suit you"}.\n\nTo prepare: where is your business located, and which period are you thinking of?\n\nBest regards\nBasti\n\n${KONTAKT}`,
+      text: `Hi ${n},\n\nthanks for reaching out${lead.firma ? " on behalf of " + lead.firma : ""}! ${mk ? (mkUrl ? "Please find our media kit attached.\n\n" : "We'll send you our media kit personally shortly.\n\n") : ""}We'd love to hear more about your plans. The easiest next step is a short, free call (about 15 minutes)${book ? " – you can pick a time here: " + book : " – just reply with two or three times that suit you"}.\n\nTo prepare: where is your business located, and which period are you thinking of?\n\nBest regards\nBasti\n\n${KONTAKT}`,
     };
   }
   return {
     betreff: mk ? "Euer Media Kit von Back to Outdoor" : "Danke für eure Anfrage – Back to Outdoor",
-    text: `Hallo ${n},\n\ndanke für eure Nachricht${lead.firma ? " – schön, von " + lead.firma + " zu hören" : ""}! ${mk ? (mkUrl ? "Hier ist unser Media Kit: " + mkUrl + "\n\n" : "Unser Media Kit schicke ich euch gleich persönlich zu.\n\n") : ""}Am einfachsten lernen wir uns in einem kurzen, kostenlosen Gespräch kennen (ca. 15 Minuten, unverbindlich)${book ? ". Hier könnt ihr direkt einen Termin wählen: " + book : ". Schickt mir einfach zwei, drei Zeitfenster, die euch passen"}.\n\nDamit ich mich gut vorbereiten kann: Wo seid ihr zu Hause, und an welchen Zeitraum denkt ihr?\n\nLiebe Grüße\nBasti\n\n${KONTAKT}`,
+    text: `Hallo ${n},\n\ndanke für eure Nachricht${lead.firma ? " – schön, von " + lead.firma + " zu hören" : ""}! ${mk ? (mkUrl ? "Unser Media Kit findet ihr im Anhang.\n\n" : "Unser Media Kit schicke ich euch gleich persönlich zu.\n\n") : ""}Am einfachsten lernen wir uns in einem kurzen, kostenlosen Gespräch kennen (ca. 15 Minuten, unverbindlich)${book ? ". Hier könnt ihr direkt einen Termin wählen: " + book : ". Schickt mir einfach zwei, drei Zeitfenster, die euch passen"}.\n\nDamit ich mich gut vorbereiten kann: Wo seid ihr zu Hause, und an welchen Zeitraum denkt ihr?\n\nLiebe Grüße\nBasti\n\n${KONTAKT}`,
   };
 }
 
@@ -47,7 +47,7 @@ Regeln:
 - 80–150 Wörter. Bezieh dich konkret auf das Anliegen, ohne es nur zu wiederholen.
 - Ziel: kostenloses Erstgespräch (ca. 15 Min., unverbindlich). ${book ? "Terminlink: " + book : "Bitte um zwei, drei passende Zeitfenster."}
 - Höchstens zwei konkrete Rückfragen (z. B. Region, Zeitraum, welches Erlebnis).
-- ${lead.wunsch === "Media Kit" ? (mkUrl ? "Media Kit als Link mitschicken: " + mkUrl : "Schreib, dass du das Media Kit gleich persönlich schickst.") : "Media Kit nur erwähnen, wenn danach gefragt wurde."}
+- ${lead.wunsch === "Media Kit" ? (mkUrl ? "Erwähne, dass das Media Kit als PDF im Anhang der Mail dabei ist (nicht als Link)." : "Schreib, dass du das Media Kit gleich persönlich schickst.") : "Media Kit nur erwähnen, wenn danach gefragt wurde."}
 - NIEMALS Preise, Tagessätze, Rabatte oder Preisspannen. Keine Terminzusagen, keine Verfügbarkeiten, keine Garantien, keine erfundenen Kunden, Zahlen oder Referenzen. Keine Drohnenaufnahmen versprechen. Keine Social-Media-Betreuung anbieten. Keine Affiliate-Links.
 - Kein Marketing-Sprech, keine Emojis, keine Ausrufezeichen-Ketten. Unterschrift: "Liebe Grüße\\nBasti" (EN: "Best regards\\nBasti").
 Antworte ausschließlich als JSON: {"betreff":"...","text":"..."} – ohne Kontaktblock, der wird automatisch angehängt.`;
@@ -97,7 +97,8 @@ async function verarbeiteLead(input, lang) {
   lang = ["de", "en", "fr"].includes(lang) ? lang : "de";
 
   const antwort = (await kiAntwort(lead, lang)) || vorlage(lead, lang === "fr" ? "en" : lang);
-  const payload = { secret: process.env.LEAD_SECRET || "", zeit: new Date().toISOString(), sprache: lang, ...lead, antwort_betreff: antwort.betreff, antwort_text: antwort.text };
+  const mediaKitUrl = lead.wunsch === "Media Kit" ? process.env.MEDIA_KIT_URL || "" : "";
+  const payload = { secret: process.env.LEAD_SECRET || "", zeit: new Date().toISOString(), sprache: lang, ...lead, antwort_betreff: antwort.betreff, antwort_text: antwort.text, media_kit_url: mediaKitUrl };
 
   console.log("NEUER LEAD", JSON.stringify({ ...payload, secret: undefined }));
   const url = process.env.LEAD_WEBHOOK_URL;
