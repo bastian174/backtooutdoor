@@ -24,25 +24,50 @@ const CONFIG = {
   ABSENDER_NAME: 'Basti · Back to Outdoor',
   ABSENDER_ADRESSE: '',                       // optional: z. B. info@backtooutdoor.com, falls in Gmail als "Senden als"-Adresse eingerichtet
   BLATT: 'Anfragen',
+  BLATT_KLICKS: 'Klicks',                     // Tab für Kooperations-/Affiliate-Link-Klicks (siehe api/go.js)
 };
 
 const SPALTEN = ['Eingang', 'Status', 'Name', 'Firma', 'E-Mail', 'Telefon', 'Typ', 'Wunsch', 'Anliegen',
   'Seite', 'Quelle', 'Sprache', 'Antwort-Betreff', 'Antwort (verschickt)', 'Nächster Schritt / Notizen'];
 const STATUS = ['Neu', 'Beantwortet', 'Antwort als Entwurf', 'Gespräch vereinbart', 'Angebot geschickt', 'Gewonnen', 'Verloren', 'Spam'];
+const SPALTEN_KLICKS = ['Zeitpunkt', 'Link', 'Ziel-URL', 'Verweisende Seite'];
 
 function doPost(e) {
   let d;
   try { d = JSON.parse(e.postData.contents); } catch (err) { return json_({ ok: false, fehler: 'json' }); }
   if (CONFIG.SECRET && d.secret !== CONFIG.SECRET) return json_({ ok: false, fehler: 'secret' });
-  if (!d.email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) return json_({ ok: false, fehler: 'email' });
 
   const lock = LockService.getScriptLock();
   lock.waitLock(20000);
   try {
+    if (d.art === 'klick') return json_(klickVerarbeiten_(d));
+    if (!d.email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) return json_({ ok: false, fehler: 'email' });
     return json_(verarbeiten_(d));
   } finally {
     lock.releaseLock();
   }
+}
+
+// Klick auf einen Kooperations-/Affiliate-Link (siehe api/go.js) – nur protokollieren, keine Mail.
+function klickVerarbeiten_(d) {
+  klickBlatt_().appendRow([
+    new Date(d.zeit || Date.now()), d.link || '-', d.ziel || '-', d.seite || '-',
+  ].map(sicher_));
+  return { ok: true };
+}
+
+function klickBlatt_() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sh = ss.getSheetByName(CONFIG.BLATT_KLICKS);
+  if (!sh) {
+    sh = ss.insertSheet(CONFIG.BLATT_KLICKS);
+    sh.appendRow(SPALTEN_KLICKS);
+    sh.setFrozenRows(1);
+    sh.getRange(1, 1, 1, SPALTEN_KLICKS.length).setFontWeight('bold').setBackground('#132030').setFontColor('#f7f5f0');
+    sh.setColumnWidths(1, SPALTEN_KLICKS.length, 200);
+    sh.getRange('A:A').setNumberFormat('dd.MM.yyyy HH:mm');
+  }
+  return sh;
 }
 
 function verarbeiten_(d) {
