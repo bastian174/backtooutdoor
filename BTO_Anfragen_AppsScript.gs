@@ -2,22 +2,27 @@
  * Back to Outdoor – Anfragen-Automation (Google Apps Script)
  *
  * Was passiert bei jeder Anfrage von der Website (Formular oder KI-Chat):
- *   1. Der Anfragende bekommt sofort eine persönliche Antwort-Mail (von deinem Google-Konto, Antworten gehen an info@).
- *   2. info@backtooutdoor.com bekommt eine Benachrichtigung mit allen Daten + der verschickten Antwort.
- *   3. Die Anfrage wird als neue Zeile in dieser Tabelle eingetragen (Liste mit Status).
+ *   1. Der Anfragende bekommt sofort eine persönliche Antwort-Mail (von infobacktooutdoor@gmail.com, Antworten gehen dorthin zurück).
+ *   2. infobacktooutdoor@gmail.com bekommt eine Benachrichtigung mit allen Daten + der verschickten Antwort (Kopie an info@backtooutdoor.com).
+ *   3. Die Anfrage wird als neue Zeile in dieser Tabelle eingetragen (Liste mit Status) – das ist die Liste, mit der JARVIS/das Agenten-Team weiterarbeitet.
  *
- * Einrichtung: siehe Anleitung (Einrichtung_Anfragen.md). Kurz:
- *   Google Tabelle "BTO Anfragen" öffnen (liegt schon in Drive von info@) → Erweiterungen → Apps Script → diesen Code einfügen
- *   → SECRET unten setzen → Funktion "testAnfrage" einmal ausführen (Berechtigungen erlauben)
- *   → Bereitstellen → Neue Bereitstellung → Web-App (Ausführen als: Ich, Zugriff: Jeder) → URL kopieren.
+ * Einrichtung (im Google-Konto infobacktooutdoor@gmail.com):
+ *   1. Auf drive.google.com einloggen (mit infobacktooutdoor@gmail.com) → neue Google Tabelle anlegen → "BTO Anfragen" nennen.
+ *   2. Oben im Menü: Erweiterungen → Apps Script.
+ *   3. Den kompletten Beispielcode dort löschen, diesen Code stattdessen reinkopieren.
+ *   4. Oben speichern (Diskette-Symbol).
+ *   5. Oben in der Funktionsliste "testAnfrage" auswählen → Ausführen (▶) klicken → Berechtigungen erlauben (Google warnt, weil es dein eigenes Skript ist – "Erweitert" → "Trotzdem öffnen" wählen).
+ *   6. Rechts oben "Bereitstellen" → "Neue Bereitstellung" → Zahnrad → "Web-App" → Ausführen als: "Ich", Zugriff: "Jeder" → Bereitstellen → die angezeigte URL kopieren.
+ *   7. Diese URL + das SECRET unten mir (oder direkt in Vercel als LEAD_WEBHOOK_URL / LEAD_SECRET) geben.
  */
 
 const CONFIG = {
-  SECRET: 'HIER-EIN-EIGENES-PASSWORT',      // identisch mit LEAD_SECRET in Vercel
-  INFO_MAIL: 'info@backtooutdoor.com',       // bekommt jede Anfrage
-  AUTO_ANTWORT: true,                        // false = Antwort wird nur als Gmail-Entwurf angelegt
+  SECRET: 'bto-2026-salzburg-x7k2',           // identisch mit LEAD_SECRET in Vercel – kannst du auch selbst ändern
+  INFO_MAIL: 'infobacktooutdoor@gmail.com',   // bekommt jede Anfrage (primär)
+  INFO_MAIL_CC: 'info@backtooutdoor.com',     // bekommt jede Anfrage als Kopie
+  AUTO_ANTWORT: true,                         // false = Antwort wird nur als Gmail-Entwurf angelegt
   ABSENDER_NAME: 'Basti · Back to Outdoor',
-  ABSENDER_ADRESSE: '',                      // optional: z. B. info@backtooutdoor.com, falls in Gmail als "Senden als"-Adresse eingerichtet
+  ABSENDER_ADRESSE: '',                       // optional: z. B. info@backtooutdoor.com, falls in Gmail als "Senden als"-Adresse eingerichtet
   BLATT: 'Anfragen',
 };
 
@@ -47,7 +52,7 @@ function verarbeiten_(d) {
 
   // 1. Antwort an den Anfragenden
   if (d.antwort_betreff && d.antwort_text) {
-    const opts = { name: CONFIG.ABSENDER_NAME, replyTo: CONFIG.INFO_MAIL };
+    const opts = { name: CONFIG.ABSENDER_NAME, replyTo: CONFIG.INFO_MAIL, cc: CONFIG.INFO_MAIL_CC || undefined };
     if (CONFIG.ABSENDER_ADRESSE && GmailApp.getAliases().indexOf(CONFIG.ABSENDER_ADRESSE) >= 0) opts.from = CONFIG.ABSENDER_ADRESSE;
     if (CONFIG.AUTO_ANTWORT) {
       GmailApp.sendEmail(d.email, d.antwort_betreff, d.antwort_text, opts);
@@ -81,7 +86,7 @@ function verarbeiten_(d) {
   GmailApp.sendEmail(CONFIG.INFO_MAIL,
     'Neue Anfrage: ' + (d.firma || d.name) + ' – ' + (d.wunsch || 'Anfrage'),
     zeilen.join('\n'),
-    { name: 'Website-Anfragen Back to Outdoor', replyTo: d.email });
+    { name: 'Website-Anfragen Back to Outdoor', replyTo: d.email, cc: CONFIG.INFO_MAIL_CC || undefined });
 
   // 3. Eintrag in die Liste
   blatt.appendRow([
