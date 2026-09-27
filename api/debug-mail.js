@@ -11,25 +11,30 @@ module.exports = async function handler(req, res) {
     LEAD_SECRET_gesetzt: !!process.env.LEAD_SECRET,
   };
 
-  let ergebnis = null;
+  let webhookRoh = null;
   try {
-    ergebnis = await verarbeiteLead(
-      {
+    const r = await fetch(process.env.LEAD_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        secret: process.env.LEAD_SECRET || "",
+        zeit: new Date().toISOString(),
+        sprache: "de",
         name: "Diagnose Test",
         firma: "Testfirma",
         email: "diagnose@example.com",
-        telefon: "",
-        typ: "Hotel",
         wunsch: "Erstgespräch",
         anliegen: "Automatischer Diagnose-Test von /api/debug-mail.",
-        seite: "/test",
-        quelle: "Diagnose",
-      },
-      "de"
-    );
+        antwort_betreff: "Test",
+        antwort_text: "Das ist ein Test.",
+      }),
+      redirect: "follow",
+    });
+    const txt = await r.text();
+    webhookRoh = { status: r.status, ok: r.ok, antwort: txt.slice(0, 1500) };
   } catch (e) {
-    ergebnis = { fehler_ausnahme: String(e && e.message) };
+    webhookRoh = { fehler_ausnahme: String(e && e.message) };
   }
 
-  return res.status(200).json({ env, ergebnis });
+  return res.status(200).json({ env, webhookRoh });
 };
