@@ -1399,5 +1399,133 @@
 <script src="/assets/js/mobile-nav.js" defer></script>
 <script src="/agent.js" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
-</body>
+<!-- ===== BTO Shop-Hero Mobil-Upgrade v3 (3D-Hintergrund) · direkt vor </body> einfügen (shop.html, shop-en.html, shop-fr.html) ===== -->
+<style>
+  .shop-page-hero .bto-hero-cta{ display:none; }
+  @media (max-width: 760px){
+    .shop-page-hero{ padding:130px 0 70px; }
+    .shop-page-hero{ perspective:900px; perspective-origin:50% 40%; }
+    .shop-page-hero .hero-video-bg{
+      inset:-12%; width:124%; height:124%; will-change:transform;
+      transform-origin:50% 50%; animation:btoDive 1.4s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .shop-page-hero .hero-video-overlay{ z-index:1; }
+    .shop-page-hero::after{
+      content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+      background:radial-gradient(ellipse 70% 55% at var(--bto-lx,50%) var(--bto-ly,30%), rgba(227,109,39,0.16), transparent 70%);
+      mix-blend-mode:screen;
+    }
+    .shop-page-hero .wrap{ transform-style:preserve-3d; will-change:transform; }
+    .shop-page-hero p{
+      color:var(--foam,#f7f5f0); font-size:1.25rem; font-weight:500; line-height:1.5; margin-top:24px;
+      text-shadow:0 2px 12px rgba(0,0,0,0.65);
+      animation:btoSlideL .7s .55s cubic-bezier(.2,.9,.3,1) both;
+    }
+    .shop-page-hero .bto-hero-cta{
+      display:inline-flex; align-items:center; gap:10px; margin-top:24px;
+      padding:15px 26px; border:1px solid var(--teal-bright,#e36d27); border-radius:var(--radius,2px); text-decoration:none;
+      font-family:'Work Sans',sans-serif; font-size:0.9rem; font-weight:600;
+      letter-spacing:0.08em; text-transform:uppercase; color:var(--ink,#132030);
+      background:var(--teal-bright,#e36d27);
+      box-shadow:0 8px 24px rgba(0,0,0,0.35);
+      animation:btoPopIn .6s .85s cubic-bezier(.2,1.5,.4,1) both, btoPulse 2s 1.6s ease-out infinite;
+    }
+    .shop-page-hero .bto-hero-cta i{ font-style:normal; display:inline-block; animation:btoBounce 1.1s 1.5s ease-in-out infinite; }
+    .shop-page-hero .bto-hero-cta:active{ transform:scale(.95); }
+    .shop-page-hero .shop-jump{ margin-top:22px; gap:12px; }
+    .shop-page-hero .shop-jump a{
+      position:relative; overflow:hidden;
+      color:var(--foam,#f7f5f0); font-size:0.86rem; font-weight:600; letter-spacing:0.08em;
+      padding:15px 18px; border:1px solid rgba(247,245,240,0.55); border-radius:var(--radius,2px);
+      background:rgba(255,255,255,0.1); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+      box-shadow:0 8px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+      text-shadow:0 1px 6px rgba(0,0,0,0.5);
+      transition:transform .15s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+      animation:btoFlyL .7s cubic-bezier(.2,1.3,.4,1) both;
+    }
+    .shop-page-hero .shop-jump a:nth-child(even){ animation-name:btoFlyR; }
+    .shop-page-hero .shop-jump a:nth-child(1){ animation-delay:1.0s; }
+    .shop-page-hero .shop-jump a:nth-child(2){ animation-delay:1.1s; }
+    .shop-page-hero .shop-jump a:nth-child(3){ animation-delay:1.2s; }
+    .shop-page-hero .shop-jump a:nth-child(4){ animation-delay:1.3s; }
+    .shop-page-hero .shop-jump a:nth-child(5){ animation-delay:1.4s; }
+    .shop-page-hero .shop-jump a:nth-child(6){ animation-delay:1.5s; }
+    .shop-page-hero .shop-jump a::after{
+      content:""; position:absolute; top:0; left:-60%; width:40%; height:100%;
+      background:linear-gradient(100deg,transparent,rgba(247,245,240,0.35),transparent);
+      transform:skewX(-20deg); animation:btoShine 4.5s 2.2s ease-in-out infinite;
+    }
+    .shop-page-hero .shop-jump a:nth-child(2)::after{ animation-delay:2.5s; }
+    .shop-page-hero .shop-jump a:nth-child(3)::after{ animation-delay:2.8s; }
+    .shop-page-hero .shop-jump a:nth-child(4)::after{ animation-delay:3.1s; }
+    .shop-page-hero .shop-jump a:nth-child(5)::after{ animation-delay:3.4s; }
+    .shop-page-hero .shop-jump a:active,
+    .shop-page-hero .shop-jump a:hover{
+      transform:scale(1.04); color:var(--ink,#132030);
+      background:var(--teal-bright,#e36d27); border-color:var(--teal-bright,#e36d27);
+      box-shadow:0 12px 28px rgba(227,109,39,0.55);
+    }
+    .bto-reveal{ opacity:0; transform:translateY(40px) scale(.94); transition:opacity .6s ease, transform .7s cubic-bezier(.2,1.3,.4,1); }
+    .bto-reveal.bto-in{ opacity:1; transform:none; }
+  }
+  @keyframes btoDive{ from{ opacity:0; transform:scale(1.6) rotateX(18deg); } }
+  @keyframes btoSlideL{ from{ opacity:0; transform:translateX(-40px); } }
+  @keyframes btoPopIn{ from{ opacity:0; transform:scale(.5); } }
+  @keyframes btoPulse{
+    0%  { box-shadow:0 8px 24px rgba(0,0,0,0.35), 0 0 0 0 rgba(227,109,39,0.6); }
+    100%{ box-shadow:0 8px 24px rgba(0,0,0,0.35), 0 0 0 18px rgba(227,109,39,0); }
+  }
+  @keyframes btoBounce{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(6px); } }
+  @keyframes btoFlyL{ from{ opacity:0; transform:translateX(-80px) rotate(-4deg); } }
+  @keyframes btoFlyR{ from{ opacity:0; transform:translateX(80px) rotate(4deg); } }
+  @keyframes btoShine{ 0%{ left:-60%; } 25%,100%{ left:130%; } }
+</style>
+<script>
+  (function(){
+    var hero=document.querySelector('.shop-page-hero .wrap'); if(!hero||hero.querySelector('.bto-hero-cta')) return;
+    var lang=(document.documentElement.lang||'de').slice(0,2);
+    var txt={de:'Jetzt entdecken',en:'Explore now',fr:'À découvrir'}[lang]||'Jetzt entdecken';
+    var jump=hero.querySelector('.shop-jump');
+    var first=jump&&jump.querySelector('a');
+    var cta=document.createElement('a'); cta.className='bto-hero-cta';
+    cta.href=first?first.getAttribute('href'):'#';
+    cta.innerHTML=txt+' <i>↓</i>';
+    jump?hero.insertBefore(cta,jump):hero.appendChild(cta);
+    (function(){
+      if(!window.matchMedia('(max-width: 760px)').matches) return;
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var sec=document.querySelector('.shop-page-hero'); if(!sec) return;
+      var bg=sec.querySelector('.hero-video-bg'), fg=sec.querySelector('.wrap');
+      var tx=0,ty=0, cx=0,cy=0, start=performance.now()+1400, sensor=false;
+      function setTilt(x,y){ tx=Math.max(-1,Math.min(1,x)); ty=Math.max(-1,Math.min(1,y)); }
+      function onOri(e){ if(e.gamma==null) return; sensor=true; setTilt(e.gamma/25,(e.beta-45)/25); }
+      window.addEventListener('deviceorientation',onOri);
+      sec.addEventListener('touchmove',function(e){ if(sensor) return; var r=sec.getBoundingClientRect(),t=e.touches[0];
+        setTilt((t.clientX-r.left)/r.width*2-1,(t.clientY-r.top)/r.height*2-1); },{passive:true});
+      function loop(now){
+        var t=now/1000, auto=!sensor;
+        var ax=auto?Math.sin(t*0.6)*0.55:0, ay=auto?Math.cos(t*0.45)*0.4:0;
+        cx+=((tx+ax)-cx)*0.06; cy+=((ty+ay)-cy)*0.06;
+        var sc=window.scrollY||0, h=sec.offsetHeight, k=Math.min(sc/h,1);
+        if(bg && now>start){
+          var zoom=1.06+Math.sin(t*0.25)*0.03+k*0.12;
+          bg.style.transform='translate3d('+(-cx*22)+'px,'+(-cy*18+sc*0.35)+'px,-60px) rotateY('+(cx*6)+'deg) rotateX('+(-cy*5)+'deg) scale('+zoom+')';
+        }
+        fg.style.transform='translate3d('+(cx*10)+'px,'+(cy*8-sc*0.08)+'px,40px) rotateY('+(cx*3)+'deg) rotateX('+(-cy*2.5)+'deg)';
+        fg.style.opacity=String(1-k*0.6);
+        sec.style.setProperty('--bto-lx',(50+cx*30)+'%'); sec.style.setProperty('--bto-ly',(30+cy*25)+'%');
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+    })();
+    if(!window.matchMedia('(max-width: 760px)').matches || !('IntersectionObserver' in window)) return;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var cards=document.querySelectorAll('.shop-card, .shop-cat-header');
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('bto-in'); io.unobserve(e.target); } });
+    },{threshold:0.15});
+    cards.forEach(function(c){ c.classList.add('bto-reveal'); io.observe(c); });
+  })();
+</script>
+<!-- ===== Ende BTO Shop-Hero Mobil-Upgrade ===== --></body>
 </html>
