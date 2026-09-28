@@ -156,12 +156,14 @@
     letter-spacing:0.04em; color:rgba(247,245,240,0.4);
   }
 </style>
+<link rel="stylesheet" href="/assets/css/mobile-nav.css">
 </head>
 <body>
 
 <header class="site-nav">
   <div class="nav-inner">
     <a href="index.html#home" class="logo"><span class="logo-badge"><img src="assets/img/30c986cfc347.png" alt="Back to Outdoor Logo"></span>Back to <span>Outdoor</span></a>
+    <button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="links">
       <a href="index.html#leistungen">Leistungen</a>
       <a href="index.html#portfolio">Portfolio</a>
@@ -286,6 +288,7 @@
 </footer>
 
 <style id="bto-mobile-fix">@media (max-width:560px){.nav-cta{display:none!important}.lang-switch{margin-left:0!important;gap:2px}}html,body{overflow-x:clip}</style>
+<script src="/assets/js/mobile-nav.js" defer></script>
 <script src="/agent.js" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>

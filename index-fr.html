@@ -994,11 +994,13 @@
   @media (max-width:940px){ nav.links{ gap:7px; } }
   @media (max-width:1400px) and (min-width:1151px){ html[lang="fr"] nav.links{ gap:12px; } html[lang="fr"] .logo{ margin-right:14px; } }
 </style>
+<link rel="stylesheet" href="/assets/css/mobile-nav.css">
 </head>
 <body>
 <header class="site-nav">
 <div class="nav-inner">
 <a class="logo" href="#home"><span class="logo-badge"><img alt="Back to Outdoor Logo" src="assets/img/30c986cfc347.png"/></span>Back to <span>Outdoor</span></a>
+<button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
 <nav class="links">
 <a href="#leistungen">Prestations</a>
 <a href="#portfolio">Portfolio</a>
@@ -1494,6 +1496,7 @@
   }
 </script>
 <style id="bto-mobile-fix">@media (max-width:560px){.nav-cta{display:none!important}.lang-switch{margin-left:0!important;gap:2px}}html,body{overflow-x:clip}</style>
+<script src="/assets/js/mobile-nav.js" defer></script>
 <script src="/agent.js" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>

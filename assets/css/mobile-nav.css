@@ -1,0 +1,66 @@
+/* Mobile navigation (hamburger menu) — shared across all pages */
+.burger{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  width:40px;
+  height:36px;
+  padding:0;
+  background:transparent;
+  border:1px solid rgba(247,245,240,0.35);
+  border-radius:4px;
+  cursor:pointer;
+  flex-shrink:0;
+}
+.burger span{
+  display:block;
+  width:20px;
+  height:2px;
+  background:#F7F5F0;
+  transition:transform .2s ease, opacity .2s ease;
+}
+.burger[aria-expanded="true"] span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+.burger[aria-expanded="true"] span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+@media (max-width:900px){
+  .nav-inner{ justify-content:flex-start !important; flex-wrap:nowrap !important; position:relative; }
+  .nav-inner > .logo{ margin-right:auto; }
+  .nav-inner > .burger{ display:flex; order:3; }
+  .nav-inner > .lang-switch{ order:2; margin-left:0 !important; }
+  .nav-inner > .nav-cta{ order:4; }
+
+  nav.links.nav-open{
+    display:flex !important;
+    flex-direction:column;
+    gap:0;
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    background:rgba(16,24,28,0.98);
+    border-bottom:1px solid rgba(247,245,240,0.14);
+    padding:6px 24px 16px;
+    backdrop-filter:blur(6px);
+    z-index:200;
+  }
+  nav.links.nav-open a{
+    padding:13px 0;
+    border-bottom:1px solid rgba(247,245,240,0.08);
+    width:100%;
+  }
+  nav.links.nav-open a:last-child{ border-bottom:none; }
+}
+
+/* Narrow phones: logo + lang switch + burger don't fit at full size — shrink them */
+@media (max-width:480px){
+  .nav-inner{ padding-left:16px !important; padding-right:16px !important; gap:6px !important; }
+  .nav-inner > .logo{ font-size:0.85rem !important; gap:6px !important; }
+  .nav-inner > .logo .logo-badge{ width:28px !important; height:28px !important; }
+  .nav-inner > .lang-switch{ font-size:0.72rem !important; gap:3px !important; }
+  .nav-inner > .lang-switch a{ padding:2px !important; }
+  .nav-inner > .burger{ width:32px; height:30px; gap:4px; }
+  .nav-inner > .burger span{ width:16px; }
+}
