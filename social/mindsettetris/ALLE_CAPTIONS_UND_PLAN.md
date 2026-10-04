@@ -180,3 +180,57 @@ Welche kleine Gewohnheit startest du heute? Schreib es in die Kommentare 👇
 
 #gewohnheiten #kleineschritte #routine #disziplin #mindset #persönlichkeitsentwicklung #mindsetshift
 ```
+
+## 11 · Alleine schneller, gemeinsam mehr: Die Kraft im Team
+**Instagram:** 2026-10-28 18:00 · **Pin:** 2026-10-19 19:00 · Link: https://backtooutdoor.com/mindset/alleine-schneller-gemeinsam-mehr-erreichen.html
+
+```
+Alleine bist du schneller. Gemeinsam erreichst du mehr.
+
+→ Du musst nicht alles alleine tragen
+→ Verantwortung teilen
+→ Erfolge gemeinsam feiern
+
+Bei welchem Ziel holst du dir gerade Unterstützung? Schreib es in die Kommentare 👇
+
+📖 Den ganzen Artikel „Alleine schneller, gemeinsam mehr: Die Kraft im Team“ findest du über den Link in der Bio.
+🔖 Speichern für später.
+
+#teamwork #gemeinsamstark #zusammenarbeit #gemeinschaft #mindset #persönlichkeitsentwicklung #teamgeist
+```
+
+## 12 · Die Macht der Gedanken: Wie Denken dein Leben formt
+**Instagram:** 2026-10-30 18:00 · **Pin:** 2026-10-20 19:00 · Link: https://backtooutdoor.com/mindset/macht-der-gedanken.html
+
+```
+Was du regelmäßig denkst, formt dein Leben.
+
+→ Gedanken lenken Gefühle
+→ Glaubenssätze hinterfragen
+→ Täglich reflektieren
+
+Welcher Gedanke bremst dich am häufigsten aus? Schreib es in die Kommentare 👇
+
+📖 Den ganzen Artikel „Die Macht der Gedanken: Wie Denken dein Leben formt“ findest du über den Link in der Bio.
+🔖 Speichern für später.
+
+#machtdergedanken #glaubenssätze #positivesdenken #selbstreflexion #mindset #persönlichkeitsentwicklung #mentalestärke
+```
+
+## 13 · Selbstreflexion: Der ehrliche Blick in den Spiegel
+**Instagram:** 2026-11-02 18:00 · **Pin:** 2026-10-21 19:00 · Link: https://backtooutdoor.com/mindset/selbstreflexion-in-den-spiegel-schauen.html
+
+```
+„Ich bin nicht perfekt, und das ist in Ordnung.“
+
+→ Die Wahrheit erkennen
+→ Jeden Abend kurz innehalten
+→ Ehrlich zu dir sein
+
+Wann hast du dir zuletzt ehrlich den Spiegel vorgehalten? Schreib es in die Kommentare 👇
+
+📖 Den ganzen Artikel „Selbstreflexion: Der ehrliche Blick in den Spiegel“ findest du über den Link in der Bio.
+🔖 Speichern für später.
+
+#selbstreflexion #ehrlichkeit #selbstakzeptanz #achtsamkeit #mindset #persönlichkeitsentwicklung #persönlicheswachstum
+```
