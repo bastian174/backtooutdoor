@@ -10,6 +10,8 @@
 //   MEDIA_KIT_URL     – optional: Link zum Media-Kit-PDF, wird bei Media-Kit-Anfragen mitgeschickt
 //   BOOKING_URL       – optional: Link zur Terminbuchung
 
+const { PRODUKTE, teil2Link } = require("./_produkte");
+
 const KONTAKT = "Back to Outdoor · Salzburg\ninfo@backtooutdoor.com · +43 (0)660 8422053\nwww.backtooutdoor.com · Instagram @backtooutdoor";
 
 function vorname(name) {
@@ -30,6 +32,15 @@ function vorlage(lead, lang) {
   return {
     betreff: mk ? "Euer Media Kit von Back to Outdoor" : "Danke für eure Anfrage – Back to Outdoor",
     text: `Hallo ${n},\n\ndanke für eure Nachricht${lead.firma ? " – schön, von " + lead.firma + " zu hören" : ""}! ${mk ? (mkUrl ? "Unser Media Kit findet ihr im Anhang.\n\n" : "Unser Media Kit schicke ich euch gleich persönlich zu.\n\n") : ""}Am einfachsten lernen wir uns in einem kurzen, kostenlosen Gespräch kennen (ca. 15 Minuten, unverbindlich)${book ? ". Hier könnt ihr direkt einen Termin wählen: " + book : ". Schickt mir einfach zwei, drei Zeitfenster, die euch passen"}.\n\nDamit ich mich gut vorbereiten kann: Wo seid ihr zu Hause, und an welchen Zeitraum denkt ihr?\n\nLiebe Grüße\nBasti\n\n${KONTAKT}`,
+  };
+}
+
+// E-Book-Funnel: Teil 1 gratis per Mail, Teil 2 als Kauf-Link (CopeCart)
+function ebookMail(lead, p) {
+  const n = vorname(lead.name);
+  return {
+    betreff: `Dein Teil 1: ${p.titel} 🧱`,
+    text: `Hallo ${n},\n\nschön, dass du dabei bist! Hier ist Teil 1 von „${p.titel}“ – gratis für dich:\n${p.teil1}\n\nDarin: die Spielregeln, der Gewohnheits-Kreislauf als Bild erklärt und deine erste Beobachtungs-Aufgabe. Druck es aus oder füll es am Tablet aus – und leg gleich heute deinen ersten Stein.\n\nWenn du danach weiterspielen willst: Teil 2 hat ${p.seiten} Seiten mit 8 weiteren Leveln, Morgenroutine-Baukasten, Fokus-Modus und der 66-Tage-Challenge. Für ${p.preis}, sofort als PDF:\n${teil2Link(lead.produkt)}\n\nViel Spaß beim Stapeln!\nBasti von Mindset Tetris\n\nInstagram @mindsettetris · backtooutdoor.com/mindset`,
   };
 }
 
@@ -88,6 +99,8 @@ function bereinigen(input) {
     verlauf: String(input.verlauf || "").slice(-4000),
     seite: s(input.seite, 120),
     quelle: s(input.quelle, 40) || "Website",
+    produkt: s(input.produkt, 60),
+    newsletter: input.newsletter === true || input.newsletter === "ja" ? "ja" : "nein",
   };
 }
 
@@ -96,7 +109,11 @@ async function verarbeiteLead(input, lang) {
   if (!lead.name || !EMAIL_RE.test(lead.email)) return { ok: false, fehler: "ungueltig" };
   lang = ["de", "en", "fr"].includes(lang) ? lang : "de";
 
-  const antwort = (await kiAntwort(lead, lang)) || vorlage(lead, lang === "fr" ? "en" : lang);
+  const produkt = PRODUKTE[lead.produkt];
+  if (lead.wunsch === "E-Book Teil 1" && !produkt) return { ok: false, fehler: "ungueltig" };
+  const antwort = produkt && lead.wunsch === "E-Book Teil 1"
+    ? ebookMail(lead, produkt)
+    : (await kiAntwort(lead, lang)) || vorlage(lead, lang === "fr" ? "en" : lang);
   const mediaKitUrl = lead.wunsch === "Media Kit" ? process.env.MEDIA_KIT_URL || "" : "";
   const payload = { secret: process.env.LEAD_SECRET || "", zeit: new Date().toISOString(), sprache: lang, ...lead, antwort_betreff: antwort.betreff, antwort_text: antwort.text, media_kit_url: mediaKitUrl };
 
@@ -149,6 +166,8 @@ async function perMail(p) {
         Wunsch: p.wunsch,
         Anliegen: p.anliegen || "-",
         Seite: p.seite || "-",
+        Produkt: p.produkt || "-",
+        Newsletter: p.newsletter || "nein",
         Quelle: p.quelle,
         Sprache: p.sprache,
         "Chatverlauf": p.verlauf || "-",
