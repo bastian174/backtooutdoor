@@ -8,9 +8,13 @@
 //   LEAD_WEBHOOK_URL – Web-App-URL des Google Apps Scripts
 //   LEAD_SECRET      – Passwort, identisch im Apps Script
 
+const { PRODUKTE, teil2Ziel } = require("./_produkte");
+
 const ZIELE = {
   "torrent-outdoor": "https://shop.peak-infinity.eu/de/102",
 };
+// E-Book Teil 2 → CopeCart-Checkout (aus _produkte.js)
+for (const slug of Object.keys(PRODUKTE)) ZIELE[slug + "-teil-2"] = teil2Ziel(slug);
 
 function withTimeout(promise, ms) {
   return Promise.race([
