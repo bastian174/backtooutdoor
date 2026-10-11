@@ -116,6 +116,36 @@ const PRODUKTE = {
     teil1: BASIS + "/assets/ebooks/mindset-spiegel-teil-1.pdf",
     copecart: "",
   },
+  "mindset-gehirn": {
+    titel: "5 Angewohnheiten, die deinem Gehirn schaden",
+    untertitel: "Teil 1 gratis, Teil 2 als PDF",
+    keyword: "GEHIRN",
+    preis: "14,90 €",
+    seiten: 6,
+    landing: BASIS + "/gehirn-tetris.html",
+    teil1: BASIS + "/assets/ebooks/mindset-gehirn-teil-1.pdf",
+    copecart: "",
+  },
+  "mindset-fokus": {
+    titel: "Fokus statt Multitasking",
+    untertitel: "Teil 1 gratis, Teil 2 als PDF",
+    keyword: "FOKUS",
+    preis: "14,90 €",
+    seiten: 6,
+    landing: BASIS + "/fokus-tetris.html",
+    teil1: BASIS + "/assets/ebooks/mindset-fokus-teil-1.pdf",
+    copecart: "",
+  },
+  "mindset-autopilot": {
+    titel: "Gewohnheiten erkennen: Raus aus dem Autopiloten",
+    untertitel: "Teil 1 gratis, Teil 2 als PDF",
+    keyword: "AUTOPILOT",
+    preis: "14,90 €",
+    seiten: 6,
+    landing: BASIS + "/autopilot-tetris.html",
+    teil1: BASIS + "/assets/ebooks/mindset-autopilot-teil-1.pdf",
+    copecart: "",
+  },
 };
 
 function teil2Link(slug) {
