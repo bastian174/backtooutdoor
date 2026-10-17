@@ -129,6 +129,9 @@ async function verarbeiteLead(input, lang) {
     return { ok: true, beantwortet: j.beantwortet !== false };
   } catch (e) {
     console.error("Webhook-Fehler", e.message);
+    // Ersatzweg: Versand per FormSubmit, damit die Anfrage nicht verloren geht
+    const alt = await perMail(payload);
+    if (alt.ok) return alt;
     return { ok: false, fehler: "webhook" };
   }
 }
