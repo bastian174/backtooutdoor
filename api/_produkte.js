@@ -24,7 +24,7 @@ const PRODUKTE = {
     seiten: 6,
     landing: BASIS + "/gedanken-tetris.html",
     teil1: BASIS + "/assets/ebooks/mindset-gedanken-teil-1.pdf",
-    copecart: "",
+    copecart: "https://copecart.com/products/eeba6f95/checkout",
   },
   "mindset-loslassen": {
     titel: "Vergangenheit loslassen",
@@ -34,7 +34,7 @@ const PRODUKTE = {
     seiten: 6,
     landing: BASIS + "/loslassen-tetris.html",
     teil1: BASIS + "/assets/ebooks/mindset-loslassen-teil-1.pdf",
-    copecart: "",
+    copecart: "https://copecart.com/products/8e0fd8c3/checkout",
   },
   "mindset-scheitern": {
     titel: "Warum Scheitern der Schlüssel zum Erfolg ist",
@@ -44,7 +44,7 @@ const PRODUKTE = {
     seiten: 6,
     landing: BASIS + "/scheitern-tetris.html",
     teil1: BASIS + "/assets/ebooks/mindset-scheitern-teil-1.pdf",
-    copecart: "",
+    copecart: "https://copecart.com/products/72191c1b/checkout",
   },
   "mindset-morgenroutine": {
     titel: "Morgenroutine: So startest du erfolgreich in den Tag",
@@ -54,7 +54,7 @@ const PRODUKTE = {
     seiten: 6,
     landing: BASIS + "/morgenroutine-tetris.html",
     teil1: BASIS + "/assets/ebooks/mindset-morgenroutine-teil-1.pdf",
-    copecart: "",
+    copecart: "https://copecart.com/products/cacf69a7/checkout",
   },
   "mindset-aufschieben": {
     titel: "Prokrastination überwinden: 5 Tipps, die sofort wirken",
@@ -64,7 +64,7 @@ const PRODUKTE = {
     seiten: 6,
     landing: BASIS + "/aufschieben-tetris.html",
     teil1: BASIS + "/assets/ebooks/mindset-aufschieben-teil-1.pdf",
-    copecart: "",
+    copecart: "https://copecart.com/products/b057af93/checkout",
   },
   "mindset-komfortzone": {
     titel: "Komfortzone verlassen: 5 Schritte ins Unbekannte",
@@ -74,7 +74,7 @@ const PRODUKTE = {
     seiten: 6,
     landing: BASIS + "/komfortzone-tetris.html",
     teil1: BASIS + "/assets/ebooks/mindset-komfortzone-teil-1.pdf",
-    copecart: "",
+    copecart: "https://copecart.com/products/50e36883/checkout",
   },
   "mindset-kleine-schritte": {
     titel: "Gewohnheiten ändern: Kleine Schritte, große Wirkung",
@@ -84,7 +84,7 @@ const PRODUKTE = {
     seiten: 6,
     landing: BASIS + "/kleine-schritte-tetris.html",
     teil1: BASIS + "/assets/ebooks/mindset-kleine-schritte-teil-1.pdf",
-    copecart: "",
+    copecart: "https://copecart.com/products/b70232fa/checkout",
   },
   "mindset-team": {
     titel: "Alleine schneller, gemeinsam mehr: Die Kraft im Team",
@@ -94,7 +94,7 @@ const PRODUKTE = {
     seiten: 6,
     landing: BASIS + "/team-tetris.html",
     teil1: BASIS + "/assets/ebooks/mindset-team-teil-1.pdf",
-    copecart: "",
+    copecart: "https://copecart.com/products/23555f4d/checkout",
   },
   "mindset-gedankenkraft": {
     titel: "Die Macht der Gedanken: Wie Denken dein Leben formt",
@@ -104,7 +104,7 @@ const PRODUKTE = {
     seiten: 6,
     landing: BASIS + "/gedankenkraft-tetris.html",
     teil1: BASIS + "/assets/ebooks/mindset-gedankenkraft-teil-1.pdf",
-    copecart: "",
+    copecart: "https://copecart.com/products/61b0750d/checkout",
   },
   "mindset-spiegel": {
     titel: "Selbstreflexion: Der ehrliche Blick in den Spiegel",
@@ -114,7 +114,7 @@ const PRODUKTE = {
     seiten: 6,
     landing: BASIS + "/spiegel-tetris.html",
     teil1: BASIS + "/assets/ebooks/mindset-spiegel-teil-1.pdf",
-    copecart: "",
+    copecart: "https://copecart.com/products/19b52a06/checkout",
   },
   "mindset-gehirn": {
     titel: "5 Angewohnheiten, die deinem Gehirn schaden",
@@ -124,7 +124,7 @@ const PRODUKTE = {
     seiten: 6,
     landing: BASIS + "/gehirn-tetris.html",
     teil1: BASIS + "/assets/ebooks/mindset-gehirn-teil-1.pdf",
-    copecart: "",
+    copecart: "https://copecart.com/products/f9e51485/checkout",
   },
   "mindset-fokus": {
     titel: "Fokus statt Multitasking",
@@ -134,7 +134,7 @@ const PRODUKTE = {
     seiten: 6,
     landing: BASIS + "/fokus-tetris.html",
     teil1: BASIS + "/assets/ebooks/mindset-fokus-teil-1.pdf",
-    copecart: "",
+    copecart: "https://copecart.com/products/6fc42594/checkout",
   },
   "mindset-autopilot": {
     titel: "Gewohnheiten erkennen: Raus aus dem Autopiloten",
@@ -144,7 +144,7 @@ const PRODUKTE = {
     seiten: 6,
     landing: BASIS + "/autopilot-tetris.html",
     teil1: BASIS + "/assets/ebooks/mindset-autopilot-teil-1.pdf",
-    copecart: "",
+    copecart: "https://copecart.com/products/53e2b602/checkout",
   },
 };
 
