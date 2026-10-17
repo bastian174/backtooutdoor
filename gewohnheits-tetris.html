@@ -236,8 +236,10 @@ footer a:hover{color:var(--or)}
       if (x.r.ok && x.j.ok) { document.getElementById('formbox').style.display='none'; document.getElementById('done').classList.add('show'); }
       else { throw new Error(); }
     }).catch(function(){
-      msg.textContent = 'Das hat nicht geklappt. Versuch es bitte noch einmal oder schreib an info@backtooutdoor.com.';
-      go.disabled = false; go.textContent = 'Teil 1 gratis holen';
+      // Mail-Versand fehlgeschlagen: Teil 1 trotzdem direkt freigeben
+      var d = document.getElementById('done'), p = d.querySelector('p');
+      if (p) p.textContent = 'Die E-Mail konnte gerade nicht verschickt werden – kein Problem: Hier ist dein Teil 1 direkt zum Loslegen.';
+      document.getElementById('formbox').style.display = 'none'; d.classList.add('show');
     });
   });
 })();
