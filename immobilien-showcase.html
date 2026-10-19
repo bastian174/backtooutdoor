@@ -37,7 +37,7 @@ header.top nav a{color:var(--muted);text-decoration:none} header.top nav a:hover
 
 /* Hero */
 .hero{position:relative;margin-top:-100px;min-height:860px;display:flex;align-items:flex-end;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:#2A2F35 center/cover no-repeat;animation:kb 26s ease-in-out infinite alternate}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#2A2F35}
 @keyframes kb{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.14) translate(-2%,-1.5%)}}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,23,27,.9) 0%,rgba(20,23,27,.6) 45%,rgba(20,23,27,.12) 100%)}
 .hero .wrap{position:relative;z-index:2;width:100%;padding-bottom:72px}
@@ -160,7 +160,7 @@ footer a{color:var(--soft)}
   .split img{height:340px}
   .mock .units{grid-template-columns:repeat(2,1fr)}
 }
-@media (prefers-reduced-motion:reduce){.hero-bg,.shot{animation:none}}
+@media (prefers-reduced-motion:reduce){.shot{animation:none}}
 </style>
 </head>
 <body>
@@ -177,7 +177,10 @@ footer a{color:var(--soft)}
 </header>
 
 <section class="hero" id="top">
-  <div class="hero-bg" role="img" aria-label="Moderne Wohnimmobilie mit Pool" style="background-image:url('https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=2000')"></div>
+  <video class="hero-bg" id="heroVid" autoplay muted loop playsinline preload="auto" poster="/assets/video/immobilien-hero-poster.jpg" aria-hidden="true">
+    <source src="/assets/video/immobilien-hero-720.mp4" type="video/mp4" media="(max-width: 900px)">
+    <source src="/assets/video/immobilien-hero-1080.mp4" type="video/mp4">
+  </video>
   <div class="wrap">
     <div class="hero-line"><i></i>Verkauf · Vermietung · Hotel &amp; Gastro</div>
     <h1>Ihre Objekte. <em class="s">In Bewegung.</em></h1>
@@ -337,6 +340,11 @@ footer a{color:var(--soft)}
 
 <script>
 (function(){
+  var hv=document.getElementById('heroVid');
+  if(hv){ var small=window.matchMedia('(max-width: 900px)').matches;
+    hv.src='/assets/video/immobilien-hero-'+(small?'720':'1080')+'.mp4';
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ hv.removeAttribute('autoplay'); hv.pause(); }
+    else { var pr=hv.play(); if(pr&&pr.catch) pr.catch(function(){}); } }
   var P = function(id){ return 'https://images.pexels.com/photos/' + id + '/pexels-photo-' + id + '.jpeg?auto=compress&cs=tinysrgb&w=1200'; };
   var FORMATS = [
     {id:'reel', group:'video', name:'Instagram Reel', badge:'9:16', ratio:'r916', img:P(1571460),
