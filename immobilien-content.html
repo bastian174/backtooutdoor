@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Immobilien-Content Studio | Back to Outdoor</title>
     <meta name="description" content="Professionelle Video- und Fotoproduktion für Immobilien. Moderne Aerial-Aufnahmen, Virtualtours und Staging-Content.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,10 +16,10 @@
         }
 
         :root {
-            --ink: #10181c;
+            --ink: #132030;
             --ink-2: #182225;
-            --teal: #1f6e63;
-            --teal-bright: #38b89a;
+            --teal: #8a4118;
+            --teal-bright: #e36d27;
             --foam: #f7f5f0;
             --stone: #ece7dd;
             --granite: #635c50;
@@ -29,7 +32,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Work Sans', sans-serif;
+            font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             color: var(--ink);
             background: var(--foam);
             line-height: 1.6;
@@ -41,23 +44,21 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: linear-gradient(180deg, rgba(16, 24, 28, 0.95) 0%, rgba(16, 24, 28, 0.8) 100%);
+            background: linear-gradient(180deg, rgba(19, 32, 48, 0.95) 0%, rgba(19, 32, 48, 0.8) 100%);
             backdrop-filter: blur(20px);
             padding: 1.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            border-bottom: 1px solid rgba(56, 184, 154, 0.1);
+            border-bottom: 1px solid rgba(227, 109, 39, 0.1);
         }
 
         .nav-logo {
             font-size: 1.1rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--teal-bright), #60d5a8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-family: 'Big Shoulders Display', sans-serif;
+            color: var(--teal-bright);
             text-transform: uppercase;
             letter-spacing: 0.12em;
         }
@@ -95,7 +96,7 @@
         }
 
         .nav-cta {
-            background: linear-gradient(135deg, var(--teal-bright), #60d5a8);
+            background: var(--teal-bright);
             color: var(--ink) !important;
             padding: 0.7rem 1.6rem;
             border-radius: 50px;
@@ -106,7 +107,7 @@
 
         .nav-cta:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(56, 184, 154, 0.3);
+            box-shadow: 0 15px 40px rgba(227, 109, 39, 0.3);
         }
 
         /* ===== HERO SECTION ===== */
@@ -138,7 +139,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(16, 24, 28, 0.7) 0%, rgba(16, 24, 28, 0.5) 100%);
+            background: linear-gradient(135deg, rgba(19, 32, 48, 0.7) 0%, rgba(19, 32, 48, 0.5) 100%);
             z-index: 2;
         }
 
@@ -175,10 +176,7 @@
         }
 
         .hero h1 span {
-            background: linear-gradient(135deg, var(--teal-bright), #60d5a8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--teal-bright);
         }
 
         .hero-description {
@@ -211,13 +209,13 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--teal-bright), #60d5a8);
+            background: var(--teal-bright);
             color: var(--ink);
         }
 
         .btn-primary:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(56, 184, 154, 0.4);
+            box-shadow: 0 20px 50px rgba(227, 109, 39, 0.4);
         }
 
         .btn-secondary {
@@ -255,10 +253,7 @@
         }
 
         .section-header h2 span {
-            background: linear-gradient(135deg, var(--teal), var(--teal-bright));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--teal-bright);
         }
 
         .section-header p {
@@ -280,7 +275,7 @@
             background: white;
             padding: 2.5rem;
             border-radius: 20px;
-            border: 1px solid rgba(31, 110, 99, 0.1);
+            border: 1px solid rgba(227, 109, 39, 0.1);
             transition: all 0.4s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             position: relative;
@@ -294,12 +289,12 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--teal-bright), #60d5a8);
+            background: var(--teal-bright);
         }
 
         .service-card:hover {
             transform: translateY(-12px);
-            box-shadow: 0 25px 60px rgba(31, 110, 99, 0.2);
+            box-shadow: 0 25px 60px rgba(227, 109, 39, 0.2);
             border-color: var(--teal-bright);
         }
 
@@ -334,10 +329,7 @@
         }
 
         .portfolio .section-header h2 span {
-            background: linear-gradient(135deg, var(--teal-bright), #60d5a8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--teal-bright);
         }
 
         .portfolio-grid {
@@ -370,7 +362,7 @@
         .portfolio-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(31, 110, 99, 0.9) 0%, rgba(56, 184, 154, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(138, 65, 24, 0.9) 0%, rgba(227, 109, 39, 0.8) 100%);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -414,12 +406,12 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.4s ease;
-            border: 1px solid rgba(31, 110, 99, 0.1);
+            border: 1px solid rgba(227, 109, 39, 0.1);
         }
 
         .video-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(31, 110, 99, 0.2);
+            box-shadow: 0 25px 50px rgba(227, 109, 39, 0.2);
         }
 
         .video-preview {
@@ -535,7 +527,7 @@
             color: var(--foam);
             padding: 4rem 2rem;
             text-align: center;
-            border-top: 1px solid rgba(56, 184, 154, 0.1);
+            border-top: 1px solid rgba(227, 109, 39, 0.1);
         }
 
         footer p {
