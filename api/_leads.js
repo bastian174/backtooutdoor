@@ -118,6 +118,8 @@ async function verarbeiteLead(input, lang) {
   const payload = { secret: process.env.LEAD_SECRET || "", zeit: new Date().toISOString(), sprache: lang, ...lead, antwort_betreff: antwort.betreff, antwort_text: antwort.text, media_kit_url: mediaKitUrl };
 
   console.log("NEUER LEAD", JSON.stringify({ ...payload, secret: undefined }));
+  // Immobilien-Anfragen (Seite /immobilien-showcase.html) zusätzlich an das Agenten-Postfach
+  if (lead.typ === "Immobilien") await kopieAn(IMMO_MAIL, payload);
   const url = process.env.LEAD_WEBHOOK_URL;
   if (!url) return perMail(payload); // ohne Google-Apps-Script: Versand per FormSubmit direkt an info@
   try {
@@ -184,6 +186,35 @@ async function perMail(p) {
   } catch (e) {
     console.error("Mail-Versand fehlgeschlagen", e.message);
     return { ok: false, fehler: "mail" };
+  }
+}
+
+// Kopie einer Anfrage an eine weitere Adresse (ohne Auto-Antwort an den Interessenten, die kommt schon über den Hauptweg).
+// Einmalig: Die erste Anfrage löst bei FormSubmit eine "Activate Form"-Mail an diese Adresse aus → Link anklicken.
+const IMMO_MAIL = process.env.IMMO_MAIL || "infobacktooutdoor@gmail.com";
+async function kopieAn(adresse, p) {
+  try {
+    const r = await fetch("https://formsubmit.co/ajax/" + adresse, {
+      method: "POST",
+      headers: { "content-type": "application/json", accept: "application/json", origin: "https://backtooutdoor.com", referer: "https://backtooutdoor.com/" },
+      body: JSON.stringify({
+        _subject: `Immobilien-Anfrage: ${p.name}${p.firma ? " (" + p.firma + ")" : ""}`,
+        _template: "table",
+        _captcha: "false",
+        _replyto: p.email,
+        Eingang: new Date(p.zeit).toLocaleString("de-AT", { timeZone: "Europe/Vienna" }),
+        Name: p.name,
+        Firma: p.firma || "-",
+        email: p.email,
+        Telefon: p.telefon || "-",
+        Wunsch: p.wunsch,
+        Anliegen: p.anliegen || "-",
+        Seite: p.seite || "-",
+      }),
+    });
+    if (!r.ok) console.error("Immo-Kopie fehlgeschlagen", r.status);
+  } catch (e) {
+    console.error("Immo-Kopie fehlgeschlagen", e.message);
   }
 }
 
