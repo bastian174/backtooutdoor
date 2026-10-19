@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interaktiver Immobilien-Showcase | Back to Outdoor</title>
+<meta name="description" content="Interaktiver Immobilien-Showcase von Back to Outdoor: Videoformate entdecken, Objektfotos auswählen und kostenlose Vorschau anfragen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1E2226; --bg2:#262B30; --line:#3A4047; --field:#4C535B;
+  --text:#F5F1E6; --muted:#D8D2C5; --soft:#B9B3A6; --sand:#D4B8A5;
+  --accent:#E36D27; --accent-dark:#B9501A; --on-accent:#132030; --paper:#F5F1E6; --ink:#1E2226;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Hanken Grotesk',sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:var(--sand)} a:hover{color:#EADBC9}
+img{max-width:100%}
+em.s{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);font-weight:400}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.eyebrow{color:var(--sand);font-size:13px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:20px}
+h2{margin:0;font-weight:400;letter-spacing:-.02em;font-size:clamp(38px,5vw,60px);line-height:1.05}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:18px 30px;font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.btn-red{background:var(--accent);color:var(--on-accent)} .btn-red:hover{background:#F08A4B;color:var(--on-accent)}
+.btn-line{border:1px solid #8E949B;color:var(--text);background:transparent} .btn-line:hover{border-color:var(--text);color:var(--text)}
+
+/* Header */
+header.top{position:relative;z-index:3;max-width:1280px;margin:0 auto;padding:28px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+.brand{color:var(--text);text-decoration:none;font-size:14px;font-weight:700;letter-spacing:.32em;text-transform:uppercase}
+.brand span{color:var(--sand)}
+header.top nav{display:flex;flex-wrap:wrap;gap:28px;font-size:15px}
+header.top nav a{color:var(--muted);text-decoration:none} header.top nav a:hover{color:var(--text)}
+.btn-small{padding:14px 22px;font-size:13px}
+
+/* Hero */
+.hero{position:relative;margin-top:-100px;min-height:860px;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#2A2F35}
+@keyframes kb{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.14) translate(-2%,-1.5%)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,23,27,.9) 0%,rgba(20,23,27,.6) 45%,rgba(20,23,27,.12) 100%)}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-bottom:72px}
+.hero-line{display:flex;align-items:center;gap:16px;color:var(--sand);font-size:13px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:28px}
+.hero-line i{display:inline-block;width:48px;height:2px;background:var(--accent)}
+.hero h1{margin:0;font-weight:400;font-size:clamp(52px,8vw,96px);line-height:.98;letter-spacing:-.01em;max-width:900px}
+.ticks{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:32px;font-size:16px;color:var(--muted)}
+.ticks b{color:var(--sand);font-weight:600}
+.hero p.lead{margin:24px 0 0;max-width:600px;color:var(--muted)}
+.ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:40px}
+.credit{position:absolute;right:16px;bottom:10px;z-index:2;font-size:11px;color:rgba(245,241,230,.45)}
+
+/* Facts */
+.facts{border-bottom:1px solid var(--line)}
+.facts .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.fact{padding:32px 24px 32px 0;border-right:1px solid var(--line)}
+.fact:last-child{border-right:0}
+.fact .v{font-size:34px;font-weight:500;line-height:1.15}
+.fact .l{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin-top:6px}
+
+/* Formats */
+section.block{padding:120px 0}
+section.bordered{border-top:1px solid var(--line)}
+.head-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:40px}
+.filters{display:flex;flex-wrap:wrap;gap:10px}
+.filters button{background:transparent;color:var(--text);border:1px solid #8E949B;padding:12px 20px;min-height:44px;font:600 14px 'Hanken Grotesk',sans-serif;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--paper);color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.card{text-align:left;background:var(--bg2);color:var(--text);border:1px solid var(--line);padding:0;cursor:pointer;display:flex;flex-direction:column;font-family:inherit;font-size:17px;transition:border-color .2s}
+.card:hover{border-color:#6A7179}
+.card[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.card[hidden]{display:none}
+.prev{height:240px;width:100%;background:#30353B;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.card[aria-pressed="true"] .prev{background:var(--accent-dark)}
+.shot{background:center/cover no-repeat;animation:kb 14s ease-in-out infinite alternate;border:2px solid rgba(245,241,230,.85)}
+.r916{height:200px;aspect-ratio:9/16}
+.r169{width:84%;aspect-ratio:16/9}
+.r23{height:200px;aspect-ratio:2/3}
+.r-site{width:84%;aspect-ratio:16/10;border-top-width:14px;border-color:#F5F1E6}
+.r360{width:84%;aspect-ratio:2/1;border-radius:50%/40%}
+.badge{position:absolute;z-index:2;top:12px;left:12px;background:rgba(20,23,27,.75);color:var(--paper);font-size:11px;font-weight:700;letter-spacing:.14em;padding:5px 9px}
+.card .info{padding:24px;display:flex;flex-direction:column;gap:6px;width:100%}
+.card .name{font-family:'Instrument Serif',serif;font-size:32px;line-height:1.05}
+.card .use{font-weight:600}
+.card .meta{font-size:15px;opacity:.85}
+
+.detail{margin-top:40px;background:var(--paper);color:var(--ink);display:flex;flex-wrap:wrap}
+/* Interaktiver Dialog für die Formatdetails */
+.detail.modal-open{position:fixed;z-index:1000;inset:4vh 4vw;margin:0;max-height:92vh;overflow:auto;box-shadow:0 24px 90px rgba(0,0,0,.65);border:1px solid var(--sand)}
+.modal-backdrop{position:fixed;inset:0;background:rgba(8,10,12,.82);z-index:999;display:none}
+.modal-backdrop.show{display:block}
+body.modal-active{overflow:hidden}
+.upload-help{font-size:13px;line-height:1.5;color:var(--muted);letter-spacing:0;text-transform:none;font-weight:400}
+.upload-preview{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:10px;margin-top:10px}
+.upload-preview figure{margin:0;min-width:0}
+.upload-preview img{display:block;width:100%;height:90px;object-fit:cover;border:1px solid var(--line)}
+.upload-preview figcaption{font-size:11px;color:var(--muted);overflow-wrap:anywhere}
+@media(max-width:720px){.detail.modal-open{inset:2vh 3vw;max-height:96vh}.detail.modal-open .media{min-height:220px;padding:16px}.detail.modal-open .media .r916,.detail.modal-open .media .r23{height:260px}}
+.detail[hidden]{display:none}
+.detail .media{flex:1 1 480px;min-width:0;background:#fff;display:flex;align-items:center;justify-content:center;padding:32px;min-height:420px}
+.detail .media .shot{border-color:var(--ink)}
+.detail .media .r916{height:380px}.detail .media .r23{height:380px}
+.detail .media .r169,.detail .media .r-site,.detail .media .r360{width:92%}
+.detail .txt{flex:1 1 380px;min-width:0;padding:48px;display:flex;flex-direction:column;gap:14px}
+.detail .kick{color:var(--accent-dark);font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase}
+.detail .ttl{font-family:'Instrument Serif',serif;font-size:56px;line-height:1}
+.detail dl{margin:12px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px}
+.detail dt{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5A5A52}
+.detail dd{margin:0;font-size:20px}
+.detail p{margin:8px 0 0;font-size:16px;color:#3E3E38}
+.btn-dark{background:var(--ink);color:var(--paper)} .btn-dark:hover{color:#fff}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid #8A8578}
+.note{color:var(--soft);font-size:14px;margin:24px 0 0}
+
+/* Split sections */
+.split{display:flex;flex-wrap:wrap;gap:64px;align-items:center}
+.split > *{flex:1 1 440px;min-width:0}
+.split img{height:560px;width:100%;object-fit:cover;display:block}
+.split p{color:var(--muted);margin:28px 0 0}
+.dash{list-style:none;padding:0;margin:32px 0 0;display:flex;flex-direction:column;gap:14px}
+.dash li{display:flex;gap:14px}.dash li::before{content:"—";color:var(--sand)}
+.mock{background:#14171B;border:1px solid var(--line);padding:0;overflow:hidden}
+.mock .bar{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.mock .bar i{width:9px;height:9px;border-radius:50%;background:#4C535B}
+.mock .mhero{height:220px;background:center/cover no-repeat;position:relative}
+.mock .mhero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,23,27,.85),rgba(20,23,27,.1))}
+.mock .mhero div{position:absolute;left:22px;bottom:20px;z-index:1;font-size:30px;line-height:1}
+.mock .units{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px}
+.mock .u{background:var(--bg2);border:1px solid var(--line);padding:10px;font-size:12px;line-height:1.35}
+.mock .u b{font-family:'Instrument Serif',serif;font-weight:400;font-size:20px;display:block}
+.st{display:inline-block;margin-top:4px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.st.ok{color:#7FC79A}.st.no{color:#E07A8F}.st.res{color:var(--sand)}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px}
+.step{background:var(--bg);padding:32px 28px}
+.step .n{font-family:'Instrument Serif',serif;font-size:48px;color:var(--accent);line-height:1}
+.step h3{margin:14px 0 8px;font-size:20px;font-weight:600}
+.step p{margin:0;color:var(--muted);font-size:16px}
+
+/* Form */
+#anfrage{background:var(--bg2);border-top:1px solid var(--line)}
+form{display:flex;flex-direction:column;gap:20px}
+label{display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+input,select,textarea{background:var(--bg);border:1px solid var(--field);color:var(--text);padding:14px 16px;min-height:48px;font:16px 'Hanken Grotesk',sans-serif;text-transform:none;letter-spacing:0;width:100%}
+textarea{resize:vertical;min-height:120px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--sand);outline-offset:1px}
+.row{display:flex;flex-wrap:wrap;gap:20px}.row label{flex:1 1 220px}
+.chk{flex-direction:row;align-items:flex-start;gap:12px;text-transform:none;letter-spacing:0;font-weight:400;font-size:14px;color:var(--muted)}
+.chk input{width:20px;min-height:20px;margin-top:2px;flex:0 0 auto}
+.hp{position:absolute;left:-9999px}
+.msg{min-height:1.4em;color:#E07A8F;font-size:15px}
+.thanks{border:1px solid var(--sand);padding:48px;display:none;flex-direction:column;gap:12px}
+.thanks.show{display:flex}
+.thanks .big{font-family:'Instrument Serif',serif;font-size:40px;color:var(--sand)}
+.contact{margin-top:40px;padding-top:32px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.contact a{text-decoration:none}
+
+footer{max-width:1280px;margin:0 auto;padding:40px 32px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:14px;color:var(--soft)}
+footer a{color:var(--soft)}
+
+@media (max-width:720px){
+  .wrap,header.top,footer{padding-left:16px;padding-right:16px}
+  header.top nav{display:none}
+  .btn-small{display:none}
+  .hero{min-height:680px;margin-top:0}
+  section.block{padding:80px 0}
+  .fact{border-right:0;border-bottom:1px solid var(--line);padding:22px 0}
+  .detail .txt{padding:28px}
+  .detail .ttl{font-size:42px}
+  .split img{height:340px}
+  .mock .units{grid-template-columns:repeat(2,1fr)}
+}
+@media (prefers-reduced-motion:reduce){.shot{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a href="#top" class="brand">Back to Outdoor <span>·</span> Immobilien</a>
+  <nav aria-label="Hauptnavigation">
+    <a href="#formate">Formate</a>
+    <a href="#projektseite">Projektseite</a>
+    <a href="#ablauf">Ablauf</a>
+    <a href="#anfrage">Kontakt</a>
+  </nav>
+  <a href="#anfrage" class="btn btn-red btn-small">Vorschau anfragen</a>
+</header>
+
+<section class="hero" id="top">
+  <video class="hero-bg" id="heroVid" autoplay muted loop playsinline preload="auto" poster="/assets/video/immobilien-hero-poster.jpg" aria-hidden="true">
+    <source src="/assets/video/immobilien-hero-720.mp4" type="video/mp4" media="(max-width: 900px)">
+    <source src="/assets/video/immobilien-hero-1080.mp4" type="video/mp4">
+  </video>
+  <div class="wrap">
+    <div class="hero-line"><i></i>Verkauf · Vermietung · Hotel &amp; Gastro</div>
+    <h1>Ihre Objekte. <em class="s">In Bewegung.</em></h1>
+    <div class="ticks">
+      <b>✓ Kostenlose Vorschau</b>
+      <span>Aus Ihren vorhandenen Fotos</span>
+      <span>Fertig in 2 Werktagen</span>
+    </div>
+    <p class="lead">Ob Wohnung, Haus, Hotelzimmer oder Restaurant: Aus Ihren Fotos machen wir 20-Sekunden-Rundgänge für Instagram, Portale und Ihre Website. Für Neubauprojekte bauen wir eine eigene Seite mit allen Wohnungen und ihrem aktuellen Status.</p>
+    <div class="ctas">
+      <a href="#formate" class="btn btn-red">Formate ansehen →</a>
+      <a href="#anfrage" class="btn btn-line">Vorschau anfragen</a>
+    </div>
+  </div>
+  <div class="credit">Beispielbilder: Pexels</div>
+</section>
+
+<section class="facts" aria-label="Eckdaten">
+  <div class="wrap">
+    <div class="fact"><div class="v">20 Sek.</div><div class="l">Rundgang pro Objekt</div></div>
+    <div class="fact"><div class="v">9:16 · 16:9</div><div class="l">Hoch- und Querformat</div></div>
+    <div class="fact"><div class="v">2 Werktage</div><div class="l">Lieferzeit</div></div>
+    <div class="fact"><div class="v">Ohne Termin</div><div class="l">vor Ort, nur aus Ihren Fotos</div></div>
+    <div class="fact"><div class="v" style="color:var(--sand)">Gratis</div><div class="l">Vorschau mit Ihrem Objekt</div></div>
+  </div>
+</section>
+
+<div class="modal-backdrop" id="modalBackdrop" aria-hidden="true"></div>
+<section class="block" id="formate">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="eyebrow">Die Formate</div>
+        <h2>Finden Sie <em class="s">Ihr Format.</em></h2>
+      </div>
+      <div class="filters" role="group" aria-label="Formate filtern">
+        <button type="button" data-f="alle" aria-pressed="true">Alle 5</button>
+        <button type="button" data-f="video" aria-pressed="false">Video</button>
+        <button type="button" data-f="web" aria-pressed="false">Web &amp; Social</button>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+
+    <div class="detail" id="detail" role="dialog" aria-modal="true" aria-labelledby="dTitle" hidden>
+      <div class="media" id="dMedia"></div>
+      <div class="txt">
+        <div class="kick" id="dKick"></div>
+        <div class="ttl" id="dTitle"></div>
+        <div style="font-size:20px;font-weight:600" id="dUse"></div>
+        <dl>
+          <div><dt>Format</dt><dd id="dFormat"></dd></div>
+          <div><dt>Länge</dt><dd id="dLen"></dd></div>
+          <div><dt>Einsatz</dt><dd id="dWhere"></dd></div>
+          <div><dt>Material</dt><dd id="dMat"></dd></div>
+        </dl>
+        <p id="dText"></p>
+        <div class="ctas" style="margin-top:12px;gap:12px">
+          <a href="#anfrage" class="btn btn-dark" id="dCta">Vorschau anfragen →</a>
+          <button type="button" class="btn btn-ghost" id="dClose">Schließen</button>
+        </div>
+      </div>
+    </div>
+    <p class="note">Den Preis nennen wir im persönlichen Angebot. Er hängt von der Zahl der Objekte und Formate ab.</p>
+  </div>
+</section>
+
+<section class="block bordered" id="projektseite">
+  <div class="wrap split">
+    <div class="mock" aria-label="Beispiel einer Projektseite">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <div class="mhero" style="background-image:url('https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200')"><div>Neun Wohnungen.<br><em class="s">Mitten in der Stadt.</em></div></div>
+      <div class="units">
+        <div class="u"><b>Top 1</b>3 Zi. · Garten<br><span class="st no">Verkauft</span></div>
+        <div class="u"><b>Top 2</b>2 Zi. · Garten<br><span class="st ok">Verfügbar</span></div>
+        <div class="u"><b>Top 3</b>1 Zi. · Garten<br><span class="st res">Reserviert</span></div>
+        <div class="u"><b>Top 4</b>3 Zi. · Balkon<br><span class="st ok">Verfügbar</span></div>
+        <div class="u"><b>Top 5</b>2 Zi. · Balkon<br><span class="st ok">Verfügbar</span></div>
+        <div class="u"><b>Top 6</b>Penthouse<br><span class="st no">Verkauft</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow">Projektseite für Neubau</div>
+      <h2>Ein Projekt. <em class="s">Eine eigene Seite.</em></h2>
+      <p>Auf Portalen gehen einzelne Wohnungen zwischen hunderten Inseraten unter. Eine eigene Projektseite zeigt das ganze Haus auf einen Blick. Ein Beispiel haben wir für ein Wohnprojekt in Salzburg-Maxglan gebaut.</p>
+      <ul class="dash">
+        <li>Alle Wohnungen mit Grundriss, Fläche, Freifläche und Preis</li>
+        <li>Status verfügbar, reserviert oder verkauft, den wir für Sie aktuell halten</li>
+        <li>Filter nach Garten, Balkon oder Penthouse</li>
+        <li>Exposé-Anfrage direkt pro Wohnung, landet in Ihrem Postfach</li>
+        <li>Rundgang-Video im Hero, auf Wunsch eigene Domain</li>
+      </ul>
+      <div class="ctas"><a href="#anfrage" class="btn btn-red" data-pick="site">Projektseite anfragen →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="block bordered" id="ablauf">
+  <div class="wrap">
+    <div class="eyebrow">Ablauf</div>
+    <h2>Von Ihren Fotos <em class="s">zum fertigen Video.</em></h2>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3>Objekt nennen</h3><p>Sie schicken uns den Link zum Inserat oder die Exposé-Fotos.</p></div>
+      <div class="step"><div class="n">02</div><h3>Vorschau ansehen</h3><p>Sie bekommen kostenlos eine Vorschau mit Wasserzeichen. Die sehen nur Sie, wir veröffentlichen nichts.</p></div>
+      <div class="step"><div class="n">03</div><h3>Freigeben</h3><p>Passt es, gibt es ein Angebot. Änderungswünsche bauen wir ein.</p></div>
+      <div class="step"><div class="n">04</div><h3>Dateien erhalten</h3><p>Innerhalb von 2 Werktagen: Hoch- und Querformat ohne Wasserzeichen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="anfrage">
+  <div class="wrap split" style="align-items:flex-start">
+    <div>
+      <div class="eyebrow">Vorschau &amp; Angebot</div>
+      <h2>Ihr Objekt als Video. <em class="s">Kostenlos testen.</em></h2>
+      <p>Schicken Sie uns ein aktuelles Objekt. Sie bekommen eine kurze Vorschau, bevor Sie sich für irgendetwas entscheiden.</p>
+      <div class="contact">
+        <div style="font-weight:700">Back to Outdoor · Bastian Prein</div>
+        <div style="color:var(--muted)">Salzburg, Österreich</div>
+        <a href="tel:+436608422053">+43 (0)660 8422053</a>
+        <a href="mailto:info@backtooutdoor.com">info@backtooutdoor.com</a>
+      </div>
+    </div>
+    <div>
+      <div class="thanks" id="thanks">
+        <div class="big" id="thanksTitle">Danke.</div>
+        <p style="margin:0;color:var(--muted)">Ihre Anfrage ist angekommen. Wir melden uns innerhalb von 24 Stunden mit den nächsten Schritten.</p>
+      </div>
+      <form id="form" novalidate>
+        <label>Format
+          <select id="fFormat" name="format">
+            <option value="">Noch offen / Beratung</option>
+          </select>
+        </label>
+        <div class="row">
+          <label>Name<input type="text" name="name" id="fName" required autocomplete="name"></label>
+          <label>Firma<input type="text" name="firma" id="fFirma" autocomplete="organization"></label>
+        </div>
+        <div class="row">
+          <label>E-Mail<input type="email" name="email" id="fEmail" required autocomplete="email"></label>
+          <label>Telefon<input type="tel" name="telefon" id="fTel" autocomplete="tel"></label>
+        </div>
+        <label>Link zum Objekt oder Nachricht
+          <textarea name="anliegen" id="fMsg" placeholder="z. B. Link zum Inserat auf Ihrer Website oder willhaben"></textarea>
+        </label>
+        <label>Objektfotos auswählen (optional)
+          <input type="file" id="fPhotos" name="fotos" accept="image/*" multiple>
+          <span class="upload-help">Du kannst hier mehrere Bilder auswählen und vorab ansehen. Hinweis: Die aktuelle Anfrage-Schnittstelle übermittelt noch keine Bilddateien. Für die tatsächliche Übermittlung sende die Fotos bitte per E-Mail oder ergänze einen Download-Link im Nachrichtenfeld.</span>
+          <span class="upload-help" id="photoCount" aria-live="polite">Noch keine Bilder ausgewählt.</span>
+          <span class="upload-preview" id="photoPreview"></span>
+        </label>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="chk"><input type="checkbox" id="fDsgvo"> <span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage verwendet werden. Mehr in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</span></label>
+        <div class="msg" id="msg" role="status"></div>
+        <button type="submit" class="btn btn-red" id="send" style="align-self:flex-start">Vorschau anfragen →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Rundgang-Videos &amp; Projektseiten · Back to Outdoor</span>
+  <span style="display:flex;gap:24px"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="/">backtooutdoor.com</a></span>
+</footer>
+
+<script>
+(function(){
+  var hv=document.getElementById('heroVid');
+  if(hv){ var small=window.matchMedia('(max-width: 900px)').matches;
+    hv.src='/assets/video/immobilien-hero-'+(small?'720':'1080')+'.mp4';
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ hv.removeAttribute('autoplay'); hv.pause(); }
+    else { var pr=hv.play(); if(pr&&pr.catch) pr.catch(function(){}); } }
+  var P = function(id){ return 'https://images.pexels.com/photos/' + id + '/pexels-photo-' + id + '.jpeg?auto=compress&cs=tinysrgb&w=1200'; };
+  var FORMATS = [
+    {id:'reel', group:'video', name:'Instagram Reel', badge:'9:16', ratio:'r916', img:P(1571460),
+     use:'Rundgang für Reels & Storys', format:'1080 × 1920', len:'15–30 Sek.', where:'Instagram, WhatsApp-Status', mat:'Exposé-Fotos',
+     text:'Raum für Raum in 20 Sekunden, mit ruhiger Kamerafahrt. Lage und Fläche stehen als kurze Einblendung im Bild, am Ende Ihr Logo.'},
+    {id:'quer', group:'video', name:'Objektvideo quer', badge:'16:9', ratio:'r169', img:P(1080721),
+     use:'Für Website & Portale', format:'1920 × 1080', len:'20–60 Sek.', where:'Website, willhaben, ImmoScout', mat:'Exposé-Fotos',
+     text:'Dasselbe Objekt im Querformat, für Ihre Website, die Videofunktion der Portale und YouTube. Auf Wunsch mit Musik und kurzen Infotafeln.'},
+    {id:'tiktok', group:'video', name:'TikTok & Shorts', badge:'9:16', ratio:'r916', img:P(1457842),
+     use:'Schnellere Schnitte', format:'1080 × 1920', len:'10–20 Sek.', where:'TikTok, YouTube Shorts', mat:'Exposé-Fotos',
+     text:'Kürzer und schneller geschnitten als das Reel. In der ersten Sekunde steht groß, was das Objekt besonders macht.'},
+    {id:'site', group:'web', name:'Projektseite', badge:'Web', ratio:'r-site', img:P(323780),
+     use:'Eigene Seite pro Neubauprojekt', format:'Responsive Website', len:'1 Seite', where:'Eigene Domain oder Unterseite', mat:'Grundrisse, Renderings, Preisliste',
+     text:'Alle Wohnungen mit Grundriss, Fläche und Preis, Status verfügbar oder verkauft, Filter und Exposé-Anfrage pro Wohnung. Wir halten den Status nach kurzer Nachricht aktuell.'},
+    {id:'pin', group:'web', name:'Pinterest Pin', badge:'2:3', ratio:'r23', img:P(1643383),
+     use:'Gefunden über die Suche', format:'1000 × 1500', len:'Bild oder Video-Pin', where:'Pinterest', mat:'Exposé-Fotos',
+     text:'Hochformat-Pins mit Suchbegriffen wie „Wohnung mit Garten“. Jeder Pin verlinkt direkt auf Ihr Inserat.'}
+  ];
+  var grid = document.getElementById('grid'), detail = document.getElementById('detail'), backdrop = document.getElementById('modalBackdrop');
+  var lastFocus = null;
+  var sel = document.getElementById('fFormat'), selected = null;
+
+  FORMATS.forEach(function(f){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'card'; b.dataset.id = f.id; b.dataset.group = f.group;
+    b.setAttribute('aria-pressed','false');
+    b.innerHTML = '<div class="prev"><span class="badge">'+f.badge+'</span><div class="shot '+f.ratio+'" style="background-image:url(\''+f.img+'\')"></div></div>'+
+      '<div class="info"><span class="name">'+f.name+'</span><span class="use">'+f.use+'</span><span class="meta">'+f.format+' · '+f.len+'</span></div>';
+    b.addEventListener('click', function(){ pick(f.id, true); });
+    grid.appendChild(b);
+    var o = document.createElement('option'); o.value = f.id; o.textContent = f.name + ': ' + f.use; sel.appendChild(o);
+  });
+
+  function pick(id, scroll){
+    selected = id;
+    var f = FORMATS.filter(function(x){ return x.id === id; })[0];
+    [].forEach.call(grid.children, function(c){ c.setAttribute('aria-pressed', c.dataset.id === id ? 'true' : 'false'); });
+    if (!f){ detail.hidden = true; detail.classList.remove('modal-open'); backdrop.classList.remove('show'); document.body.classList.remove('modal-active'); if(lastFocus && lastFocus.focus) lastFocus.focus(); return; }
+    document.getElementById('dMedia').innerHTML = '<div class="shot '+f.ratio+'" style="background-image:url(\''+f.img+'\')"></div>';
+    document.getElementById('dKick').textContent = f.badge + ' · ' + f.where;
+    document.getElementById('dTitle').textContent = f.name;
+    document.getElementById('dUse').textContent = f.use;
+    document.getElementById('dFormat').textContent = f.format;
+    document.getElementById('dLen').textContent = f.len;
+    document.getElementById('dWhere').textContent = f.where;
+    document.getElementById('dMat').textContent = f.mat;
+    document.getElementById('dText').textContent = f.text;
+    document.getElementById('dCta').textContent = 'Vorschau: ' + f.name + ' →';
+    detail.hidden = false; detail.classList.add('modal-open'); backdrop.classList.add('show'); document.body.classList.add('modal-active'); sel.value = id;
+    if (scroll) { lastFocus = document.activeElement; document.getElementById('dClose').focus(); }
+  }
+  document.getElementById('dClose').addEventListener('click', function(){ pick(null); });
+  backdrop.addEventListener('click', function(){ pick(null); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !detail.hidden) pick(null); });
+  document.getElementById('dCta').addEventListener('click', function(){ if (selected) sel.value = selected; });
+  [].forEach.call(document.querySelectorAll('[data-pick]'), function(a){ a.addEventListener('click', function(){ sel.value = a.dataset.pick; }); });
+
+  [].forEach.call(document.querySelectorAll('.filters button'), function(btn){
+    btn.addEventListener('click', function(){
+      var g = btn.dataset.f;
+      [].forEach.call(document.querySelectorAll('.filters button'), function(x){ x.setAttribute('aria-pressed', x === btn ? 'true' : 'false'); });
+      [].forEach.call(grid.children, function(c){ c.hidden = !(g === 'alle' || c.dataset.group === g); });
+    });
+  });
+  pick('reel', false);
+
+  // Formular -> /api/lead
+  var t0 = Date.now(), form = document.getElementById('form'), msg = document.getElementById('msg'), go = document.getElementById('send');
+  var photoInput = document.getElementById('fPhotos'), photoPreview = document.getElementById('photoPreview'), photoCount = document.getElementById('photoCount');
+  photoInput.addEventListener('change', function(){
+    photoPreview.innerHTML = '';
+    var files = Array.prototype.slice.call(photoInput.files || []).filter(function(file){ return file.type && file.type.indexOf('image/') === 0; });
+    photoCount.textContent = files.length ? files.length + ' Bild(er) ausgewählt. Die Vorschau bleibt lokal in diesem Browser.' : 'Noch keine Bilder ausgewählt.';
+    files.slice(0, 12).forEach(function(file){
+      var figure = document.createElement('figure'), img = document.createElement('img'), cap = document.createElement('figcaption');
+      var reader = new FileReader(); reader.onload = function(ev){ img.src = ev.target.result; img.alt = file.name; };
+      reader.readAsDataURL(file); cap.textContent = file.name; figure.appendChild(img); figure.appendChild(cap); photoPreview.appendChild(figure);
+    });
+    if(files.length > 12){ var note = document.createElement('span'); note.className = 'upload-help'; note.textContent = 'Es werden maximal 12 Vorschaubilder angezeigt.'; photoPreview.appendChild(note); }
+  });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('fName').value.trim(), email = document.getElementById('fEmail').value.trim();
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Bitte Name und eine gültige E-Mail-Adresse angeben.'; return; }
+    if (!document.getElementById('fDsgvo').checked) { msg.textContent = 'Bitte bestätigen Sie kurz den Datenschutz-Hinweis.'; return; }
+    var fmt = sel.options[sel.selectedIndex].text;
+    msg.textContent = ''; go.disabled = true; go.textContent = 'Wird gesendet …';
+    fetch('/api/lead', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({
+      name:name, email:email, firma:document.getElementById('fFirma').value.trim(), telefon:document.getElementById('fTel').value.trim(),
+      typ:'Immobilien', wunsch:'Vorschau Immobilien', anliegen:'Format: ' + fmt + '\n' + document.getElementById('fMsg').value.trim() + (photoInput.files && photoInput.files.length ? '\nAusgewählte Bilddateien (noch nicht angehängt): ' + Array.prototype.map.call(photoInput.files, function(file){ return file.name; }).join(', ') : ''),
+      seite:location.pathname, website:form.website.value, t:t0, lang:'de'
+    })}).then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return {r:r, j:j}; }); })
+    .then(function(x){
+      if (!(x.r.ok && x.j.ok)) throw new Error();
+      document.getElementById('thanksTitle').textContent = 'Danke, ' + name.split(' ')[0] + '.';
+      form.style.display = 'none'; document.getElementById('thanks').classList.add('show');
+    }).catch(function(){
+      go.disabled = false; go.textContent = 'Vorschau anfragen →';
+      msg.innerHTML = 'Das Senden hat gerade nicht geklappt. Schreiben Sie uns bitte direkt an <a href="mailto:info@backtooutdoor.com">info@backtooutdoor.com</a>.';
+    });
+  });
+})();
+</script>
+</body>
+</html>
