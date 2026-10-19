@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Immobilien-Content Studio | Format-Showcase</title>
+    <title>Immobilien-Formate | Back to Outdoor</title>
     <meta name="description" content="Sehen Sie, wie Ihre Immobilie auf Instagram, YouTube, TikTok und mehr aussieht.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,6 @@
 
         :root {
             --ink: #132030;
-            --ink-2: #182225;
             --brown: #8a4118;
             --orange: #e36d27;
             --foam: #f7f5f0;
@@ -25,10 +24,7 @@
             --granite: #635c50;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             color: var(--ink);
@@ -37,7 +33,7 @@
             overflow-x: hidden;
         }
 
-        /* ===== NAVIGATION ===== */
+        /* NAVIGATION */
         nav {
             position: fixed;
             top: 0;
@@ -81,7 +77,7 @@
             color: var(--orange);
         }
 
-        /* ===== HERO ===== */
+        /* HERO */
         .hero {
             margin-top: 60px;
             min-height: 100vh;
@@ -91,40 +87,24 @@
             align-items: center;
             justify-content: center;
             padding: 4rem 2rem;
-        }
-
-        .hero-video-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            background: var(--ink);
-        }
-
-        .hero-video-bg video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
+            background: linear-gradient(135deg, var(--ink) 0%, #0a1520 100%);
         }
 
         .hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(19, 32, 48, 0.75) 0%, rgba(19, 32, 48, 0.55) 50%, rgba(227, 109, 39, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(19, 32, 48, 0.6) 0%, rgba(19, 32, 48, 0.4) 50%, rgba(227, 109, 39, 0.08) 100%);
             z-index: 1;
-            backdrop-filter: blur(1px);
         }
 
         .hero::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(227, 109, 39, 0.15) 0%, transparent 60%);
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(227,109,39,0.03)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
             z-index: 1;
+            opacity: 0.3;
         }
 
         .hero-content {
@@ -216,7 +196,7 @@
             transform: translateY(-4px);
         }
 
-        /* ===== FORMAT SHOWCASE ===== */
+        /* FORMAT SHOWCASE */
         .formats-section {
             padding: 8rem 2rem;
             max-width: 1500px;
@@ -251,7 +231,6 @@
             line-height: 1.7;
         }
 
-        /* ===== FORMAT GRID ===== */
         .formats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -276,39 +255,24 @@
 
         .format-preview {
             position: relative;
-            background: var(--ink);
+            background: linear-gradient(135deg, var(--ink) 0%, #0a1520 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
         }
 
-        /* Different aspect ratios */
-        .format-card:nth-child(1) .format-preview { aspect-ratio: 9 / 16; min-height: 500px; } /* Instagram Reel */
-        .format-card:nth-child(2) .format-preview { aspect-ratio: 16 / 9; min-height: 350px; } /* YouTube */
-        .format-card:nth-child(3) .format-preview { aspect-ratio: 9 / 16; min-height: 500px; } /* TikTok */
-        .format-card:nth-child(4) .format-preview { aspect-ratio: 16 / 9; min-height: 350px; } /* Website */
-        .format-card:nth-child(5) .format-preview { aspect-ratio: 2 / 3; min-height: 450px; } /* Pinterest */
-        .format-card:nth-child(6) .format-preview { aspect-ratio: 1 / 1; min-height: 400px; } /* 360° Tour */
+        .format-card:nth-child(1) .format-preview { aspect-ratio: 9 / 16; }
+        .format-card:nth-child(2) .format-preview { aspect-ratio: 16 / 9; }
+        .format-card:nth-child(3) .format-preview { aspect-ratio: 9 / 16; }
+        .format-card:nth-child(4) .format-preview { aspect-ratio: 16 / 9; }
+        .format-card:nth-child(5) .format-preview { aspect-ratio: 2 / 3; }
+        .format-card:nth-child(6) .format-preview { aspect-ratio: 1 / 1; }
 
-        .format-video {
+        .format-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .format-placeholder {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(138, 65, 24, 0.2) 0%, rgba(227, 109, 39, 0.1) 100%);
-            color: rgba(247, 245, 240, 0.6);
-            font-size: 2rem;
-            text-align: center;
-            padding: 2rem;
         }
 
         .format-info {
@@ -363,7 +327,7 @@
             border-radius: 4px;
         }
 
-        /* ===== CTA FINAL ===== */
+        /* CTA FINAL */
         .cta-final {
             padding: 6rem 3rem;
             background: linear-gradient(135deg, var(--brown) 0%, var(--orange) 100%);
@@ -384,7 +348,6 @@
             text-transform: uppercase;
             font-weight: 900;
             letter-spacing: -0.01em;
-            line-height: 1.2;
         }
 
         .cta-final p {
@@ -397,7 +360,7 @@
             line-height: 1.7;
         }
 
-        /* ===== FOOTER ===== */
+        /* FOOTER */
         footer {
             background: var(--ink);
             color: var(--foam);
@@ -411,7 +374,6 @@
             font-size: 0.95rem;
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             nav {
                 padding: 1rem 1.5rem;
@@ -433,7 +395,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-logo">🏢 Immobilien Studio</div>
         <div class="nav-menu">
@@ -442,14 +403,7 @@
         </div>
     </nav>
 
-    <!-- Hero with Video Background -->
     <section class="hero">
-        <div class="hero-video-bg">
-            <video autoplay muted loop playsinline>
-                <source src="https://videos.pexels.com/video-files/856691/856691-hd_1920_1080_30fps.mp4" type="video/mp4">
-                <source src="https://videos.pexels.com/video-files/4087300/4087300-hd_1920_1080_30fps.mp4" type="video/mp4">
-            </video>
-        </div>
         <div class="hero-content">
             <h1>Ihre Immobilie<span>in jedem Format</span></h1>
             <p>Von Instagram bis Website – wir präsentieren Ihre Objekte professionell optimiert für jede Plattform</p>
@@ -460,7 +414,6 @@
         </div>
     </section>
 
-    <!-- Format Showcase -->
     <section class="formats-section" id="formate">
         <div class="section-header">
             <h2>Alle <span>Formate</span></h2>
@@ -468,116 +421,96 @@
         </div>
 
         <div class="formats-grid">
-            <!-- Instagram Reel -->
             <div class="format-card">
                 <div class="format-preview">
-                    <video class="format-video" autoplay muted loop playsinline>
-                        <source src="https://videos.pexels.com/video-files/856691/856691-hd_1920_1080_30fps.mp4" type="video/mp4">
-                    </video>
-                    <div class="format-placeholder" style="display: none;">📱 Instagram Reel<br>9:16</div>
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&h=900&fit=crop" alt="Instagram Reel" class="format-image">
                 </div>
                 <div class="format-info">
                     <div class="format-title">Instagram Reel</div>
                     <div class="format-specs">
                         <div><strong>Format:</strong><span>1080 × 1920px</span></div>
-                        <div><strong>Länge:</strong><span>15–60 Sekunden</span></div>
-                        <div><strong>Style:</strong><span>Trend-fokussiert, Musik</span></div>
+                        <div><strong>Länge:</strong><span>15–60 Sek</span></div>
+                        <div><strong>Style:</strong><span>Trend-fokussiert</span></div>
                     </div>
-                    <div class="format-description">Kurzvideos mit hohem Engagement. Perfekt um schnell die wichtigsten Features zu zeigen.</div>
+                    <div class="format-description">Kurzvideos mit Musik & schnellen Schnitten. Perfekt für maximale Reichweite.</div>
                     <div class="format-accent"></div>
                 </div>
             </div>
 
-            <!-- YouTube Video -->
             <div class="format-card">
                 <div class="format-preview">
-                    <video class="format-video" autoplay muted loop playsinline>
-                        <source src="https://videos.pexels.com/video-files/4087300/4087300-hd_1920_1080_30fps.mp4" type="video/mp4">
-                    </video>
-                    <div class="format-placeholder" style="display: none;">📺 YouTube Video<br>16:9</div>
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=675&fit=crop" alt="YouTube Video" class="format-image">
                 </div>
                 <div class="format-info">
                     <div class="format-title">YouTube Video</div>
                     <div class="format-specs">
-                        <div><strong>Format:</strong> 1920 × 1080px</div>
-                        <div><strong>Länge:</strong> 1–15 Minuten</div>
-                        <div><strong>Style:</strong> Narrative, Kapitel, SEO</div>
+                        <div><strong>Format:</strong><span>1920 × 1080px</span></div>
+                        <div><strong>Länge:</strong><span>1–15 Min</span></div>
+                        <div><strong>Style:</strong><span>Narrative, SEO</span></div>
                     </div>
-                    <div class="format-description">Professionelle längere Videos für Details, Geschichte und Suchmaschinen-Ranking.</div>
+                    <div class="format-description">Professionelle längere Videos mit Voiceover, Musik und Details. Für Google-Ranking.</div>
                     <div class="format-accent"></div>
                 </div>
             </div>
 
-            <!-- TikTok Video -->
             <div class="format-card">
                 <div class="format-preview">
-                    <video class="format-video" autoplay muted loop playsinline>
-                        <source src="https://videos.pexels.com/video-files/4087300/4087300-hd_1920_1080_30fps.mp4" type="video/mp4">
-                    </video>
-                    <div class="format-placeholder" style="display: none;">♪ TikTok Video<br>9:16</div>
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=900&fit=crop" alt="TikTok Video" class="format-image">
                 </div>
                 <div class="format-info">
                     <div class="format-title">TikTok Video</div>
                     <div class="format-specs">
-                        <div><strong>Format:</strong> 1080 × 1920px</div>
-                        <div><strong>Länge:</strong> 15–60 Sekunden</div>
-                        <div><strong>Style:</strong> Trend-fokussiert, Musik, schnelle Schnitte</div>
+                        <div><strong>Format:</strong><span>1080 × 1920px</span></div>
+                        <div><strong>Länge:</strong><span>15–60 Sek</span></div>
+                        <div><strong>Style:</strong><span>Trend-fokussiert</span></div>
                     </div>
-                    <div class="format-description">Sehr schnelle Schnitte, Musik und Trends. Maximales Viral-Potential bei jüngeren Zielgruppen.</div>
+                    <div class="format-description">Sehr schnelle Schnitte, Trends & Musik. Maximum Viral-Potential bei Gen Z.</div>
                     <div class="format-accent"></div>
                 </div>
             </div>
 
-            <!-- Website Exposé -->
             <div class="format-card">
                 <div class="format-preview">
-                    <video class="format-video" autoplay muted loop playsinline>
-                        <source src="https://videos.pexels.com/video-files/5825848/5825848-hd_1920_1080_25fps.mp4" type="video/mp4">
-                    </video>
-                    <div class="format-placeholder" style="display: none;">🌐 Website Exposé<br>16:9</div>
+                    <img src="https://images.unsplash.com/photo-1570129477492-45a003537e1f?w=1200&h=675&fit=crop" alt="Website Exposé" class="format-image">
                 </div>
                 <div class="format-info">
                     <div class="format-title">Website Exposé</div>
                     <div class="format-specs">
-                        <div><strong>Format:</strong> 1920 × 1080px</div>
-                        <div><strong>Länge:</strong> 2–5 Minuten</div>
-                        <div><strong>Style:</strong> Professionell, Musik, Voiceover</div>
+                        <div><strong>Format:</strong><span>1920 × 1080px</span></div>
+                        <div><strong>Länge:</strong><span>2–5 Min</span></div>
+                        <div><strong>Style:</strong><span>Professionell</span></div>
                     </div>
-                    <div class="format-description">Hochwertiges Objektvideo für Ihre Website und Immobilienportale. Mit Musik und professionellem Schnitt.</div>
+                    <div class="format-description">Hochwertiges Objektvideo für Website & Portale. Mit Musik & Voiceover.</div>
                     <div class="format-accent"></div>
                 </div>
             </div>
 
-            <!-- Pinterest Pin -->
             <div class="format-card">
                 <div class="format-preview">
-                    <img src="https://images.unsplash.com/photo-1570129477492-45a003537e1f?w=1000&h=1500&fit=crop" alt="Pinterest Pin" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div class="format-placeholder" style="display: none;">📌 Pinterest Pin<br>2:3</div>
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=1200&fit=crop" alt="Pinterest Pin" class="format-image">
                 </div>
                 <div class="format-info">
                     <div class="format-title">Pinterest Pin</div>
                     <div class="format-specs">
-                        <div><strong>Format:</strong> 1000 × 1500px</div>
-                        <div><strong>Duration:</strong> Static Image</div>
-                        <div><strong>Style:</strong> Clean, Text, Mehrwert</div>
+                        <div><strong>Format:</strong><span>1000 × 1500px</span></div>
+                        <div><strong>Typ:</strong><span>Static Image</span></div>
+                        <div><strong>Style:</strong><span>Keywords, CTÆ</span></div>
                     </div>
-                    <div class="format-description">Hochkant-Pins für Pinterest mit Keywords und Call-to-Action. Langlebiger Traffic und Backlinks.</div>
+                    <div class="format-description">Hochkant-Pins mit Keywords. Langlebiger Traffic & hochwertige Backlinks.</div>
                     <div class="format-accent"></div>
                 </div>
             </div>
 
-            <!-- 360° Virtual Tour -->
             <div class="format-card">
                 <div class="format-preview">
-                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1000&h=1000&fit=crop" alt="360° Tour" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div class="format-placeholder" style="display: none;">🔄 360° Tour<br>Interaktiv</div>
+                    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800&h=800&fit=crop" alt="360° Virtual Tour" class="format-image">
                 </div>
                 <div class="format-info">
                     <div class="format-title">360° Virtual Tour</div>
                     <div class="format-specs">
-                        <div><strong>Format:</strong> Interaktiv, Selbstgeführt</div>
-                        <div><strong>Access:</strong> Unbegrenzt</div>
-                        <div><strong>Style:</strong> Immersiv, Räumlich</div>
+                        <div><strong>Format:</strong><span>Interaktiv</span></div>
+                        <div><strong>Access:</strong><span>Unbegrenzt</span></div>
+                        <div><strong>Style:</strong><span>Immersiv</span></div>
                     </div>
                     <div class="format-description">Immersive Erfahrung. Käufer sehen Objekte online wie vor Ort – ohne Fahrtweg.</div>
                     <div class="format-accent"></div>
@@ -586,17 +519,15 @@
         </div>
     </section>
 
-    <!-- Final CTA -->
     <section class="cta-final" id="cta">
         <h3>Bereit für professionelle Inhalte?</h3>
-        <p>Kontaktieren Sie uns für ein kostenloses Beratungsgespräch – wir zeigen, wie wir Ihre Immobilien optimal inszenieren</p>
+        <p>Kontaktieren Sie uns für ein kostenloses Beratungsgespräch – wir zeigen, wie wir Ihre Immobilien optimal in Szene setzen</p>
         <a href="mailto:contact@backtooutdoor.com" class="btn btn-secondary" style="color: white; border-color: white;">Kostenloses Gespräch vereinbaren</a>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p><strong>Immobilien-Content Studio</strong> by Back to Outdoor</p>
         <p>Professionelle Video- und Fotoproduktion für Makler, Bauträger und Projektentwickler</p>
     </footer>
 </body>
-</html><!-- Updated Mon Oct 19 13:59:16 CEST 2026 -->
+</html>
