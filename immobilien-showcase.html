@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Immobilien-Videos & Projektseiten | Back to Outdoor</title>
+<link rel="icon" type="image/png" href="/assets/img/immobilien/logo-immobilien-192.png">
+<link rel="apple-touch-icon" href="/assets/img/immobilien/logo-immobilien-192.png">
 <meta name="description" content="Rundgang-Videos aus Ihren vorhandenen Fotos und Projektseiten für Neubauprojekte. Für Verkauf, Vermietung, Hotels und Gastronomie.">
 <link rel="canonical" href="https://backtooutdoor.com/immobilien-showcase.html">
 <meta property="og:type" content="website">
@@ -42,7 +44,11 @@ h2{margin:0;font-weight:400;letter-spacing:-.02em;font-size:clamp(38px,5vw,60px)
 /* Header */
 header.top{position:relative;z-index:3;max-width:1280px;margin:0 auto;padding:28px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
 .brand{color:var(--text);text-decoration:none;font-size:14px;font-weight:700;letter-spacing:.32em;text-transform:uppercase}
-.brand span{color:var(--sand)}
+.brand-txt span{color:var(--sand)}
+.brand{display:inline-flex;align-items:center;gap:12px}
+.brand img{width:44px;height:44px;flex-shrink:0}
+.foot-brand{display:inline-flex;align-items:center;gap:14px}
+.foot-brand img{width:64px;height:64px}
 header.top nav{display:flex;flex-wrap:wrap;gap:28px;font-size:15px}
 header.top nav a{color:var(--muted);text-decoration:none} header.top nav a:hover{color:var(--text)}
 .btn-small{padding:14px 22px;font-size:13px}
@@ -169,6 +175,7 @@ footer a{color:var(--soft)}
   .wrap,header.top,footer{padding-left:16px;padding-right:16px}
   header.top nav{display:none}
   .btn-small{display:none}
+  .brand-txt{display:none}
   .mob-cta{display:inline-flex;color:var(--sand);font-size:14px;font-weight:600;text-decoration:none}
   .hero{min-height:680px;margin-top:0}
   .hero::after{background:linear-gradient(180deg,rgba(20,23,27,.55) 0%,rgba(20,23,27,.82) 55%,rgba(20,23,27,.9) 100%)}
@@ -185,7 +192,7 @@ footer a{color:var(--soft)}
 <body>
 
 <header class="top">
-  <a href="#top" class="brand">Back to Outdoor <span>·</span> Immobilien</a>
+  <a href="#top" class="brand"><img src="/assets/img/immobilien/logo-immobilien-192.png" alt="Back to Outdoor Immobilien Content Logo" width="44" height="44"><span class="brand-txt">Back to Outdoor <span>·</span> Immobilien</span></a>
   <nav aria-label="Hauptnavigation">
     <a href="#formate">Formate</a>
     <a href="#projektseite">Projektseite</a>
@@ -359,7 +366,7 @@ footer a{color:var(--soft)}
 </main>
 
 <footer>
-  <span>Rundgang-Videos &amp; Projektseiten · Back to Outdoor</span>
+  <span class="foot-brand"><img src="/assets/img/immobilien/logo-immobilien-192.png" alt="" width="64" height="64" loading="lazy">Rundgang-Videos &amp; Projektseiten · Back to Outdoor</span>
   <span style="display:flex;gap:24px"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="/">backtooutdoor.com</a></span>
 </footer>
 
