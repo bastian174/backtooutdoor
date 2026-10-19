@@ -5,6 +5,8 @@
  *   1. Der Anfragende bekommt sofort eine persönliche Antwort-Mail (von infobacktooutdoor@gmail.com, Antworten gehen dorthin zurück).
  *   2. infobacktooutdoor@gmail.com bekommt eine Benachrichtigung mit allen Daten + der verschickten Antwort (Kopie an info@backtooutdoor.com).
  *   3. Die Anfrage wird als neue Zeile in dieser Tabelle eingetragen (Liste mit Status) – das ist die Liste, mit der JARVIS/das Agenten-Team weiterarbeitet.
+ *   4. Drei Kanäle: Back to Outdoor, Mindset Tetris, Immobilien. Benachrichtigung und Antwort-Mail bekommen in Gmail das Label
+ *      "Anfragen/<Kanal>", in der Tabelle steht der Kanal in Spalte B.
  *
  * Einrichtung (im Google-Konto infobacktooutdoor@gmail.com):
  *   1. Auf drive.google.com einloggen (mit infobacktooutdoor@gmail.com) → neue Google Tabelle anlegen → "BTO Anfragen" nennen.
@@ -17,17 +19,19 @@
  */
 
 const CONFIG = {
-  SECRET: 'bto-2026-salzburg-x7k2',           // identisch mit LEAD_SECRET in Vercel – kannst du auch selbst ändern
+  SECRET: 'HIER-SECRET-EINTRAGEN',            // identisch mit LEAD_SECRET in Vercel – NICHT ins Repo committen
   INFO_MAIL: 'infobacktooutdoor@gmail.com',   // bekommt jede Anfrage (primär)
   INFO_MAIL_CC: 'info@backtooutdoor.com',     // bekommt jede Anfrage als Kopie
   AUTO_ANTWORT: true,                         // false = Antwort wird nur als Gmail-Entwurf angelegt
   ABSENDER_NAME: 'Basti · Back to Outdoor',
   ABSENDER_ADRESSE: '',                       // optional: z. B. info@backtooutdoor.com, falls in Gmail als "Senden als"-Adresse eingerichtet
   BLATT: 'Anfragen',
-  BLATT_KLICKS: 'Klicks',                     // Tab für Kooperations-/Affiliate-Link-Klicks (siehe api/go.js)
+  BLATT_KLICKS: 'Klicks',
+  LABEL_PREFIX: 'Anfragen/',                  // Gmail-Labels: Anfragen/Back to Outdoor, Anfragen/Mindset Tetris, Anfragen/Immobilien                     // Tab für Kooperations-/Affiliate-Link-Klicks (siehe api/go.js)
 };
 
-const SPALTEN = ['Eingang', 'Status', 'Name', 'Firma', 'E-Mail', 'Telefon', 'Typ', 'Wunsch', 'Anliegen',
+const KANAELE = ['Back to Outdoor', 'Mindset Tetris', 'Immobilien'];
+const SPALTEN = ['Eingang', 'Kanal', 'Status', 'Name', 'Firma', 'E-Mail', 'Telefon', 'Typ', 'Wunsch', 'Anliegen',
   'Seite', 'Quelle', 'Sprache', 'Antwort-Betreff', 'Antwort (verschickt)', 'Nächster Schritt / Notizen'];
 const STATUS = ['Neu', 'Beantwortet', 'Antwort als Entwurf', 'Gespräch vereinbart', 'Angebot geschickt', 'Gewonnen', 'Verloren', 'Spam'];
 const SPALTEN_KLICKS = ['Zeitpunkt', 'Link', 'Ziel-URL', 'Verweisende Seite'];
@@ -70,8 +74,35 @@ function klickBlatt_() {
   return sh;
 }
 
+function kanal_(d) {
+  if (KANAELE.indexOf(d.kanal) >= 0) return d.kanal;
+  const seite = String(d.seite || '').toLowerCase();
+  if (d.typ === 'Immobilien' || seite.indexOf('immobilien') >= 0) return 'Immobilien';
+  if (String(d.produkt || '').indexOf('mindset') === 0 || /tetris|mindset/.test(seite)) return 'Mindset Tetris';
+  return 'Back to Outdoor';
+}
+
+function label_(kanal) {
+  const name = CONFIG.LABEL_PREFIX + kanal;
+  return GmailApp.getUserLabelByName(name) || GmailApp.createLabel(name);
+}
+
+// Gerade verschickte Mail suchen und mit dem Kanal-Label versehen (Gmail braucht manchmal 1–2 Sek. bis zur Suche)
+function labeln_(query, label) {
+  for (let i = 0; i < 4; i++) {
+    const th = GmailApp.search(query, 0, 1);
+    if (th.length) { th[0].addLabel(label); return true; }
+    Utilities.sleep(1200);
+  }
+  Logger.log('Label nicht gesetzt: ' + query);
+  return false;
+}
+
 function verarbeiten_(d) {
   const blatt = blatt_();
+  const kanal = kanal_(d);
+  const label = label_(kanal);
+  const marke = Utilities.getUuid().slice(0, 8);
   let status = 'Neu';
   let beantwortet = false;
 
@@ -92,6 +123,7 @@ function verarbeiten_(d) {
       GmailApp.sendEmail(d.email, d.antwort_betreff, d.antwort_text, opts);
       status = 'Beantwortet';
       beantwortet = true;
+      labeln_('in:sent to:' + d.email + ' subject:"' + d.antwort_betreff.replace(/"/g, '') + '" newer_than:1h', label);
     } else {
       GmailApp.createDraft(d.email, d.antwort_betreff, d.antwort_text, opts);
       status = 'Antwort als Entwurf';
@@ -100,6 +132,7 @@ function verarbeiten_(d) {
 
   // 2. Benachrichtigung an info@
   const zeilen = [
+    'Kanal:    ' + kanal,
     'Neue Anfrage über ' + (d.quelle || 'die Website') + (d.seite ? ' (' + d.seite + ')' : ''),
     '',
     'Name:     ' + (d.name || '-'),
@@ -117,14 +150,14 @@ function verarbeiten_(d) {
     beantwortet ? 'Diese Antwort wurde automatisch verschickt:' : 'Antwort-Entwurf (liegt in Gmail unter "Entwürfe"):',
     '', 'Betreff: ' + (d.antwort_betreff || '-'), '', d.antwort_text || '-',
     '', '==============================', 'Liste: ' + SpreadsheetApp.getActiveSpreadsheet().getUrl());
-  GmailApp.sendEmail(CONFIG.INFO_MAIL,
-    'Neue Anfrage: ' + (d.firma || d.name) + ' – ' + (d.wunsch || 'Anfrage'),
-    zeilen.join('\n'),
-    { name: 'Website-Anfragen Back to Outdoor', replyTo: d.email, cc: CONFIG.INFO_MAIL_CC || undefined });
+  const betreff = 'Neue Anfrage · ' + kanal + ': ' + (d.firma || d.name) + ' – ' + (d.wunsch || 'Anfrage') + ' [' + marke + ']';
+  GmailApp.sendEmail(CONFIG.INFO_MAIL, betreff, zeilen.join('\n'),
+    { name: 'Website-Anfragen ' + kanal, replyTo: d.email, cc: CONFIG.INFO_MAIL_CC || undefined });
+  labeln_('subject:"' + marke + '" newer_than:1h', label);
 
   // 3. Eintrag in die Liste
   blatt.appendRow([
-    new Date(d.zeit || Date.now()), status, d.name, d.firma, d.email, d.telefon, d.typ, d.wunsch,
+    new Date(d.zeit || Date.now()), kanal, status, d.name, d.firma, d.email, d.telefon, d.typ, d.wunsch,
     d.anliegen, d.seite, d.quelle, d.sprache, d.antwort_betreff, d.antwort_text, '',
   ].map(sicher_));
 
@@ -145,17 +178,39 @@ function blatt_() {
     sh.appendRow(SPALTEN);
     formatieren_(sh);
   }
+  kanalSpalte_(sh);
   return sh;
+}
+
+// Einmalige Umstellung bestehender Tabellen: Spalte "Kanal" nach "Eingang" einfügen und alte Zeilen zuordnen
+function kanalSpalte_(sh) {
+  if (sh.getRange(1, 2).getValue() === 'Kanal') return;
+  sh.insertColumnAfter(1);
+  sh.getRange(1, 2).setValue('Kanal');
+  const n = sh.getLastRow() - 1;
+  if (n > 0) {
+    const kopf = sh.getRange(1, 1, 1, sh.getLastColumn()).getValues()[0];
+    const daten = sh.getRange(2, 1, n, sh.getLastColumn()).getValues();
+    const iTyp = kopf.indexOf('Typ'), iWunsch = kopf.indexOf('Wunsch'), iSeite = kopf.indexOf('Seite');
+    const werte = daten.map(function (z) {
+      return [kanal_({ typ: z[iTyp], seite: z[iSeite], produkt: String(z[iWunsch]).indexOf('E-Book') === 0 ? 'mindset' : '' })];
+    });
+    sh.getRange(2, 2, n, 1).setValues(werte);
+  }
+  formatieren_(sh);
 }
 
 function formatieren_(sh) {
     sh.setFrozenRows(1);
     sh.getRange(1, 1, 1, SPALTEN.length).setFontWeight('bold').setBackground('#132030').setFontColor('#f7f5f0');
     sh.setColumnWidths(1, SPALTEN.length, 140);
-    sh.setColumnWidth(9, 320); sh.setColumnWidth(14, 320); sh.setColumnWidth(15, 260);
+    sh.setColumnWidth(10, 320); sh.setColumnWidth(15, 320); sh.setColumnWidth(16, 260);
     sh.getRange('A:A').setNumberFormat('dd.MM.yyyy HH:mm');
     const regel = SpreadsheetApp.newDataValidation().requireValueInList(STATUS, true).setAllowInvalid(true).build();
-    sh.getRange(2, 2, 1000, 1).setDataValidation(regel);
+    sh.getRange(2, 3, 1000, 1).setDataValidation(regel);
+    const regelK = SpreadsheetApp.newDataValidation().requireValueInList(KANAELE, true).setAllowInvalid(true).build();
+    sh.getRange(2, 2, 1000, 1).setDataValidation(regelK);
+    if (!sh.getFilter()) sh.getRange(1, 1, Math.max(sh.getLastRow(), 2), SPALTEN.length).createFilter();
 }
 
 // Schutz gegen Formeln aus Formularfeldern (z. B. "=HYPERLINK(...)")
@@ -171,6 +226,13 @@ function json_(o) {
 
 function doGet() {
   return json_({ ok: true, dienst: 'BTO Anfragen' });
+}
+
+/** Einmal ausführen nach dem Update: legt die 3 Gmail-Labels an und stellt die Tabelle auf die Kanal-Spalte um. */
+function kanaeleEinrichten() {
+  KANAELE.forEach(label_);
+  blatt_();
+  Logger.log('Labels und Kanal-Spalte bereit.');
 }
 
 /** Einmal manuell ausführen: erteilt die Berechtigungen und schickt eine Test-Anfrage an dich selbst. */

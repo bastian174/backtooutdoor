@@ -14,6 +14,33 @@ const { PRODUKTE, teil2Link } = require("./_produkte");
 
 const KONTAKT = "Back to Outdoor · Salzburg\ninfo@backtooutdoor.com · +43 (0)660 8422053\nwww.backtooutdoor.com · Instagram @backtooutdoor";
 
+// Drei Kanäle: Back to Outdoor (Outdoor-Content), Mindset Tetris (E-Books/Mindset), Immobilien (Showcase-Seite)
+function kanalVon(lead) {
+  const seite = String(lead.seite || "").toLowerCase();
+  if (lead.typ === "Immobilien" || seite.includes("immobilien")) return "Immobilien";
+  if (String(lead.produkt || "").startsWith("mindset") || /tetris|mindset/.test(seite)) return "Mindset Tetris";
+  return "Back to Outdoor";
+}
+
+const KONTAKT_IMMO = "Back to Outdoor · Immobilien-Content\ninfo@backtooutdoor.com · +43 (0)660 8422053\nbacktooutdoor.com/immobilien-showcase.html";
+
+// Immobilien: feste Vorlage (Sie-Form), passend zur Showcase-Seite: Gratis-Vorschau aus vorhandenen Fotos, 2 Werktage
+function immoMail(lead) {
+  const fmt = (String(lead.anliegen || "").match(/^Format: (.+)$/m) || [])[1];
+  return {
+    betreff: "Ihre Vorschau-Anfrage – Back to Outdoor",
+    text: `Guten Tag ${lead.name},\n\ndanke für Ihre Anfrage${fmt && !/auswählen|offen/i.test(fmt) ? " (" + fmt + ")" : ""}. Für die kostenlose Vorschau brauche ich nur zwei Dinge von Ihnen:\n\n1. Die vorhandenen Fotos des Objekts, am besten 8 bis 15 Bilder. Sie können sie einfach als Antwort auf diese Mail schicken oder einen Download-Link senden.\n2. Kurz die Eckdaten, die im Video stehen sollen, zum Beispiel Art des Objekts, Ort und Fläche.\n\nSobald die Fotos da sind, bekommen Sie die Vorschau innerhalb von 2 Werktagen. Ein Termin vor Ort ist dafür nicht nötig.\n\nFreundliche Grüße\nBasti\n\n${KONTAKT_IMMO}`,
+  };
+}
+
+// Mindset Tetris ohne E-Book (z. B. allgemeine Nachricht): kurze Du-Antwort
+function mindsetMail(lead) {
+  return {
+    betreff: "Danke für deine Nachricht – Mindset Tetris",
+    text: `Hallo ${vorname(lead.name)},\n\ndanke für deine Nachricht. Ich lese sie mir in Ruhe durch und melde mich persönlich bei dir.\n\nLiebe Grüße\nBasti von Mindset Tetris\n\nInstagram @mindsettetris · backtooutdoor.com/mindset`,
+  };
+}
+
 function vorname(name) {
   return String(name || "").trim().split(/\s+/)[0] || "";
 }
@@ -111,15 +138,17 @@ async function verarbeiteLead(input, lang) {
 
   const produkt = PRODUKTE[lead.produkt];
   if (lead.wunsch === "E-Book Teil 1" && !produkt) return { ok: false, fehler: "ungueltig" };
+  const kanal = kanalVon(lead);
   const antwort = produkt && lead.wunsch === "E-Book Teil 1"
     ? ebookMail(lead, produkt)
+    : kanal === "Immobilien" ? immoMail(lead)
+    : kanal === "Mindset Tetris" ? mindsetMail(lead)
     : (await kiAntwort(lead, lang)) || vorlage(lead, lang === "fr" ? "en" : lang);
   const mediaKitUrl = lead.wunsch === "Media Kit" ? process.env.MEDIA_KIT_URL || "" : "";
-  const payload = { secret: process.env.LEAD_SECRET || "", zeit: new Date().toISOString(), sprache: lang, ...lead, antwort_betreff: antwort.betreff, antwort_text: antwort.text, media_kit_url: mediaKitUrl };
+  const payload = { secret: process.env.LEAD_SECRET || "", zeit: new Date().toISOString(), sprache: lang, kanal, ...lead, antwort_betreff: antwort.betreff, antwort_text: antwort.text, media_kit_url: mediaKitUrl };
 
   console.log("NEUER LEAD", JSON.stringify({ ...payload, secret: undefined }));
-  // Immobilien-Anfragen (Seite /immobilien-showcase.html) zusätzlich an das Agenten-Postfach
-  if (lead.typ === "Immobilien") await kopieAn(IMMO_MAIL, payload);
+  // Benachrichtigung inkl. Kanal-Label in Gmail macht das Apps Script (FormSubmit blockt Server-Anfragen per Cloudflare)
   const url = process.env.LEAD_WEBHOOK_URL;
   if (!url) return perMail(payload); // ohne Google-Apps-Script: Versand per FormSubmit direkt an info@
   try {
