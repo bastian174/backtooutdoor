@@ -411,8 +411,9 @@ footer a{color:var(--soft)}
     document.getElementById('dMat').textContent = f.mat;
     document.getElementById('dText').textContent = f.text;
     document.getElementById('dCta').textContent = 'Vorschau: ' + f.name + ' →';
-    detail.hidden = false; detail.classList.add('modal-open'); backdrop.classList.add('show'); document.body.classList.add('modal-active'); sel.value = id;
-    if (scroll) { lastFocus = document.activeElement; document.getElementById('dClose').focus(); }
+    detail.hidden = false; sel.value = id;
+    if (scroll) { detail.classList.add('modal-open'); backdrop.classList.add('show'); document.body.classList.add('modal-active'); lastFocus = document.activeElement; document.getElementById('dClose').focus(); }
+    else { detail.classList.remove('modal-open'); backdrop.classList.remove('show'); document.body.classList.remove('modal-active'); }
   }
   document.getElementById('dClose').addEventListener('click', function(){ pick(null); });
   backdrop.addEventListener('click', function(){ pick(null); });
