@@ -82,6 +82,26 @@ function kanal_(d) {
   return 'Back to Outdoor';
 }
 
+// Logo unter der Signatur der Antwort-Mail (Mindset Tetris bewusst ohne, eigener Stil)
+const LOGOS = {
+  'Back to Outdoor': 'https://backtooutdoor.com/assets/img/mail/logo-bto-mail.png',
+  'Immobilien': 'https://backtooutdoor.com/assets/img/mail/logo-immobilien-mail.png',
+};
+
+function htmlMail_(text, kanal) {
+  const body = String(text || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1">$1</a>').replace(/\n/g, '<br>');
+  const inline = {};
+  let logo = '';
+  if (LOGOS[kanal]) {
+    try {
+      inline.logo = UrlFetchApp.fetch(LOGOS[kanal]).getBlob().setName('logo.png');
+      logo = '<p style="margin:20px 0 0"><img src="cid:logo" width="96" height="96" alt="Back to Outdoor"></p>';
+    } catch (err) { Logger.log('Logo nicht geladen: ' + err.message); }
+  }
+  return { html: '<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.55;color:#132030">' + body + logo + '</div>', inline: inline };
+}
+
 function label_(kanal) {
   const name = CONFIG.LABEL_PREFIX + kanal;
   return GmailApp.getUserLabelByName(name) || GmailApp.createLabel(name);
@@ -119,6 +139,9 @@ function verarbeiten_(d) {
         Logger.log('Media-Kit-PDF konnte nicht geladen werden: ' + err.message);
       }
     }
+    const hm = htmlMail_(d.antwort_text, kanal);
+    opts.htmlBody = hm.html;
+    if (Object.keys(hm.inline).length) opts.inlineImages = hm.inline;
     if (CONFIG.AUTO_ANTWORT) {
       GmailApp.sendEmail(d.email, d.antwort_betreff, d.antwort_text, opts);
       status = 'Beantwortet';
