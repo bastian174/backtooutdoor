@@ -12,7 +12,7 @@
 :root{
   --bg:#1E2226; --bg2:#262B30; --line:#3A4047; --field:#4C535B;
   --text:#F5F1E6; --muted:#D8D2C5; --soft:#B9B3A6; --sand:#D4B8A5;
-  --accent:#CD1342; --accent-dark:#A80F36; --paper:#F5F1E6; --ink:#1E2226;
+  --accent:#E36D27; --accent-dark:#B9501A; --on-accent:#132030; --paper:#F5F1E6; --ink:#1E2226;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -24,7 +24,7 @@ em.s{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);
 .eyebrow{color:var(--sand);font-size:13px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:20px}
 h2{margin:0;font-weight:400;letter-spacing:-.02em;font-size:clamp(38px,5vw,60px);line-height:1.05}
 .btn{display:inline-flex;align-items:center;min-height:44px;padding:18px 30px;font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
-.btn-red{background:var(--accent);color:#fff} .btn-red:hover{background:var(--accent-dark);color:#fff}
+.btn-red{background:var(--accent);color:var(--on-accent)} .btn-red:hover{background:#F08A4B;color:var(--on-accent)}
 .btn-line{border:1px solid #8E949B;color:var(--text);background:transparent} .btn-line:hover{border-color:var(--text);color:var(--text)}
 
 /* Header */
@@ -68,7 +68,7 @@ section.bordered{border-top:1px solid var(--line)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
 .card{text-align:left;background:var(--bg2);color:var(--text);border:1px solid var(--line);padding:0;cursor:pointer;display:flex;flex-direction:column;font-family:inherit;font-size:17px;transition:border-color .2s}
 .card:hover{border-color:#6A7179}
-.card[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.card[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .card[hidden]{display:none}
 .prev{height:240px;width:100%;background:#30353B;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .card[aria-pressed="true"] .prev{background:var(--accent-dark)}
@@ -91,7 +91,7 @@ section.bordered{border-top:1px solid var(--line)}
 .detail .media .r916{height:380px}.detail .media .r23{height:380px}
 .detail .media .r169,.detail .media .r-site,.detail .media .r360{width:92%}
 .detail .txt{flex:1 1 380px;min-width:0;padding:48px;display:flex;flex-direction:column;gap:14px}
-.detail .kick{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase}
+.detail .kick{color:var(--accent-dark);font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase}
 .detail .ttl{font-family:'Instrument Serif',serif;font-size:56px;line-height:1}
 .detail dl{margin:12px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px}
 .detail dt{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5A5A52}
@@ -213,7 +213,7 @@ footer a{color:var(--soft)}
         <h2>Finden Sie <em class="s">Ihr Format.</em></h2>
       </div>
       <div class="filters" role="group" aria-label="Formate filtern">
-        <button type="button" data-f="alle" aria-pressed="true">Alle 6</button>
+        <button type="button" data-f="alle" aria-pressed="true">Alle 5</button>
         <button type="button" data-f="video" aria-pressed="false">Video</button>
         <button type="button" data-f="web" aria-pressed="false">Web &amp; Social</button>
       </div>
@@ -353,10 +353,7 @@ footer a{color:var(--soft)}
      text:'Alle Wohnungen mit Grundriss, Fläche und Preis, Status verfügbar oder verkauft, Filter und Exposé-Anfrage pro Wohnung. Wir halten den Status nach kurzer Nachricht aktuell.'},
     {id:'pin', group:'web', name:'Pinterest Pin', badge:'2:3', ratio:'r23', img:P(1643383),
      use:'Langlebige Reichweite', format:'1000 × 1500', len:'Bild oder Video-Pin', where:'Pinterest', mat:'Exposé-Fotos',
-     text:'Hochformat-Pins mit Suchbegriffen wie „Wohnung Salzburg Garten“. Pins werden über Monate gefunden und führen auf Ihr Inserat.'},
-    {id:'360', group:'web', name:'360°-Rundgang', badge:'360°', ratio:'r360', img:P(1029599),
-     use:'Besichtigung online', format:'Interaktiv', len:'Alle Räume', where:'Website, Exposé-Link', mat:'360°-Aufnahme vor Ort',
-     text:'Interessenten gehen online durch die Wohnung, bevor sie einen Termin ausmachen. Dafür kommen wir einmal mit der 360°-Kamera vorbei.'}
+     text:'Hochformat-Pins mit Suchbegriffen wie „Wohnung Salzburg Garten“. Pins werden über Monate gefunden und führen auf Ihr Inserat.'}
   ];
   var grid = document.getElementById('grid'), detail = document.getElementById('detail');
   var sel = document.getElementById('fFormat'), selected = null;
