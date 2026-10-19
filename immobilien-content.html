@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immobilien-Content Studio | Back to Outdoor</title>
+    <meta name="description" content="Professionelle Video- und Fotoproduktion für Immobilien. Moderne Aerial-Aufnahmen, Virtualtours und Staging-Content.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #10181c;
+            --ink-2: #182225;
+            --teal: #1f6e63;
+            --teal-bright: #38b89a;
+            --foam: #f7f5f0;
+            --stone: #ece7dd;
+            --granite: #635c50;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Work Sans', sans-serif;
+            color: var(--ink);
+            background: var(--foam);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(180deg, rgba(16, 24, 28, 0.95) 0%, rgba(16, 24, 28, 0.8) 100%);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(56, 184, 154, 0.1);
+        }
+
+        .nav-logo {
+            font-size: 1.1rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--teal-bright), #60d5a8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: rgba(247, 245, 240, 0.8);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--teal-bright);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--teal-bright), #60d5a8);
+            color: var(--ink) !important;
+            padding: 0.7rem 1.6rem;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-left: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(56, 184, 154, 0.3);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2rem;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(16, 24, 28, 0.7) 0%, rgba(16, 24, 28, 0.5) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: var(--foam);
+            max-width: 900px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--teal-bright);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 5.5rem);
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--teal-bright), #60d5a8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: rgba(247, 245, 240, 0.85);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 0.01em;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--teal-bright), #60d5a8);
+            color: var(--ink);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(56, 184, 154, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--glass);
+            color: var(--teal-bright);
+            border: 1.5px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(56, 184, 154, 0.1);
+            border-color: var(--teal-bright);
+            transform: translateY(-5px);
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services {
+            padding: 8rem 2rem;
+            background: var(--foam);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--ink);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+        }
+
+        .section-header h2 span {
+            background: linear-gradient(135deg, var(--teal), var(--teal-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            font-size: 1.15rem;
+            color: var(--granite);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(31, 110, 99, 0.1);
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--teal-bright), #60d5a8);
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(31, 110, 99, 0.2);
+            border-color: var(--teal-bright);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: var(--ink);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--granite);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* ===== PORTFOLIO SECTION ===== */
+        .portfolio {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+            color: var(--foam);
+        }
+
+        .portfolio .section-header h2,
+        .portfolio .section-header p {
+            color: var(--foam);
+        }
+
+        .portfolio .section-header h2 span {
+            background: linear-gradient(135deg, var(--teal-bright), #60d5a8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            aspect-ratio: 16 / 10;
+            cursor: pointer;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(31, 110, 99, 0.9) 0%, rgba(56, 184, 154, 0.8) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.7rem;
+            font-weight: 700;
+        }
+
+        .portfolio-overlay p {
+            font-size: 0.95rem;
+            color: rgba(247, 245, 240, 0.95);
+        }
+
+        /* ===== VIDEO EXAMPLES SECTION ===== */
+        .video-examples {
+            padding: 8rem 2rem;
+            background: var(--foam);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .video-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(31, 110, 99, 0.1);
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(31, 110, 99, 0.2);
+        }
+
+        .video-preview {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border-radius: 16px;
+        }
+
+        .video-preview iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 16px;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+            background: white;
+        }
+
+        .video-info h4 {
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .video-specs {
+            font-size: 0.85rem;
+            color: var(--granite);
+            line-height: 1.8;
+        }
+
+        .video-specs strong {
+            color: var(--teal);
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-bright) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><defs><pattern id="dots" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="1200" height="400" fill="url(%23dots)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            font-weight: 800;
+        }
+
+        .cta-section p {
+            font-size: 1.15rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons a {
+            padding: 1rem 2rem;
+            background: var(--ink);
+            color: var(--teal-bright);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            transition: all 0.3s ease;
+            border: 2px solid var(--ink);
+        }
+
+        .cta-buttons a:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--ink);
+            color: var(--foam);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(56, 184, 154, 0.1);
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .back-link {
+            color: var(--teal-bright);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 1rem;
+                text-align: center;
+            }
+
+            .nav-cta {
+                margin-left: 0;
+            }
+
+            .hero {
+                margin-top: 180px;
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .services,
+            .portfolio,
+            .video-examples {
+                padding: 4rem 1.5rem;
+            }
+
+            .services-grid,
+            .portfolio-grid,
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons a {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">🏘️ Immobilien</div>
+        <div class="nav-menu">
+            <a href="#services">Leistungen</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#videos">Video-Formate</a>
+            <a href="#anfrage" class="nav-cta">Termin</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video -->
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="https://videos.pexels.com/video-files/5825848/5825848-hd_1920_1080_25fps.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <div class="hero-tag">🎬 Premium Content Studio</div>
+            <h1>Immobilien <span>ins beste Licht</span></h1>
+            <p class="hero-description">Professionelle Video- und Fotoproduktion für Makler, Bauträger und Projektentwickler</p>
+            <div class="cta-group">
+                <a href="#anfrage" class="btn btn-primary">Kostenloses Gespräch</a>
+                <a href="#portfolio" class="btn btn-secondary">Portfolio ansehen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>Unsere <span>Leistungen</span></h2>
+            <p>Von der Drohnenaufnahme bis zur fertigen Social-Media-Serie</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🚁</div>
+                <h3>Aerial-Aufnahmen</h3>
+                <p>Spektakuläre Drohnenaufnahmen in 4K mit cineastischem Farbgrading – perfekt für Lage und Kontext.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📸</div>
+                <h3>Fotografie</h3>
+                <p>Professionelle Innen- und Außenfotografie mit modernem Lighting-Setup und großzügiger Dokumentation.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎬</div>
+                <h3>Virtual Tours</h3>
+                <p>360-Grad-Videoführungen für immersives Erkunden. Käufer sehen die Immobilie online wie live.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Social Content</h3>
+                <p>Instagram Reels, TikTok & YouTube Videos – optimiert mit Hooks, Text und CTA für maximale Reichweite.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Staging & Animation</h3>
+                <p>Virtuelle Einrichtungsszenen und 3D-Animationen zeigen das Potenzial ungefertigter Immobilien.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">✂️</div>
+                <h3>Post-Production</h3>
+                <p>Professioneller Schnitt, Farbgrading und Sound Design mit einheitlichem Brand-Branding.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header">
+            <h2>Portfolio<span> Highlights</span></h2>
+            <p>Erfolgreiche Projekte aus verschiedenen Segmenten</p>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&h=438&fit=crop" alt="Modernes Einfamilienhaus mit Garten">
+                <div class="portfolio-overlay">
+                    <h3>Modernes Einfamilienhaus</h3>
+                    <p>4K-Video, Drohnen-Sequenzen, Schnitt</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=700&h=438&fit=crop" alt="Luxus Penthouse">
+                <div class="portfolio-overlay">
+                    <h3>Penthouse mit Weitblick</h3>
+                    <p>360-Tour, Reel-Serie, Lightshow</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&h=438&fit=crop" alt="Urban Apartment">
+                <div class="portfolio-overlay">
+                    <h3>Stadtapartment-Projekt</h3>
+                    <p>Virtuelle Staging, Social-Kampagne</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1605276374104-dee2a0db6e1e?w=700&h=438&fit=crop" alt="Modern Commercial Building">
+                <div class="portfolio-overlay">
+                    <h3>Gewerbeimmobilie</h3>
+                    <p>Dokumentation, Exposé-Video</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&h=438&fit=crop" alt="Loft Renovation">
+                <div class="portfolio-overlay">
+                    <h3>Loft-Umgestaltung</h3>
+                    <p>Before-After-Serie, YouTube-Doku</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1600566753086-00f18a98e117?w=700&h=438&fit=crop" alt="Neubau Project">
+                <div class="portfolio-overlay">
+                    <h3>Neubau-Kampagne</h3>
+                    <p>Video-Serie: Grundstein bis Übergabe</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Examples -->
+    <section class="video-examples" id="videos">
+        <div class="section-header">
+            <h2>Video-<span>Formate</span></h2>
+            <p>Optimiert für jede Plattform – mit echten Video-Beispielen</p>
+        </div>
+
+        <div class="video-grid">
+            <div class="video-card">
+                <div class="video-preview">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?start=0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+                <div class="video-info">
+                    <h4>Instagram Reel</h4>
+                    <div class="video-specs">
+                        <strong>1080 × 1920px</strong><br>
+                        15–90 Sekunden<br>
+                        Schnelle Schnitte, Text-Overlays
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-preview">
+                    <iframe src="https://www.youtube.com/embed/9bZkp7q19f0?start=0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+                <div class="video-info">
+                    <h4>YouTube Video</h4>
+                    <div class="video-specs">
+                        <strong>1920 × 1080px</strong><br>
+                        1–15 Minuten<br>
+                        Narrative, Kapitel, SEO
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-preview">
+                    <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw?start=0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+                <div class="video-info">
+                    <h4>TikTok Video</h4>
+                    <div class="video-specs">
+                        <strong>1080 × 1920px</strong><br>
+                        15–60 Sekunden<br>
+                        Trend-fokussiert, Musik
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-preview">
+                    <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4?start=0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+                <div class="video-info">
+                    <h4>Pinterest Pin</h4>
+                    <div class="video-specs">
+                        <strong>1000 × 1500px</strong><br>
+                        15–30 Sekunden<br>
+                        Aesthetic, Mehrwert
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-preview">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?start=0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+                <div class="video-info">
+                    <h4>Website/Exposé</h4>
+                    <div class="video-specs">
+                        <strong>1920 × 1080px</strong><br>
+                        2–5 Minuten<br>
+                        Professionell, subtile Musik
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-preview">
+                    <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw?start=0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+                <div class="video-info">
+                    <h4>Virtual Tour</h4>
+                    <div class="video-specs">
+                        <strong>360° Interaktiv</strong><br>
+                        Selbstgeführt, unbegrenzt<br>
+                        Immersiv, räumlich
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="anfrage">
+        <div class="cta-content">
+            <h2>Lass uns deine Immobilie zeigen</h2>
+            <p>Kostenloses Gespräch. Kein Risiko. Nur professionelle Ergebnisse.</p>
+            <div class="cta-buttons">
+                <a href="mailto:info@backtooutdoor.com">📧 E-Mail</a>
+                <a href="https://wa.me/436644123456?text=Immobilien-Video">💬 WhatsApp</a>
+                <a href="#termin">📅 Termin</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Immobilien-Content Studio</strong> | Powered by Back to Outdoor</p>
+        <p><a href="https://back-to-outdoor.com" class="back-link">← Zurück zu Back to Outdoor</a></p>
+        <p style="margin-top: 2rem; font-size: 0.85rem; color: var(--granite); opacity: 0.8;">
+            © 2026 Back to Outdoor | <a href="#" class="back-link">Impressum</a> | <a href="#" class="back-link">Datenschutz</a>
+        </p>
+    </footer>
+</body>
+</html>
