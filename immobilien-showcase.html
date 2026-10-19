@@ -1,618 +1,431 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Immobilien-Formate | Back to Outdoor</title>
-    <meta name="description" content="Sehen Sie, wie Ihre Immobilie auf Instagram, YouTube, TikTok und mehr aussieht.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Immobilien-Videos & Projektseiten | Back to Outdoor</title>
+<meta name="description" content="Rundgang-Videos aus Ihren Exposé-Fotos und Projektseiten für Neubauprojekte. Für Makler und Bauträger in Salzburg und Umgebung.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1E2226; --bg2:#262B30; --line:#3A4047; --field:#4C535B;
+  --text:#F5F1E6; --muted:#D8D2C5; --soft:#B9B3A6; --sand:#D4B8A5;
+  --accent:#CD1342; --accent-dark:#A80F36; --paper:#F5F1E6; --ink:#1E2226;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Hanken Grotesk',sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:var(--sand)} a:hover{color:#EADBC9}
+img{max-width:100%}
+em.s{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);font-weight:400}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.eyebrow{color:var(--sand);font-size:13px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:20px}
+h2{margin:0;font-weight:400;letter-spacing:-.02em;font-size:clamp(38px,5vw,60px);line-height:1.05}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:18px 30px;font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.btn-red{background:var(--accent);color:#fff} .btn-red:hover{background:var(--accent-dark);color:#fff}
+.btn-line{border:1px solid #8E949B;color:var(--text);background:transparent} .btn-line:hover{border-color:var(--text);color:var(--text)}
 
-        :root {
-            --ink: #132030;
-            --brown: #8a4118;
-            --orange: #e36d27;
-            --foam: #f7f5f0;
-            --stone: #ece7dd;
-            --granite: #635c50;
-        }
+/* Header */
+header.top{position:relative;z-index:3;max-width:1280px;margin:0 auto;padding:28px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+.brand{color:var(--text);text-decoration:none;font-size:14px;font-weight:700;letter-spacing:.32em;text-transform:uppercase}
+.brand span{color:var(--sand)}
+header.top nav{display:flex;flex-wrap:wrap;gap:28px;font-size:15px}
+header.top nav a{color:var(--muted);text-decoration:none} header.top nav a:hover{color:var(--text)}
+.btn-small{padding:14px 22px;font-size:13px}
 
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: var(--ink);
-            background: var(--foam);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+/* Hero */
+.hero{position:relative;margin-top:-100px;min-height:860px;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:#2A2F35 center/cover no-repeat;animation:kb 26s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.14) translate(-2%,-1.5%)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,23,27,.9) 0%,rgba(20,23,27,.6) 45%,rgba(20,23,27,.12) 100%)}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-bottom:72px}
+.hero-line{display:flex;align-items:center;gap:16px;color:var(--sand);font-size:13px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:28px}
+.hero-line i{display:inline-block;width:48px;height:2px;background:var(--accent)}
+.hero h1{margin:0;font-weight:400;font-size:clamp(52px,8vw,96px);line-height:.98;letter-spacing:-.01em;max-width:900px}
+.ticks{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:32px;font-size:16px;color:var(--muted)}
+.ticks b{color:var(--sand);font-weight:600}
+.hero p.lead{margin:24px 0 0;max-width:600px;color:var(--muted)}
+.ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:40px}
+.credit{position:absolute;right:16px;bottom:10px;z-index:2;font-size:11px;color:rgba(245,241,230,.45)}
 
-        /* NAVIGATION */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: linear-gradient(180deg, rgba(19, 32, 48, 0.98) 0%, rgba(19, 32, 48, 0.95) 100%);
-            backdrop-filter: blur(20px);
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(227, 109, 39, 0.1);
-        }
+/* Facts */
+.facts{border-bottom:1px solid var(--line)}
+.facts .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.fact{padding:32px 24px 32px 0;border-right:1px solid var(--line)}
+.fact:last-child{border-right:0}
+.fact .v{font-size:34px;font-weight:500;line-height:1.15}
+.fact .l{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin-top:6px}
 
-        .nav-logo {
-            font-size: 1rem;
-            font-weight: 800;
-            font-family: 'Big Shoulders Display', sans-serif;
-            color: var(--orange);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
+/* Formats */
+section.block{padding:120px 0}
+section.bordered{border-top:1px solid var(--line)}
+.head-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:40px}
+.filters{display:flex;flex-wrap:wrap;gap:10px}
+.filters button{background:transparent;color:var(--text);border:1px solid #8E949B;padding:12px 20px;min-height:44px;font:600 14px 'Hanken Grotesk',sans-serif;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--paper);color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.card{text-align:left;background:var(--bg2);color:var(--text);border:1px solid var(--line);padding:0;cursor:pointer;display:flex;flex-direction:column;font-family:inherit;font-size:17px;transition:border-color .2s}
+.card:hover{border-color:#6A7179}
+.card[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.card[hidden]{display:none}
+.prev{height:240px;width:100%;background:#30353B;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.card[aria-pressed="true"] .prev{background:var(--accent-dark)}
+.shot{background:center/cover no-repeat;animation:kb 14s ease-in-out infinite alternate;border:2px solid rgba(245,241,230,.85)}
+.r916{height:200px;aspect-ratio:9/16}
+.r169{width:84%;aspect-ratio:16/9}
+.r23{height:200px;aspect-ratio:2/3}
+.r-site{width:84%;aspect-ratio:16/10;border-top-width:14px;border-color:#F5F1E6}
+.r360{width:84%;aspect-ratio:2/1;border-radius:50%/40%}
+.badge{position:absolute;top:12px;left:12px;background:rgba(20,23,27,.75);color:var(--paper);font-size:11px;font-weight:700;letter-spacing:.14em;padding:5px 9px}
+.card .info{padding:24px;display:flex;flex-direction:column;gap:6px;width:100%}
+.card .name{font-family:'Instrument Serif',serif;font-size:32px;line-height:1.05}
+.card .use{font-weight:600}
+.card .meta{font-size:15px;opacity:.85}
 
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
+.detail{margin-top:40px;background:var(--paper);color:var(--ink);display:flex;flex-wrap:wrap}
+.detail[hidden]{display:none}
+.detail .media{flex:1 1 480px;min-width:0;background:#fff;display:flex;align-items:center;justify-content:center;padding:32px;min-height:420px}
+.detail .media .shot{border-color:var(--ink)}
+.detail .media .r916{height:380px}.detail .media .r23{height:380px}
+.detail .media .r169,.detail .media .r-site,.detail .media .r360{width:92%}
+.detail .txt{flex:1 1 380px;min-width:0;padding:48px;display:flex;flex-direction:column;gap:14px}
+.detail .kick{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase}
+.detail .ttl{font-family:'Instrument Serif',serif;font-size:56px;line-height:1}
+.detail dl{margin:12px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px}
+.detail dt{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5A5A52}
+.detail dd{margin:0;font-size:20px}
+.detail p{margin:8px 0 0;font-size:16px;color:#3E3E38}
+.btn-dark{background:var(--ink);color:var(--paper)} .btn-dark:hover{color:#fff}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid #8A8578}
+.note{color:var(--soft);font-size:14px;margin:24px 0 0}
 
-        nav a {
-            color: rgba(247, 245, 240, 0.8);
-            text-decoration: none;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
+/* Split sections */
+.split{display:flex;flex-wrap:wrap;gap:64px;align-items:center}
+.split > *{flex:1 1 440px;min-width:0}
+.split img{height:560px;width:100%;object-fit:cover;display:block}
+.split p{color:var(--muted);margin:28px 0 0}
+.dash{list-style:none;padding:0;margin:32px 0 0;display:flex;flex-direction:column;gap:14px}
+.dash li{display:flex;gap:14px}.dash li::before{content:"—";color:var(--sand)}
+.mock{background:#14171B;border:1px solid var(--line);padding:0;overflow:hidden}
+.mock .bar{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.mock .bar i{width:9px;height:9px;border-radius:50%;background:#4C535B}
+.mock .mhero{height:220px;background:center/cover no-repeat;position:relative}
+.mock .mhero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,23,27,.85),rgba(20,23,27,.1))}
+.mock .mhero div{position:absolute;left:22px;bottom:20px;z-index:1;font-size:30px;line-height:1}
+.mock .units{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px}
+.mock .u{background:var(--bg2);border:1px solid var(--line);padding:10px;font-size:12px;line-height:1.35}
+.mock .u b{font-family:'Instrument Serif',serif;font-weight:400;font-size:20px;display:block}
+.st{display:inline-block;margin-top:4px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.st.ok{color:#7FC79A}.st.no{color:#E07A8F}.st.res{color:var(--sand)}
 
-        nav a:hover {
-            color: var(--orange);
-        }
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px}
+.step{background:var(--bg);padding:32px 28px}
+.step .n{font-family:'Instrument Serif',serif;font-size:48px;color:var(--accent);line-height:1}
+.step h3{margin:14px 0 8px;font-size:20px;font-weight:600}
+.step p{margin:0;color:var(--muted);font-size:16px}
 
-        /* HERO */
-        .hero {
-            margin-top: 60px;
-            min-height: 100vh;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4rem 2rem;
-        }
+/* Form */
+#anfrage{background:var(--bg2);border-top:1px solid var(--line)}
+form{display:flex;flex-direction:column;gap:20px}
+label{display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+input,select,textarea{background:var(--bg);border:1px solid var(--field);color:var(--text);padding:14px 16px;min-height:48px;font:16px 'Hanken Grotesk',sans-serif;text-transform:none;letter-spacing:0;width:100%}
+textarea{resize:vertical;min-height:120px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--sand);outline-offset:1px}
+.row{display:flex;flex-wrap:wrap;gap:20px}.row label{flex:1 1 220px}
+.chk{flex-direction:row;align-items:flex-start;gap:12px;text-transform:none;letter-spacing:0;font-weight:400;font-size:14px;color:var(--muted)}
+.chk input{width:20px;min-height:20px;margin-top:2px;flex:0 0 auto}
+.hp{position:absolute;left:-9999px}
+.msg{min-height:1.4em;color:#E07A8F;font-size:15px}
+.thanks{border:1px solid var(--sand);padding:48px;display:none;flex-direction:column;gap:12px}
+.thanks.show{display:flex}
+.thanks .big{font-family:'Instrument Serif',serif;font-size:40px;color:var(--sand)}
+.contact{margin-top:40px;padding-top:32px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.contact a{text-decoration:none}
 
-        .hero-video-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            background: linear-gradient(135deg, var(--ink) 0%, #0a1520 100%);
-        }
+footer{max-width:1280px;margin:0 auto;padding:40px 32px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:14px;color:var(--soft)}
+footer a{color:var(--soft)}
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(19, 32, 48, 0.65) 0%, rgba(19, 32, 48, 0.45) 50%, rgba(227, 109, 39, 0.1) 100%);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            max-width: 1000px;
-            animation: fadeInUp 1.2s ease-out;
-            text-align: center;
-            color: var(--foam);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero h1 {
-            font-size: clamp(3.5rem, 12vw, 6.5rem);
-            font-weight: 900;
-            font-family: 'Big Shoulders Display', sans-serif;
-            margin-bottom: 2rem;
-            letter-spacing: -0.02em;
-            text-transform: uppercase;
-            line-height: 1;
-            text-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .hero h1 span {
-            color: var(--orange);
-            display: block;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            font-weight: 300;
-            opacity: 0.98;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 1.2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.9rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 0.85rem;
-        }
-
-        .btn-primary {
-            background: var(--orange);
-            color: var(--ink);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 50px rgba(227, 109, 39, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--orange);
-            border: 2px solid var(--orange);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(227, 109, 39, 0.1);
-            transform: translateY(-4px);
-        }
-
-        /* FORMAT SHOWCASE */
-        .formats-section {
-            padding: 8rem 2rem;
-            max-width: 1500px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 5.5rem;
-        }
-
-        .section-header h2 {
-            font-size: clamp(2.5rem, 7vw, 4rem);
-            font-family: 'Big Shoulders Display', sans-serif;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-        }
-
-        .section-header h2 span {
-            color: var(--orange);
-        }
-
-        .section-header p {
-            font-size: 1.2rem;
-            color: var(--granite);
-            max-width: 650px;
-            margin: 0 auto;
-            font-weight: 300;
-            line-height: 1.7;
-        }
-
-        .formats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 3.5rem;
-            margin-bottom: 6rem;
-        }
-
-        .format-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
-            border: 1px solid rgba(227, 109, 39, 0.06);
-        }
-
-        .format-card:hover {
-            transform: translateY(-16px);
-            box-shadow: 0 32px 80px rgba(227, 109, 39, 0.18);
-            border-color: rgba(227, 109, 39, 0.25);
-        }
-
-        .format-preview {
-            position: relative;
-            background: linear-gradient(135deg, var(--ink) 0%, #0a1520 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .format-card:nth-child(1) .format-preview { aspect-ratio: 9 / 16; }
-        .format-card:nth-child(2) .format-preview { aspect-ratio: 16 / 9; }
-        .format-card:nth-child(3) .format-preview { aspect-ratio: 9 / 16; }
-        .format-card:nth-child(4) .format-preview { aspect-ratio: 16 / 9; }
-        .format-card:nth-child(5) .format-preview { aspect-ratio: 2 / 3; }
-        .format-card:nth-child(6) .format-preview { aspect-ratio: 1 / 1; }
-
-        .format-video, .format-canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-        }
-
-        .format-info {
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            min-height: 280px;
-        }
-
-        .format-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--ink);
-            font-family: 'Big Shoulders Display', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: -0.01em;
-            line-height: 1.2;
-        }
-
-        .format-specs {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            font-size: 0.95rem;
-            color: var(--granite);
-            border-top: 1px solid rgba(227, 109, 39, 0.1);
-            padding-top: 1.5rem;
-        }
-
-        .format-specs div {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .format-specs strong {
-            color: var(--brown);
-            font-weight: 600;
-        }
-
-        .format-description {
-            font-size: 0.98rem;
-            color: var(--granite);
-            line-height: 1.7;
-            margin-top: auto;
-        }
-
-        .format-accent {
-            height: 4px;
-            background: linear-gradient(90deg, var(--orange) 0%, var(--brown) 100%);
-            border-radius: 4px;
-        }
-
-        /* CTA FINAL */
-        .cta-final {
-            padding: 6rem 3rem;
-            background: linear-gradient(135deg, var(--brown) 0%, var(--orange) 100%);
-            color: white;
-            text-align: center;
-            border-radius: 24px;
-            margin: 0 2rem 5rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 20px 60px rgba(227, 109, 39, 0.25);
-        }
-
-        .cta-final h3 {
-            font-size: clamp(2rem, 6vw, 3.2rem);
-            font-family: 'Big Shoulders Display', sans-serif;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            font-weight: 900;
-            letter-spacing: -0.01em;
-        }
-
-        .cta-final p {
-            font-size: 1.15rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.98;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
-        }
-
-        /* FOOTER */
-        footer {
-            background: var(--ink);
-            color: var(--foam);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-top: 1px solid rgba(227, 109, 39, 0.1);
-        }
-
-        footer p {
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem 1.5rem;
-            }
-
-            .formats-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .nav-menu {
-                gap: 1rem;
-            }
-
-            .section-header {
-                margin-bottom: 2.5rem;
-            }
-        }
-    </style>
+@media (max-width:720px){
+  .wrap,header.top,footer{padding-left:16px;padding-right:16px}
+  header.top nav{display:none}
+  .hero{min-height:720px}
+  section.block{padding:80px 0}
+  .fact{border-right:0;border-bottom:1px solid var(--line);padding:22px 0}
+  .detail .txt{padding:28px}
+  .detail .ttl{font-size:42px}
+  .split img{height:340px}
+  .mock .units{grid-template-columns:repeat(2,1fr)}
+}
+@media (prefers-reduced-motion:reduce){.hero-bg,.shot{animation:none}}
+</style>
 </head>
 <body>
-    <nav>
-        <div class="nav-logo">🏢 Immobilien Studio</div>
-        <div class="nav-menu">
-            <a href="#formate">Formate</a>
-            <a href="#cta" class="btn btn-primary" style="margin: 0;">Anfrage</a>
+
+<header class="top">
+  <a href="#top" class="brand">Back to Outdoor <span>·</span> Immobilien</a>
+  <nav aria-label="Hauptnavigation">
+    <a href="#formate">Formate</a>
+    <a href="#projektseite">Projektseite</a>
+    <a href="#ablauf">Ablauf</a>
+    <a href="#anfrage">Kontakt</a>
+  </nav>
+  <a href="#anfrage" class="btn btn-red btn-small">Vorschau anfragen</a>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg" role="img" aria-label="Moderne Wohnimmobilie mit Pool" style="background-image:url('https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=2000')"></div>
+  <div class="wrap">
+    <div class="hero-line"><i></i>Salzburg · Für Makler &amp; Bauträger</div>
+    <h1>Ihre Objekte. <em class="s">In Bewegung.</em></h1>
+    <div class="ticks">
+      <b>✓ Kostenlose Vorschau</b>
+      <span>Aus vorhandenen Exposé-Fotos</span>
+      <span>Fertig in 2 Werktagen</span>
+    </div>
+    <p class="lead">Kurze Rundgang-Videos für Instagram, Portale und Website – und eigene Projektseiten für Neubauprojekte, mit allen Wohnungen und ihrem aktuellen Status.</p>
+    <div class="ctas">
+      <a href="#formate" class="btn btn-red">Formate ansehen →</a>
+      <a href="#anfrage" class="btn btn-line">Vorschau anfragen</a>
+    </div>
+  </div>
+  <div class="credit">Beispielbilder: Pexels</div>
+</section>
+
+<section class="facts" aria-label="Eckdaten">
+  <div class="wrap">
+    <div class="fact"><div class="v">20 Sek.</div><div class="l">Rundgang pro Objekt</div></div>
+    <div class="fact"><div class="v">9:16 · 16:9</div><div class="l">Hoch- und Querformat</div></div>
+    <div class="fact"><div class="v">2 Werktage</div><div class="l">Lieferzeit</div></div>
+    <div class="fact"><div class="v">0 Termine</div><div class="l">vor Ort nötig</div></div>
+    <div class="fact"><div class="v" style="color:var(--sand)">Gratis</div><div class="l">Vorschau mit Ihrem Objekt</div></div>
+  </div>
+</section>
+
+<section class="block" id="formate">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="eyebrow">Die Formate</div>
+        <h2>Finden Sie <em class="s">Ihr Format.</em></h2>
+      </div>
+      <div class="filters" role="group" aria-label="Formate filtern">
+        <button type="button" data-f="alle" aria-pressed="true">Alle 6</button>
+        <button type="button" data-f="video" aria-pressed="false">Video</button>
+        <button type="button" data-f="web" aria-pressed="false">Web &amp; Social</button>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+
+    <div class="detail" id="detail" hidden>
+      <div class="media" id="dMedia"></div>
+      <div class="txt">
+        <div class="kick" id="dKick"></div>
+        <div class="ttl" id="dTitle"></div>
+        <div style="font-size:20px;font-weight:600" id="dUse"></div>
+        <dl>
+          <div><dt>Format</dt><dd id="dFormat"></dd></div>
+          <div><dt>Länge</dt><dd id="dLen"></dd></div>
+          <div><dt>Einsatz</dt><dd id="dWhere"></dd></div>
+          <div><dt>Material</dt><dd id="dMat"></dd></div>
+        </dl>
+        <p id="dText"></p>
+        <div class="ctas" style="margin-top:12px;gap:12px">
+          <a href="#anfrage" class="btn btn-dark" id="dCta">Vorschau anfragen →</a>
+          <button type="button" class="btn btn-ghost" id="dClose">Schließen</button>
         </div>
-    </nav>
+      </div>
+    </div>
+    <p class="note">Preise nennen wir im persönlichen Angebot – abhängig von Anzahl der Objekte und Formate.</p>
+  </div>
+</section>
 
-    <section class="hero">
-        <video id="heroVideo" class="hero-video-canvas" autoplay muted loop playsinline style="object-fit: cover;"></video>
-        <div class="hero-content">
-            <h1>Ihre Immobilie<span>in jedem Format</span></h1>
-            <p>Von Instagram bis Website – wir präsentieren Ihre Objekte professionell optimiert für jede Plattform</p>
-            <div class="cta-group">
-                <a href="#formate" class="btn btn-primary">Formate entdecken</a>
-                <a href="#" class="btn btn-secondary">Kostenloses Gespräch</a>
-            </div>
+<section class="block bordered" id="projektseite">
+  <div class="wrap split">
+    <div class="mock" aria-label="Beispiel einer Projektseite">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <div class="mhero" style="background-image:url('https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200')"><div>Neun Wohnungen.<br><em class="s">Mitten in der Stadt.</em></div></div>
+      <div class="units">
+        <div class="u"><b>Top 1</b>3 Zi. · Garten<br><span class="st no">Verkauft</span></div>
+        <div class="u"><b>Top 2</b>2 Zi. · Garten<br><span class="st ok">Verfügbar</span></div>
+        <div class="u"><b>Top 3</b>1 Zi. · Garten<br><span class="st res">Reserviert</span></div>
+        <div class="u"><b>Top 4</b>3 Zi. · Balkon<br><span class="st ok">Verfügbar</span></div>
+        <div class="u"><b>Top 5</b>2 Zi. · Balkon<br><span class="st ok">Verfügbar</span></div>
+        <div class="u"><b>Top 6</b>Penthouse<br><span class="st no">Verkauft</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow">Projektseite für Neubau</div>
+      <h2>Ein Projekt. <em class="s">Eine eigene Seite.</em></h2>
+      <p>Auf Portalen gehen einzelne Wohnungen zwischen hunderten Inseraten unter. Eine eigene Projektseite zeigt das ganze Haus auf einen Blick – so wie unser Beispiel für ein Wohnprojekt in Salzburg-Maxglan.</p>
+      <ul class="dash">
+        <li>Alle Wohnungen mit Grundriss, Fläche, Freifläche und Preis</li>
+        <li>Status verfügbar, reserviert oder verkauft – wir halten ihn aktuell</li>
+        <li>Filter nach Garten, Balkon oder Penthouse</li>
+        <li>Exposé-Anfrage direkt pro Wohnung, landet in Ihrem Postfach</li>
+        <li>Rundgang-Video im Hero, auf Wunsch eigene Domain</li>
+      </ul>
+      <div class="ctas"><a href="#anfrage" class="btn btn-red" data-pick="site">Projektseite anfragen →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="block bordered" id="ablauf">
+  <div class="wrap">
+    <div class="eyebrow">Ablauf</div>
+    <h2>Von Ihren Fotos <em class="s">zum fertigen Video.</em></h2>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3>Objekt nennen</h3><p>Sie schicken uns den Link zum Inserat oder die Exposé-Fotos.</p></div>
+      <div class="step"><div class="n">02</div><h3>Vorschau ansehen</h3><p>Sie bekommen kostenlos eine Vorschau mit Wasserzeichen – nur für Sie, nichts wird veröffentlicht.</p></div>
+      <div class="step"><div class="n">03</div><h3>Freigeben</h3><p>Passt es, gibt es ein Angebot. Änderungswünsche bauen wir ein.</p></div>
+      <div class="step"><div class="n">04</div><h3>Dateien erhalten</h3><p>Innerhalb von 2 Werktagen: Hoch- und Querformat ohne Wasserzeichen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="anfrage">
+  <div class="wrap split" style="align-items:flex-start">
+    <div>
+      <div class="eyebrow">Vorschau &amp; Angebot</div>
+      <h2>Ihr Objekt als Video. <em class="s">Kostenlos testen.</em></h2>
+      <p>Schicken Sie uns ein aktuelles Objekt. Sie bekommen eine kurze Vorschau, bevor Sie sich für irgendetwas entscheiden.</p>
+      <div class="contact">
+        <div style="font-weight:700">Back to Outdoor · Bastian Prein</div>
+        <div style="color:var(--muted)">Salzburg, Österreich</div>
+        <a href="tel:+436608422053">+43 (0)660 8422053</a>
+        <a href="mailto:info@backtooutdoor.com">info@backtooutdoor.com</a>
+      </div>
+    </div>
+    <div>
+      <div class="thanks" id="thanks">
+        <div class="big" id="thanksTitle">Danke.</div>
+        <p style="margin:0;color:var(--muted)">Ihre Anfrage ist angekommen. Wir melden uns innerhalb von 24 Stunden mit den nächsten Schritten.</p>
+      </div>
+      <form id="form" novalidate>
+        <label>Format
+          <select id="fFormat" name="format">
+            <option value="">Noch offen / Beratung</option>
+          </select>
+        </label>
+        <div class="row">
+          <label>Name<input type="text" name="name" id="fName" required autocomplete="name"></label>
+          <label>Firma<input type="text" name="firma" id="fFirma" autocomplete="organization"></label>
         </div>
-    </section>
-
-    <section class="formats-section" id="formate">
-        <div class="section-header">
-            <h2>Alle <span>Formate</span></h2>
-            <p>Wie Ihre Immobilie optimal auf jeder Plattform präsentiert wird</p>
+        <div class="row">
+          <label>E-Mail<input type="email" name="email" id="fEmail" required autocomplete="email"></label>
+          <label>Telefon<input type="tel" name="telefon" id="fTel" autocomplete="tel"></label>
         </div>
+        <label>Link zum Objekt oder Nachricht
+          <textarea name="anliegen" id="fMsg" placeholder="z. B. Link zum Inserat auf Ihrer Website oder willhaben"></textarea>
+        </label>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="chk"><input type="checkbox" id="fDsgvo"> <span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage verwendet werden. Mehr in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</span></label>
+        <div class="msg" id="msg" role="status"></div>
+        <button type="submit" class="btn btn-red" id="send" style="align-self:flex-start">Vorschau anfragen →</button>
+      </form>
+    </div>
+  </div>
+</section>
 
-        <div class="formats-grid">
-            <div class="format-card">
-                <div class="format-preview">
-                    <video id="format1Video" class="format-video" autoplay muted loop playsinline></video>
-                </div>
-                <div class="format-info">
-                    <div class="format-title">Instagram Reel</div>
-                    <div class="format-specs">
-                        <div><strong>Format:</strong><span>1080 × 1920px</span></div>
-                        <div><strong>Länge:</strong><span>15–60 Sek</span></div>
-                        <div><strong>Style:</strong><span>Trend-fokussiert</span></div>
-                    </div>
-                    <div class="format-description">Kurzvideos mit Musik & schnellen Schnitten. Perfekt für maximale Reichweite.</div>
-                    <div class="format-accent"></div>
-                </div>
-            </div>
+<footer>
+  <span>Immobilien-Videos &amp; Projektseiten · Back to Outdoor, Salzburg</span>
+  <span style="display:flex;gap:24px"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="/">backtooutdoor.com</a></span>
+</footer>
 
-            <div class="format-card">
-                <div class="format-preview">
-                    <video id="format2Video" class="format-video" autoplay muted loop playsinline></video>
-                </div>
-                <div class="format-info">
-                    <div class="format-title">YouTube Video</div>
-                    <div class="format-specs">
-                        <div><strong>Format:</strong><span>1920 × 1080px</span></div>
-                        <div><strong>Länge:</strong><span>1–15 Min</span></div>
-                        <div><strong>Style:</strong><span>Narrative, SEO</span></div>
-                    </div>
-                    <div class="format-description">Professionelle längere Videos mit Voiceover, Musik und Details. Für Google-Ranking.</div>
-                    <div class="format-accent"></div>
-                </div>
-            </div>
+<script>
+(function(){
+  var P = function(id){ return 'https://images.pexels.com/photos/' + id + '/pexels-photo-' + id + '.jpeg?auto=compress&cs=tinysrgb&w=1200'; };
+  var FORMATS = [
+    {id:'reel', group:'video', name:'Instagram Reel', badge:'9:16', ratio:'r916', img:P(1571460),
+     use:'Rundgang für Reels & Storys', format:'1080 × 1920', len:'15–30 Sek.', where:'Instagram, WhatsApp-Status', mat:'Exposé-Fotos',
+     text:'Der schnellste Weg, ein Objekt sichtbar zu machen: Raum für Raum in 20 Sekunden, mit ruhiger Kamerafahrt, Texteinblendungen zu Lage und Fläche und Ihrem Logo am Ende.'},
+    {id:'quer', group:'video', name:'Objektvideo quer', badge:'16:9', ratio:'r169', img:P(1080721),
+     use:'Für Website & Portale', format:'1920 × 1080', len:'20–60 Sek.', where:'Website, willhaben, ImmoScout', mat:'Exposé-Fotos',
+     text:'Dasselbe Objekt im Querformat – passend für Ihre Website, die Videofunktion der Portale und YouTube. Auf Wunsch mit Musik und kurzen Infotafeln.'},
+    {id:'tiktok', group:'video', name:'TikTok & Shorts', badge:'9:16', ratio:'r916', img:P(1457842),
+     use:'Schnellere Schnitte', format:'1080 × 1920', len:'10–20 Sek.', where:'TikTok, YouTube Shorts', mat:'Exposé-Fotos',
+     text:'Kürzer und schneller geschnitten als das Reel, mit großem Texthaken in der ersten Sekunde. Für jüngere Käufer und Mieter.'},
+    {id:'site', group:'web', name:'Projektseite', badge:'Web', ratio:'r-site', img:P(323780),
+     use:'Eigene Seite pro Neubauprojekt', format:'Responsive Website', len:'1 Seite', where:'Eigene Domain oder Unterseite', mat:'Grundrisse, Renderings, Preisliste',
+     text:'Alle Wohnungen mit Grundriss, Fläche und Preis, Status verfügbar oder verkauft, Filter und Exposé-Anfrage pro Wohnung. Wir halten den Status nach kurzer Nachricht aktuell.'},
+    {id:'pin', group:'web', name:'Pinterest Pin', badge:'2:3', ratio:'r23', img:P(1643383),
+     use:'Langlebige Reichweite', format:'1000 × 1500', len:'Bild oder Video-Pin', where:'Pinterest', mat:'Exposé-Fotos',
+     text:'Hochformat-Pins mit Suchbegriffen wie „Wohnung Salzburg Garten“. Pins werden über Monate gefunden und führen auf Ihr Inserat.'},
+    {id:'360', group:'web', name:'360°-Rundgang', badge:'360°', ratio:'r360', img:P(1029599),
+     use:'Besichtigung online', format:'Interaktiv', len:'Alle Räume', where:'Website, Exposé-Link', mat:'360°-Aufnahme vor Ort',
+     text:'Interessenten gehen online durch die Wohnung, bevor sie einen Termin ausmachen. Dafür kommen wir einmal mit der 360°-Kamera vorbei.'}
+  ];
+  var grid = document.getElementById('grid'), detail = document.getElementById('detail');
+  var sel = document.getElementById('fFormat'), selected = null;
 
-            <div class="format-card">
-                <div class="format-preview">
-                    <video id="format3Video" class="format-video" autoplay muted loop playsinline></video>
-                </div>
-                <div class="format-info">
-                    <div class="format-title">TikTok Video</div>
-                    <div class="format-specs">
-                        <div><strong>Format:</strong><span>1080 × 1920px</span></div>
-                        <div><strong>Länge:</strong><span>15–60 Sek</span></div>
-                        <div><strong>Style:</strong><span>Trend-fokussiert</span></div>
-                    </div>
-                    <div class="format-description">Sehr schnelle Schnitte, Trends & Musik. Maximum Viral-Potential bei Gen Z.</div>
-                    <div class="format-accent"></div>
-                </div>
-            </div>
+  FORMATS.forEach(function(f){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'card'; b.dataset.id = f.id; b.dataset.group = f.group;
+    b.setAttribute('aria-pressed','false');
+    b.innerHTML = '<div class="prev"><span class="badge">'+f.badge+'</span><div class="shot '+f.ratio+'" style="background-image:url(\''+f.img+'\')"></div></div>'+
+      '<div class="info"><span class="name">'+f.name+'</span><span class="use">'+f.use+'</span><span class="meta">'+f.format+' · '+f.len+'</span></div>';
+    b.addEventListener('click', function(){ pick(f.id, true); });
+    grid.appendChild(b);
+    var o = document.createElement('option'); o.value = f.id; o.textContent = f.name + ' – ' + f.use; sel.appendChild(o);
+  });
 
-            <div class="format-card">
-                <div class="format-preview">
-                    <video id="format4Video" class="format-video" autoplay muted loop playsinline></video>
-                </div>
-                <div class="format-info">
-                    <div class="format-title">Website Exposé</div>
-                    <div class="format-specs">
-                        <div><strong>Format:</strong><span>1920 × 1080px</span></div>
-                        <div><strong>Länge:</strong><span>2–5 Min</span></div>
-                        <div><strong>Style:</strong><span>Professionell</span></div>
-                    </div>
-                    <div class="format-description">Hochwertiges Objektvideo für Website & Portale. Mit Musik & Voiceover.</div>
-                    <div class="format-accent"></div>
-                </div>
-            </div>
+  function pick(id, scroll){
+    selected = id;
+    var f = FORMATS.filter(function(x){ return x.id === id; })[0];
+    [].forEach.call(grid.children, function(c){ c.setAttribute('aria-pressed', c.dataset.id === id ? 'true' : 'false'); });
+    if (!f){ detail.hidden = true; return; }
+    document.getElementById('dMedia').innerHTML = '<div class="shot '+f.ratio+'" style="background-image:url(\''+f.img+'\')"></div>';
+    document.getElementById('dKick').textContent = f.badge + ' · ' + f.where;
+    document.getElementById('dTitle').textContent = f.name;
+    document.getElementById('dUse').textContent = f.use;
+    document.getElementById('dFormat').textContent = f.format;
+    document.getElementById('dLen').textContent = f.len;
+    document.getElementById('dWhere').textContent = f.where;
+    document.getElementById('dMat').textContent = f.mat;
+    document.getElementById('dText').textContent = f.text;
+    document.getElementById('dCta').textContent = 'Vorschau: ' + f.name + ' →';
+    detail.hidden = false; sel.value = id;
+    if (scroll) detail.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+  document.getElementById('dClose').addEventListener('click', function(){ pick(null); });
+  document.getElementById('dCta').addEventListener('click', function(){ if (selected) sel.value = selected; });
+  [].forEach.call(document.querySelectorAll('[data-pick]'), function(a){ a.addEventListener('click', function(){ sel.value = a.dataset.pick; }); });
 
-            <div class="format-card">
-                <div class="format-preview">
-                    <video id="format5Video" class="format-video" autoplay muted loop playsinline></video>
-                </div>
-                <div class="format-info">
-                    <div class="format-title">Pinterest Pin</div>
-                    <div class="format-specs">
-                        <div><strong>Format:</strong><span>1000 × 1500px</span></div>
-                        <div><strong>Typ:</strong><span>Static Image</span></div>
-                        <div><strong>Style:</strong><span>Keywords, CTA</span></div>
-                    </div>
-                    <div class="format-description">Hochkant-Pins mit Keywords. Langlebiger Traffic & hochwertige Backlinks.</div>
-                    <div class="format-accent"></div>
-                </div>
-            </div>
+  [].forEach.call(document.querySelectorAll('.filters button'), function(btn){
+    btn.addEventListener('click', function(){
+      var g = btn.dataset.f;
+      [].forEach.call(document.querySelectorAll('.filters button'), function(x){ x.setAttribute('aria-pressed', x === btn ? 'true' : 'false'); });
+      [].forEach.call(grid.children, function(c){ c.hidden = !(g === 'alle' || c.dataset.group === g); });
+    });
+  });
+  pick('reel', false);
 
-            <div class="format-card">
-                <div class="format-preview">
-                    <video id="format6Video" class="format-video" autoplay muted loop playsinline></video>
-                </div>
-                <div class="format-info">
-                    <div class="format-title">360° Virtual Tour</div>
-                    <div class="format-specs">
-                        <div><strong>Format:</strong><span>Interaktiv</span></div>
-                        <div><strong>Access:</strong><span>Unbegrenzt</span></div>
-                        <div><strong>Style:</strong><span>Immersiv</span></div>
-                    </div>
-                    <div class="format-description">Immersive Erfahrung. Käufer sehen Objekte online wie vor Ort – ohne Fahrtweg.</div>
-                    <div class="format-accent"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-final" id="cta">
-        <h3>Bereit für professionelle Inhalte?</h3>
-        <p>Kontaktieren Sie uns für ein kostenloses Beratungsgespräch – wir zeigen, wie wir Ihre Immobilien optimal in Szene setzen</p>
-        <a href="mailto:contact@backtooutdoor.com" class="btn btn-secondary" style="color: white; border-color: white;">Kostenloses Gespräch vereinbaren</a>
-    </section>
-
-    <footer>
-        <p><strong>Immobilien-Content Studio</strong> by Back to Outdoor</p>
-        <p>Professionelle Video- und Fotoproduktion für Makler, Bauträger und Projektentwickler</p>
-    </footer>
-
-    <script>
-        // Immobilien-Bilder als Canvas-Animation (funktioniert zuverlässig)
-        const immobilienBilder = [
-            'https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg',
-            'https://images.pexels.com/photos/1974596/pexels-photo-1974596.jpeg',
-            'https://images.pexels.com/photos/1105957/pexels-photo-1105957.jpeg',
-            'https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg',
-            'https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg',
-            'https://images.pexels.com/photos/1933900/pexels-photo-1933900.jpeg'
-        ];
-
-        function createVideoAnimation(elementId, imageUrl, duration = 6000) {
-            const element = document.getElementById(elementId);
-            if (!element) return;
-
-            // Convert video element to canvas for animation
-            const canvas = document.createElement('canvas');
-            canvas.className = 'format-canvas';
-            element.parentElement.replaceChild(canvas, element);
-
-            const ctx = canvas.getContext('2d');
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-
-            const img = new Image();
-            img.crossOrigin = 'anonymous';
-            img.src = imageUrl + '?w=' + Math.max(canvas.width, 1000) + '&h=' + Math.max(canvas.height, 1000) + '&fit=crop';
-
-            img.onload = function() {
-                let startTime = Date.now();
-                let isZoomingIn = true;
-
-                function animate() {
-                    const elapsed = Date.now() - startTime;
-                    const progress = (elapsed % duration) / duration;
-
-                    const zoom = isZoomingIn ? 1 + progress * 0.3 : 1.3 - progress * 0.3;
-                    const panX = Math.sin(progress * Math.PI * 2) * 20;
-                    const panY = Math.cos(progress * Math.PI * 2) * 20;
-
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    ctx.save();
-                    ctx.translate(canvas.width / 2 + panX, canvas.height / 2 + panY);
-                    ctx.scale(zoom, zoom);
-                    ctx.translate(-img.width / 2, -img.height / 2);
-                    ctx.drawImage(img, 0, 0, img.width, img.height);
-                    ctx.restore();
-
-                    if (elapsed > duration * 2) {
-                        isZoomingIn = !isZoomingIn;
-                        startTime = Date.now();
-                    }
-
-                    requestAnimationFrame(animate);
-                }
-
-                animate();
-            };
-
-            img.onerror = function() {
-                ctx.fillStyle = 'rgba(227, 109, 39, 0.1)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-            };
-        }
-
-        // Hero animation
-        createVideoAnimation('heroVideo', immobilienBilder[0], 8000);
-
-        // Format animations
-        window.addEventListener('load', function() {
-            createVideoAnimation('format1Video', immobilienBilder[1], 6000);
-            createVideoAnimation('format2Video', immobilienBilder[2], 6000);
-            createVideoAnimation('format3Video', immobilienBilder[3], 6000);
-            createVideoAnimation('format4Video', immobilienBilder[4], 6000);
-            createVideoAnimation('format5Video', immobilienBilder[0], 6000);
-            createVideoAnimation('format6Video', immobilienBilder[5], 6000);
-        });
-
-        window.addEventListener('resize', function() {
-            createVideoAnimation('heroVideo', immobilienBilder[0], 8000);
-        });
-    </script>
+  // Formular -> /api/lead
+  var t0 = Date.now(), form = document.getElementById('form'), msg = document.getElementById('msg'), go = document.getElementById('send');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('fName').value.trim(), email = document.getElementById('fEmail').value.trim();
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Bitte Name und eine gültige E-Mail-Adresse angeben.'; return; }
+    if (!document.getElementById('fDsgvo').checked) { msg.textContent = 'Bitte bestätigen Sie kurz den Datenschutz-Hinweis.'; return; }
+    var fmt = sel.options[sel.selectedIndex].text;
+    msg.textContent = ''; go.disabled = true; go.textContent = 'Wird gesendet …';
+    fetch('/api/lead', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({
+      name:name, email:email, firma:document.getElementById('fFirma').value.trim(), telefon:document.getElementById('fTel').value.trim(),
+      typ:'Immobilien', wunsch:'Vorschau Immobilien', anliegen:'Format: ' + fmt + '\n' + document.getElementById('fMsg').value.trim(),
+      seite:location.pathname, website:form.website.value, t:t0, lang:'de'
+    })}).then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return {r:r, j:j}; }); })
+    .then(function(x){
+      if (!(x.r.ok && x.j.ok)) throw new Error();
+      document.getElementById('thanksTitle').textContent = 'Danke, ' + name.split(' ')[0] + '.';
+      form.style.display = 'none'; document.getElementById('thanks').classList.add('show');
+    }).catch(function(){
+      go.disabled = false; go.textContent = 'Vorschau anfragen →';
+      msg.innerHTML = 'Das Senden hat gerade nicht geklappt. Schreiben Sie uns bitte direkt an <a href="mailto:info@backtooutdoor.com">info@backtooutdoor.com</a>.';
+    });
+  });
+})();
+</script>
 </body>
 </html>
