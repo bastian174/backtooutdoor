@@ -15,7 +15,7 @@ What the scan found across 122 root pages, plus `mindset/` and the sitemap with 
 2. **`sitemap.xml`**: `gewohnheits-tetris` → `gewohnheits-tetris.html`. Add entries for `about.html`, `ausruestung.html` and `gewohnheits-tetris.html` if it's missing, in the same format as the neighbouring entries (DE-only pages without `xhtml:link`, as the other tetris pages do).
 3. **Legal pages** `agb.html`, `datenschutz.html`, `impressum.html`: add a German `<meta name="description">`, plus `og:title`, `og:description` and `og:image` using `https://backtooutdoor.com/og-image.jpg`, the same pattern as `about.html`.
 4. **`ausruestung.html`**: add OG tags in the same pattern.
-5. **Internal or preview pages** `backtooutdoor_hero_vorschau.html`, `immobilien-*.html`, `leitfaden.html`: add `<meta name="robots" content="noindex, follow">` and keep them out of the sitemap. (`leitfaden.html` is a lead-magnet landing page with no internal links. Note to Bastian: if it should be indexed, remove the noindex and add a canonical.)
+5. **Internal or preview pages** `backtooutdoor_hero_vorschau.html`, `immobilien-*.html`, `leitfaden.html`: add `<meta name="robots" content="noindex, follow">` and keep them out of the sitemap. (Update: `leitfaden.html` was released for Google afterwards: canonical, absolute `og:image`, sitemap entry.)
 6. **`scripts/seo-check.py`** (new, Python standard library only, no dependencies) as the "test suite". It checks:
    - every sitemap `<loc>` points to an existing file
    - every indexable HTML page (no noindex) has a title, meta description, canonical, `lang`, and exactly one H1
