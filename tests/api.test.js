@@ -76,10 +76,25 @@ test("verarbeiteLead ordnet Kanäle zu (Immobilien, Mindset-E-Book) und sendet a
   assert.match(calls[0].body.antwort_text, /^Guten Tag Max,/);
 
   await verarbeiteLead({ name: "Lea", email: "lea@x.de", wunsch: "E-Book Teil 1", produkt: "gewohnheits-tetris" });
-  const eb = calls[1].body;
+  const eb = calls.at(-1).body; // calls[1] ist die Immobilien-Kopie an IMMO_MAIL
   assert.equal(eb.kanal, "Mindset Tetris");
   assert.ok(eb.antwort_text.includes(PRODUKTE["gewohnheits-tetris"].teil1));
   assert.ok(eb.antwort_text.includes(teil2Link("gewohnheits-tetris")));
+});
+
+test("verarbeiteLead: Immobilien-Anfragen gehen zusätzlich als Kopie an IMMO_MAIL, andere nicht", async () => {
+  process.env.LEAD_WEBHOOK_URL = "https://script.example/exec";
+  mockFetch({ status: 200, json: { ok: true } });
+
+  const r = await verarbeiteLead({ name: "Max", email: "max@makler.at", seite: "/immobilien-showcase.html", anliegen: "Video für Wohnung" });
+  assert.equal(r.ok, true);
+  assert.equal(calls.length, 2);
+  assert.equal(calls[1].url, "https://formsubmit.co/ajax/infobacktooutdoor@gmail.com");
+  assert.match(calls[1].body._subject, /^Immobilien-Anfrage: Max/);
+  assert.equal(calls[1].body._autoresponse, undefined, "keine zweite Auto-Antwort an den Interessenten");
+
+  await verarbeiteLead({ name: "Anna", email: "anna@hotel.at" });
+  assert.equal(calls.length, 3, "Outdoor-Anfrage ohne Kopie");
 });
 
 test("verarbeiteLead: fällt bei Webhook-Fehler auf FormSubmit zurück", async () => {

@@ -25,7 +25,7 @@ Website von **Back to Outdoor** (Outdoor Content Studio, Salzburg) und **Mindset
 | `POST /api/lead` | Anfrageformular (Chat-Widget & Buttons) mit Spam-Schutz |
 | `GET /api/go?l=<slug>` | Klick-Tracking + Weiterleitung für Kooperations-/E-Book-Links (nur fest hinterlegte Ziele) |
 
-Lead-Verarbeitung (`api/_leads.js`): Anfrage prüfen → Kanal bestimmen (Back to Outdoor / Mindset Tetris / Immobilien) → Antwort-Mail erstellen → an Google Apps Script (`LEAD_WEBHOOK_URL`) senden, sonst bzw. bei Fehler per FormSubmit an `INFO_MAIL`.
+Lead-Verarbeitung (`api/_leads.js`): Anfrage prüfen → Kanal bestimmen (Back to Outdoor / Mindset Tetris / Immobilien) → Antwort-Mail erstellen → an Google Apps Script (`LEAD_WEBHOOK_URL`) senden, sonst bzw. bei Fehler per FormSubmit an `INFO_MAIL`; Immobilien-Anfragen zusätzlich als Kopie an `IMMO_MAIL`.
 E-Books: neue Produkte in `api/_produkte.js` eintragen.
 
 Einrichtung und alle Umgebungsvariablen: **[KI-AGENT-ANLEITUNG.md](KI-AGENT-ANLEITUNG.md)**.

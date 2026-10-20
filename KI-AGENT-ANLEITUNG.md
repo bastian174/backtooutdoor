@@ -31,6 +31,7 @@ Test: `https://backtooutdoor.com/api/chat` im Browser öffnen → `"aktiv":true`
 | `GEMINI_MODEL` | Standard `gemini-2.5-flash`. Nur ändern, wenn nötig |
 | `ANTHROPIC_MODEL` | Standard `claude-haiku-4-5` (schnell, günstig). Nur ändern, wenn nötig |
 | `INFO_MAIL` / `INFO_MAIL_CC` | Empfänger der Anfragen ohne Webhook (Standard `info@backtooutdoor.com`), optional Kopie |
+| `IMMO_MAIL` | Jede Immobilien-Anfrage geht zusätzlich als Kopie an diese Adresse (Standard `infobacktooutdoor@gmail.com`). Einmalig die „Activate Form“-Mail von FormSubmit an diese Adresse bestätigen |
 
 Ohne Webhook gehen Anfragen über FormSubmit direkt an `INFO_MAIL` (einmalig die „Activate Form“-Mail bestätigen, auch im Spam-Ordner nachsehen); der Anfragende bekommt automatisch die Antwort-Mail. Jede Anfrage steht zusätzlich in **Vercel → Logs** (Suche nach „NEUER LEAD“).
 
