@@ -32,7 +32,7 @@ Einrichtung und alle Umgebungsvariablen: **[KI-AGENT-ANLEITUNG.md](KI-AGENT-ANLE
 
 ## Tests & Checks
 
-Voraussetzung: Node.js ≥ 20 und Python 3 – keine Abhängigkeiten zu installieren.
+Voraussetzung: Node.js ≥ 20 (Vercel nutzt 24.x) und Python 3 – keine Abhängigkeiten zu installieren. Deshalb überspringt `vercel.json` den `npm install`-Schritt beim Build.
 
 ```bash
 npm test               # API-Tests (node --test), externe Dienste werden gemockt
