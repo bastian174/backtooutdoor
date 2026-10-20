@@ -18,7 +18,7 @@ const KONTAKT = "Back to Outdoor · Salzburg\ninfo@backtooutdoor.com · +43 (0)6
 function kanalVon(lead) {
   const seite = String(lead.seite || "").toLowerCase();
   if (lead.typ === "Immobilien" || seite.includes("immobilien")) return "Immobilien";
-  if (String(lead.produkt || "").startsWith("mindset") || /tetris|mindset/.test(seite)) return "Mindset Tetris";
+  if (PRODUKTE[lead.produkt] || String(lead.produkt || "").startsWith("mindset") || /tetris|mindset/.test(seite)) return "Mindset Tetris";
   return "Back to Outdoor";
 }
 

@@ -1,4 +1,4 @@
-name: SEO-Check
+name: Tests & SEO-Check
 
 on:
   push:
@@ -16,3 +16,14 @@ jobs:
         with:
           python-version: "3.12"
       - run: python3 scripts/seo-check.py
+
+  api-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm test

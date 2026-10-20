@@ -38,3 +38,4 @@ What the scan found across 122 root pages, plus `mindset/` and the sitemap with 
 ## Status (umgesetzt)
 - Zusätzlich gefunden und behoben: `portfolio.html` und `unterkuenfte.html` fehlten ebenfalls in der Sitemap; `unterkuenfte.html` bekam `og:url`/`og:image`.
 - `python3 scripts/seo-check.py` → grün (254 Seiten, 249 Sitemap-URLs).
+- Nachtrag: API-Tests (`tests/api.test.js`, `npm test`) für `verarbeiteLead`, `/api/lead`, `/api/go`, `clean()` und `teil2Ziel`/`teil2Link`; dabei Fehler in `kanalVon()` behoben (E-Book `gewohnheits-tetris` wurde ohne Seitenangabe dem Kanal „Back to Outdoor“ statt „Mindset Tetris“ zugeordnet). README neu, `KI-AGENT-ANLEITUNG.md` auf Gemini/Claude aktualisiert.
