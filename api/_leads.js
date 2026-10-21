@@ -18,7 +18,7 @@ const KONTAKT = "Back to Outdoor · Salzburg\ninfo@backtooutdoor.com · +43 (0)6
 function kanalVon(lead) {
   const seite = String(lead.seite || "").toLowerCase();
   if (lead.typ === "Immobilien" || seite.includes("immobilien")) return "Immobilien";
-  if (String(lead.produkt || "").startsWith("mindset") || /tetris|mindset/.test(seite)) return "Mindset Tetris";
+  if (PRODUKTE[lead.produkt] || String(lead.produkt || "").startsWith("mindset") || /tetris|mindset/.test(seite)) return "Mindset Tetris";
   return "Back to Outdoor";
 }
 
@@ -148,6 +148,13 @@ async function verarbeiteLead(input, lang) {
   const payload = { secret: process.env.LEAD_SECRET || "", zeit: new Date().toISOString(), sprache: lang, kanal, ...lead, antwort_betreff: antwort.betreff, antwort_text: antwort.text, media_kit_url: mediaKitUrl };
 
   console.log("NEUER LEAD", JSON.stringify({ ...payload, secret: undefined }));
+  const ergebnis = await versenden(payload);
+  // Immobilien-Anfragen zusätzlich als Kopie an IMMO_MAIL – auch wenn der Hauptweg scheitert, Fehler der Kopie blockieren nichts
+  if (kanal === "Immobilien" && IMMO_MAIL && IMMO_MAIL !== INFO_MAIL) await kopieAn(IMMO_MAIL, payload);
+  return ergebnis;
+}
+
+async function versenden(payload) {
   // Benachrichtigung inkl. Kanal-Label in Gmail macht das Apps Script (FormSubmit blockt Server-Anfragen per Cloudflare)
   const url = process.env.LEAD_WEBHOOK_URL;
   if (!url) return perMail(payload); // ohne Google-Apps-Script: Versand per FormSubmit direkt an info@

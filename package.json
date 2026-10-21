@@ -1,0 +1,9 @@
+{
+  "name": "backtooutdoor",
+  "private": true,
+  "description": "backtooutdoor.com – statische Website + Vercel-Funktionen (api/)",
+  "scripts": {
+    "test": "node --test",
+    "seo-check": "python3 scripts/seo-check.py"
+  }
+}
