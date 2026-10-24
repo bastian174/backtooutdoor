@@ -22,12 +22,14 @@ h2{margin:0;font-weight:400;font-size:clamp(38px,5vw,60px);line-height:1.05}
 .btn-red{background:var(--accent);color:var(--on-accent)}.btn-red:hover{background:#F08A4B}
 .btn-line{border:1px solid #8E949B;color:var(--text);background:transparent}
 header.top{max-width:1280px;margin:0 auto;padding:28px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
-.brand{color:var(--text);text-decoration:none;font-size:14px;font-weight:700;letter-spacing:.32em;text-transform:uppercase}
+.brand{color:var(--text);text-decoration:none;font-size:14px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;display:flex;align-items:center;gap:12px}
+.brand img{height:40px;width:auto}
 .brand span{color:var(--sand)}
 header.top nav{display:flex;gap:28px;font-size:15px}
 header.top nav a{color:var(--muted);text-decoration:none}
 .hero{position:relative;min-height:680px;display:flex;align-items:flex-end;background:linear-gradient(90deg,rgba(20,23,27,.9) 0%,rgba(20,23,27,.6) 45%,rgba(20,23,27,.12) 100%)}
-.hero .wrap{position:relative;padding-bottom:72px}
+.hero::before{content:'';position:absolute;top:40px;right:80px;width:140px;height:140px;background:url('/assets/logo.svg') no-repeat center;background-size:contain;opacity:.15;z-index:0}
+.hero .wrap{position:relative;padding-bottom:72px;z-index:1}
 .hero h1{margin:0;font-weight:400;font-size:clamp(52px,8vw,96px);line-height:.98;max-width:900px}
 .hero p.lead{margin:24px 0 0;max-width:600px;color:var(--muted)}
 .ctas{display:flex;gap:16px;margin-top:40px}
@@ -35,7 +37,8 @@ section.block{padding:120px 0}
 section.bordered{border-top:1px solid var(--line)}
 .head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:40px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
-.card{background:var(--bg2);border:1px solid var(--line);padding:0;cursor:pointer;display:flex;flex-direction:column;overflow:hidden}
+.card{background:var(--bg2);border:1px solid var(--line);padding:0;cursor:pointer;display:flex;flex-direction:column;overflow:hidden;position:relative}
+.card::before{content:'';position:absolute;top:8px;right:8px;width:32px;height:32px;background:url('/assets/logo.svg') no-repeat center;background-size:contain;opacity:.2;z-index:2}
 .card:hover{border-color:#6A7179}
 .card.selected{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .prev{width:100%;aspect-ratio:16/9;background:#000;position:relative;display:flex;align-items:center;justify-content:center}
@@ -44,11 +47,12 @@ section.bordered{border-top:1px solid var(--line)}
 .card .info{padding:24px}
 .card .name{font-family:'Instrument Serif',serif;font-size:28px;line-height:1.1;margin:0}
 .card .use{font-weight:600;margin-top:8px}
-.detail{margin-top:40px;background:var(--paper);color:var(--ink);display:flex;flex-wrap:wrap;padding:48px;border:1px solid #DDD}
+.detail{margin-top:40px;background:var(--paper);color:var(--ink);display:flex;flex-wrap:wrap;padding:48px;border:1px solid #DDD;position:relative}
+.detail::before{content:'';position:absolute;top:20px;right:20px;width:60px;height:60px;background:url('/assets/logo.svg') no-repeat center;background-size:contain;opacity:.08}
 .detail[hidden]{display:none}
 .detail .media{flex:1 1 480px;min-width:0;display:flex;align-items:center;justify-content:center;min-height:360px}
 .detail .media iframe{width:100%;height:100%;max-width:100%;border:2px solid var(--ink)}
-.detail .txt{flex:1 1 380px;min-width:0;padding-left:48px;display:flex;flex-direction:column;gap:16px}
+.detail .txt{flex:1 1 380px;min-width:0;padding-left:48px;display:flex;flex-direction:column;gap:16px;position:relative;z-index:1}
 .detail .ttl{font-family:'Instrument Serif',serif;font-size:48px;line-height:1}
 .detail dl{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:16px 0}
 .detail dt{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5A5A52}
@@ -56,7 +60,8 @@ section.bordered{border-top:1px solid var(--line)}
 .detail p{margin:0;font-size:15px;color:#3E3E38;line-height:1.6}
 .btn-dark{background:var(--ink);color:var(--paper)}.btn-dark:hover{color:#fff}
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px}
-.step{background:var(--bg);padding:32px 28px}
+.step{background:var(--bg);padding:32px 28px;position:relative}
+.step::before{content:'';position:absolute;top:8px;right:8px;width:28px;height:28px;background:url('/assets/logo.svg') no-repeat center;background-size:contain;opacity:.1}
 .step .n{font-family:'Instrument Serif',serif;font-size:48px;color:var(--accent)}
 .step h3{margin:14px 0 8px;font-size:20px;font-weight:600}
 .step p{margin:0;color:var(--muted);font-size:16px}
@@ -64,13 +69,14 @@ form{display:flex;flex-direction:column;gap:20px}
 label{display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
 input,textarea{background:var(--bg);border:1px solid #4C535B;color:var(--text);padding:14px 16px;min-height:48px;font:16px 'Hanken Grotesk',sans-serif;width:100%}
 textarea{resize:vertical;min-height:120px}
-footer{max-width:1280px;margin:0 auto;padding:40px 32px;display:flex;justify-content:space-between;gap:16px;font-size:14px;color:var(--soft)}
-@media(max-width:720px){.wrap,header.top,footer{padding:0 16px} header.top nav{display:none} .hero{min-height:600px} section.block{padding:80px 0} .detail{flex-direction:column;padding:24px} .detail .txt{padding-left:0;margin-top:24px} .detail .ttl{font-size:36px} .grid{grid-template-columns:1fr}}
+footer{max-width:1280px;margin:0 auto;padding:40px 32px;display:flex;justify-content:space-between;gap:16px;font-size:14px;color:var(--soft);position:relative}
+footer::before{content:'';position:absolute;top:20px;left:32px;width:50px;height:50px;background:url('/assets/logo.svg') no-repeat center;background-size:contain;opacity:.1}
+@media(max-width:720px){.wrap,header.top,footer{padding:0 16px} header.top nav{display:none} .hero{min-height:600px} .hero::before{width:100px;height:100px;right:20px} section.block{padding:80px 0} .detail{flex-direction:column;padding:24px} .detail .txt{padding-left:0;margin-top:24px} .detail .ttl{font-size:36px} .grid{grid-template-columns:1fr} footer::before{width:40px;height:40px}}
 </style>
 </head>
 <body>
 <header class="top">
-<a href="#top" class="brand">Back to Outdoor · Immobilien</a>
+<a href="#top" class="brand"><img src="/assets/logo.svg" alt="Back to Outdoor"><span>Immobilien</span></a>
 <nav><a href="#formate">Formate</a> <a href="#ablauf">Ablauf</a> <a href="#anfrage">Kontakt</a></nav>
 <a href="#anfrage" class="btn btn-red">Anfragen</a>
 </header>
