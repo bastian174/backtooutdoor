@@ -407,7 +407,7 @@ footer a{color:var(--soft)}
     var b = document.createElement('button');
     b.type = 'button'; b.className = 'card'; b.dataset.id = f.id; b.dataset.group = f.group;
     b.setAttribute('aria-pressed','false');
-    b.innerHTML = '<div class="prev"><span class="badge">'+f.badge+'</span><div class="shot '+f.ratio+'"><img src="'+f.img+'" alt="" loading="lazy" decoding="async"></div></div>'+
+    b.innerHTML = '<div class="prev"><span class="badge">'+f.badge+'</span><div class="shot '+f.ratio+'"><img s'+'rc="'+f.img+'" alt="" loading="lazy" decoding="async"></div></div>'+
       '<div class="info"><span class="name">'+f.name+'</span><span class="use">'+f.use+'</span><span class="meta">'+f.format+' · '+f.len+'</span></div>';
     b.addEventListener('click', function(){ pick(f.id, true); });
     grid.appendChild(b);
@@ -419,7 +419,7 @@ footer a{color:var(--soft)}
     var f = FORMATS.filter(function(x){ return x.id === id; })[0];
     [].forEach.call(grid.children, function(c){ c.setAttribute('aria-pressed', c.dataset.id === id ? 'true' : 'false'); });
     if (!f){ detail.hidden = true; return; }
-    document.getElementById('dMedia').innerHTML = '<div class="shot '+f.ratio+'"><img src="'+f.img+'" alt="Beispielbild für '+f.name+'" decoding="async"></div>';
+    document.getElementById('dMedia').innerHTML = '<div class="shot '+f.ratio+'"><img s'+'rc="'+f.img+'" alt="Beispielbild für '+f.name+'" decoding="async"></div>';
     document.getElementById('dKick').textContent = f.badge + ' · ' + f.where;
     document.getElementById('dTitle').textContent = f.name;
     document.getElementById('dUse').textContent = f.use;
