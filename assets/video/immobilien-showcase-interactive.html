@@ -44,4 +44,102 @@ section.bordered{border-top:1px solid var(--line)}
 .card .info{padding:24px}
 .card .name{font-family:'Instrument Serif',serif;font-size:28px;line-height:1.1;margin:0}
 .card .use{font-weight:600;margin-top:8px}
-.detail{margin-top:40px;background:var(--paper);color:var(--ink);display:
+.detail{margin-top:40px;background:var(--paper);color:var(--ink);display:flex;flex-wrap:wrap;padding:48px;border:1px solid #DDD}
+.detail[hidden]{display:none}
+.detail .media{flex:1 1 480px;min-width:0;display:flex;align-items:center;justify-content:center;min-height:360px}
+.detail .media iframe{width:100%;height:100%;max-width:100%;border:2px solid var(--ink)}
+.detail .txt{flex:1 1 380px;min-width:0;padding-left:48px;display:flex;flex-direction:column;gap:16px}
+.detail .ttl{font-family:'Instrument Serif',serif;font-size:48px;line-height:1}
+.detail dl{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:16px 0}
+.detail dt{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5A5A52}
+.detail dd{margin:0;font-size:18px}
+.detail p{margin:0;font-size:15px;color:#3E3E38;line-height:1.6}
+.btn-dark{background:var(--ink);color:var(--paper)}.btn-dark:hover{color:#fff}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px}
+.step{background:var(--bg);padding:32px 28px}
+.step .n{font-family:'Instrument Serif',serif;font-size:48px;color:var(--accent)}
+.step h3{margin:14px 0 8px;font-size:20px;font-weight:600}
+.step p{margin:0;color:var(--muted);font-size:16px}
+form{display:flex;flex-direction:column;gap:20px}
+label{display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+input,textarea{background:var(--bg);border:1px solid #4C535B;color:var(--text);padding:14px 16px;min-height:48px;font:16px 'Hanken Grotesk',sans-serif;width:100%}
+textarea{resize:vertical;min-height:120px}
+footer{max-width:1280px;margin:0 auto;padding:40px 32px;display:flex;justify-content:space-between;gap:16px;font-size:14px;color:var(--soft)}
+@media(max-width:720px){.wrap,header.top,footer{padding:0 16px} header.top nav{display:none} .hero{min-height:600px} section.block{padding:80px 0} .detail{flex-direction:column;padding:24px} .detail .txt{padding-left:0;margin-top:24px} .detail .ttl{font-size:36px} .grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top">
+<a href="#top" class="brand">Back to Outdoor · Immobilien</a>
+<nav><a href="#formate">Formate</a> <a href="#ablauf">Ablauf</a> <a href="#anfrage">Kontakt</a></nav>
+<a href="#anfrage" class="btn btn-red">Anfragen</a>
+</header>
+<section class="hero" id="top">
+<div class="wrap">
+<h1>Ihre Objekte. <em class="s">In Bewegung.</em></h1>
+<p class="lead">20-Sekunden-Rundgänge aus Ihren Fotos. Für Instagram, Portale und Ihre Website.</p>
+<div class="ctas"><a href="#formate" class="btn btn-red">Formate →</a> <a href="#anfrage" class="btn btn-line">Vorschau anfragen</a></div>
+</div>
+</section>
+<section class="block" id="formate">
+<div class="wrap">
+<div class="head-row"><div><div class="eyebrow">Die Formate</div><h2>Wählen Sie Ihr <em class="s">Format.</em></h2></div></div>
+<div class="grid" id="grid"></div>
+<div class="detail" id="detail" hidden>
+<div class="media" id="dMedia"></div>
+<div class="txt"><div class="ttl" id="dTitle"></div>
+<div id="dUse" style="font-size:18px;font-weight:600"></div>
+<dl><div><dt>Format</dt><dd id="dFormat"></dd></div><div><dt>Einsatz</dt><dd id="dWhere"></dd></div><div><dt>Länge</dt><dd id="dLen"></dd></div></dl>
+<p id="dText"></p>
+<a href="#anfrage" class="btn btn-dark" id="dCta">Vorschau anfragen →</a>
+</div>
+</div>
+</div>
+</section>
+<section class="block bordered" id="ablauf">
+<div class="wrap">
+<div class="eyebrow">Ablauf</div>
+<h2>Vom Foto <em class="s">zum Video.</em></h2>
+<div class="steps">
+<div class="step"><div class="n">01</div><h3>Objekt nennen</h3><p>Schicken Sie uns die Fotos oder den Link zum Inserat.</p></div>
+<div class="step"><div class="n">02</div><h3>Vorschau erhalten</h3><p>Kostenlos mit Wasserzeichen in 24–48 Stunden.</p></div>
+<div class="step"><div class="n">03</div><h3>Freigeben</h3><p>Passt es, erhalten Sie ein Angebot.</p></div>
+<div class="step"><div class="n">04</div><h3>Fertig</h3><p>Dateien ohne Wasserzeichen in 2 Werktagen.</p></div>
+</div>
+</div>
+</section>
+<section class="block" id="anfrage">
+<div class="wrap">
+<div style="max-width:600px">
+<div class="eyebrow">Kostenlose Vorschau</div>
+<h2>Testen Sie es. <em class="s">Gratis.</em></h2>
+<form id="form" style="margin-top:40px">
+<label>Name<input type="text" name="name" required></label>
+<label>E-Mail<input type="email" name="email" required></label>
+<label>Nachricht<textarea name="msg" placeholder="Welches Objekt? Welche Formate?"></textarea></label>
+<button type="submit" class="btn btn-red">Anfrage senden →</button>
+</form>
+<div style="margin-top:40px;padding-top:40px;border-top:1px solid var(--line);font-size:15px">
+<div style="font-weight:700">Back to Outdoor</div>
+<div style="color:var(--muted);margin-top:4px">Salzburg, Österreich</div>
+<a href="tel:+436608422053" style="display:block;margin-top:8px">+43 660 8422053</a>
+<a href="mailto:info@backtooutdoor.com" style="display:block;margin-top:4px">info@backtooutdoor.com</a>
+</div>
+</div>
+</div>
+</section>
+<footer><span>Immobilien-Videos · Back to Outdoor</span> <span><a href="/">backtooutdoor.com</a></span></footer>
+<script>
+var FORMATS = [
+{id:'reel', name:'Instagram Reel', badge:'9:16', use:'Reels & Storys', format:'1080 × 1920', len:'15–30 Sek.', where:'Instagram, WhatsApp-Status', text:'Raum für Raum in 20 Sekunden.', video:'https://www.youtube.com/embed/m98m_7vhUnE'},
+{id:'quer', name:'Objektvideo', badge:'16:9', use:'Website & Portale', format:'1920 × 1080', len:'20–60 Sek.', where:'willhaben, ImmoScout, YouTube', text:'Vollständiges Objekt für Ihre Website.', video:'https://www.youtube.com/embed/TvlfwUKf2FU'},
+{id:'tiktok', name:'TikTok & Shorts', badge:'9:16', use:'TikTok & YouTube', format:'1080 × 1920', len:'10–20 Sek.', where:'TikTok, YouTube Shorts', text:'Schneller geschnitten, prägnant.', video:'https://www.youtube.com/embed/VynHFM_zYHY'},
+{id:'pin', name:'Pinterest Pin', badge:'2:3', use:'Pinterest-Suche', format:'1000 × 1500', len:'Bild oder Video', where:'Pinterest', text:'Hochformat mit Suchbegriffen.', video:'https://www.youtube.com/embed/0hfMJUXD4zo'},
+{id:'site', name:'Projektseite', badge:'Web', use:'Neubau-Showcase', format:'Responsive', len:'1 Seite', where:'Eigene Domain', text:'Alle Wohnungen auf einer Seite.', video:'https://www.youtube.com/embed/4GFZ3ugGFsA'},
+{id:'extra', name:'Weitere Formate', badge:'Custom', use:'Spezial-Anfrage', format:'Variabel', len:'Flexibel', where:'Nach Wunsch', text:'Weitere Formate auf Anfrage.', video:'https://www.youtube.com/embed/cK10UI7zV9o'}
+];
+var grid=document.getElementById('grid'),detail=document.getElementById('detail');FORMATS.forEach(function(f){var b=document.createElement('button');b.className='card';b.type='button';b.innerHTML='<div class="prev"><span class="badge">'+f.badge+'</span><iframe src="'+f.video+'" allowfullscreen="" style="border:0"></iframe></div><div class="info"><h3 class="name">'+f.name+'</h3><div class="use">'+f.use+'</div></div>';b.addEventListener('click',function(){document.querySelectorAll('.card').forEach(c=>c.classList.remove('selected'));b.classList.add('selected');document.getElementById('dMedia').innerHTML='<iframe src="'+f.video+'" allowfullscreen="" style="border:0;width:100%;height:100%"></iframe>';document.getElementById('dTitle').textContent=f.name;document.getElementById('dUse').textContent=f.use;document.getElementById('dFormat').textContent=f.format;document.getElementById('dWhere').textContent=f.where;document.getElementById('dLen').textContent=f.len;document.getElementById('dText').textContent=f.text;detail.hidden=false;detail.scrollIntoView({behavior:'smooth'});});grid.appendChild(b);});
+document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();var name=document.querySelector('input[name="name"]').value;alert('Danke, '+name+'! Wir melden uns in 24 Stunden.');});
+</script>
+</body>
+</html>
