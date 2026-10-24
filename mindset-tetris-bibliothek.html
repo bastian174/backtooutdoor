@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mindset Tetris – Bibliothek | Back to Outdoor</title>
+<meta name="description" content="Die Mindset-Tetris-Bibliothek: alle Karussell-Posts an einem Ort. Teil 1 jedes Heftes kostenlos.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#132030;
+    --navy-2:#1b2c40;
+    --orange:#e36d27;
+    --orange-2:#f07f38;
+    --creme:#f7f1e6;
+    --gelb:#ffd23f;
+    --soft:rgba(247,241,230,0.72);
+    --line:rgba(247,241,230,0.14);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--navy);
+    color:var(--creme);
+    font-family:'Work Sans', system-ui, sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:44px 16px 64px;}
+
+  header{text-align:center;margin-bottom:36px;}
+  .label{
+    display:inline-block;
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800;font-size:14px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--navy);background:var(--orange);padding:4px 10px;border-radius:2px;
+  }
+  h1{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800;font-size:52px;line-height:1;margin:16px 0 12px;color:var(--creme);
+  }
+  .intro{color:var(--soft);max-width:560px;margin:0 auto;}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+    gap:20px;
+  }
+  .card{
+    background:var(--navy-2);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .cover{
+    position:relative;display:block;width:100%;aspect-ratio:4/5;
+    background:#0d1724;border:0;padding:0;cursor:zoom-in;
+  }
+  .cover img{width:100%;height:100%;object-fit:cover;display:block;}
+  .count{
+    position:absolute;right:10px;top:10px;
+    background:rgba(19,32,48,.85);color:var(--gelb);
+    font-family:'Big Shoulders Display', sans-serif;font-weight:700;font-size:15px;
+    padding:2px 8px;border-radius:2px;
+  }
+  .body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:12px;flex:1;}
+  .body h2{
+    font-family:'Big Shoulders Display', sans-serif;font-weight:700;
+    font-size:24px;line-height:1.08;margin:0;color:var(--creme);
+  }
+  .strip{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px;}
+  .strip button{
+    flex:0 0 52px;height:65px;padding:0;border:1px solid var(--line);border-radius:3px;
+    overflow:hidden;background:#0d1724;cursor:zoom-in;scroll-snap-align:start;
+  }
+  .strip img{width:100%;height:100%;object-fit:cover;display:block;}
+  .actions{display:flex;flex-direction:column;gap:8px;margin-top:auto;}
+  .btn{
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+    text-decoration:none;padding:11px 14px;border-radius:4px;font-weight:600;font-size:14px;
+  }
+  .btn-free{background:var(--creme);color:var(--navy);}
+  .btn-free:hover,.btn-free:focus-visible{background:#fff;}
+  .btn-paid{background:var(--orange);color:var(--navy);}
+  .btn-paid:hover,.btn-paid:focus-visible{background:var(--orange-2);}
+  .btn-ghost{background:transparent;color:var(--soft);border:1px dashed var(--line);}
+
+  .cta{
+    margin:48px auto 0;max-width:620px;text-align:center;
+    background:var(--navy-2);border:1px solid var(--line);border-radius:6px;padding:26px 20px;
+  }
+  .cta h3{
+    font-family:'Big Shoulders Display', sans-serif;font-weight:800;font-size:30px;margin:0 0 8px;
+  }
+  .cta p{color:var(--soft);margin:0 0 16px;}
+  .cta a{
+    display:inline-block;text-decoration:none;background:var(--gelb);color:var(--navy);
+    font-weight:700;padding:12px 20px;border-radius:4px;
+  }
+
+  .footer{text-align:center;margin-top:36px;font-size:13px;color:var(--soft);}
+  .footer a{color:var(--creme);}
+
+  /* Lightbox */
+  .lb{
+    position:fixed;inset:0;background:rgba(10,18,28,.94);
+    display:none;align-items:center;justify-content:center;z-index:50;padding:16px;
+  }
+  .lb.open{display:flex;}
+  .lb img{max-width:min(92vw,520px);max-height:84vh;object-fit:contain;border-radius:4px;}
+  .lb .x,.lb .nav{
+    position:absolute;background:var(--creme);color:var(--navy);border:0;border-radius:4px;
+    font-weight:700;cursor:pointer;
+  }
+  .lb .x{top:14px;right:14px;padding:8px 12px;}
+  .lb .nav{top:50%;transform:translateY(-50%);padding:10px 14px;font-size:20px;}
+  .lb .prev{left:12px;}
+  .lb .next{right:12px;}
+  .lb .cap{
+    position:absolute;bottom:16px;left:0;right:0;text-align:center;color:var(--soft);font-size:14px;
+  }
+
+  @media (max-width:520px){
+    h1{font-size:40px;}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <header>
+    <span class="label">Mindset Tetris</span>
+    <h1>Die Bibliothek</h1>
+    <p class="intro">Alle Karussell-Posts an einem Ort. Tippe auf ein Bild, um es groß zu sehen, und lade dir Teil 1 jedes Heftes kostenlos herunter.</p>
+  </header>
+
+  <div class="grid" id="grid"></div>
+
+  <section class="cta">
+    <h3>Teil 2 als PDF</h3>
+    <p>Jedes Heft führt weiter, als der Post zeigt. Teil 2 bekommst du direkt bei CopeCart.</p>
+    <a href="https://backtooutdoor.com/mindset-tetris-links.html">Alle Hefte mit Teil 1 und Teil 2</a>
+  </section>
+
+  <footer class="footer">
+    <p>Back to Outdoor · <a href="https://backtooutdoor.com/">backtooutdoor.com</a></p>
+  </footer>
+
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Bild ansehen">
+  <button class="x" id="lbClose" aria-label="Schließen">✕</button>
+  <button class="nav prev" id="lbPrev" aria-label="Zurück">‹</button>
+  <img id="lbImg" alt="">
+  <button class="nav next" id="lbNext" aria-label="Weiter">›</button>
+  <div class="cap" id="lbCap"></div>
+</div>
+
+<script>
+(function(){
+  var BASE = "assets/mindset-tetris/bibliothek/";
+  var POSTS = [
+    { folder:"01_fokus-statt-multitasking", titel:"Fokus statt Multitasking", weg:"fokus-tetris.html", paid:"https://copecart.com/products/6fc42594/checkout", sub:"Klarer Kopf, weniger Chaos" },
+    { folder:"02_macht-der-gewohnheiten-autopilot-durchbrechen", titel:"Raus aus dem Autopiloten", weg:"autopilot-tetris.html", paid:"https://copecart.com/products/53e2b602/checkout", sub:"Gewohnheiten erkennen" },
+    { folder:"03_gewohnheiten-die-dem-gehirn-schaden", titel:"5 Angewohnheiten, die deinem Gehirn schaden", weg:"gehirn-tetris.html", paid:"https://copecart.com/products/f9e51485/checkout", sub:"Was dein Kopf wirklich braucht" },
+    { folder:"04_negative-gedanken-loswerden", titel:"Negative Gedanken loswerden", weg:"gedanken-tetris.html", paid:"https://copecart.com/products/eeba6f95/checkout", sub:"Psychologisch erprobte Methoden" },
+    { folder:"05_vergangenheit-loslassen-5-methoden", titel:"Vergangenheit loslassen", weg:"loslassen-tetris.html", paid:"https://copecart.com/products/8e0fd8c3/checkout", sub:"Mit der Vergangenheit abschließen" },
+    { folder:"06_warum-scheitern-der-schluessel-zum-erfolg-ist", titel:"Warum Scheitern der Schlüssel zum Erfolg ist", weg:"scheitern-tetris.html", paid:"https://copecart.com/products/72191c1b/checkout", sub:"Aus Rückschlägen lernen" },
+    { folder:"07_morgenroutine-erfolgreich-in-den-tag", titel:"Morgenroutine: So startest du in den Tag", weg:"morgenroutine-tetris.html", paid:"https://copecart.com/products/cacf69a7/checkout", sub:"Ein Start, der trägt" },
+    { folder:"08_prokrastination-ueberwinden-5-tipps", titel:"Prokrastination überwinden", weg:"aufschieben-tetris.html", paid:"https://copecart.com/products/b057af93/checkout", sub:"Endlich anfangen" },
+    { folder:"09_komfortzone-verlassen", titel:"Komfortzone verlassen", weg:"komfortzone-tetris.html", paid:"https://copecart.com/products/50e36883/checkout", sub:"Mut in kleinen Schritten" },
+    { folder:"10_gewohnheiten-aendern-kleine-veraenderungen", titel:"Gewohnheiten ändern: Kleine Schritte", weg:"kleine-schritte-tetris.html", paid:"https://copecart.com/products/b70232fa/checkout", sub:"Stein für Stein" }
+  ];
+
+  var SLIDES = 5;
+  var grid = document.getElementById("grid");
+  var all = [];
+
+  function src(p, i){ return BASE + p.folder + "/instagram_" + i + ".jpg"; }
+
+  POSTS.forEach(function(p){
+    var card = document.createElement("article");
+    card.className = "card";
+
+    var cover = document.createElement("button");
+    cover.className = "cover";
+    cover.setAttribute("aria-label", p.titel + " ansehen");
+    var img = document.createElement("img");
+    img.loading = "lazy";
+    img.alt = p.titel + ", Titelbild";
+    img.src = src(p, 1);
+    cover.appendChild(img);
+    var cnt = document.createElement("span");
+    cnt.className = "count";
+    cnt.textContent = SLIDES + " Slides";
+    cover.appendChild(cnt);
+
+    var body = document.createElement("div");
+    body.className = "body";
+    var h = document.createElement("h2");
+    h.textContent = p.titel;
+    body.appendChild(h);
+
+    var strip = document.createElement("div");
+    strip.className = "strip";
+    for (var i = 1; i <= SLIDES; i++){
+      var b = document.createElement("button");
+      b.setAttribute("aria-label", p.titel + ", Slide " + i);
+      var t = document.createElement("img");
+      t.loading = "lazy";
+      t.alt = "";
+      t.src = src(p, i);
+      b.appendChild(t);
+      strip.appendChild(b);
+      all.push({ src: src(p, i), cap: p.titel + " · " + i + "/" + SLIDES });
+      (function(index){
+        b.addEventListener("click", function(){ open(index); });
+      })(all.length - 1);
+    }
+    body.appendChild(strip);
+
+    var actions = document.createElement("div");
+    actions.className = "actions";
+    actions.innerHTML =
+      '<a class="btn btn-free" href="https://backtooutdoor.com/' + p.weg + '"><span>Teil 1 kostenlos holen</span><span>→</span></a>' +
+      '<a class="btn btn-paid" href="' + p.paid + '"><span>Teil 2 als PDF</span><span>→</span></a>';
+    body.appendChild(actions);
+
+    card.appendChild(cover);
+    card.appendChild(body);
+    grid.appendChild(card);
+
+    var coverIndex = all.length - SLIDES;
+    cover.addEventListener("click", function(){ open(coverIndex); });
+  });
+
+  var lb = document.getElementById("lb");
+  var lbImg = document.getElementById("lbImg");
+  var lbCap = document.getElementById("lbCap");
+  var cur = 0;
+
+  function show(i){
+    cur = (i + all.length) % all.length;
+    lbImg.src = all[cur].src;
+    lbImg.alt = all[cur].cap;
+    lbCap.textContent = all[cur].cap;
+  }
+  function open(i){ show(i); lb.classList.add("open"); document.body.style.overflow = "hidden"; }
+  function close(){ lb.classList.remove("open"); document.body.style.overflow = ""; }
+
+  document.getElementById("lbClose").addEventListener("click", close);
+  document.getElementById("lbPrev").addEventListener("click", function(){ show(cur - 1); });
+  document.getElementById("lbNext").addEventListener("click", function(){ show(cur + 1); });
+  lb.addEventListener("click", function(e){ if (e.target === lb) close(); });
+  document.addEventListener("keydown", function(e){
+    if (!lb.classList.contains("open")) return;
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowLeft") show(cur - 1);
+    if (e.key === "ArrowRight") show(cur + 1);
+  });
+})();
+</script>
+</body>
+</html>
