@@ -234,3 +234,57 @@ Wann hast du dir zuletzt ehrlich den Spiegel vorgehalten? Schreib es in die Komm
 
 #selbstreflexion #ehrlichkeit #selbstakzeptanz #achtsamkeit #mindset #persönlichkeitsentwicklung #persönlicheswachstum
 ```
+
+## 14 · Aus Fehlern lernen: Besser werden als gestern
+**Instagram (Carousel):** 2026-11-04 18:00 · **Reel:** 2026-10-29 18:00 · **Pin:** 2026-10-26 19:00 · Link: https://backtooutdoor.com/mindset/lebenserfahrung-aus-fehlern-lernen.html
+
+```
+Du musst nicht perfekt sein. Nur besser als gestern.
+
+→ Fehler als Lehrer sehen
+→ Nur mit deinem früheren Ich vergleichen
+→ Regelmäßig reflektieren und anpassen
+
+Was hast du aus deinen Fehlern gelernt? Schreib es in die Kommentare 👇
+
+📖 Den ganzen Artikel „Aus Fehlern lernen: Besser werden als gestern“ findest du über den Link in der Bio.
+🔖 Speichern für später.
+
+#ausfehlernlernen #lebenserfahrung #wachstum #selbstreflexion #mindset #persönlichkeitsentwicklung #besseralsgestern
+```
+
+## 15 · Body & Mind: Bewegung und Ernährung im Gleichgewicht
+**Instagram (Carousel):** 2026-11-06 18:00 · **Reel:** 2026-10-31 18:00 · **Pin:** 2026-10-27 19:00 · Link: https://backtooutdoor.com/mindset/body-and-mind-bewegung-und-ernaehrung.html
+
+```
+Körper und Kopf gehören zusammen.
+
+→ Draußen bewegen
+→ Ausgewogen essen
+→ Atmen und kurz meditieren
+
+Wie bringst du Bewegung, Ernährung und Ruhe in deinen Alltag? Schreib es in die Kommentare 👇
+
+📖 Den ganzen Artikel „Body & Mind: Bewegung und Ernährung im Gleichgewicht“ findest du über den Link in der Bio.
+🔖 Speichern für später.
+
+#bodyandmind #outdoorfitness #bewegung #achtsamkeit #mindset #persönlichkeitsentwicklung #mentalestärke
+```
+
+## 16 · Selbstsabotage erkennen und überwinden
+**Instagram (Carousel):** 2026-11-09 18:00 · **Reel:** 2026-11-03 18:00 · **Pin:** 2026-10-28 19:00 · Link: https://backtooutdoor.com/mindset/selbstsabotage-erkennen.html
+
+```
+„Ich fange morgen an.“ So klingt Selbstsabotage.
+
+→ Muster erkennen
+→ Kleine, realistische Schritte
+→ Werde dein eigener bester Freund
+
+Würdest du mit einem Freund so reden wie mit dir selbst? Schreib es in die Kommentare 👇
+
+📖 Den ganzen Artikel „Selbstsabotage erkennen und überwinden“ findest du über den Link in der Bio.
+🔖 Speichern für später.
+
+#selbstsabotage #selbstzweifel #selbstvertrauen #selbstmitgefühl #mindset #persönlichkeitsentwicklung #mentalestärke
+```
