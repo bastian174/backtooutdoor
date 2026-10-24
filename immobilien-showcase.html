@@ -157,7 +157,8 @@ a:focus-visible,button:focus-visible,.card:focus-visible{outline:3px solid var(-
 .req{color:var(--accent);margin-left:4px}
 .vidtoggle{position:absolute;z-index:3;left:16px;bottom:10px;background:rgba(20,23,27,.6);color:var(--paper);border:1px solid rgba(245,241,230,.35);font:600 12px 'Hanken Grotesk',sans-serif;letter-spacing:.08em;padding:8px 12px;min-height:36px;cursor:pointer}
 .mob-cta{display:none}
-.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot img,.shot video{width:100%;height:100%;object-fit:cover;display:block}
+.shot:has(video){animation:none}
 .row{display:flex;flex-wrap:wrap;gap:20px}.row label{flex:1 1 220px}
 .chk{flex-direction:row;align-items:flex-start;gap:12px;text-transform:none;letter-spacing:0;font-weight:400;font-size:14px;color:var(--muted)}
 .chk input{width:20px;min-height:20px;margin-top:2px;flex:0 0 auto}
@@ -207,7 +208,7 @@ footer a{color:var(--soft)}
 
 <section class="hero" id="top">
   <video class="hero-bg" id="heroVid" autoplay muted loop playsinline preload="auto" poster="/assets/video/immobilien-hero-poster.jpg" aria-hidden="true">
-    <source src="/assets/video/immobilien-hero-720.mp4" type="video/mp4" media="(max-width: 900px)">
+    <source src="/assets/video/immobilien-hero-720.mp4" type="video/mp4" media="(max-width: 1600px)">
     <source src="/assets/video/immobilien-hero-1080.mp4" type="video/mp4">
   </video>
   <div class="wrap">
@@ -374,7 +375,7 @@ footer a{color:var(--soft)}
 <script>
 (function(){
   var hv=document.getElementById('heroVid');
-  if(hv){ var small=window.matchMedia('(max-width: 900px)').matches;
+  if(hv){ var small=window.matchMedia('(max-width: 1600px)').matches;
     hv.src='/assets/video/immobilien-hero-'+(small?'720':'1080')+'.mp4';
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ hv.removeAttribute('autoplay'); hv.pause(); }
     else { var pr=hv.play(); if(pr&&pr.catch) pr.catch(function(){}); }
@@ -383,23 +384,37 @@ footer a{color:var(--soft)}
     tg.addEventListener('click', function(){ if(hv.paused){ var q=hv.play(); if(q&&q.catch) q.catch(function(){}); } else hv.pause(); });
     hv.addEventListener('play', lbl); hv.addEventListener('pause', lbl); lbl(); }
   var P = function(n){ return '/assets/img/immobilien/' + n + '.webp'; };
+  var V = function(n){ return '/assets/video/immobilien-' + n + '.mp4'; };
   var FORMATS = [
-    {id:'reel', group:'video', name:'Instagram Reel', badge:'9:16', ratio:'r916', img:P('reel'),
+    {id:'reel', group:'video', name:'Instagram Reel', badge:'9:16', ratio:'r916', img:P('reel'), vid:V('reel'),
      use:'Rundgang für Reels & Storys', format:'1080 × 1920', len:'15–30 Sek.', where:'Instagram, WhatsApp-Status', mat:'Exposé-Fotos',
      text:'Raum für Raum in 20 Sekunden, mit ruhiger Kamerafahrt. Lage und Fläche stehen als kurze Einblendung im Bild, am Ende Ihr Logo.'},
-    {id:'quer', group:'video', name:'Objektvideo quer', badge:'16:9', ratio:'r169', img:P('quer'),
+    {id:'quer', group:'video', name:'Objektvideo quer', badge:'16:9', ratio:'r169', img:P('quer'), vid:V('quer'),
      use:'Für Website & Portale', format:'1920 × 1080', len:'20–60 Sek.', where:'Website, willhaben, ImmoScout', mat:'Exposé-Fotos',
      text:'Dasselbe Objekt im Querformat, für Ihre Website, die Videofunktion der Portale und YouTube. Auf Wunsch mit Musik und kurzen Infotafeln.'},
-    {id:'tiktok', group:'video', name:'TikTok & Shorts', badge:'9:16', ratio:'r916', img:P('tiktok'),
+    {id:'tiktok', group:'video', name:'TikTok & Shorts', badge:'9:16', ratio:'r916', img:P('tiktok'), vid:V('tiktok'),
      use:'Schnellere Schnitte', format:'1080 × 1920', len:'10–20 Sek.', where:'TikTok, YouTube Shorts', mat:'Exposé-Fotos',
      text:'Kürzer und schneller geschnitten als das Reel. In der ersten Sekunde steht groß, was das Objekt besonders macht.'},
     {id:'site', group:'web', name:'Projektseite', badge:'Web', ratio:'r-site', img:P('projekt'),
      use:'Eigene Seite pro Neubauprojekt', format:'Responsive Website', len:'1 Seite', where:'Eigene Domain oder Unterseite', mat:'Grundrisse, Renderings, Preisliste',
      text:'Alle Wohnungen mit Grundriss, Fläche und Preis, Status verfügbar oder verkauft, Filter und Exposé-Anfrage pro Wohnung. Wir halten den Status nach kurzer Nachricht aktuell.'},
-    {id:'pin', group:'web', name:'Pinterest Pin', badge:'2:3', ratio:'r23', img:P('pin'),
+    {id:'pin', group:'web', name:'Pinterest Pin', badge:'2:3', ratio:'r23', img:P('pin'), vid:V('pin'),
      use:'Gefunden über die Suche', format:'1000 × 1500', len:'Bild oder Video-Pin', where:'Pinterest', mat:'Exposé-Fotos',
      text:'Hochformat-Pins mit Suchbegriffen wie „Wohnung mit Garten“. Jeder Pin verlinkt direkt auf Ihr Inserat.'}
   ];
+  // Beispielvideos: in den Karten stumm in Schleife, sobald sichtbar; im Detail groß mit Steuerung
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function media(f, big){
+    if (!f.vid) return '<img s'+'rc="'+f.img+'" alt="'+(big?'Beispielbild für '+f.name:'')+'" loading="lazy" decoding="async">';
+    return '<video muted loop playsinline preload="none" poster="'+f.img+'" data-v="'+f.vid+'"'+(big?' controls':'')+' aria-label="Beispielvideo '+f.name+'"></video>';
+  }
+  function startVid(v){
+    if (!v.getAttribute('s'+'rc')) v.setAttribute('s'+'rc', v.dataset.v);
+    if (still) return; var q = v.play(); if (q && q.catch) q.catch(function(){});
+  }
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) startVid(e.target); else e.target.pause(); });
+  }, {rootMargin:'100px'}) : null;
   var grid = document.getElementById('grid'), detail = document.getElementById('detail');
   var sel = document.getElementById('fFormat'), selected = null;
 
@@ -407,10 +422,11 @@ footer a{color:var(--soft)}
     var b = document.createElement('button');
     b.type = 'button'; b.className = 'card'; b.dataset.id = f.id; b.dataset.group = f.group;
     b.setAttribute('aria-pressed','false');
-    b.innerHTML = '<div class="prev"><span class="badge">'+f.badge+'</span><div class="shot '+f.ratio+'"><img s'+'rc="'+f.img+'" alt="" loading="lazy" decoding="async"></div></div>'+
+    b.innerHTML = '<div class="prev"><span class="badge">'+f.badge+'</span><div class="shot '+f.ratio+'">'+media(f,false)+'</div></div>'+
       '<div class="info"><span class="name">'+f.name+'</span><span class="use">'+f.use+'</span><span class="meta">'+f.format+' · '+f.len+'</span></div>';
     b.addEventListener('click', function(){ pick(f.id, true); });
     grid.appendChild(b);
+    var cv = b.querySelector('video'); if (cv) { if (io) io.observe(cv); else startVid(cv); }
     var o = document.createElement('option'); o.value = f.id; o.textContent = f.name + ': ' + f.use; sel.appendChild(o);
   });
 
@@ -419,7 +435,8 @@ footer a{color:var(--soft)}
     var f = FORMATS.filter(function(x){ return x.id === id; })[0];
     [].forEach.call(grid.children, function(c){ c.setAttribute('aria-pressed', c.dataset.id === id ? 'true' : 'false'); });
     if (!f){ detail.hidden = true; return; }
-    document.getElementById('dMedia').innerHTML = '<div class="shot '+f.ratio+'"><img s'+'rc="'+f.img+'" alt="Beispielbild für '+f.name+'" decoding="async"></div>';
+    document.getElementById('dMedia').innerHTML = '<div class="shot '+f.ratio+'">'+media(f,true)+'</div>';
+    var dv = document.querySelector('#dMedia video'); if (dv) startVid(dv);
     document.getElementById('dKick').textContent = f.badge + ' · ' + f.where;
     document.getElementById('dTitle').textContent = f.name;
     document.getElementById('dUse').textContent = f.use;
