@@ -126,6 +126,9 @@ function verarbeiten_(d) {
   let status = 'Neu';
   let beantwortet = false;
 
+  // E-Book mit Newsletter-Häkchen: Bestätigungslink für die Mailstrecke anhängen (siehe BTO_Mailstrecke_AppsScript.gs)
+  if (typeof streckeAnmelden_ === 'function' && d.antwort_text) streckeAnmelden_(d, kanal);
+
   // 1. Antwort an den Anfragenden
   if (d.antwort_betreff && d.antwort_text) {
     const opts = { name: CONFIG.ABSENDER_NAME, replyTo: CONFIG.INFO_MAIL, cc: CONFIG.INFO_MAIL_CC || undefined };
@@ -247,7 +250,9 @@ function json_(o) {
   return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON);
 }
 
-function doGet() {
+function doGet(e) {
+  // Bestätigungs- und Abmeldelinks der Mailstrecke (siehe BTO_Mailstrecke_AppsScript.gs)
+  if (e && e.parameter && e.parameter.a && typeof streckeGet_ === 'function') return streckeGet_(e);
   return json_({ ok: true, dienst: 'BTO Anfragen' });
 }
 

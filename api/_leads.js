@@ -145,7 +145,9 @@ async function verarbeiteLead(input, lang) {
     : kanal === "Mindset Tetris" ? mindsetMail(lead)
     : (await kiAntwort(lead, lang)) || vorlage(lead, lang === "fr" ? "en" : lang);
   const mediaKitUrl = lead.wunsch === "Media Kit" ? process.env.MEDIA_KIT_URL || "" : "";
-  const payload = { secret: process.env.LEAD_SECRET || "", zeit: new Date().toISOString(), sprache: lang, kanal, ...lead, antwort_betreff: antwort.betreff, antwort_text: antwort.text, media_kit_url: mediaKitUrl };
+  // Für die Mailstrecke im Apps Script (nur E-Book-Anfragen)
+  const ebook = produkt ? { titel: produkt.titel, teil2: teil2Link(lead.produkt), landing: produkt.landing } : undefined;
+  const payload = { secret: process.env.LEAD_SECRET || "", zeit: new Date().toISOString(), sprache: lang, kanal, ...lead, ebook, antwort_betreff: antwort.betreff, antwort_text: antwort.text, media_kit_url: mediaKitUrl };
 
   console.log("NEUER LEAD", JSON.stringify({ ...payload, secret: undefined }));
   const ergebnis = await versenden(payload);
