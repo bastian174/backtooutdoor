@@ -21,5 +21,11 @@
       "destination": "/:slug",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/immobilien",
+      "destination": "/immobilien-showcase.html"
+    }
   ]
 }
