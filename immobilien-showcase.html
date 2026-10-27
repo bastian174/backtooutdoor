@@ -204,6 +204,26 @@ footer a{color:var(--soft)}
 .card.spec .txt{font-size:14px;color:var(--soft);line-height:1.5;margin-top:6px}
 .card.spec .go{margin-top:auto;padding-top:14px;font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--accent)}
 
+
+.cats{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.cats button{background:transparent;color:var(--text);border:1px solid #6A7179;padding:9px 18px;min-height:40px;font:600 14px 'Hanken Grotesk',sans-serif;letter-spacing:.04em;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.cats button:hover{border-color:var(--accent)}
+.cats button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.dev video{transition:opacity .35s}
+.dev video.swap{opacity:0}
+/* Niedrige Fenster: Textblock der Bühnen kompakter, damit nichts abgeschnitten wird */
+@media (min-width:901px) and (max-height:860px){
+  .stage-copy p:not(.hotel-note){display:none}
+  .stage-copy .eyebrow{margin-bottom:10px}
+  .stage-copy h2{font-size:clamp(32px,3vw,44px)}
+  .stage-steps{margin-top:18px}
+  .stage-steps li{padding:7px 0 7px 18px}
+  .stage-steps li span{display:none}
+  .stage-steps li b{font-size:17px}
+  .cats{margin-top:16px}
+}
+@media (min-width:901px) and (max-height:640px){ .stage5 .hotel-note{display:none} .stage-steps li{padding:4px 0 4px 16px} }
+@media (max-width:900px){ .cats{margin-top:12px} .cats button{padding:7px 14px;min-height:36px;font-size:13px} }
 /* ===== Fließende Übergänge ===== */
 .bordered{border-top:0}
 .stage{border-top:0}
@@ -384,13 +404,17 @@ html.fx .steps::after{content:"";position:absolute;left:0;top:-1px;height:3px;wi
   </div>
 </section>
 
-<section class="stage stage5" id="hotel" aria-label="Beispiel Hotel">
+<section class="stage stage5" id="hotel" aria-label="Beispiele nach Branche">
   <div class="stage-pin">
     <div class="wrap stage-in">
       <div class="stage-copy">
-        <div class="eyebrow">Beispiel Hotel</div>
-        <h2>Ein Hotelzimmer. <em class="s">Fünf Formate.</em></h2>
-        <p>Aus kurzen Clips Ihrer Zimmer entstehen fünf Videos, jedes im richtigen Format für seinen Kanal.</p>
+        <div class="eyebrow">Beispiele nach Branche</div>
+        <h2><span id="catTitle">Ein Hotelzimmer.</span> <em class="s">Fünf Formate.</em></h2>
+        <div class="cats" role="tablist" aria-label="Branche wählen">
+          <button type="button" role="tab" aria-selected="true" data-cat="hotel">Hotel</button>
+          <button type="button" role="tab" aria-selected="false" data-cat="immobilie">Immobilie</button>
+        </div>
+        <p id="catText">Aus kurzen Clips Ihrer Zimmer entstehen fünf Videos, jedes im richtigen Format für seinen Kanal.</p>
         <ol class="stage-steps">
           <li data-i="0" class="on"><b>Instagram Reel</b><span>9:16 für Reels und Storys</span></li>
           <li data-i="1"><b>Shorts &amp; TikTok</b><span>9:16, schneller geschnitten</span></li>
@@ -648,10 +672,10 @@ html.fx .steps::after{content:"";position:absolute;left:0;top:-1px;height:3px;wi
     ] : autoPoses(Object.keys(dev).length);
     STAGES.push({el:stage, dev:dev, P:P, steps:[].slice.call(stage.querySelectorAll('.stage-steps li')), last:-1});
   });
-  function target(S, p){
+  function target(S, p, e){
     var n = S.P.length, t = {};
-    if (p < .12) { var k = ease(Math.max(0,p/.12)); for (var m in S.dev) t[m] = mix(START, S.P[0][m], k); return {t:t, i:0}; }
-    var q = (p-.12)/.88*n, i = Math.min(n-1, Math.floor(q)), f = q - i, tr = .3;
+    if (e < 1) { var k = ease(e); for (var m in S.dev) t[m] = mix(START, S.P[0][m], k); return {t:t, i:0}; }
+    var q = p*n, i = Math.min(n-1, Math.floor(q)), f = q - i, tr = .3;
     var k2 = (i<n-1 && f > 1-tr) ? ease((f-(1-tr))/tr) : 0;
     for (var d in S.dev) t[d] = k2 ? mix(S.P[i][d], S.P[i+1][d], k2) : S.P[i][d];
     return {t:t, i: k2>.5 ? i+1 : i};
@@ -677,7 +701,8 @@ html.fx .steps::after{content:"";position:absolute;left:0;top:-1px;height:3px;wi
       var r = S.el.getBoundingClientRect();
       if (!(r.bottom > 0 && r.top < h)) return;
       var p = Math.min(1, Math.max(0, -r.top / (r.height - h)));
-      var tg = target(S, p), moving = false;
+      var e = Math.min(1, Math.max(0, (h - r.top) / h));
+      var tg = target(S, p, e), moving = false;
       for (var n in S.dev) {
         var d = S.dev[n], c = d.cur, g = tg.t[n];
         for (var k in c) { var nv = c[k] + (g[k]-c[k])*.16; if (Math.abs(nv-g[k])>.05) moving = true; c[k] = nv; }
@@ -703,6 +728,37 @@ html.fx .steps::after{content:"";position:absolute;left:0;top:-1px;height:3px;wi
   }
   function req(){ if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
   addEventListener('scroll', req, {passive:true}); addEventListener('resize', req); req();
+})();
+</script>
+
+<script>
+(function(){
+  var H = '/assets/video/hotel/hotel-', I = '/assets/video/immobilien-';
+  var CATS = {
+    hotel:     {title:'Ein Hotelzimmer.', text:'Aus kurzen Clips Ihrer Zimmer entstehen fünf Videos, jedes im richtigen Format für seinen Kanal.',
+                v:[H+'reel', H+'shorts', H+'feed', H+'pinterest', H+'quer']},
+    immobilie: {title:'Eine Immobilie.',  text:'Aus Ihren Clips oder Exposé-Fotos entstehen fünf Videos, jedes im richtigen Format für seinen Kanal.',
+                v:[I+'reel', I+'tiktok', I+'feed', I+'pin', I+'quer']}
+  };
+  var sec = document.getElementById('hotel'); if (!sec) return;
+  var btns = [].slice.call(sec.querySelectorAll('.cats button'));
+  function show(cat){
+    var c = CATS[cat]; if (!c) return;
+    btns.forEach(function(b){ b.setAttribute('aria-selected', b.dataset.cat === cat ? 'true' : 'false'); });
+    document.getElementById('catTitle').textContent = c.title;
+    document.getElementById('catText').textContent = c.text;
+    c.v.forEach(function(base, i){
+      var d = sec.querySelector('.dev[data-d="'+i+'"] video'); if (!d) return;
+      var was = !!d.getAttribute('s'+'rc');
+      d.classList.add('swap');
+      setTimeout(function(){
+        d.poster = base + '.jpg'; d.dataset.v = base + '.mp4';
+        if (was) { d.setAttribute('s'+'rc', base + '.mp4'); var q = d.play(); if (q && q.catch) q.catch(function(){}); }
+        d.classList.remove('swap');
+      }, 300);
+    });
+  }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ show(b.dataset.cat); }); });
 })();
 </script>
 </body>
