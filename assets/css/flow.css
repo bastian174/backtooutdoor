@@ -1,0 +1,42 @@
+/* Back to Outdoor – Fließ-Layer für die ganze Website
+   Seitenübergänge, sanftes Einblenden, Hero-Kamerafahrt, Fortschrittsbalken.
+   Keine Abhängigkeiten. Alles Animierte hängt an html.fl (nur gesetzt, wenn keine
+   reduzierte Bewegung gewünscht ist). Ohne html.fl bleibt jede Seite statisch. */
+
+/* ---------- Seitenübergänge (Chrome, Edge, Safari 18+) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  header.site-nav { view-transition-name: site-nav; }
+  ::view-transition-group(root) { animation-duration: .45s; }
+  ::view-transition-old(root) { animation: flPageOut .28s cubic-bezier(.4,0,.6,1) both; }
+  ::view-transition-new(root) { animation: flPageIn .5s cubic-bezier(.2,.7,.2,1) both; }
+  ::view-transition-group(site-nav) { animation-duration: 0s; }
+}
+@keyframes flPageOut { to { opacity: 0; transform: translate3d(0,-10px,0); } }
+@keyframes flPageIn  { from { opacity: 0; transform: translate3d(0,16px,0); } }
+
+/* ---------- Fortschrittsbalken + Navigation ---------- */
+.fl-bar{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--teal-bright,#e36d27);transform-origin:0 50%;transform:scaleX(0);z-index:60;pointer-events:none}
+html.fl header.site-nav{transition:box-shadow .35s ease,background-color .35s ease}
+html.fl header.site-nav.is-scrolled{box-shadow:0 10px 30px rgba(0,0,0,.22)}
+
+/* ---------- Seiten-Hero: Auftritt beim Laden ---------- */
+@keyframes flRise{from{opacity:0;transform:translate3d(0,26px,0)}to{opacity:1;transform:none}}
+html.fl:not(.fl-own) :is(.art-hero,.shop-page-hero,.about-page-hero,.journal-page-hero,.portfolio-page-hero,.page-hero,header.hero) > .wrap > *{animation:flRise .9s cubic-bezier(.2,.7,.2,1) both}
+html.fl:not(.fl-own) :is(.art-hero,.shop-page-hero,.about-page-hero,.journal-page-hero,.portfolio-page-hero,.page-hero,header.hero) > .wrap > :nth-child(2){animation-delay:.08s}
+html.fl:not(.fl-own) :is(.art-hero,.shop-page-hero,.about-page-hero,.journal-page-hero,.portfolio-page-hero,.page-hero,header.hero) > .wrap > :nth-child(3){animation-delay:.16s}
+html.fl:not(.fl-own) :is(.art-hero,.shop-page-hero,.about-page-hero,.journal-page-hero,.portfolio-page-hero,.page-hero,header.hero) > .wrap > :nth-child(n+4){animation-delay:.24s}
+
+/* ---------- Seiten-Hero: Kamerafahrt beim Scrollen (JS setzt --hp 0…1) ---------- */
+html.fl .fl-hero{--hp:0}
+html.fl .fl-hero > .wrap{transform:translate3d(0,calc(var(--hp) * -46px),0);opacity:calc(1 - var(--hp) * 1.1);will-change:transform,opacity}
+html.fl .fl-hero .hero-video-bg{transform:translate3d(0,calc(var(--hp) * 80px),0) scale(calc(1.02 + var(--hp) * .14));will-change:transform}
+
+/* ---------- Sanftes Einblenden beim Scrollen (JS setzt .fl-r, danach .in) ---------- */
+html.fl .fl-r{opacity:0;transform:translate3d(0,26px,0);transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0) * 70ms)}
+html.fl .fl-r.fl-img{transform:translate3d(0,18px,0) scale(.97)}
+html.fl .fl-r.in{opacity:1;transform:none}
+@media (max-width:640px){
+  html.fl .fl-r{transform:translate3d(0,18px,0)}
+  html.fl .fl-r.in{transform:none}
+}
