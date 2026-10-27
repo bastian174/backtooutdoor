@@ -26,6 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('fx')}catch(e){}})();</script>
 <style>
   :root{
     --ink:#132030;
@@ -995,6 +996,7 @@
   @media (max-width:940px){ nav.links{ gap:7px; } }
 </style>
 <link rel="stylesheet" href="/assets/css/mobile-nav.css">
+<link rel="stylesheet" href="/assets/css/home-3d.css?v=2">
 </head>
 <body>
 
@@ -1237,7 +1239,7 @@
     <div class="process-wrap reveal">
       <div class="process-line">
         <svg width="2" height="100%" viewBox="0 0 2 300" preserveAspectRatio="none">
-          <line x1="1" y1="0" x2="1" y2="300" stroke="#7a5f00" stroke-width="2" stroke-dasharray="300" stroke-dashoffset="300" class="draw-line"/>
+          <line x1="1" y1="0" x2="1" y2="300" stroke="#e36d27" stroke-width="2" stroke-dasharray="300" stroke-dashoffset="300" class="draw-line"/>
         </svg>
       </div>
       <div class="process-step">
@@ -1254,6 +1256,31 @@
         <span class="step-num">3</span>
         <h3>Umsetzung vor Ort</h3>
         <p>Wir produzieren, ihr bekommt fertigen Content – bereit für Kampagne, Feed und Website.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviere" id="reviere" aria-label="Reviere unserer Arbeit">
+  <div class="reviere-pin">
+    <div class="wrap reviere-in">
+      <div class="reviere-copy">
+        <span class="eyebrow light">Reviere</span>
+        <h2>Vier Reviere.<br>Alles vor Ort gedreht.</h2>
+        <ol class="reviere-steps">
+        <li><b>Verdon, Frankreich</b><span>Aquatrekking · Rafting</span><em>Mehrtägige Begleitung für einen internationalen Tourenanbieter, Verdon.</em></li>
+        <li><b>Salzburg, Österreich</b><span>Rafting · Canyoning</span><em>Torrent Outdoor — Wildwasser-Content am Heimatfluss, Salzburger Land.</em></li>
+        <li><b>Steiermark / Gesäuse</b><span>Kajaken · Rafting</span><em>AOS rafting.at — Content im Nationalpark Gesäuse, Steiermark.</em></li>
+        <li><b>Namibia</b><span>Safari · Gästefarm · Travel</span><em>Reise- und Safari-Content für eine Gästefarm in Namibia.</em></li>
+        </ol>
+        <p class="reviere-caption"></p>
+        <a href="#portfolio" class="btn ghost reviere-cta">Alle Arbeiten ansehen →</a>
+      </div>
+      <div class="reviere-scene">
+        <figure class="rcard"><img src="assets/img/9439f7ae3d96.jpg" alt="Gruppe beim Aquatrekking an der Felswand im Verdon" loading="lazy" decoding="async"><figcaption>Verdon</figcaption></figure>
+        <figure class="rcard"><img src="assets/img/ad957340b51a.jpg" alt="Rafting-Boot in Stromschnellen, Salzburg" loading="lazy" decoding="async"><figcaption>Salzburg</figcaption></figure>
+        <figure class="rcard"><img src="assets/img/c08b8b67aa07.jpg" alt="Rafting-Gruppe am Ufer, Nationalpark Gesäuse" loading="lazy" decoding="async"><figcaption>Steiermark</figcaption></figure>
+        <figure class="rcard"><img src="assets/img/05471f3c8e41.jpg" alt="Safari-Beobachtung in Namibia" loading="lazy" decoding="async"><figcaption>Namibia</figcaption></figure>
       </div>
     </div>
   </div>
@@ -1510,7 +1537,7 @@
 
   // Draw-in line for process section
   const drawLine = document.querySelector('.draw-line');
-  if (drawLine) {
+  if (drawLine && !document.documentElement.classList.contains('fx')) {
     const lineObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1526,6 +1553,7 @@
 
 <style id="bto-mobile-fix">@media (max-width:560px){.nav-cta{display:none!important}.lang-switch{margin-left:0!important;gap:2px}}html,body{overflow-x:clip}</style>
 <script src="/assets/js/mobile-nav.js" defer></script>
+<script src="/assets/js/home-3d.js?v=1" defer></script>
 <script src="/agent.js" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
