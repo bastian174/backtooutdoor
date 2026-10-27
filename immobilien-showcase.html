@@ -189,6 +189,17 @@ footer a{color:var(--soft)}
   .mock .units{grid-template-columns:repeat(2,1fr)}
 }
 @media (prefers-reduced-motion:reduce){.shot{animation:none}}
+/* Hotel-Beispiele */
+.hotel-row{display:flex;flex-wrap:nowrap;gap:18px;align-items:flex-end;margin-top:40px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.hotel-row figure{margin:0;flex:none;scroll-snap-align:start}
+.hotel-row video{display:block;height:280px;width:auto;background:#000;border:2px solid rgba(245,241,230,.85)}
+.hotel-row .wide video{height:auto;width:400px;aspect-ratio:16/9}
+.hotel-row figcaption{margin-top:10px;font-size:14px;color:var(--muted);max-width:200px}
+.hotel-row .wide figcaption{max-width:none}
+.hotel-row figcaption b{display:block;color:var(--text);font-weight:600}
+.hotel-note{margin-top:14px;font-size:13px;color:var(--soft)}
+@media (max-width:720px){.hotel-row video{height:360px}.hotel-row .wide video{width:82vw}.hotel-row{margin-right:-16px;padding-right:16px}}
+
 </style>
 </head>
 <body>
@@ -274,6 +285,22 @@ footer a{color:var(--soft)}
       </div>
     </div>
     <p class="note">Den Preis nennen wir im persönlichen Angebot. Er hängt von der Zahl der Objekte und Formate ab.</p>
+  </div>
+</section>
+
+<section class="block bordered" id="hotel">
+  <div class="wrap">
+    <div class="eyebrow">Beispiel Hotel</div>
+    <h2>Ein Hotelzimmer. <em class="s">Fünf Formate.</em></h2>
+    <p style="max-width:640px;margin:18px 0 0;color:var(--muted)">Aus kurzen Clips Ihrer Zimmer entstehen Reel, Shorts, Feed-Post, Pin und ein Video im Querformat für Website und Buchungsportale.</p>
+    <div class="hotel-row">
+      <figure><video muted loop playsinline preload="none" poster="/assets/video/hotel/hotel-reel.jpg" data-v="/assets/video/hotel/hotel-reel.mp4" aria-label="Beispielvideo Hotel, Instagram Reel"></video><figcaption><b>Instagram Reel</b>9:16</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="/assets/video/hotel/hotel-shorts.jpg" data-v="/assets/video/hotel/hotel-shorts.mp4" aria-label="Beispielvideo Hotel, YouTube Shorts & TikTok"></video><figcaption><b>YouTube Shorts & TikTok</b>9:16</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="/assets/video/hotel/hotel-feed.jpg" data-v="/assets/video/hotel/hotel-feed.mp4" aria-label="Beispielvideo Hotel, Feed-Post"></video><figcaption><b>Feed-Post</b>4:5</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="/assets/video/hotel/hotel-pinterest.jpg" data-v="/assets/video/hotel/hotel-pinterest.mp4" aria-label="Beispielvideo Hotel, Pinterest Pin"></video><figcaption><b>Pinterest Pin</b>2:3</figcaption></figure>
+      <figure class="wide"><video muted loop playsinline preload="none" poster="/assets/video/hotel/hotel-quer.jpg" data-v="/assets/video/hotel/hotel-quer.mp4" aria-label="Beispielvideo Hotel, Querformat"></video><figcaption><b>Querformat</b>16:9 · Website & Portale</figcaption></figure>
+    </div>
+    <p class="hotel-note">Beispielvideos aus Stock-Material.</p>
   </div>
 </section>
 
@@ -485,6 +512,17 @@ footer a{color:var(--soft)}
       msg.innerHTML = 'Das Senden hat gerade nicht geklappt. Schreiben Sie uns bitte direkt an <a href="mailto:info@backtooutdoor.com">info@backtooutdoor.com</a>.';
     });
   });
+})();
+</script>
+
+<script>
+(function(){
+  var vids=[].slice.call(document.querySelectorAll('#hotel video'));
+  var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function go(v){ if(!v.getAttribute('s'+'rc')) v.setAttribute('s'+'rc', v.dataset.v); if(still) return; var q=v.play(); if(q&&q.catch) q.catch(function(){}); }
+  if(!('IntersectionObserver' in window)){ vids.forEach(go); return; }
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) go(e.target); else e.target.pause(); }); },{rootMargin:'100px'});
+  vids.forEach(function(v){ io.observe(v); });
 })();
 </script>
 </body>
