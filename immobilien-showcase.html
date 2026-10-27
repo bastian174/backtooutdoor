@@ -587,9 +587,9 @@ html.fx .steps::after{content:"";position:absolute;left:0;top:-1px;height:3px;wi
   var dev = {}; [].forEach.call(stage.querySelectorAll('.dev'), function(d){ dev[d.dataset.d] = {el:d, cur:{x:0,y:0,z:-900,ry:40,rx:8,o:0}}; });
   var steps = [].slice.call(stage.querySelectorAll('.stage-steps li'));
   var P = [
-    {phone:{x:-40,y:0,z:180,ry:-14,rx:2,o:1}, laptop:{x:170,y:-40,z:-160,ry:-28,rx:4,o:.32}, pin:{x:310,y:40,z:-320,ry:-34,rx:4,o:.22}},
-    {laptop:{x:20,y:-10,z:140,ry:-10,rx:3,o:1}, phone:{x:-250,y:20,z:-120,ry:28,rx:2,o:.28}, pin:{x:300,y:30,z:-200,ry:-30,rx:4,o:.28}},
-    {pin:{x:90,y:0,z:190,ry:-12,rx:2,o:1}, laptop:{x:-130,y:-30,z:-240,ry:24,rx:4,o:.26}, phone:{x:-250,y:20,z:-160,ry:30,rx:2,o:.22}}
+    {phone:{x:-40,y:0,z:180,ry:-14,rx:2,o:1}, laptop:{x:170,y:-40,z:-160,ry:-28,rx:4,o:.55}, pin:{x:310,y:40,z:-320,ry:-34,rx:4,o:.4}},
+    {laptop:{x:20,y:-10,z:140,ry:-10,rx:3,o:1}, phone:{x:-250,y:20,z:-120,ry:28,rx:2,o:.5}, pin:{x:300,y:30,z:-200,ry:-30,rx:4,o:.5}},
+    {pin:{x:90,y:0,z:190,ry:-12,rx:2,o:1}, laptop:{x:-130,y:-30,z:-240,ry:24,rx:4,o:.45}, phone:{x:-250,y:20,z:-160,ry:30,rx:2,o:.4}}
   ];
   var START = {x:0,y:60,z:-1100,ry:45,rx:14,o:0};
   function mix(a,b,t){ var o={}; for(var k in a) o[k]=a[k]+(b[k]-a[k])*t; return o; }
