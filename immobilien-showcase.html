@@ -190,6 +190,19 @@ footer a{color:var(--soft)}
   .mock .units{grid-template-columns:repeat(2,1fr)}
 }
 @media (prefers-reduced-motion:reduce){.shot{animation:none}}
+
+/* Formate kompakt (ohne Videos, die zeigt die Bühne) */
+#grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:8px}
+.card.spec{padding:26px 24px;gap:8px;position:relative;transition:border-color .2s,transform .3s,background .2s}
+.card.spec:hover{border-color:var(--accent);transform:translateY(-4px)}
+.card.spec .badge{position:static;align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.14em;padding:5px 9px;border:1px solid var(--line);color:var(--sand);background:transparent}
+.card.spec .name{font-family:'Instrument Serif',serif;font-size:30px;line-height:1.05;margin-top:10px}
+.card.spec .use{font-weight:600;font-size:15px}
+.card.spec dl{margin:10px 0 0;display:grid;gap:8px;font-size:14px}
+.card.spec dt{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.card.spec dd{margin:0;color:var(--muted)}
+.card.spec .txt{font-size:14px;color:var(--soft);line-height:1.5;margin-top:6px}
+.card.spec .go{margin-top:auto;padding-top:14px;font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--accent)}
 /* ===== Cinematic Scroll ===== */
 .scrollbar{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);z-index:50;pointer-events:none}
 html.fx .rv{opacity:0;transform:translateY(42px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
@@ -328,36 +341,12 @@ html.fx .steps::after{content:"";position:absolute;left:0;top:-1px;height:3px;wi
   <div class="wrap">
     <div class="head-row">
       <div>
-        <div class="eyebrow">Die Formate</div>
-        <h2>Finden Sie <em class="s">Ihr Format.</em></h2>
-      </div>
-      <div class="filters" role="group" aria-label="Formate filtern">
-        <button type="button" data-f="alle" aria-pressed="true">Alle 5</button>
-        <button type="button" data-f="video" aria-pressed="false">Video</button>
-        <button type="button" data-f="web" aria-pressed="false">Web &amp; Social</button>
+        <div class="eyebrow">Die Formate im Überblick</div>
+        <h2>Alle Formate. <em class="s">Auf einen Blick.</em></h2>
       </div>
     </div>
     <div class="grid" id="grid"></div>
 
-    <div class="detail" id="detail" hidden>
-      <div class="media" id="dMedia"></div>
-      <div class="txt">
-        <div class="kick" id="dKick"></div>
-        <div class="ttl" id="dTitle"></div>
-        <div style="font-size:20px;font-weight:600" id="dUse"></div>
-        <dl>
-          <div><dt>Format</dt><dd id="dFormat"></dd></div>
-          <div><dt>Länge</dt><dd id="dLen"></dd></div>
-          <div><dt>Einsatz</dt><dd id="dWhere"></dd></div>
-          <div><dt>Material</dt><dd id="dMat"></dd></div>
-        </dl>
-        <p id="dText"></p>
-        <div class="ctas" style="margin-top:12px;gap:12px">
-          <a href="#anfrage" class="btn btn-dark" id="dCta">Vorschau anfragen →</a>
-          <button type="button" class="btn btn-ghost" id="dClose">Schließen</button>
-        </div>
-      </div>
-    </div>
     <p class="note">Den Preis nennen wir im persönlichen Angebot. Er hängt von der Zahl der Objekte und Formate ab.</p>
   </div>
 </section>
@@ -516,52 +505,25 @@ html.fx .steps::after{content:"";position:absolute;left:0;top:-1px;height:3px;wi
   var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
     es.forEach(function(e){ if (e.isIntersecting) startVid(e.target); else e.target.pause(); });
   }, {rootMargin:'100px'}) : null;
-  var grid = document.getElementById('grid'), detail = document.getElementById('detail');
-  var sel = document.getElementById('fFormat'), selected = null;
+  var grid = document.getElementById('grid');
+  var sel = document.getElementById('fFormat');
 
   FORMATS.forEach(function(f){
     var b = document.createElement('button');
-    b.type = 'button'; b.className = 'card'; b.dataset.id = f.id; b.dataset.group = f.group;
-    b.setAttribute('aria-pressed','false');
-    b.innerHTML = '<div class="prev"><span class="badge">'+f.badge+'</span><div class="shot '+f.ratio+'">'+media(f,false)+'</div></div>'+
-      '<div class="info"><span class="name">'+f.name+'</span><span class="use">'+f.use+'</span><span class="meta">'+f.format+' · '+f.len+'</span></div>';
-    b.addEventListener('click', function(){ pick(f.id, true); });
+    b.type = 'button'; b.className = 'card spec'; b.dataset.id = f.id;
+    b.innerHTML = '<span class="badge">'+f.badge+'</span>'+
+      '<span class="name">'+f.name+'</span><span class="use">'+f.use+'</span>'+
+      '<dl><div><dt>Format</dt><dd>'+f.format+'</dd></div><div><dt>Länge</dt><dd>'+f.len+'</dd></div><div><dt>Einsatz</dt><dd>'+f.where+'</dd></div></dl>'+
+      '<span class="txt">'+f.text+'</span><span class="go">Anfragen →</span>';
+    b.addEventListener('click', function(){
+      sel.value = f.id;
+      document.getElementById('anfrage').scrollIntoView({behavior:'smooth', block:'start'});
+      setTimeout(function(){ var n = document.getElementById('fName'); if (n) n.focus({preventScroll:true}); }, 700);
+    });
     grid.appendChild(b);
-    var cv = b.querySelector('video'); if (cv) { if (io) io.observe(cv); else startVid(cv); }
     var o = document.createElement('option'); o.value = f.id; o.textContent = f.name + ': ' + f.use; sel.appendChild(o);
   });
-
-  function pick(id, scroll){
-    selected = id;
-    var f = FORMATS.filter(function(x){ return x.id === id; })[0];
-    [].forEach.call(grid.children, function(c){ c.setAttribute('aria-pressed', c.dataset.id === id ? 'true' : 'false'); });
-    if (!f){ detail.hidden = true; return; }
-    document.getElementById('dMedia').innerHTML = '<div class="shot '+f.ratio+'">'+media(f,true)+'</div>';
-    var dv = document.querySelector('#dMedia video'); if (dv) startVid(dv);
-    document.getElementById('dKick').textContent = f.badge + ' · ' + f.where;
-    document.getElementById('dTitle').textContent = f.name;
-    document.getElementById('dUse').textContent = f.use;
-    document.getElementById('dFormat').textContent = f.format;
-    document.getElementById('dLen').textContent = f.len;
-    document.getElementById('dWhere').textContent = f.where;
-    document.getElementById('dMat').textContent = f.mat;
-    document.getElementById('dText').textContent = f.text;
-    document.getElementById('dCta').textContent = 'Vorschau: ' + f.name + ' →';
-    detail.hidden = false; sel.value = id;
-    if (scroll) detail.scrollIntoView({behavior:'smooth', block:'nearest'});
-  }
-  document.getElementById('dClose').addEventListener('click', function(){ pick(null); });
-  document.getElementById('dCta').addEventListener('click', function(){ if (selected) sel.value = selected; });
   [].forEach.call(document.querySelectorAll('[data-pick]'), function(a){ a.addEventListener('click', function(){ sel.value = a.dataset.pick; }); });
-
-  [].forEach.call(document.querySelectorAll('.filters button'), function(btn){
-    btn.addEventListener('click', function(){
-      var g = btn.dataset.f;
-      [].forEach.call(document.querySelectorAll('.filters button'), function(x){ x.setAttribute('aria-pressed', x === btn ? 'true' : 'false'); });
-      [].forEach.call(grid.children, function(c){ c.hidden = !(g === 'alle' || c.dataset.group === g); });
-    });
-  });
-  pick('reel', false);
 
   // Formular -> /api/lead
   var t0 = Date.now(), form = document.getElementById('form'), msg = document.getElementById('msg'), go = document.getElementById('send');
@@ -615,7 +577,7 @@ html.fx .steps::after{content:"";position:absolute;left:0;top:-1px;height:3px;wi
   if (reduce) { document.querySelectorAll('.dev').forEach(function(d,i){ d.style.position='relative'; d.style.left=d.style.top='auto'; d.style.margin='0 auto 60px'; }); return; }
   root.classList.add('fx');
   // Einblenden
-  var sel = '#formate .head-row, #hotel .eyebrow, #hotel h2, #hotel > .wrap > p, #projektseite .split > div:last-child, #ablauf .eyebrow, #ablauf h2, .step, #anfrage .split > div, .fact, .stage-copy';
+  var sel = '#formate .head-row, #grid .card, #hotel .eyebrow, #hotel h2, #hotel > .wrap > p, #projektseite .split > div:last-child, #ablauf .eyebrow, #ablauf h2, .step, #anfrage .split > div, .fact, .stage-copy';
   var rv = [].slice.call(document.querySelectorAll(sel));
   rv.forEach(function(el,i){ el.classList.add('rv'); el.style.transitionDelay = (el.classList.contains('step')||el.classList.contains('fact') ? (([].indexOf.call(el.parentNode.children, el))*90) : 0)+'ms'; });
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
@@ -625,9 +587,9 @@ html.fx .steps::after{content:"";position:absolute;left:0;top:-1px;height:3px;wi
   var dev = {}; [].forEach.call(stage.querySelectorAll('.dev'), function(d){ dev[d.dataset.d] = {el:d, cur:{x:0,y:0,z:-900,ry:40,rx:8,o:0}}; });
   var steps = [].slice.call(stage.querySelectorAll('.stage-steps li'));
   var P = [
-    {phone:{x:-40,y:0,z:180,ry:-14,rx:2,o:1}, laptop:{x:170,y:-40,z:-160,ry:-28,rx:4,o:.55}, pin:{x:310,y:40,z:-320,ry:-34,rx:4,o:.4}},
-    {laptop:{x:20,y:-10,z:140,ry:-10,rx:3,o:1}, phone:{x:-250,y:20,z:-120,ry:28,rx:2,o:.5}, pin:{x:300,y:30,z:-200,ry:-30,rx:4,o:.5}},
-    {pin:{x:90,y:0,z:190,ry:-12,rx:2,o:1}, laptop:{x:-130,y:-30,z:-240,ry:24,rx:4,o:.45}, phone:{x:-250,y:20,z:-160,ry:30,rx:2,o:.4}}
+    {phone:{x:-40,y:0,z:180,ry:-14,rx:2,o:1}, laptop:{x:170,y:-40,z:-160,ry:-28,rx:4,o:.32}, pin:{x:310,y:40,z:-320,ry:-34,rx:4,o:.22}},
+    {laptop:{x:20,y:-10,z:140,ry:-10,rx:3,o:1}, phone:{x:-250,y:20,z:-120,ry:28,rx:2,o:.28}, pin:{x:300,y:30,z:-200,ry:-30,rx:4,o:.28}},
+    {pin:{x:90,y:0,z:190,ry:-12,rx:2,o:1}, laptop:{x:-130,y:-30,z:-240,ry:24,rx:4,o:.26}, phone:{x:-250,y:20,z:-160,ry:30,rx:2,o:.22}}
   ];
   var START = {x:0,y:60,z:-1100,ry:45,rx:14,o:0};
   function mix(a,b,t){ var o={}; for(var k in a) o[k]=a[k]+(b[k]-a[k])*t; return o; }
