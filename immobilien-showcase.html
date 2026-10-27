@@ -264,7 +264,7 @@ html.fx .rv.in{opacity:1;transform:none}
 .scene{position:relative;height:min(78vh,640px);perspective:1400px;perspective-origin:50% 45%}
 .dev{position:absolute;left:50%;top:50%;transform-style:preserve-3d;will-change:transform,opacity;opacity:0}
 .dev video{display:block;width:100%;height:100%;object-fit:cover;background:#000}
-.dev.phone{width:220px;height:450px;margin:-225px 0 0 -110px;border-radius:36px;padding:10px;background:#0E1013;box-shadow:0 0 0 2px #3A4047,0 40px 80px rgba(0,0,0,.55)}
+.dev.phone{width:250px;height:450px;margin:-225px 0 0 -125px;border-radius:36px;padding:10px;background:#0E1013;box-shadow:0 0 0 2px #3A4047,0 40px 80px rgba(0,0,0,.55)}
 .dev.phone video{border-radius:27px}
 .dev.phone::after{content:"";position:absolute;top:18px;left:50%;width:70px;height:20px;margin-left:-35px;border-radius:12px;background:#0E1013}
 .dev.laptop{width:560px;height:350px;margin:-175px 0 0 -280px}
@@ -413,6 +413,8 @@ html.fx .steps::after{content:"";position:absolute;left:0;top:-1px;height:3px;wi
         <div class="cats" role="tablist" aria-label="Branche wählen">
           <button type="button" role="tab" aria-selected="true" data-cat="hotel">Hotel</button>
           <button type="button" role="tab" aria-selected="false" data-cat="immobilie">Immobilie</button>
+          <button type="button" role="tab" aria-selected="false" data-cat="restaurant">Restaurant</button>
+          <button type="button" role="tab" aria-selected="false" data-cat="essen">Essen</button>
         </div>
         <p id="catText">Aus kurzen Clips Ihrer Zimmer entstehen fünf Videos, jedes im richtigen Format für seinen Kanal.</p>
         <ol class="stage-steps">
@@ -733,12 +735,16 @@ html.fx .steps::after{content:"";position:absolute;left:0;top:-1px;height:3px;wi
 
 <script>
 (function(){
-  var H = '/assets/video/hotel/hotel-', I = '/assets/video/immobilien-';
+  var H = '/assets/video/hotel/hotel-', I = '/assets/video/immobilien-', R = '/assets/video/restaurant-', E = '/assets/video/essen-';
   var CATS = {
     hotel:     {title:'Ein Hotelzimmer.', text:'Aus kurzen Clips Ihrer Zimmer entstehen fünf Videos, jedes im richtigen Format für seinen Kanal.',
                 v:[H+'reel', H+'shorts', H+'feed', H+'pinterest', H+'quer']},
     immobilie: {title:'Eine Immobilie.',  text:'Aus Ihren Clips oder Exposé-Fotos entstehen fünf Videos, jedes im richtigen Format für seinen Kanal.',
-                v:[I+'reel', I+'tiktok', I+'feed', I+'pin', I+'quer']}
+                v:[I+'reel', I+'tiktok', I+'feed', I+'pin', I+'quer']},
+    restaurant:{title:'Ein Restaurant.',  text:'Aus Clips und Fotos von Gastraum, Bar und Service entstehen fünf Videos, jedes im richtigen Format für seinen Kanal.',
+                v:[R+'reel', R+'shorts', R+'feed', R+'pin', R+'quer']},
+    essen:     {title:'Ein Gericht.',     text:'Aus Fotos und Clips Ihrer Gerichte und Drinks entstehen fünf Videos, jedes im richtigen Format für seinen Kanal.',
+                v:[E+'reel', E+'shorts', E+'feed', E+'pin', E+'quer']}
   };
   var sec = document.getElementById('hotel'); if (!sec) return;
   var btns = [].slice.call(sec.querySelectorAll('.cats button'));
