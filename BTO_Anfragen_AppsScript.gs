@@ -96,7 +96,7 @@ function htmlMail_(text, kanal) {
   if (LOGOS[kanal]) {
     try {
       inline.logo = UrlFetchApp.fetch(LOGOS[kanal]).getBlob().setName('logo.png');
-      logo = '<p style="margin:20px 0 0"><img src="cid:logo" width="96" height="96" alt="Back to Outdoor"></p>';
+      logo = '<p style="margin:20px 0 0"><img src="cid:logo" height="96" alt="Back to Outdoor"></p>';
     } catch (err) { Logger.log('Logo nicht geladen: ' + err.message); }
   }
   return { html: '<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.55;color:#132030">' + body + logo + '</div>', inline: inline };
