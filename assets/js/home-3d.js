@@ -17,7 +17,7 @@
   var processWrap = document.querySelector('.process-wrap');
   var processSteps = [].slice.call(document.querySelectorAll('.process-step'));
   var drawLine = document.querySelector('.draw-line');
-  var pimgs = [].slice.call(document.querySelectorAll('.portfolio-banner img, .p-photo img'));
+  var pimgs = [].slice.call(document.querySelectorAll('.portfolio-banner img'));
 
   var h = innerHeight, navh = 68;
   function measure() {
@@ -166,7 +166,7 @@
       var box = pimgs[i].parentNode.getBoundingClientRect();
       if (box.bottom < -50 || box.top > h + 50) continue;
       var t = ((box.top + box.height / 2) - h / 2) / (h / 2 + box.height / 2);  // -1 … 1
-      pimgs[i].style.setProperty('--py', (clamp(t, -1, 1) * -5.5).toFixed(2) + '%');
+      pimgs[i].style.setProperty('--oy', (50 + clamp(t, -1, 1) * 22).toFixed(1) + '%');
     }
   }
 

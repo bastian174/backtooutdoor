@@ -43,11 +43,8 @@ html.fx .process-step.on{opacity:1}
 html.fx .process-step .step-num{transition:transform .5s cubic-bezier(.2,.7,.2,1),background .5s ease}
 html.fx .process-step.on .step-num{transform:scale(1.2);background:var(--teal-bright,#e36d27)}
 
-/* ---------- Portfolio: Bilder laufen im Rahmen mit (Parallax) ---------- */
-html.fx .portfolio-banner img,
-html.fx .p-photo img{transform:translate3d(0,var(--py,0%),0) scale(1.14);transition:transform .25s linear;will-change:transform}
-html.fx .portfolio-banner:hover img,
-html.fx .p-photo:hover img{transform:translate3d(0,var(--py,0%),0) scale(1.2)}
+/* ---------- Portfolio: Banner gleiten im Rahmen (ohne Zoom, ohne zusätzlichen Beschnitt) ---------- */
+html.fx .portfolio-banner img{object-position:50% var(--oy,50%)}
 html.fx .portfolio-region.reveal .p-photo{opacity:0;transform:translate3d(0,38px,0) scale(.97);transition:opacity .7s ease,transform .85s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0) * 90ms)}
 html.fx .portfolio-region.reveal.in .p-photo{opacity:1;transform:none}
 .p-photo:nth-child(2){--i:1}.p-photo:nth-child(3){--i:2}.p-photo:nth-child(4){--i:3}
@@ -65,7 +62,7 @@ html.fx .portfolio-region.reveal.in .p-photo{opacity:1;transform:none}
 .reviere-caption{display:none}
 .reviere-cta{margin-top:30px}
 .reviere-scene{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.rcard{position:relative;margin:0;aspect-ratio:4/5;overflow:hidden;border-radius:6px;background:#0c1520}
+.rcard{position:relative;margin:0;aspect-ratio:var(--ar,.75);overflow:hidden;border-radius:6px;background:#0c1520}
 .rcard img{width:100%;height:100%;object-fit:cover;display:block}
 .rcard figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 16px 14px;background:linear-gradient(transparent,rgba(16,24,28,.88));font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:.04em;text-transform:uppercase;color:var(--foam,#f7f5f0)}
 @media (max-width:900px){
@@ -79,7 +76,7 @@ html.fx .reviere-pin{position:sticky;top:var(--navh,68px);height:calc(100vh - va
 html.fx .reviere-pin::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 68% 50%,rgba(227,109,39,.17),transparent 70%);pointer-events:none}
 html.fx .reviere-in{width:100%;position:relative}
 html.fx .reviere-scene{display:block;position:relative;height:min(74vh,620px);perspective:1400px;perspective-origin:50% 45%}
-html.fx .rcard{position:absolute;left:50%;top:50%;width:300px;height:380px;aspect-ratio:auto;margin:-190px 0 0 -150px;opacity:0;border-radius:10px;transform-style:preserve-3d;will-change:transform,opacity;box-shadow:0 0 0 1px rgba(247,245,240,.1),0 40px 80px rgba(0,0,0,.55)}
+html.fx .rcard{position:absolute;left:50%;top:50%;width:300px;height:auto;aspect-ratio:var(--ar,.75);margin:calc(-150px / var(--ar,.75)) 0 0 -150px;opacity:0;border-radius:10px;transform-style:preserve-3d;will-change:transform,opacity;box-shadow:0 0 0 1px rgba(247,245,240,.1),0 40px 80px rgba(0,0,0,.55)}
 html.fx .reviere-steps{gap:4px}
 html.fx .reviere-steps li{padding:0;border-left:0}
 html.fx .reviere-steps button{display:block;width:100%;text-align:left;background:none;border:0;border-left:2px solid var(--line-light,rgba(247,245,240,.16));padding:13px 0 13px 22px;font:inherit;color:rgba(247,245,240,.55);cursor:pointer;transition:color .4s,border-color .4s}

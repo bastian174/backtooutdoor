@@ -40,3 +40,12 @@ html.fl .fl-r.in{opacity:1;transform:none}
   html.fl .fl-r{transform:translate3d(0,18px,0)}
   html.fl .fl-r.in{transform:none}
 }
+
+/* ---------- Portfolio-Reihen: Fotos in ihrem echten Seitenverhältnis (nichts wird abgeschnitten) ---------- */
+.portfolio-row.fit{display:flex;gap:14px;align-items:flex-start}
+.portfolio-row.fit .p-photo{flex:var(--ar,.75) 1 0;min-width:0;aspect-ratio:var(--ar,.75)}
+@media (max-width:760px){
+  .portfolio-row.fit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .portfolio-row.fit .p-photo{flex:none}
+}
+@media (max-width:480px){ .portfolio-row.fit{grid-template-columns:1fr} }
