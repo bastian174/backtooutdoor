@@ -144,3 +144,20 @@ section.pf{background:var(--ink,#132030);color:var(--foam,#f7f5f0);padding:88px 
   .pf .lc-brand{display:block;line-height:1.7;font-size:.64rem;letter-spacing:.14em}
   .pf .lc-brand i{display:inline-block;vertical-align:middle;margin:0 8px}
 }
+
+/* ---------- Reise in 5 Schritten ---------- */
+.road-t{display:block;margin-top:36px;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,245,240,.6)}
+.road{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));max-width:820px}
+.road li{border-top:2px solid rgba(247,245,240,.22);transition:border-color .3s}
+.road li:hover{border-top-color:var(--teal-bright,#e36d27)}
+.road a{display:block;padding:14px 10px 0 0;color:rgba(247,245,240,.82);text-decoration:none;font-weight:600;font-size:.92rem;line-height:1.25}
+.road a b{display:block;font-family:'Big Shoulders Display',sans-serif;font-size:1.25rem;letter-spacing:.08em;color:var(--teal-bright,#e36d27);margin-bottom:2px}
+.road a:hover{color:#fff}
+.road a:focus-visible{outline:2px solid var(--teal-bright,#e36d27);outline-offset:3px}
+.stepl{display:block;margin-bottom:16px}
+section[id],#start{scroll-margin-top:var(--navh,68px)}
+@media (max-width:640px){
+  .road-t{margin-top:30px}
+  .road a{font-size:.74rem;padding-right:4px}
+  .road a b{font-size:1.05rem}
+}
