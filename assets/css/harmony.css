@@ -161,3 +161,7 @@ section[id],#start{scroll-margin-top:var(--navh,68px)}
   .road a{font-size:.74rem;padding-right:4px}
   .road a b{font-size:1.05rem}
 }
+
+/* Banner-Foto als Stimmung (ohne Gesichter): füllt die Fläche */
+.hp.cover .fg{object-fit:cover}
+.hp.cover .bg{display:none}
