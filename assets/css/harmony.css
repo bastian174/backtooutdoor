@@ -110,3 +110,37 @@
   .lc-slide,.lc-txt > *,.proc-ph .hp{transition:none}
   .lc-nav button.run i{animation:none;width:100%}
 }
+
+/* ---------- Portfolio-Karte direkt unter dem Hero (dunkel, Tabs in der Karte) ---------- */
+section.pf{background:var(--ink,#132030);color:var(--foam,#f7f5f0);padding:88px 0 64px}
+.pf-head{max-width:640px;margin-bottom:40px}
+.pf-title{color:var(--foam,#f7f5f0);max-width:none;margin-top:14px;font-size:clamp(2.2rem,4.4vw,3.6rem)}
+.pf-title em{font-style:normal;color:var(--teal-bright,#e36d27)}
+.pf-sub{margin:18px 0 0;color:rgba(247,245,240,.72);max-width:52ch}
+.pf-card{margin-top:0}
+.pf .lc-show{aspect-ratio:16/9;min-height:560px;box-shadow:0 30px 80px rgba(0,0,0,.45);border:1px solid var(--line-light,rgba(247,245,240,.16))}
+.pf .lc-txt{padding-bottom:112px}
+.pf .lc-nav{position:absolute;left:0;right:0;bottom:0;margin:0;gap:0;z-index:3;background:linear-gradient(0deg,rgba(10,18,28,.92),rgba(10,18,28,.62));backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);grid-template-columns:repeat(4,minmax(0,1fr))}
+.pf .lc-nav button{border-top:2px solid rgba(247,245,240,.14);border-left:1px solid rgba(247,245,240,.1);padding:18px 24px 20px;color:rgba(247,245,240,.6)}
+.pf .lc-nav button:first-child{border-left:0}
+.pf .lc-nav button[aria-selected="true"]{color:var(--foam,#f7f5f0)}
+.pf .lc-nav button span{display:inline;margin:0 10px 0 0}
+.lc-tags{display:flex;flex-wrap:wrap;gap:8px}
+.lc-tags span{font-size:.68rem;font-weight:700;letter-spacing:.14em;padding:5px 10px;border:1px solid rgba(247,245,240,.32);border-radius:999px;color:rgba(247,245,240,.85)}
+.lc-slide.on .lc-txt > :nth-child(6){transition-delay:.52s}
+.pf-cap{margin:14px 2px 0;font-size:.8rem;color:rgba(247,245,240,.5)}
+@media (max-width:960px){
+  section.pf{padding:64px 0 48px}
+  .pf .lc-show{aspect-ratio:auto;height:680px;min-height:0}
+}
+@media (max-width:720px){
+  .pf .lc-slide .hp .fg{height:42%}
+  .pf .lc-txt{padding-bottom:84px}
+  .pf .lc-nav button{padding:12px 8px 12px 12px;font-size:.74rem}
+  .pf .lc-nav button span{display:block;margin:0 0 3px}
+  .lc-tags span{font-size:.62rem;padding:4px 8px}
+}
+@media (max-width:720px){
+  .pf .lc-brand{display:block;line-height:1.7;font-size:.64rem;letter-spacing:.14em}
+  .pf .lc-brand i{display:inline-block;vertical-align:middle;margin:0 8px}
+}

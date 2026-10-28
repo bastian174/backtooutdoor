@@ -4,8 +4,7 @@
   var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- Leistungen: Bildkarte ---------- */
-  var sec = document.querySelector('.lc');
-  if (sec) {
+  [].slice.call(document.querySelectorAll('.lc')).forEach(function (sec) {
     var show = sec.querySelector('.lc-show');
     var slides = [].slice.call(sec.querySelectorAll('.lc-slide'));
     var tabs = [].slice.call(sec.querySelectorAll('.lc-nav button'));
@@ -48,7 +47,7 @@
       new IntersectionObserver(function (es) { inView = es[0].isIntersecting; go(cur); }, { threshold: .35 }).observe(show);
     } else { inView = true; go(0); }
     go(0);
-  }
+  });
 
   /* ---------- Ablauf: Foto folgt dem aktiven Schritt ---------- */
   var ph = document.querySelector('.proc-ph');
