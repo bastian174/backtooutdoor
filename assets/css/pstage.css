@@ -1,0 +1,84 @@
+/* Back to Outdoor – Portfolio-Bühne direkt unter dem Hero (DE / EN / FR)
+   Handy, Laptop und Pin zeigen echte Arbeiten in den Formaten, die wir liefern.
+   Animiert wird nur mit html.fx (keine reduzierte Bewegung). Ohne fx stehen die
+   drei Geräte statisch nebeneinander, Videos zeigen ihr Standbild. */
+
+.pstage{background:var(--ink,#132030);color:var(--foam,#f7f5f0);padding:0;position:relative;border-top:1px solid var(--line-light,rgba(247,245,240,.16))}
+.pstage-pin{position:relative;padding:96px 0}
+.pstage-in{display:grid;grid-template-columns:minmax(300px,430px) 1fr;gap:40px;align-items:center}
+.pstage h2{font-size:clamp(2.4rem,4.4vw,3.8rem);margin-top:14px;color:var(--foam,#f7f5f0)}
+.pstage h2 em{font-style:normal;color:var(--teal-bright,#e36d27)}
+.pstage-copy > p{color:rgba(247,245,240,.72);margin:20px 0 0;max-width:36ch}
+.pstage-steps{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:4px}
+.pstage-steps li{padding:13px 0 13px 22px;border-left:2px solid var(--line-light,rgba(247,245,240,.16));color:rgba(247,245,240,.55);transition:color .4s,border-color .4s}
+.pstage-steps b{display:block;font-family:'Big Shoulders Display',sans-serif;font-size:1.5rem;font-weight:700;letter-spacing:.01em;text-transform:uppercase;line-height:1.05;color:inherit;transition:color .4s}
+.pstage-steps span{display:block;margin-top:5px;font-size:.92rem;line-height:1.45}
+.pstage-steps li.on{border-color:var(--teal-bright,#e36d27);color:rgba(247,245,240,.8)}
+.pstage-steps li.on b{color:var(--foam,#f7f5f0)}
+.pstage-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+
+/* Geräte (statisch, ohne fx) */
+.pstage-scene{position:relative;display:flex;flex-wrap:wrap;gap:46px 34px;justify-content:center;align-items:flex-end}
+.dev{position:relative;flex:none}
+.dev video,.dev .pn-slide img{display:block}
+.dev video{width:100%;height:100%;object-fit:cover;background:#000}
+.dev.phone{width:250px;height:450px;border-radius:36px;padding:10px;background:#0E1013;box-shadow:0 0 0 2px #3A4047,0 40px 80px rgba(0,0,0,.55)}
+.dev.phone video{border-radius:27px}
+.dev.phone::after{content:"";position:absolute;top:18px;left:50%;width:70px;height:20px;margin-left:-35px;border-radius:12px;background:#0E1013}
+.dev.laptop{width:560px;height:350px}
+.dev.laptop .scr{height:316px;border-radius:14px 14px 4px 4px;padding:10px;background:#0E1013;box-shadow:0 0 0 2px #3A4047,0 40px 80px rgba(0,0,0,.55)}
+.dev.laptop .scr video{border-radius:4px}
+.dev.laptop .base{height:14px;margin:0 -34px;background:linear-gradient(#4C535B,#2A2F35);border-radius:0 0 18px 18px}
+.dev.pin{width:240px;height:360px;border-radius:18px;overflow:hidden;background:#0c1520;box-shadow:0 0 0 2px #3A4047,0 40px 80px rgba(0,0,0,.55)}
+.dev .tag{position:absolute;left:0;bottom:-34px;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,245,240,.6);white-space:nowrap}
+
+/* Pin: Fotos in echtem Format (nichts abgeschnitten): scharfes Foto vorn, unscharfe Kopie füllt den Rest */
+.pn-slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease}
+.pn-slide.on{opacity:1}
+.pn-slide .bg{position:absolute;inset:-12%;width:124%;height:124%;object-fit:cover;filter:blur(18px) brightness(.7)}
+.pn-slide .fg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.dev.pin .tag{bottom:-34px}
+
+/* Bühne aktiv (nur mit fx): gepinnt, Geräte fliegen durch den Raum */
+html.fx .pstage{height:340vh}
+html.fx .pstage-pin{position:sticky;top:var(--navh,68px);height:calc(100vh - var(--navh,68px));height:calc(100svh - var(--navh,68px));padding:0;display:flex;align-items:center;overflow:hidden}
+html.fx .pstage-pin::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 68% 50%,rgba(227,109,39,.16),transparent 70%);pointer-events:none}
+html.fx .pstage-in{width:100%;position:relative}
+html.fx .pstage-scene{display:block;height:min(74vh,620px);perspective:1400px;perspective-origin:50% 45%}
+html.fx .dev{position:absolute;left:50%;top:50%;transform-style:preserve-3d;will-change:transform,opacity;opacity:0}
+html.fx .dev.phone{margin:-225px 0 0 -125px}
+html.fx .dev.laptop{margin:-175px 0 0 -280px}
+html.fx .dev.pin{margin:-180px 0 0 -120px}
+html.fx .pstage-steps li{cursor:pointer}
+
+@media (max-width:900px){
+  .pstage-pin{padding:72px 0}
+  .pstage-in{grid-template-columns:1fr;gap:34px}
+  .pstage-scene{gap:50px 20px}
+  .dev.laptop{width:min(560px,92vw);height:auto}
+  .dev.laptop .scr{height:auto;aspect-ratio:16/9}
+  html.fx .pstage{height:320vh}
+  html.fx .pstage-in{grid-template-columns:1fr;gap:0;align-content:center}
+  html.fx .pstage h2{font-size:2.1rem;margin-top:8px}
+  html.fx .pstage-copy > p{display:none}
+  html.fx .pstage-steps{margin-top:14px;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  html.fx .pstage-steps li{padding:8px 0 0;border-left:0;border-top:2px solid var(--line-light,rgba(247,245,240,.16))}
+  html.fx .pstage-steps li.on{border-top-color:var(--teal-bright,#e36d27)}
+  html.fx .pstage-steps li{min-width:0}
+  html.fx .pstage-steps b{font-size:.85rem;overflow-wrap:anywhere;hyphens:auto}
+  html.fx .pstage-steps span{display:none}
+  html.fx .pstage-cta{margin-top:14px}
+  html.fx .pstage-cta .btn.ghost{display:none}
+  html.fx .pstage-scene{height:44vh;transform:scale(.56);transform-origin:50% 28%}
+  html.fx .dev.laptop{width:560px;height:350px}
+  html.fx .dev.laptop .scr{height:316px;aspect-ratio:auto}
+}
+@media (max-width:900px) and (max-height:700px){
+  html.fx .pstage-cta{display:none}
+  html.fx .pstage-scene{height:40vh;transform:scale(.5)}
+}
+@media (min-width:901px) and (max-height:760px){
+  html.fx .pstage-copy > p{display:none}
+  html.fx .pstage-steps{margin-top:20px}
+  html.fx .pstage-cta{margin-top:18px}
+}
