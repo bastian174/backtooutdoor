@@ -1,0 +1,69 @@
+{
+  "project": {
+    "clientName": "Beispielunternehmen",
+    "industry": "Hotel und Tourismus",
+    "websiteGoal": "Anfragen und Direktbuchungen",
+    "language": "de",
+    "previewOnly": true
+  },
+  "brand": {
+    "displayName": "Beispielunternehmen",
+    "tagline": "Ein Ort, der in Erinnerung bleibt.",
+    "tone": "warm, hochwertig, persönlich",
+    "colors": {
+      "background": "#17211f",
+      "surface": "#202d29",
+      "text": "#f7f3e9",
+      "muted": "#d1d6cf",
+      "accent": "#d5a66b"
+    },
+    "fonts": {
+      "display": "Georgia",
+      "body": "Arial"
+    }
+  },
+  "content": {
+    "eyebrow": "Willkommen",
+    "headlineLine1": "Finden Sie Ihren",
+    "headlineLine2": "Lieblingsort.",
+    "intro": "Ersetzen Sie diesen Beispieltext durch eine verifizierte Beschreibung des Unternehmens und seines Angebots.",
+    "primaryCtaLabel": "Angebot entdecken",
+    "primaryCtaHref": "#angebot",
+    "secondaryCtaLabel": "Kontakt aufnehmen",
+    "secondaryCtaHref": "#kontakt",
+    "sections": [
+      {
+        "id": "angebot",
+        "eyebrow": "Unser Angebot",
+        "title": "Was uns besonders macht",
+        "body": "Dieser Abschnitt wird an die echten Leistungen und Bedürfnisse des Unternehmens angepasst."
+      },
+      {
+        "id": "profil",
+        "eyebrow": "Über uns",
+        "title": "Persönlich. Durchdacht. Individuell.",
+        "body": "Nutzen Sie nur bestätigte Informationen. Keine erfundenen Bewertungen, Erfolge oder Versprechen."
+      }
+    ]
+  },
+  "assets": {
+    "heroImage": "REPLACE_WITH_APPROVED_IMAGE_URL",
+    "heroVideo": "",
+    "heroImageRightsConfirmed": false
+  },
+  "features": {
+    "showPortfolio": false,
+    "showBooking": false,
+    "showShop": false,
+    "showLeadForm": true
+  },
+  "integrations": {
+    "contactUrl": "",
+    "bookingUrl": "",
+    "formBackendConfigured": false
+  },
+  "openQuestions": [
+    "Welche echte Kontaktadresse oder Anfrage-URL soll verwendet werden?",
+    "Sind die verwendeten Bilder für diese Website freigegeben?"
+  ]
+}
