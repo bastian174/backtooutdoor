@@ -7,6 +7,8 @@ This folder is the first practical foundation for the cross-industry premium web
 - `universal-website-starter.html`: a neutral, responsive starter page that is not tied to real estate.
 - `client-config.example.json`: example client profile that describes the business, brand, content, and main conversion goal.
 - `agent-workflow.md`: responsibilities and handoffs for the specialist AI agents.
+- `agent-team-mapping.md`: maps the existing Claude roles to the website workflow.
+- `claude-agent-integration.md`: the concrete handoff contract, project record, release gates, and honest implementation status.
 
 ## Current status
 
