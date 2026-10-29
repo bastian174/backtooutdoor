@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#17211f">
+<title>Website-Konzept | Back to Outdoor</title>
+<meta name="description" content="Individuelles Website-Konzept von Back to Outdoor.">
+<style>
+:root{--bg:#17211f;--surface:#202d29;--text:#f7f3e9;--muted:#d1d6cf;--accent:#d5a66b;--line:#53605a;--max:1200px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Arial,sans-serif;overflow-x:hidden}
+a{color:inherit}
+.wrap{width:min(var(--max),calc(100% - 48px));margin-inline:auto}
+.serif{font-family:Georgia,'Times New Roman',serif;font-weight:400}
+.eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:11px;font-weight:700;color:var(--accent)}
+header{position:absolute;z-index:3;top:0;left:0;right:0;padding:24px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+.mark{display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--accent);font:24px Georgia,serif;color:var(--accent)}
+.links{display:flex;gap:24px;font-size:13px}.links a{text-decoration:none;color:var(--muted)}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 20px;background:var(--accent);color:#17211f;text-decoration:none;text-transform:uppercase;letter-spacing:.1em;font-size:11px;font-weight:700;border:1px solid var(--accent);transition:transform .2s,filter .2s}
+.button:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.button.ghost{background:transparent;color:var(--text);border-color:#9aa39d}
+.hero{min-height:88svh;position:relative;isolation:isolate;display:flex;align-items:end;padding:150px 0 78px;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(12,20,18,.88),rgba(12,20,18,.43) 65%,rgba(12,20,18,.15)),linear-gradient(0deg,rgba(12,20,18,.58),transparent 65%),url('https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=2200&q=85') center/cover}
+.hero-content{max-width:850px}.hero h1{font:400 clamp(52px,8vw,108px)/.98 Georgia,serif;letter-spacing:-.045em;margin:18px 0 24px}
+.hero h1 em{color:var(--accent);font-weight:400}.hero p{max-width:620px;color:var(--muted);font-size:18px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.notice{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#c8cfc9a8;margin-top:32px}
+.trust{border-block:1px solid var(--line)}.trust-inner{display:grid;grid-template-columns:repeat(3,1fr)}.trust-item{padding:24px;border-right:1px solid var(--line)}.trust-item:first-child{padding-left:0}.trust-item:last-child{border:0}.trust strong{display:block;font:28px Georgia,serif}.trust span{color:var(--muted);font-size:12px}
+section{padding:100px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:34px}.section-head h2,.split h2{font:400 clamp(38px,5vw,66px)/1.04 Georgia,serif;margin:12px 0}.section-head p{max-width:400px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{border:1px solid var(--line);background:var(--surface)}.card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}.card-body{padding:22px}.card h3{font:28px Georgia,serif;margin:8px 0}.card p{color:var(--muted);font-size:14px}.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,7vw,90px);align-items:center}.split img{width:100%;min-height:360px;max-height:600px;object-fit:cover}.split p{color:var(--muted)}
+.contact{background:var(--text);color:var(--bg);padding:clamp(28px,6vw,70px);display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}.contact .eyebrow{color:#8d5b2c}.contact h2{font:400 clamp(40px,5vw,70px)/1 Georgia,serif;margin:14px 0}.contact p{color:#4e5953}.contact .button{background:var(--bg);border-color:var(--bg);color:var(--text)}
+footer{padding:28px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:12px}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+@media(max-width:800px){.links{display:none}.hero{min-height:80svh}.cards{grid-template-columns:repeat(2,1fr)}.split,.contact{grid-template-columns:1fr}.trust-inner{grid-template-columns:1fr}.trust-item,.trust-item:first-child{padding:18px 0;border-right:0;border-bottom:1px solid var(--line)}.trust-item:last-child{border-bottom:0}section{padding:72px 0}}
+@media(max-width:540px){.wrap{width:calc(100% - 32px)}.cards{grid-template-columns:1fr}.hero h1{font-size:54px}.hero p{font-size:16px}.actions .button{width:100%}.section-head{display:block}.contact{padding:26px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="brand" href="#top"><span class="mark">B</span><span>Beispielunternehmen<br><small style="font-weight:400;letter-spacing:.1em;color:var(--muted)">INDIVIDUELLES MARKENERLEBNIS</small></span></a>
+<nav class="links" aria-label="Hauptnavigation"><a href="#angebot">Angebot</a><a href="#profil">Über uns</a><a href="#kontakt">Kontakt</a></nav>
+<a class="button" href="#kontakt">Projekt besprechen</a>
+</div></header>
+<main id="top">
+<section class="hero"><div class="wrap hero-content">
+<div class="eyebrow">Ein individueller erster Eindruck</div>
+<h1>Finden Sie Ihren<br><em>Lieblingsort.</em></h1>
+<p>Ein hochwertiges digitales Erlebnis beginnt mit einer klaren Geschichte. Diese neutrale Vorlage wird an die Marke, die Branche und das Ziel des jeweiligen Unternehmens angepasst.</p>
+<div class="actions"><a class="button" href="#angebot">Angebot entdecken ↘</a><a class="button ghost" href="#kontakt">Kontakt aufnehmen</a></div>
+<div class="notice">Konzeptdemo · Beispielinhalte · Noch nicht für Kundenfreigabe</div>
+</div></section>
+<div class="trust"><div class="wrap trust-inner">
+<div class="trust-item"><strong>Individuell</strong><span>Auf Marke und Ziel abgestimmt</span></div>
+<div class="trust-item"><strong>Durchdacht</strong><span>Klare Struktur und Nutzerführung</span></div>
+<div class="trust-item"><strong>Responsiv</strong><span>Für große und kleine Bildschirme</span></div>
+</div></div>
+<section id="angebot"><div class="wrap">
+<div class="section-head reveal"><div><div class="eyebrow">Das Angebot</div><h2>Was uns <em style="color:var(--accent)">besonders macht.</em></h2></div><p>Die Bereiche werden je nach Branche ersetzt: Leistungen, Zimmer, Produkte, Projekte, Speisekarte, Portfolio oder andere relevante Inhalte.</p></div>
+<div class="cards">
+<article class="card reveal"><img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=900&q=80" alt="Architektur und Gestaltung" loading="lazy"><div class="card-body"><div class="eyebrow">Bereich 01</div><h3>Mit Charakter</h3><p>Ersetzen Sie diesen Text durch eine konkrete, bestätigte Leistung oder ein echtes Angebot des Unternehmens.</p></div></article>
+<article class="card reveal"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80" alt="Landschaft mit See und Bergen" loading="lazy"><div class="card-body"><div class="eyebrow">Bereich 02</div><h3>Mit Weitblick</h3><p>Inhalte, Bildsprache und Reihenfolge richten sich nach der tatsächlichen Zielgruppe und dem Geschäftsziel.</p></div></article>
+<article class="card reveal"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80" alt="Heller Arbeitsbereich" loading="lazy"><div class="card-body"><div class="eyebrow">Bereich 03</div><h3>Mit Persönlichkeit</h3><p>Keine erfundenen Bewertungen oder Versprechen: Hier stehen nur verifizierte Unternehmensinformationen.</p></div></article>
+</div></div></section>
+<section id="profil" style="background:var(--surface)"><div class="wrap split">
+<img class="reveal" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85" alt="Arbeitsumgebung als austauschbares Beispielmotiv" loading="lazy">
+<div class="reveal"><div class="eyebrow">Das Unternehmen</div><h2>Eine klare Geschichte. <span style="color:var(--accent);font-style:italic">Ein eigener Auftritt.</span></h2><p>Dieser Bereich erzählt die tatsächliche Geschichte des Unternehmens. Die Gestaltung bleibt flexibel, damit sie zu einer kleinen lokalen Firma ebenso passt wie zu einer etablierten Marke.</p><p>Vor der Veröffentlichung müssen Text, Bildrechte, Kontaktinformationen und alle geschäftlichen Angaben geprüft werden.</p><a class="button ghost" href="#kontakt">Mehr erfahren</a></div>
+</div></section>
+<section id="kontakt"><div class="wrap"><div class="contact reveal">
+<div><div class="eyebrow">Der nächste Schritt</div><h2>Lassen Sie uns über Ihr Projekt sprechen.</h2><p>Der Kontaktbutton ist in dieser Vorlage noch nicht mit einem echten Kundenformular verbunden. Vor der Veröffentlichung wird er auf einen bestätigten Kontaktweg gesetzt.</p></div>
+<div><a class="button" href="mailto:REPLACE_WITH_CONFIRMED_EMAIL">Kontaktweg konfigurieren →</a><p style="font-size:12px">Platzhalter – vor Kundenpräsentation ersetzen.</p></div>
+</div></div></section>
+</main>
+<footer class="wrap"><span>Website-Konzept · Back to Outdoor</span><span>Vorschau only · Inhalte und Bilder beispielhaft</span></footer>
+<script>
+(function(){
+ const elements=[...document.querySelectorAll('.reveal')];
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(reduced||!('IntersectionObserver'in window)){elements.forEach(e=>e.classList.add('visible'));return}
+ const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
+ elements.forEach(e=>observer.observe(e));
+})();
+</script>
+</body>
+</html>
