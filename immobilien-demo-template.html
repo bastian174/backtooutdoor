@@ -16,6 +16,33 @@
 @media(max-width:850px){.navlinks{display:none}.hero{min-height:82svh}.stats-grid{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}.stat:first-child{padding-left:22px}.properties{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:1fr}.visual,.visual img{min-height:360px}.steps{grid-template-columns:1fr}.cta-panel{grid-template-columns:1fr}section{padding:78px 0}.section-head{align-items:start;flex-direction:column}.wrap{width:calc(100% - 32px)}}
 @media(max-width:540px){.properties{grid-template-columns:1fr}.hero h1{font-size:54px}.hero p{font-size:16px}.actions .pill{width:100%}.stat{padding:20px 12px}.stat:first-child{padding-left:12px}.footer{flex-direction:column}.visual,.visual img{min-height:300px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+
+/* Premium polish pass: restrained motion, clearer focus and cinematic depth */
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+::selection{background:var(--accent);color:var(--ink)}
+.hero-media{animation:hero-arrive 1.4s ease-out both}
+.hero-media video,.hero-media{will-change:transform}
+.hero-content{animation:content-arrive .9s .12s cubic-bezier(.2,.7,.2,1) both}
+.hero-foot{z-index:1}
+.pill:focus-visible,.navlinks a:focus-visible,.text-link:focus-visible{outline-offset:5px}
+.property-image img{transform:scale(1.001)}
+.property:hover .property-image img{transform:scale(1.055)}
+.cta-panel{position:relative;isolation:isolate;overflow:hidden}
+.cta-panel:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--accent)}
+@keyframes hero-arrive{from{transform:scale(1.11)}to{transform:scale(1.04)}}
+@keyframes content-arrive{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+ .hero-media,.hero-content{animation:none}
+}
+@media(max-width:760px){
+ .hero{min-height:84svh;padding-top:130px;padding-bottom:54px}
+ .hero:after{background:linear-gradient(90deg,rgba(16,19,22,.78),rgba(16,19,22,.28)),linear-gradient(0deg,rgba(16,19,22,.72),transparent 70%)}
+ .hero-foot{font-size:9px;right:16px;bottom:16px}
+ .navlinks{gap:14px;font-size:12px}
+}
+
 </style>
 </head>
 <body>
