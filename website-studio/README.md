@@ -1,31 +1,36 @@
 # Back to Outdoor — Universal Website Studio
 
-This folder is the first practical foundation for the cross-industry premium website workflow.
+First foundation for a premium website workflow across hotels, tourism, trades, restaurants, property, outdoor brands, and other service businesses.
 
-## What is here
+## Files
+- `universal-website-starter.html`: responsive, industry-neutral page template.
+- `client-config.example.json`: example client/brand/content configuration.
+- `render-site.mjs`: minimal Node.js renderer that replaces a first set of template values from a JSON config.
+- `agent-workflow.md`, `agent-team-mapping.md`, `claude-agent-integration.md`: workflow, roles, and integration contract.
 
-- `universal-website-starter.html`: a neutral, responsive starter page that is not tied to real estate.
-- `client-config.example.json`: example client profile that describes the business, brand, content, and main conversion goal.
-- `agent-workflow.md`: responsibilities and handoffs for the specialist AI agents.
-- `agent-team-mapping.md`: maps the existing Claude roles to the website workflow.
-- `claude-agent-integration.md`: the concrete handoff contract, project record, release gates, and honest implementation status.
+## Create a preview locally
+Requires Node.js. From the repository root run:
+
+```bash
+node website-studio/render-site.mjs
+```
+
+This uses the example JSON and writes `website-studio/generated-preview.html`. To use another config and output path:
+
+```bash
+node website-studio/render-site.mjs path/to/client-config.json path/to/preview.html
+```
+
+The renderer is an early prototype: it currently replaces only the business name, hero copy, CTA labels/links, and footer label. It does not yet render arbitrary sections, images, booking, shop, forms, or external agent runs. Run and visually test it before relying on the output; no generated page is automatically deployed.
 
 ## Current status
+This is not yet a fully automated multi-agent product. Claude Code adapters and a skill are included, but they are not connected to separately configured Claude Project agents. The starter page uses sample content. It does not publish client sites or submit forms.
 
-This is a starter kit, not yet a fully automated multi-agent product. The page is intentionally static and uses clearly marked sample content. It does not publish a client site or send form submissions. The contact action is a placeholder until a real destination/backend is configured.
-
-## First manual test
-
-1. Open `universal-website-starter.html` in a browser or through a Vercel preview.
-2. Replace the sample brand, headline, sections, and image URLs using an approved client profile.
-3. Check the result on desktop and mobile.
-4. Verify every link and contact action.
-5. Keep it in preview until the user explicitly approves publication.
-
-## Safety rules
-
-- Never overwrite production files as part of a preview task.
-- Never invent customer claims, testimonials, prices, certifications, or metrics.
-- Confirm image, logo, and video usage rights.
-- A deployment marked READY does not by itself prove the page renders correctly.
-- Do not present placeholder buttons/forms as working integrations.
+## Release and safety rules
+1. Keep all work in a preview/feature branch until explicit approval.
+2. Never overwrite production files as part of a preview task.
+3. Never invent customer claims, testimonials, prices, certifications, or metrics.
+4. Confirm image, logo, and video usage rights.
+5. Verify links, mobile layout, accessibility, and contact behavior before any release.
+6. A deployment marked READY does not by itself prove the page renders correctly.
+7. Do not present placeholder buttons/forms as working integrations.
