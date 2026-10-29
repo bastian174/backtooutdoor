@@ -1,0 +1,70 @@
+{
+  "project": {
+    "clientName": "Musterküche",
+    "industry": "Restaurant",
+    "websiteGoal": "Reservierungsanfragen",
+    "language": "de",
+    "previewOnly": true
+  },
+  "brand": {
+    "displayName": "Musterküche",
+    "tagline": "Regional genießen. Gemeinsam erleben.",
+    "colors": {
+      "background": "#211b18",
+      "surface": "#302721",
+      "text": "#fff8ed",
+      "muted": "#d9cbbd",
+      "accent": "#d69b55"
+    }
+  },
+  "content": {
+    "eyebrow": "Willkommen in der Musterküche",
+    "headlineLine1": "Gutes Essen.",
+    "headlineLine2": "Gute Zeit.",
+    "intro": "Eine Demo-Konfiguration für ein Restaurant. Alle Texte sind Beispiele und müssen vor einem echten Einsatz vom Betrieb bestätigt werden.",
+    "primaryCtaLabel": "Speisekarte ansehen",
+    "primaryCtaHref": "#angebot",
+    "secondaryCtaLabel": "Tisch anfragen",
+    "secondaryCtaHref": "#kontakt",
+    "sections": [
+      {
+        "id": "speisekarte",
+        "eyebrow": "Unsere Küche",
+        "title": "Saisonal und regional",
+        "body": "Hier stehen die tatsächlichen Küchenangebote, Zutaten und Besonderheiten – nach Freigabe durch das Restaurant."
+      },
+      {
+        "id": "ambiente",
+        "eyebrow": "Das Ambiente",
+        "title": "Platz zum Zusammenkommen",
+        "body": "Beschreiben Sie die echte Atmosphäre des Lokals. Keine erfundenen Auszeichnungen oder Kundenbewertungen."
+      },
+      {
+        "id": "reservierung",
+        "eyebrow": "Ihr Besuch",
+        "title": "Gemeinsam genießen",
+        "body": "Hier werden Öffnungszeiten, Reservierungswege und wichtige Besuchsinformationen ergänzt, sobald sie bestätigt sind."
+      }
+    ]
+  },
+  "assets": {
+    "heroImage": "REPLACE_WITH_APPROVED_IMAGE_URL",
+    "heroImageRightsConfirmed": false
+  },
+  "features": {
+    "showPortfolio": false,
+    "showBooking": false,
+    "showShop": false,
+    "showLeadForm": false
+  },
+  "integrations": {
+    "contactUrl": "",
+    "bookingUrl": "",
+    "formBackendConfigured": false
+  },
+  "openQuestions": [
+    "Welche Öffnungszeiten und Kontaktinformationen sind bestätigt?",
+    "Welcher Reservierungsweg wird tatsächlich verwendet?",
+    "Sind alle Bilder für diese Website freigegeben?"
+  ]
+}
