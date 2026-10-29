@@ -147,3 +147,50 @@ Ein Projekt ist erst abgeschlossen, wenn das vereinbarte Design implementiert, d
 
 ## STARTBEFEHL
 Analysiere zuerst die bereitgestellte Referenz und das vorhandene Projekt. Entwickle dann eine eigenständige, hochwertige Website nach unserem Premium-Webdesign-Standard. Verwende wiederverwendbare Komponenten, ohne die Identität des Projekts zu verlieren. Implementiere, teste und verbessere erkannte Probleme. Priorität: visuelle Qualität, klare Nutzerführung, echte Funktionalität, Performance und ein professionelles Endprodukt.
+
+
+## 15. Verbindliche Regel: Referenz zuerst, Qualitätsvergleich danach
+
+Die bestehende Seite https://backtooutdoor.com/immobilien ist der visuelle Qualitätsmaßstab für Immobilien-Demos. Sie ist **keine Vorlage, die blind kopiert werden soll**: Jede Kundenseite erhält eine eigenständige Markenidentität. Übernommen werden Qualitätsniveau, Sorgfalt, Tiefe der visuellen Inszenierung und technische Zuverlässigkeit – nicht automatisch Farben, Texte oder Layouts.
+
+### Phase A — Referenz untersuchen
+Vor dem Entwurf die Live-Referenz auf Desktop und Mobilgerät prüfen. Wenn direkter Zugriff nicht möglich ist, dies offen dokumentieren und um Screenshots oder einen funktionierenden Preview-Zugang bitten. Niemals behaupten, eine Seite visuell geprüft zu haben, wenn sie nicht tatsächlich geöffnet werden konnte.
+
+Analysiere mindestens:
+- Hero: Höhe, Bild-/Videowirkung, Kontrast, Typografie, Navigation und erster CTA
+- Bildsprache: Motive, Bildqualität, Zuschnitt, Farbkorrektur und Übergänge
+- Layout: Rhythmus, Weißraum, Raster, Überlagerungen und Abschnittswechsel
+- Bewegung: Scroll-Inszenierung, Reveal-Timing, Parallax/3D und Mikrointeraktionen
+- Typografie: Größenhierarchie, Zeilenlängen, Kontrast und mobile Lesbarkeit
+- Conversion: CTA-Platzierung, Objektpräsentation, Kontaktweg und Vertrauenssignale
+- Mobile Experience: Reihenfolge, Touch-Ziele, Performance und Animationen
+
+### Phase B — Vor dem Bauen ein Qualitätsziel festlegen
+Erstelle eine kurze Referenz-Checkliste mit konkreten Beobachtungen. Unterscheide dabei zwischen:
+1. **Qualitätsprinzipien**, die immer gelten,
+2. **markenspezifischen Elementen**, die nicht kopiert werden,
+3. **Elementen**, die für das neue Projekt bewusst neu gestaltet werden.
+
+Fehlen Referenzmaterialien, nutze keine erfundenen Details. Erstelle stattdessen einen klar gekennzeichneten ersten Entwurf und benenne die offenen Prüfpunkte.
+
+### Phase C — Side-by-side Qualitätsprüfung
+Vergleiche die Demo vor jeder Freigabe mit der Referenz auf derselben Bildschirmgröße. Prüfe insbesondere:
+- Wirkt der Hero genauso bewusst komponiert und hochwertig?
+- Sind Bilder und Videos echt, passend, scharf und korrekt zugeschnitten?
+- Haben alle Abschnitte eine klare visuelle Idee statt generischer Kartenstapel?
+- Sind Scroll-Bewegung und Übergänge spürbar, aber nicht selbstzweckhaft?
+- Sind Typografie, Abstände und Kontraste konsistent?
+- Funktionieren Navigation, CTAs, Formulare und mobile Darstellung tatsächlich?
+- Ist die Demo mindestens auf dem vereinbarten Qualitätsniveau – nicht bloß farblich ähnlich?
+
+Bewerte jede Kategorie als **Bestanden / Überarbeiten / Nicht geprüft**. Nicht geprüfte Punkte dürfen nicht als bestanden dargestellt werden. Behebe sichtbare Schwächen, bevor du die Demo als präsentationsfertig bezeichnest.
+
+### Phase D — Sicherer Release
+- Arbeite auf Feature-Branch und Preview-Deployment.
+- Live-/Produktionsseiten bleiben unverändert, bis der Nutzer Änderungen ausdrücklich freigibt.
+- Teste die Preview auf Desktop und Mobilgerät; notiere bekannte Einschränkungen.
+- Zeige dem Nutzer die Preview, nenne konkrete Verbesserungen und offene Punkte.
+- Merge oder Produktionsdeployment niemals als stillschweigenden nächsten Schritt ausführen.
+
+### Harte Regel
+Eine Demo, die technisch funktioniert, aber visuell hinter der vorhandenen Referenz zurückbleibt, ist **nicht fertig**. Zuerst Referenz verstehen, dann individuell gestalten, dann direkt vergleichen und iterieren.
