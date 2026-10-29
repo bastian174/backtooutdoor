@@ -4,8 +4,9 @@ First foundation for a premium website workflow across hotels, tourism, trades, 
 
 ## Files
 - `universal-website-starter.html`: responsive, industry-neutral page template.
-- `client-config.example.json`: example client/brand/content configuration.
-- `render-site.mjs`: minimal Node.js renderer that replaces a first set of template values from a JSON config.
+- `client-config.example.json`: general example client configuration.
+- `client-config.restaurant-demo.json`: restaurant example configuration.
+- `render-site.mjs`: Node.js renderer for selected brand, content, CTA, color, image, and offer-card values.
 - `agent-workflow.md`, `agent-team-mapping.md`, `claude-agent-integration.md`: workflow, roles, and integration contract.
 
 ## Create a preview locally
@@ -15,16 +16,20 @@ Requires Node.js. From the repository root run:
 node website-studio/render-site.mjs
 ```
 
-This uses the example JSON and writes `website-studio/generated-preview.html`. To use another config and output path:
+This uses the general example JSON and writes `website-studio/generated-preview.html`.
+
+To render the restaurant example instead:
 
 ```bash
-node website-studio/render-site.mjs path/to/client-config.json path/to/preview.html
+node website-studio/render-site.mjs website-studio/client-config.restaurant-demo.json website-studio/restaurant-preview.html
 ```
 
-The renderer is an early prototype: it currently replaces only the business name, hero copy, CTA labels/links, and footer label. It does not yet render arbitrary sections, images, booking, shop, forms, or external agent runs. Run and visually test it before relying on the output; no generated page is automatically deployed.
+You can pass any config JSON and output path as the first and second arguments.
 
-## Current status
-This is not yet a fully automated multi-agent product. Claude Code adapters and a skill are included, but they are not connected to separately configured Claude Project agents. The starter page uses sample content. It does not publish client sites or submit forms.
+## Current limits
+This is an early prototype, not a fully automated multi-agent product. The renderer only maps selected fields and up to three offer cards. It does not yet create arbitrary page layouts, wire booking/shop/form backends, or execute the separate Claude Project agents. The hero image is changed only if an HTTPS image URL is supplied and `heroImageRightsConfirmed` is explicitly `true`. Example card images are still generic demo images.
+
+The script has been added to the feature branch but has **not yet been run or visually tested in this environment**. Treat generated HTML as an unverified preview, not a deliverable ready for a client. Nothing is automatically deployed.
 
 ## Release and safety rules
 1. Keep all work in a preview/feature branch until explicit approval.
