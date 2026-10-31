@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Immobilien-Videos & Projektseiten | Back to Outdoor</title>
+<title>Back to Outdoor Immobilien – Digital Experience &amp; Content Studio</title>
 <link rel="icon" type="image/png" href="/assets/img/immobilien/favicon-immobilien.png">
 <link rel="apple-touch-icon" href="/assets/img/immobilien/favicon-immobilien.png">
-<meta name="description" content="Rundgang-Videos aus Ihren vorhandenen Fotos und Projektseiten für Neubauprojekte. Für Verkauf, Vermietung, Hotels und Gastronomie.">
+<meta name="description" content="Wir machen Immobilien und besondere Orte digital erlebbar: Fotos, Videos, UGC und digitale Rundgänge für Immobilien, Hotels, Ferienunterkünfte, Gastronomie und Destinationen.">
 <link rel="canonical" href="https://backtooutdoor.com/immobilien-showcase.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_AT">
 <meta property="og:site_name" content="Back to Outdoor">
-<meta property="og:title" content="Immobilien-Videos &amp; Projektseiten | Back to Outdoor">
-<meta property="og:description" content="Rundgang-Videos aus Ihren vorhandenen Fotos und Projektseiten für Neubauprojekte. Kostenlose Vorschau, fertig in 2 Werktagen.">
+<meta property="og:title" content="Orte, die man nicht nur sieht. Sondern erlebt. | Back to Outdoor Immobilien">
+<meta property="og:description" content="Fotos, Videos, UGC und digitale Rundgänge für Immobilien, Hotels, Ferienunterkünfte, Gastronomie und Destinationen.">
 <meta property="og:url" content="https://backtooutdoor.com/immobilien-showcase.html">
 <meta property="og:image" content="https://backtooutdoor.com/assets/video/immobilien-hero-poster.jpg?v=3">
 <meta name="twitter:card" content="summary_large_image">
@@ -387,6 +387,25 @@ html.br-lock{overflow:hidden}
 }
 @media (prefers-reduced-motion:reduce){ .br-slide,.br-slide video,.br-txt > *{transition:none!important} .br-nav button.run i{animation:none} }
 #ablauf .abl-lead{color:var(--muted);max-width:640px;margin:20px 0 0;font-size:18px;line-height:1.6}
+.brand-sub{display:block;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--soft);margin-top:4px}
+.hero p.lead .lead-b{display:block;color:var(--text);font-weight:600;margin-bottom:8px}
+/* Zwei Einstiege */
+.einstiege{padding:100px 0 40px}
+.ein-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.ein{position:relative;display:flex;flex-direction:column;gap:18px;min-height:460px;padding:clamp(28px,3.5vw,48px);border-radius:20px;overflow:hidden;text-decoration:none;color:var(--text);background:#111;isolation:isolate;box-shadow:0 0 0 1px rgba(245,241,230,.08),0 40px 90px rgba(0,0,0,.4)}
+.ein::before{content:"";position:absolute;inset:0;background:var(--img) center/cover;transform:scale(1.02);transition:transform 1.2s cubic-bezier(.2,.7,.2,1);z-index:-2}
+.ein::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,16,19,.45) 0%,rgba(14,16,19,.82) 55%,rgba(14,16,19,.94) 100%);z-index:-1}
+.ein:hover::before{transform:scale(1.08)}
+.ein-k{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sand)}
+.ein-h{font-size:clamp(34px,3.6vw,52px);line-height:1.02;letter-spacing:-.02em}
+.ein-h em{display:block;font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);font-weight:400}
+.ein-l{display:grid;gap:12px;margin-top:auto;font-size:15px;color:var(--muted)}
+.ein-l span{display:grid;grid-template-columns:minmax(0,190px) 1fr;gap:16px;padding-top:12px;border-top:1px solid rgba(245,241,230,.14)}
+.ein-l b{color:var(--text);font-weight:600}
+.ein-cta{align-self:flex-start;display:inline-flex;gap:12px;align-items:center;padding:14px 22px;border:1.5px solid var(--accent);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:background .25s,color .25s}
+.ein:hover .ein-cta,.ein:focus-visible .ein-cta{background:var(--accent);color:var(--on-accent)}
+.ein-cta i{font-style:normal}
+@media (max-width:900px){.einstiege{padding:70px 0 20px}.ein-grid{grid-template-columns:1fr}.ein{min-height:0}.ein-l span{grid-template-columns:1fr;gap:2px}}
 /* Hotel-Beispiele */
 .hotel-row{display:flex;flex-wrap:nowrap;gap:18px;align-items:flex-end;margin-top:40px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
 .hotel-row figure{margin:0;flex:none;scroll-snap-align:start}
@@ -405,7 +424,7 @@ html.br-lock{overflow:hidden}
 <body>
 
 <header class="top">
-  <a href="#top" class="brand"><img src="/assets/img/immobilien/logo-immobilien-weiss-384.png" alt="Back to Outdoor Immobilien Content Logo" width="58" height="72"><span class="brand-txt">Back to Outdoor <span>·</span> Immobilien</span></a>
+  <a href="#top" class="brand"><img src="/assets/img/immobilien/logo-immobilien-weiss-384.png" alt="Back to Outdoor Immobilien Content Logo" width="58" height="72"><span class="brand-txt">Back to Outdoor <span>·</span> Immobilien<small class="brand-sub">Digital Experience &amp; Content Studio</small></span></a>
   <nav aria-label="Hauptnavigation">
     <a href="#branchen">Beispiele</a>
     <a href="#formate">Formate</a>
@@ -414,7 +433,7 @@ html.br-lock{overflow:hidden}
     <a href="#kanaele">Kanäle</a>
     <a href="#anfrage">Kontakt</a>
   </nav>
-  <a href="#anfrage" class="btn btn-red btn-small">Vorschau anfragen</a>
+  <a href="#anfrage" class="btn btn-red btn-small">Projekt anfragen</a>
   <a href="#anfrage" class="mob-cta">Anfrage →</a>
 </header>
 <main>
@@ -425,17 +444,18 @@ html.br-lock{overflow:hidden}
     <source src="/assets/video/immobilien-hero-1080.mp4?v=3" type="video/mp4">
   </video>
   <div class="wrap">
-    <div class="hero-line"><i></i>Verkauf · Vermietung · Hotel &amp; Gastro</div>
-    <h1>Ihre Objekte. <em class="s">In Bewegung.</em></h1>
+    <div class="hero-line"><i></i>Immobilien · Hotels · Unterkünfte · Gastronomie · Destinationen</div>
+    <h1>Orte, die man nicht nur sieht. <em class="s">Sondern erlebt.</em></h1>
     <div class="ticks">
-      <b>✓ Kostenlose Vorschau</b>
-      <span>Aus Ihren vorhandenen Fotos</span>
-      <span>Fertig in 2 Werktagen</span>
+      <span>Foto &amp; Video</span>
+      <span>UGC &amp; Travel Content</span>
+      <span>Walkthroughs</span>
+      <span>Digitale Showcases</span>
     </div>
-    <p class="lead">Ob Wohnung, Haus, Hotelzimmer oder Restaurant: Aus Ihren Fotos machen wir Rundgänge für Instagram, Portale und Ihre Website. Für Neubauprojekte bauen wir eine eigene Seite mit allen Wohnungen und ihrem aktuellen Status.</p>
+    <p class="lead"><b class="lead-b">Wir machen Immobilien und besondere Orte digital erlebbar.</b> Mit hochwertigen Fotos, Videos, UGC und digitalen Rundgängen präsentieren wir Immobilien, Hotels, Ferienunterkünfte und gastronomische Betriebe aus neuen Perspektiven. Authentisch, emotional und digital.</p>
     <div class="ctas">
-      <a href="#branchen" class="btn btn-red">Beispiele ansehen →</a>
-      <a href="#anfrage" class="btn btn-line">Vorschau anfragen</a>
+      <a href="#einstiege" class="btn btn-red">Projekte entdecken →</a>
+      <a href="#anfrage" class="btn btn-line">Projekt anfragen</a>
     </div>
   </div>
   <button type="button" class="vidtoggle" id="vidToggle" aria-pressed="false">❚❚ Video anhalten</button>
@@ -449,6 +469,37 @@ html.br-lock{overflow:hidden}
     <div class="fact"><div class="v">2 Werktage</div><div class="l">Lieferzeit</div></div>
     <div class="fact"><div class="v">Ohne Termin</div><div class="l">vor Ort, nur aus Ihren Fotos</div></div>
     <div class="fact"><div class="v" style="color:var(--sand)">Gratis</div><div class="l">Vorschau mit Ihrem Objekt</div></div>
+  </div>
+</section>
+
+
+<section class="block einstiege" id="einstiege" aria-label="Zwei Einstiege">
+  <div class="wrap">
+    <div class="eyebrow">Ihr Einstieg</div>
+    <h2>Wofür suchen Sie <em class="s">Content?</em></h2>
+    <div class="ein-grid">
+      <a class="ein" href="#branchen" data-go="immobilie" style="--img:url('/assets/video/branchen/immobilie.jpg')">
+        <span class="ein-k">Für Makler, Eigentümer und Bauträger</span>
+        <span class="ein-h">Immobilien <em>&amp; Projekte</em></span>
+        <span class="ein-l">
+          <span><b>Immobilienmakler</b>Objektvideos, Rundgänge, Showcases</span>
+          <span><b>Bauträger</b>Projektpräsentationen, Visual Content</span>
+          <span><b>Private Eigentümer</b>Immobilienpräsentationen</span>
+        </span>
+        <span class="ein-cta">Beispiele ansehen <i aria-hidden="true">&rarr;</i></span>
+      </a>
+      <a class="ein" href="#branchen" data-go="hotel" style="--img:url('/assets/video/branchen/hotel.jpg')">
+        <span class="ein-k">Für Gastgeber, Unterkünfte und Destinationen</span>
+        <span class="ein-h">Hotels, Reisen <em>&amp; Gastronomie</em></span>
+        <span class="ein-l">
+          <span><b>Hotels</b>UGC, Reels, Foto- und Videocontent</span>
+          <span><b>Ferienwohnungen &amp; Airbnb</b>Walkthroughs, Travel UGC</span>
+          <span><b>Restaurants &amp; Gastronomie</b>Food- und Location-Content</span>
+          <span><b>Destinationen</b>Reisegeschichten und Erlebniscontent</span>
+        </span>
+        <span class="ein-cta">Beispiele ansehen <i aria-hidden="true">&rarr;</i></span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -907,5 +958,12 @@ html.br-lock{overflow:hidden}
 })();
 </script>
 <script src="/assets/js/flow.js?v=1" defer></script>
+<script>
+(function(){
+  [].forEach.call(document.querySelectorAll('.ein[data-go]'), function(a){
+    a.addEventListener('click', function(){ var t=document.querySelector('#branchen .br-nav button[data-cat="'+a.dataset.go+'"]'); if(t) setTimeout(function(){ t.click(); }, 50); });
+  });
+})();
+</script>
 </body>
 </html>
