@@ -406,6 +406,8 @@ html.br-lock{overflow:hidden}
 .ein:hover .ein-cta,.ein:focus-visible .ein-cta{background:var(--accent);color:var(--on-accent)}
 .ein-cta i{font-style:normal}
 @media (max-width:900px){.einstiege{padding:70px 0 20px}.ein-grid{grid-template-columns:1fr}.ein{min-height:0}.ein-l span{grid-template-columns:1fr;gap:2px}}
+.hero-logo{position:absolute;right:clamp(24px,4vw,64px);bottom:clamp(28px,5vh,56px);z-index:2;width:auto;height:clamp(96px,11vw,140px);opacity:.92;filter:drop-shadow(0 6px 18px rgba(0,0,0,.45));pointer-events:none}
+@media (max-width:900px){.hero-logo{height:72px;right:16px;bottom:18px}}
 /* Hotel-Beispiele */
 .hotel-row{display:flex;flex-wrap:nowrap;gap:18px;align-items:flex-end;margin-top:40px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
 .hotel-row figure{margin:0;flex:none;scroll-snap-align:start}
@@ -458,6 +460,7 @@ html.br-lock{overflow:hidden}
       <a href="#anfrage" class="btn btn-line">Projekt anfragen</a>
     </div>
   </div>
+  <img class="hero-logo" src="/assets/img/immobilien/logo-immobilien-weiss-384.png" alt="" aria-hidden="true" width="309" height="384">
   <button type="button" class="vidtoggle" id="vidToggle" aria-pressed="false">❚❚ Video anhalten</button>
 </section>
 
