@@ -72,7 +72,7 @@ header.top nav a{color:var(--muted);text-decoration:none} header.top nav a:hover
 /* Facts */
 .facts{border-bottom:1px solid var(--line)}
 .facts .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-.fact{padding:32px 24px 32px 0;border-right:1px solid var(--line)}
+.fact{padding:32px 20px;border-right:1px solid var(--line);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
 .fact:last-child{border-right:0}
 .fact .v{font-size:34px;font-weight:500;line-height:1.15}
 .fact .l{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin-top:6px}
@@ -184,6 +184,7 @@ footer a{color:var(--soft)}
   .hero::after{background:linear-gradient(180deg,rgba(20,23,27,.55) 0%,rgba(20,23,27,.82) 55%,rgba(20,23,27,.9) 100%)}
   section.block{padding:80px 0}
   .fact{border-right:0;border-bottom:1px solid var(--line);padding:22px 0}
+  .fact:last-child{border-bottom:0}
   .detail .txt{padding:28px}
   .detail .ttl{font-size:42px}
   .split img{height:340px}
@@ -431,7 +432,7 @@ html.br-lock{overflow:hidden}
       <span>Aus Ihren vorhandenen Fotos</span>
       <span>Fertig in 2 Werktagen</span>
     </div>
-    <p class="lead">Ob Wohnung, Haus, Hotelzimmer oder Restaurant: Aus Ihren Fotos machen wir 20-Sekunden-Rundgänge für Instagram, Portale und Ihre Website. Für Neubauprojekte bauen wir eine eigene Seite mit allen Wohnungen und ihrem aktuellen Status.</p>
+    <p class="lead">Ob Wohnung, Haus, Hotelzimmer oder Restaurant: Aus Ihren Fotos machen wir Rundgänge für Instagram, Portale und Ihre Website. Für Neubauprojekte bauen wir eine eigene Seite mit allen Wohnungen und ihrem aktuellen Status.</p>
     <div class="ctas">
       <a href="#branchen" class="btn btn-red">Beispiele ansehen →</a>
       <a href="#anfrage" class="btn btn-line">Vorschau anfragen</a>
@@ -443,7 +444,7 @@ html.br-lock{overflow:hidden}
 
 <section class="facts" aria-label="Eckdaten">
   <div class="wrap">
-    <div class="fact"><div class="v">20 Sek.</div><div class="l">Rundgang pro Objekt</div></div>
+    <div class="fact"><div class="v">Individuell</div><div class="l">Länge nach Ihrem Wunsch</div></div>
     <div class="fact"><div class="v">9:16 · 16:9</div><div class="l">Hoch- und Querformat</div></div>
     <div class="fact"><div class="v">2 Werktage</div><div class="l">Lieferzeit</div></div>
     <div class="fact"><div class="v">Ohne Termin</div><div class="l">vor Ort, nur aus Ihren Fotos</div></div>
@@ -683,13 +684,13 @@ html.br-lock{overflow:hidden}
   var V = function(n){ return '/assets/video/immobilien-' + n + '.mp4'; };
   var FORMATS = [
     {id:'reel', group:'video', name:'Instagram Reel', badge:'9:16', ratio:'r916', img:'/assets/video/immobilien-reel.jpg', vid:V('reel'),
-     use:'Rundgang für Reels & Storys', format:'1080 × 1920', len:'15–30 Sek.', where:'Instagram, WhatsApp-Status', mat:'Exposé-Fotos',
-     text:'Raum für Raum in 20 Sekunden, mit ruhiger Kamerafahrt. Lage und Fläche stehen als kurze Einblendung im Bild, am Ende Ihr Logo.'},
+     use:'Rundgang für Reels & Storys', format:'1080 × 1920', len:'Nach Absprache', where:'Instagram, WhatsApp-Status', mat:'Exposé-Fotos',
+     text:'Raum für Raum, mit ruhiger Kamerafahrt. Lage und Fläche stehen als kurze Einblendung im Bild, am Ende Ihr Logo.'},
     {id:'quer', group:'video', name:'Objektvideo quer', badge:'16:9', ratio:'r169', img:'/assets/video/immobilien-quer.jpg', vid:V('quer'),
-     use:'Für Website & Portale', format:'1920 × 1080', len:'20–60 Sek.', where:'Website, willhaben, ImmoScout', mat:'Exposé-Fotos',
+     use:'Für Website & Portale', format:'1920 × 1080', len:'Nach Absprache', where:'Website, willhaben, ImmoScout', mat:'Exposé-Fotos',
      text:'Dasselbe Objekt im Querformat, für Ihre Website, die Videofunktion der Portale und YouTube. Auf Wunsch mit Musik und kurzen Infotafeln.'},
     {id:'tiktok', group:'video', name:'TikTok & Shorts', badge:'9:16', ratio:'r916', img:'/assets/video/immobilien-tiktok.jpg', vid:V('tiktok'),
-     use:'Schnellere Schnitte', format:'1080 × 1920', len:'10–20 Sek.', where:'TikTok, YouTube Shorts', mat:'Exposé-Fotos',
+     use:'Schnellere Schnitte', format:'1080 × 1920', len:'Nach Absprache', where:'TikTok, YouTube Shorts', mat:'Exposé-Fotos',
      text:'Kürzer und schneller geschnitten als das Reel. In der ersten Sekunde steht groß, was das Objekt besonders macht.'},
     {id:'site', group:'web', name:'Projektseite', badge:'Web', ratio:'r-site', img:P('projekt'),
      use:'Eigene Seite pro Neubauprojekt', format:'Responsive Website', len:'1 Seite', where:'Eigene Domain oder Unterseite', mat:'Grundrisse, Renderings, Preisliste',
