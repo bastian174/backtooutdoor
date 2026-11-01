@@ -3,7 +3,7 @@
 const { test, beforeEach, afterEach } = require("node:test");
 const assert = require("node:assert/strict");
 
-const ENV_KEYS = ["LEAD_WEBHOOK_URL", "LEAD_SECRET", "ANTHROPIC_API_KEY", "MEDIA_KIT_URL", "BOOKING_URL"];
+const ENV_KEYS = ["LEAD_WEBHOOK_URL", "LEAD_SECRET", "ANTHROPIC_API_KEY", "GEMINI_API_KEY", "MEDIA_KIT_URL", "BOOKING_URL"];
 const savedEnv = {};
 const realFetch = globalThis.fetch;
 let calls;
@@ -74,7 +74,7 @@ test("verarbeiteLead ordnet Kanäle zu (Immobilien, Mindset-E-Book) und sendet a
   assert.equal(calls[0].body.kanal, "Immobilien");
   assert.equal(calls[0].body.secret, "geheim");
   assert.match(calls[0].body.antwort_text, /^Hallo Max,/);
-  assert.match(calls[0].body.antwort_text, /https:\/\/backtooutdoor\.com\/portfolio/);
+  assert.match(calls[0].body.antwort_text, /https:\/\/backtooutdoor\.com\/immobilien\/portfolio/);
 
   await verarbeiteLead({ name: "Lea", email: "lea@x.de", wunsch: "E-Book Teil 1", produkt: "gewohnheits-tetris" });
   const eb = calls.at(-1).body; // calls[1] ist die Immobilien-Kopie an IMMO_MAIL
@@ -163,6 +163,52 @@ test("/api/lead: fremde Herkunft wird abgewiesen, eigene Domain und Vorschau ang
     await leadHandler({ method: "POST", headers: { origin: o }, body }, res);
     assert.equal(res.statusCode, 200, o);
   }
+});
+
+test("/api/chat: Immobilien-Seite nutzt eigenen Agenten (eigenes Wissen, eigenes Anfrage-Werkzeug), Outdoor-Agent bleibt getrennt", async () => {
+  delete process.env.GEMINI_API_KEY;
+  process.env.ANTHROPIC_API_KEY = "test";
+  const chatHandler = require("../api/chat");
+  mockFetch({ status: 200, json: { stop_reason: "end_turn", content: [{ type: "text", text: "Hallo!" }] } });
+  let res = fakeRes();
+  await chatHandler({ method: "POST", body: { messages: [{ role: "user", content: "Was kostet ein Reel?" }], page: "/immobilien/portfolio", lang: "de", brand: "immobilien" } }, res);
+  assert.equal(res.statusCode, 200);
+  let body = calls[0].body;
+  assert.match(body.system, /Back to Outdoor Immobilien/);
+  assert.match(body.system, /NIEMALS Preise/);
+  assert.doesNotMatch(body.system, /Content Tag/);
+  assert.ok(body.tools[0].input_schema.properties.typ.enum.includes("Makler"));
+
+  mockFetch({ status: 200, json: { stop_reason: "end_turn", content: [{ type: "text", text: "Servus!" }] } });
+  res = fakeRes();
+  await chatHandler({ method: "POST", body: { messages: [{ role: "user", content: "Hallo" }], page: "/index.html", lang: "de" } }, res);
+  body = calls[0].body;
+  assert.doesNotMatch(body.system, /Back to Outdoor Immobilien/);
+  assert.ok(body.tools[0].input_schema.properties.typ.enum.includes("Tourenanbieter"));
+});
+
+test("/api/chat: Lead aus dem Immobilien-Agenten landet im Kanal Immobilien mit Immobilien-Portfolio-Link", async () => {
+  delete process.env.GEMINI_API_KEY;
+  process.env.ANTHROPIC_API_KEY = "test";
+  process.env.LEAD_WEBHOOK_URL = "https://script.google.com/macros/s/test/exec";
+  const chatHandler = require("../api/chat");
+  let n = 0;
+  mockFetch((url) => {
+    if (url.includes("anthropic")) {
+      n++;
+      return n === 1
+        ? { status: 200, json: { stop_reason: "tool_use", content: [{ type: "tool_use", id: "t1", name: "lead_erfassen", input: { name: "Lena Berg", email: "lena@x.at", anliegen: "Reel für Ferienwohnung", typ: "Ferienwohnung", wunsch: "Vorschau" } }] } }
+        : { status: 200, json: { stop_reason: "end_turn", content: [{ type: "text", text: "Danke, Lena!" }] } };
+    }
+    return { status: 200, json: { ok: true } };
+  });
+  const res = fakeRes();
+  await chatHandler({ method: "POST", body: { messages: [{ role: "user", content: "Ich bin Lena, lena@x.at" }], page: "/irgendwo", lang: "de", brand: "immobilien" } }, res);
+  assert.equal(res.statusCode, 200);
+  const hook = calls.find((c) => c.url.includes("script.google.com")).body;
+  assert.equal(hook.kanal, "Immobilien");
+  assert.match(hook.antwort_text, /^Hallo Lena,/);
+  assert.match(hook.antwort_text, /backtooutdoor\.com\/immobilien\/portfolio/);
 });
 
 // 3) /api/go – Klick-Tracking und Weiterleitung ohne offenen Redirect

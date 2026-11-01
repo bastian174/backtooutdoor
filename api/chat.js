@@ -137,9 +137,9 @@ async function callGemini(model, body) {
 }
 
 // Gesprächsschleife mit Gemini (inkl. Tool "lead_erfassen")
-async function mitGemini({ messages, system, meta }) {
+async function mitGemini({ messages, system, meta, tools: T = TOOLS }) {
   const model = process.env.GEMINI_MODEL || "gemini-2.5-flash";
-  const tools = [{ functionDeclarations: TOOLS.map((t) => ({ name: t.name, description: t.description, parameters: t.input_schema })) }];
+  const tools = [{ functionDeclarations: T.map((t) => ({ name: t.name, description: t.description, parameters: t.input_schema })) }];
   const contents = messages.map((m) => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.content }] }));
   let leadGesendet = false;
   for (let i = 0; i < 3; i++) {
@@ -169,12 +169,12 @@ async function mitGemini({ messages, system, meta }) {
 }
 
 // Gesprächsschleife mit Claude (Fallback)
-async function mitClaude({ messages, system, meta }) {
+async function mitClaude({ messages, system, meta, tools: T = TOOLS }) {
   const model = process.env.ANTHROPIC_MODEL || "claude-haiku-4-5";
   const convo = messages.slice();
   let leadGesendet = false;
   for (let i = 0; i < 3; i++) {
-    const data = await callClaude({ model, max_tokens: 600, system, tools: TOOLS, messages: convo });
+    const data = await callClaude({ model, max_tokens: 600, system, tools: T, messages: convo });
     const toolUses = (data.content || []).filter((b) => b.type === "tool_use");
     if (data.stop_reason !== "tool_use" || !toolUses.length) {
       const text = (data.content || []).filter((b) => b.type === "text").map((b) => b.text).join("\n").trim();
@@ -191,6 +191,66 @@ async function mitClaude({ messages, system, meta }) {
   }
   return { reply: "Danke! Wir haben deine Anfrage erhalten und melden uns innerhalb von zwei Werktagen.", lead: leadGesendet };
 }
+
+// ---------- Back to Outdoor Immobilien (eigene Marke, eigener Agent; nur auf /immobilien…) ----------
+const WISSEN_IMMO = `
+# Über Back to Outdoor Immobilien
+- Digital Experience & Content Studio aus Salzburg (Österreich), Ansprechpartner Bastian (Basti) Prein. Eigenständiger Bereich, getrennt vom Outdoor-Content von Back to Outdoor.
+- Claim: "Orte, die man nicht nur sieht. Sondern erlebt." Wir machen Immobilien und besondere Orte digital erlebbar: Fotos, Videos, UGC und digitale Rundgänge.
+- Für wen: Immobilienmakler (Objektvideos, Rundgänge, Showcases), Bauträger (Projektpräsentationen, Projektseiten), private Eigentümer, Hotels (UGC, Reels, Foto und Video), Ferienwohnungen & Airbnb (Walkthroughs, Travel UGC), Restaurants & Gastronomie (Food- und Location-Content), Destinationen (Erlebnis-Content).
+# Formate
+- Instagram Reel 9:16 (Rundgang für Reels & Storys), TikTok & Shorts 9:16 (schneller geschnitten), Feed-Post 4:5, Pinterest Pin 2:3 (gefunden über die Suche), Querformat 16:9 (Website, Portale, YouTube), eigene Projektseite pro Neubauprojekt (Wohnungen mit Grundriss, Fläche, Status, Exposé-Anfrage).
+- Stile: authentische UGC Reels, Cinematic Films, Property Walkthroughs, Social-Media-Versionen. Aus demselben Material entstehen mehrere Formate.
+- Länge und Lieferzeit individuell nach Absprache. Dreh vor Ort oder aus vorhandenem Material (Fotos, Videos, Link zum Inserat).
+# Ablauf
+1. Material schicken (Fotos, Videos oder Link zu Website/Inserat). 2. Wir schneiden es auf den Betrieb und die Zielgruppe zu. 3. Kostenlose Vorschau mit Wasserzeichen – nur für den Kunden, nichts wird veröffentlicht; Änderungswünsche werden eingebaut. 4. Passt es, gibt es ein Angebot; fertiger Content ohne Wasserzeichen zum vereinbarten Termin.
+# Portfolio
+- Beispiele: https://backtooutdoor.com/immobilien/portfolio (englisch: /immobilien-en/portfolio). Die Beispiele sind Format-Demos aus lizenziertem Stock-Material, keine Kundenaufträge – so offen kommunizieren, keine Kunden oder Projekte erfinden.
+# Kontakt
+E-Mail info@backtooutdoor.com · Telefon/WhatsApp +43 (0)660 8422053 · Anfrageformular auf https://backtooutdoor.com/immobilien#anfrage
+`;
+
+function systemPromptImmo(lang, page) {
+  return `Du bist der KI-Assistent auf der Website von "Back to Outdoor Immobilien – Digital Experience & Content Studio". Du sprichst für das Team ("wir").
+
+Deine Aufgaben:
+1. Fragen von Maklern, Bauträgern, Eigentümern, Hotels, Ferienwohnungs-Gastgebern, Restaurants und Destinationen zu Formaten, Ablauf, Vorschau und Portfolio beantworten – NUR auf Basis des Wissens unten.
+2. Herausfinden, worum es geht: Art des Objekts oder Betriebs, Ort, welches Format, ob Material vorhanden ist, gewünschter Zeitraum.
+3. Zum nächsten Schritt führen: kostenlose Vorschau oder kurzes Gespräch. Verweise für Beispiele auf das Portfolio. Sobald jemand Interesse zeigt, frag nach Name und E-Mail (Firma, Telefon optional). Hast du mindestens Name + E-Mail und ein Anliegen, rufe das Tool "lead_erfassen" auf. War es erfolgreich, sag, dass gerade eine Bestätigungs-Mail mit dem Portfolio-Link unterwegs ist und sich Bastian persönlich meldet.
+
+Regeln:
+- Antworte in der Sprache des Besuchers (Seitensprache: ${lang}). Deutsch in Du-Form und immer mit korrekten Umlauten.
+- Kurz und natürlich: 1–4 Sätze, höchstens eine Rückfrage pro Antwort. Keine langen Listen, kein Markdown außer gelegentlich **fett**.
+- Nenne NIEMALS Preise, Tagessätze oder Preisspannen – auch nicht geschätzt. Preise gibt es im persönlichen Angebot.
+- Erfinde nichts: keine Kundennamen, Referenzen, Zahlen, Termine, Lieferzeiten, Verfügbarkeiten, Garantien oder Leistungen, die nicht im Wissen stehen. Weißt du etwas nicht, biete an, die Frage ans Team weiterzugeben.
+- Du kannst keine Termine fest zusagen und keine Verträge schließen.
+- Bleib beim Thema Immobilien- und Orts-Content. Fragen zu Outdoor-Touren, Canyoning oder Rafting: kurz erklären, dass das ein anderer Bereich von Back to Outdoor ist (backtooutdoor.com), und zum Thema zurückführen.
+- Wer eine Immobilie kaufen oder mieten will: freundlich erklären, dass wir keine Immobilien vermitteln, sondern Content für Anbieter produzieren.
+- Aktuelle Seite des Besuchers: ${page || "unbekannt"}.
+
+WISSEN:
+${WISSEN_IMMO}`;
+}
+
+const TOOLS_IMMO = [
+  {
+    name: "lead_erfassen",
+    description: "Übergibt eine Anfrage an das Team von Back to Outdoor Immobilien. Nur aufrufen, wenn der Besucher Name und E-Mail genannt hat und Interesse an Vorschau, Gespräch oder Angebot hat.",
+    input_schema: {
+      type: "object",
+      properties: {
+        name: { type: "string" },
+        email: { type: "string" },
+        firma: { type: "string" },
+        telefon: { type: "string" },
+        typ: { type: "string", enum: ["Makler", "Bauträger", "Eigentümer", "Hotel", "Ferienwohnung", "Gastronomie", "Destination", "Sonstiges"] },
+        anliegen: { type: "string", description: "Kurze Zusammenfassung: Objekt/Betrieb, Ort, Format, vorhandenes Material, Zeitraum" },
+        wunsch: { type: "string", enum: ["Vorschau", "Erstgespräch", "Angebot", "Frage"] },
+      },
+      required: ["name", "email", "anliegen"],
+    },
+  },
+];
 
 function clean(messages) {
   if (!Array.isArray(messages)) return [];
@@ -222,12 +282,16 @@ module.exports = async function handler(req, res) {
   if (!messages.length) return res.status(400).json({ error: "Keine Nachricht" });
 
   const lang = ["de", "en", "fr"].includes(body.lang) ? body.lang : "de";
-  const page = String(body.page || "").slice(0, 100);
-  const system = systemPrompt(lang, page, process.env.BOOKING_URL);
-  const meta = { page, lang, verlauf: messages.map((m) => `${m.role}: ${m.content}`).join("\n").slice(-4000) };
+  let page = String(body.page || "").slice(0, 100);
+  const immo = body.brand === "immobilien";
+  // Immobilien-Agent: Seite muss im Immobilien-Bereich liegen, damit Anfragen im Kanal "Immobilien" landen
+  if (immo && !/immobilien/i.test(page)) page = "/immobilien";
+  const system = immo ? systemPromptImmo(lang === "de" ? "de" : "en", page) : systemPrompt(lang, page, process.env.BOOKING_URL);
+  const tools = immo ? TOOLS_IMMO : TOOLS;
+  const meta = { page, lang: immo && lang === "fr" ? "en" : lang, verlauf: messages.map((m) => `${m.role}: ${m.content}`).join("\n").slice(-4000) };
 
   try {
-    const out = kiAnbieter === "gemini" ? await mitGemini({ messages, system, meta }) : await mitClaude({ messages, system, meta });
+    const out = kiAnbieter === "gemini" ? await mitGemini({ messages, system, meta, tools }) : await mitClaude({ messages, system, meta, tools });
     if (!out.reply) throw new Error("Leere Antwort vom KI-Modell");
     return res.status(200).json(out);
   } catch (e) {
@@ -238,3 +302,5 @@ module.exports = async function handler(req, res) {
 
 // Für Tests (tests/api.test.js)
 module.exports.clean = clean;
+module.exports.systemPromptImmo = systemPromptImmo;
+module.exports.TOOLS_IMMO = TOOLS_IMMO;

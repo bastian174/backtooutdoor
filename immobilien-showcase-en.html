@@ -27,20 +27,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* Portfolio-Teaser */
-.pf-teaser{padding:110px 0 90px}
-.pf-teaser .pt-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:56px;align-items:center}
-.pf-teaser p.lead{color:var(--muted);max-width:520px;margin:20px 0 30px}
-.pf-teaser .pt-note{display:block;margin-top:16px;font-size:13px;color:var(--soft)}
-.pt-thumbs{display:flex;gap:14px;align-items:flex-end;justify-content:flex-end}
-.pt-thumbs a{position:relative;display:block;border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px var(--line),0 24px 50px rgba(0,0,0,.35);transition:transform .35s}
-.pt-thumbs a:hover{transform:translateY(-6px)}
-.pt-thumbs img{display:block;width:100%;height:100%;object-fit:cover}
-.pt-thumbs .p9{width:30%;aspect-ratio:9/16}
-.pt-thumbs .p16{width:40%;aspect-ratio:16/9}
-.pt-thumbs span{position:absolute;left:10px;bottom:10px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:rgba(11,19,28,.7);padding:4px 8px;color:#f7f5f0}
-@media (max-width:900px){.pf-teaser .pt-grid{grid-template-columns:1fr;gap:36px}.pt-thumbs{justify-content:flex-start}.pf-teaser{padding:80px 0 60px}}
-
 :root{
   --bg:#1E2226; --bg2:#262B30; --line:#3A4047; --field:#4C535B;
   --text:#F5F1E6; --muted:#D8D2C5; --soft:#B9B3A6; --sand:#D4B8A5;
@@ -443,6 +429,7 @@ html.br-lock{overflow:hidden}
 .hotel-note{margin-top:14px;font-size:13px;color:var(--soft)}
 @media (max-width:720px){.hotel-row video{height:360px}.hotel-row .wide video{width:82vw}.hotel-row{margin-right:-16px;padding-right:16px}}
 
+.br-more{margin:34px 0 0;text-align:center}
 </style>
 <script>(function(){try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('fl')}catch(e){}})();</script>
 <link rel="stylesheet" href="/assets/css/flow.css?v=1">
@@ -452,8 +439,8 @@ html.br-lock{overflow:hidden}
 <header class="top">
   <a href="#top" class="brand"><img src="/assets/img/immobilien/logo-immobilien-weiss-384.png" alt="Back to Outdoor Real Estate Content logo" width="58" height="72"><span class="brand-txt">Back to Outdoor <span>·</span> Real Estate<small class="brand-sub">Digital Experience &amp; Content Studio</small></span></a>
   <nav aria-label="Main navigation">
-    <a href="/">Home</a>
-    <a href="/portfolio">Portfolio</a>
+    <a href="/immobilien-en/portfolio">Portfolio</a>
+    <a href="#branchen">Examples</a>
     <a href="#formate">Formats</a>
     <a href="#ablauf">Process</a>
     <a href="#projektseite">Project page</a>
@@ -505,7 +492,7 @@ html.br-lock{overflow:hidden}
     <div class="eyebrow">Where to start</div>
     <h2>What do you need <em class="s">content for?</em></h2>
     <div class="ein-grid">
-      <a class="ein" href="/portfolio?branche=immo#videos" style="--img:url('/assets/video/branchen/immobilie.jpg')">
+      <a class="ein" href="#branchen" data-go="immobilie" style="--img:url('/assets/video/branchen/immobilie.jpg')">
         <span class="ein-k">For agents, owners and developers</span>
         <span class="ein-h">Real estate <em>&amp; projects</em></span>
         <span class="ein-l">
@@ -515,7 +502,7 @@ html.br-lock{overflow:hidden}
         </span>
         <span class="ein-cta">See examples <i aria-hidden="true">&rarr;</i></span>
       </a>
-      <a class="ein" href="/portfolio#branchen" style="--img:url('/assets/video/branchen/hotel.jpg')">
+      <a class="ein" href="#branchen" data-go="hotel" style="--img:url('/assets/video/branchen/hotel.jpg')">
         <span class="ein-k">For hosts, accommodation and destinations</span>
         <span class="ein-h">Hotels, travel <em>&amp; hospitality</em></span>
         <span class="ein-l">
@@ -530,22 +517,87 @@ html.br-lock{overflow:hidden}
   </div>
 </section>
 
-<section class="block pf-teaser" id="arbeiten" aria-label="Our work">
-  <div class="wrap pt-grid">
-    <div>
+<section class="block branchen" id="branchen" aria-label="Examples by industry">
+  <div class="wrap">
+    <div class="br-head">
       <div class="eyebrow">01 · What it looks like</div>
-      <h2>Our work. <em class="s">All in one place.</em></h2>
-      <p class="lead">UGC reels, cinematic films, walkthroughs and social media versions for real estate, hotels and restaurants: you will find every example in our portfolio, filterable by format and industry (page in German).</p>
-      <a class="btn btn-red" href="/portfolio">Explore our work <i aria-hidden="true">&rarr;</i></a>
-      <span class="pt-note">Format demos cut by us from licensed stock footage.</span>
+      <h2>Tailor-made. <em class="s">For every industry.</em></h2>
+      <p>No off-the-shelf videos. We show what makes your business special and cut it for your audience: close, real and in the style of content people would share themselves.</p>
     </div>
-    <div class="pt-thumbs">
-      <a class="p9" href="/portfolio?format=ugc#videos"><img src="/assets/video/portfolio/ugc-wohnung.jpg" alt="" loading="lazy" decoding="async"><span>UGC reel · 9:16</span></a>
-      <a class="p9" href="/portfolio?format=cine#videos"><img src="/assets/video/du/villa.jpg" alt="" loading="lazy" decoding="async"><span>Cinematic · 9:16</span></a>
-      <a class="p16" href="/portfolio#formate"><img src="/assets/video/du/immobilie-quer.jpg" alt="" loading="lazy" decoding="async"><span>Walkthrough · 16:9</span></a>
+    <div class="br-show">
+      <button type="button" class="br-slide on" data-cat="hotel" style="--ca:#D9B48F" aria-label="Hotel: see five formats with example videos">
+        <video muted loop playsinline preload="none" poster="/assets/video/branchen/hotel.jpg" data-v="/assets/video/branchen/hotel.mp4"></video>
+        <span class="br-shade"></span>
+        <span class="br-txt">
+          <span class="br-brand">Back to Outdoor <i></i> <b>Hotel Content</b></span>
+          <span class="br-h">Your hotel. <em>As guests experience it.</em></span>
+          <span class="br-p">Not the hundredth room photo, but the feeling of arriving. Videos that show what only your place has and speak to exactly the guests who suit you.</span>
+          <span class="br-cta">See five formats <i aria-hidden="true">&rarr;</i></span>
+        </span>
+        <span class="br-num" aria-hidden="true">01</span>
+      </button>
+      <button type="button" class="br-slide" data-cat="restaurant" style="--ca:#E0675B" aria-label="Restaurant: see five formats with example videos" tabindex="-1" aria-hidden="true">
+        <video muted loop playsinline preload="none" poster="/assets/video/branchen/restaurant.jpg" data-v="/assets/video/branchen/restaurant.mp4"></video>
+        <span class="br-shade"></span>
+        <span class="br-txt">
+          <span class="br-brand">Back to Outdoor <i></i> <b>Restaurant Content</b></span>
+          <span class="br-h">Your restaurant. <em>Before anyone books.</em></span>
+          <span class="br-p">Light, service, the mood at the table. People often decide where to eat on their phone. We show your restaurant the way it feels.</span>
+          <span class="br-cta">See five formats <i aria-hidden="true">&rarr;</i></span>
+        </span>
+        <span class="br-num" aria-hidden="true">02</span>
+      </button>
+      <button type="button" class="br-slide" data-cat="essen" style="--ca:#B5C46F" aria-label="Food: see five formats with example videos" tabindex="-1" aria-hidden="true">
+        <video muted loop playsinline preload="none" poster="/assets/video/branchen/essen.jpg" data-v="/assets/video/branchen/essen.mp4"></video>
+        <span class="br-shade"></span>
+        <span class="br-txt">
+          <span class="br-brand">Back to Outdoor <i></i> <b>Food Content</b></span>
+          <span class="br-h">Your kitchen. <em>Close enough to taste.</em></span>
+          <span class="br-p">Plating, gloss, the first cut. Close, real images of your dishes that whet the appetite and show your signature.</span>
+          <span class="br-cta">See five formats <i aria-hidden="true">&rarr;</i></span>
+        </span>
+        <span class="br-num" aria-hidden="true">03</span>
+      </button>
+      <button type="button" class="br-slide" data-cat="immobilie" style="--ca:#8DB4D6" aria-label="Real estate: see five formats with example videos" tabindex="-1" aria-hidden="true">
+        <video muted loop playsinline preload="none" poster="/assets/video/branchen/immobilie.jpg" data-v="/assets/video/branchen/immobilie.mp4"></video>
+        <span class="br-shade"></span>
+        <span class="br-txt">
+          <span class="br-brand">Back to Outdoor <i></i> <b>Real Estate Content</b></span>
+          <span class="br-h">Your property. <em>Before anyone steps inside.</em></span>
+          <span class="br-p">A walkthrough that lets people feel the rooms, the light and the location. For brochures, project pages and social media, in the look of your project.</span>
+          <span class="br-cta">See five formats <i aria-hidden="true">&rarr;</i></span>
+        </span>
+        <span class="br-num" aria-hidden="true">04</span>
+      </button>
+      <div class="br-nav" role="tablist" aria-label="Choose industry">
+        <button type="button" role="tab" aria-selected="true" data-cat="hotel" style="--ca:#D9B48F"><span>01</span>Hotel<i></i></button>
+        <button type="button" role="tab" aria-selected="false" data-cat="restaurant" style="--ca:#E0675B"><span>02</span>Restaurant<i></i></button>
+        <button type="button" role="tab" aria-selected="false" data-cat="essen" style="--ca:#B5C46F"><span>03</span>Food<i></i></button>
+        <button type="button" role="tab" aria-selected="false" data-cat="immobilie" style="--ca:#8DB4D6"><span>04</span>Real estate<i></i></button>
+      </div>
     </div>
+    <p class="hotel-note">Example videos made from stock footage. Tap to open all five formats.</p>
+    <p class="br-more"><a class="btn btn-red" href="/immobilien-en/portfolio">Explore our work <span aria-hidden="true">&rarr;</span></a></p>
   </div>
 </section>
+
+<div class="br-modal" id="brModal" role="dialog" aria-modal="true" aria-labelledby="brmTitle" hidden>
+  <div class="br-m-in">
+    <div class="br-m-top">
+      <div><div class="br-brand">Back to Outdoor <i></i> <b id="brmSub">Hotel Content</b></div>
+      <h3 id="brmTitle">Your hotel. <em>Five formats.</em></h3></div>
+      <button type="button" class="br-x" aria-label="Close">&times;</button>
+    </div>
+    <div class="br-grid">
+      <figure class="f916"><div class="fr"><video muted loop playsinline preload="none"></video></div><figcaption><b>Instagram Reel</b>9:16 for reels and stories</figcaption></figure>
+      <figure class="f916"><div class="fr"><video muted loop playsinline preload="none"></video></div><figcaption><b>Shorts &amp; TikTok</b>9:16, faster cuts</figcaption></figure>
+      <figure class="f45"><div class="fr"><video muted loop playsinline preload="none"></video></div><figcaption><b>Feed post</b>4:5 for the Instagram feed</figcaption></figure>
+      <figure class="f23"><div class="fr"><video muted loop playsinline preload="none"></video></div><figcaption><b>Pinterest Pin</b>2:3, found through search</figcaption></figure>
+      <figure class="f169"><div class="fr"><video muted loop playsinline preload="none"></video></div><figcaption><b>Landscape</b>16:9 for websites and booking platforms</figcaption></figure>
+    </div>
+    <p class="br-m-cta"><a class="btn" href="#anfrage">Request a video like this for your business</a></p>
+  </div>
+</div>
 
 <section class="block" id="formate">
   <div class="wrap">
@@ -870,8 +922,64 @@ html.br-lock{overflow:hidden}
 })();
 </script>
 
-
+<script>
+(function(){
+  var H = '/assets/video/hotel/hotel-', I = '/assets/video/immobilien-', R = '/assets/video/restaurant-', E = '/assets/video/essen-';
+  var V = {hotel:[H+'reel',H+'shorts',H+'feed',H+'pinterest',H+'quer'], immobilie:[I+'reel',I+'tiktok',I+'feed',I+'pin',I+'quer'],
+           restaurant:[R+'reel',R+'shorts',R+'feed',R+'pin',R+'quer'], essen:[E+'reel',E+'shorts',E+'feed',E+'pin',E+'quer']};
+  var sec = document.getElementById('branchen'); if (!sec) return;
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var slides = [].slice.call(sec.querySelectorAll('.br-slide')), tabs = [].slice.call(sec.querySelectorAll('.br-nav button'));
+  var cur = 0, timer = null, inView = false, hold = false, DUR = 8000;
+  function play(v){ if(!v.getAttribute('s'+'rc')) v.setAttribute('s'+'rc', v.dataset.v); if(still) return; var q=v.play(); if(q&&q.catch) q.catch(function(){}); }
+  function go(i){
+    cur = (i + slides.length) % slides.length;
+    slides.forEach(function(sl, j){ var on = j===cur; sl.classList.toggle('on', on); sl.setAttribute('tabindex', on?'0':'-1'); if(on) sl.removeAttribute('aria-hidden'); else sl.setAttribute('aria-hidden','true');
+      var v = sl.querySelector('video'); if (on && inView) play(v); else v.pause(); });
+    tabs.forEach(function(t, j){ t.setAttribute('aria-selected', j===cur?'true':'false'); t.classList.remove('run'); });
+    sec.style.setProperty('--ca', slides[cur].style.getPropertyValue('--ca'));
+    arm();
+  }
+  function arm(){ clearTimeout(timer); var t = tabs[cur]; t.classList.remove('run'); void t.offsetWidth;
+    if (still || hold || !inView || !modal.hidden) return; t.classList.add('run'); timer = setTimeout(function(){ go(cur+1); }, DUR); }
+  tabs.forEach(function(t, j){ t.addEventListener('click', function(){ go(j); }); });
+  var show = sec.querySelector('.br-show');
+  show.addEventListener('mouseenter', function(){ hold = true; arm(); }); show.addEventListener('mouseleave', function(){ hold = false; arm(); });
+  var sx = null; show.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, {passive:true});
+  show.addEventListener('touchend', function(e){ if (sx===null) return; var dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 50) { show.dataset.swiped = '1'; go(cur + (dx<0?1:-1)); } }, {passive:true});
+  if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ inView = es[0].isIntersecting; go(cur); }, {threshold:.35}).observe(show);
+  else { inView = true; go(0); }
+  // Formate-Ansicht
+  var modal = document.getElementById('brModal'), mv = [].slice.call(modal.querySelectorAll('video')), lastFocus = null;
+  function open(i){
+    var sl = slides[i], k = sl.dataset.cat;
+    modal.style.setProperty('--ca', sl.style.getPropertyValue('--ca'));
+    document.getElementById('brmSub').textContent = sl.querySelector('.br-brand b').textContent;
+    document.getElementById('brmTitle').innerHTML = sl.querySelector('.br-h').firstChild.textContent.trim() + ' <em>Five formats.</em>';
+    V[k].forEach(function(b, j){ var v = mv[j]; v.poster = b + '.jpg'; v.dataset.v = b + '.mp4'; v.removeAttribute('s'+'rc'); v.load(); });
+    lastFocus = document.activeElement; modal.hidden = false; document.documentElement.classList.add('br-lock');
+    requestAnimationFrame(function(){ modal.classList.add('open'); }); mv.forEach(play);
+    slides[cur].querySelector('video').pause(); arm(); modal.querySelector('.br-x').focus();
+  }
+  function close(){ modal.classList.remove('open'); mv.forEach(function(v){ v.pause(); });
+    setTimeout(function(){ modal.hidden = true; document.documentElement.classList.remove('br-lock'); go(cur); if (lastFocus) lastFocus.focus(); }, 250); }
+  slides.forEach(function(sl, j){ sl.addEventListener('click', function(){ if (show.dataset.swiped) { delete show.dataset.swiped; return; } open(j); }); });
+  modal.querySelector('.br-x').addEventListener('click', close);
+  modal.addEventListener('click', function(e){ if (e.target === modal) close(); });
+  modal.querySelector('.br-m-cta a').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (modal.hidden) { if (e.target.closest && e.target.closest('#branchen') && (e.key==='ArrowRight'||e.key==='ArrowLeft')) go(cur + (e.key==='ArrowRight'?1:-1)); return; }
+    if (e.key === 'Escape') close();
+    if (e.key === 'Tab') { var f = [modal.querySelector('.br-x'), modal.querySelector('.br-m-cta a')]; if (e.shiftKey && document.activeElement===f[0]) { e.preventDefault(); f[1].focus(); } else if (!e.shiftKey && document.activeElement===f[1]) { e.preventDefault(); f[0].focus(); } } });
+})();
+</script>
 <script src="/assets/js/flow.js?v=1" defer></script>
-
+<script>
+(function(){
+  [].forEach.call(document.querySelectorAll('.ein[data-go]'), function(a){
+    a.addEventListener('click', function(){ var t=document.querySelector('#branchen .br-nav button[data-cat="'+a.dataset.go+'"]'); if(t) setTimeout(function(){ t.click(); }, 50); });
+  });
+})();
+</script>
+<script src="/immobilien-agent.js" defer></script>
 </body>
 </html>

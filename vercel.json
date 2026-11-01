@@ -23,12 +23,7 @@
     },
     {
       "source": "/immobilien/ugc",
-      "destination": "/portfolio",
-      "permanent": true
-    },
-    {
-      "source": "/portfolio.html",
-      "destination": "/portfolio",
+      "destination": "/immobilien/portfolio",
       "permanent": true
     }
   ],
@@ -42,8 +37,12 @@
       "destination": "/immobilien-showcase-en.html"
     },
     {
-      "source": "/portfolio",
-      "destination": "/portfolio.html"
+      "source": "/immobilien/portfolio",
+      "destination": "/immobilien-portfolio.html"
+    },
+    {
+      "source": "/immobilien-en/portfolio",
+      "destination": "/immobilien-portfolio-en.html"
     }
   ]
 }

@@ -22,8 +22,8 @@ function kanalVon(lead) {
   return "Back to Outdoor";
 }
 
-// Ein gemeinsamer Portfolio-Link für alle Branchen
-const PORTFOLIO = "https://backtooutdoor.com/portfolio";
+// Portfolio der Immobilien-Seite (eigene Marke, getrennt vom Outdoor-Content von Back to Outdoor)
+const PORTFOLIO_IMMO = { de: "https://backtooutdoor.com/immobilien/portfolio", en: "https://backtooutdoor.com/immobilien-en/portfolio" };
 
 // Formatnamen aus dem Immobilien-Formular (DE/EN). Nur diese Werte gelangen in die Antwort-Mail – freier Text aus dem Formular nie.
 const IMMO_FORMATE = {
@@ -44,12 +44,12 @@ function immoMail(lead, lang) {
   if (lang === "en") {
     return {
       betreff: "Thank you for your enquiry – Back to Outdoor",
-      text: `Hello${n ? " " + n : ""},\n\nthank you for your message and your interest in Back to Outdoor.${fmt ? " Great to hear you are interested in " + fmt + "." : ""}\n\nSo you can see straight away what is possible, here is our portfolio with reels, cinematic films, walkthroughs and social media formats:\n\n${PORTFOLIO}\n\nI will look at your enquiry personally and get back to you, so we can work out together what suits your project best. If you already have photos, videos or a link to the property, feel free to send them as a reply to this email.\n\nBest regards\nBastian\nBack to Outdoor\n\ninfo@backtooutdoor.com · +43 (0)660 8422053`,
+      text: `Hello${n ? " " + n : ""},\n\nthank you for your message and your interest in Back to Outdoor Real Estate.${fmt ? " Great to hear you are interested in " + fmt + "." : ""}\n\nSo you can see straight away what is possible, here is our portfolio with reels, cinematic films, walkthroughs and social media formats:\n\n${PORTFOLIO_IMMO.en}\n\nI will look at your enquiry personally and get back to you, so we can work out together what suits your project best. If you already have photos, videos or a link to the property, feel free to send them as a reply to this email.\n\nBest regards\nBastian\nBack to Outdoor · Real Estate Content\n\ninfo@backtooutdoor.com · +43 (0)660 8422053`,
     };
   }
   return {
     betreff: "Vielen Dank für deine Anfrage – Back to Outdoor",
-    text: `Hallo${n ? " " + n : ""},\n\nvielen Dank für deine Nachricht und dein Interesse an Back to Outdoor.${fmt ? " Schön, dass du dich für " + fmt + " interessierst." : ""}\n\nDamit du dir direkt ein Bild davon machen kannst, was möglich ist, findest du hier unser Portfolio mit Reels, Cinematic Films, Rundgängen und Social-Media-Formaten:\n\n${PORTFOLIO}\n\nIch schaue mir deine Anfrage persönlich an und melde mich bei dir, damit wir gemeinsam besprechen können, was am besten zu deinem Projekt passt. Wenn du schon Fotos, Videos oder einen Link zum Objekt hast, schick sie mir gern als Antwort auf diese Mail.\n\nViele Grüße\nBastian\nBack to Outdoor\n\ninfo@backtooutdoor.com · +43 (0)660 8422053`,
+    text: `Hallo${n ? " " + n : ""},\n\nvielen Dank für deine Nachricht und dein Interesse an Back to Outdoor Immobilien.${fmt ? " Schön, dass du dich für " + fmt + " interessierst." : ""}\n\nDamit du dir direkt ein Bild davon machen kannst, was möglich ist, findest du hier unser Portfolio mit Reels, Cinematic Films, Rundgängen und Social-Media-Formaten:\n\n${PORTFOLIO_IMMO.de}\n\nIch schaue mir deine Anfrage persönlich an und melde mich bei dir, damit wir gemeinsam besprechen können, was am besten zu deinem Projekt passt. Wenn du schon Fotos, Videos oder einen Link zum Objekt hast, schick sie mir gern als Antwort auf diese Mail.\n\nViele Grüße\nBastian\nBack to Outdoor · Immobilien\n\ninfo@backtooutdoor.com · +43 (0)660 8422053`,
   };
 }
 
@@ -74,12 +74,12 @@ function vorlage(lead, lang) {
   if (lang === "en") {
     return {
       betreff: mk ? "Your Back to Outdoor media kit" : "Thanks for your enquiry – Back to Outdoor",
-      text: `Hi ${n},\n\nthanks for reaching out${lead.firma ? " on behalf of " + lead.firma : ""}! ${mk ? (mkUrl ? "Please find our media kit attached.\n\n" : "We'll send you our media kit personally shortly.\n\n") : ""}We'd love to hear more about your plans. The easiest next step is a short, free call (about 15 minutes)${book ? " – you can pick a time here: " + book : " – just reply with two or three times that suit you"}.\n\nTo prepare: where is your business located, and which period are you thinking of?\n\nOur portfolio: ${PORTFOLIO}\n\nBest regards\nBasti\n\n${KONTAKT}`,
+      text: `Hi ${n},\n\nthanks for reaching out${lead.firma ? " on behalf of " + lead.firma : ""}! ${mk ? (mkUrl ? "Please find our media kit attached.\n\n" : "We'll send you our media kit personally shortly.\n\n") : ""}We'd love to hear more about your plans. The easiest next step is a short, free call (about 15 minutes)${book ? " – you can pick a time here: " + book : " – just reply with two or three times that suit you"}.\n\nTo prepare: where is your business located, and which period are you thinking of?\n\nBest regards\nBasti\n\n${KONTAKT}`,
     };
   }
   return {
     betreff: mk ? "Euer Media Kit von Back to Outdoor" : "Danke für eure Anfrage – Back to Outdoor",
-    text: `Hallo ${n},\n\ndanke für eure Nachricht${lead.firma ? " – schön, von " + lead.firma + " zu hören" : ""}! ${mk ? (mkUrl ? "Unser Media Kit findet ihr im Anhang.\n\n" : "Unser Media Kit schicke ich euch gleich persönlich zu.\n\n") : ""}Am einfachsten lernen wir uns in einem kurzen, kostenlosen Gespräch kennen (ca. 15 Minuten, unverbindlich)${book ? ". Hier könnt ihr direkt einen Termin wählen: " + book : ". Schickt mir einfach zwei, drei Zeitfenster, die euch passen"}.\n\nDamit ich mich gut vorbereiten kann: Wo seid ihr zu Hause, und an welchen Zeitraum denkt ihr?\n\nUnsere Arbeiten: ${PORTFOLIO}\n\nLiebe Grüße\nBasti\n\n${KONTAKT}`,
+    text: `Hallo ${n},\n\ndanke für eure Nachricht${lead.firma ? " – schön, von " + lead.firma + " zu hören" : ""}! ${mk ? (mkUrl ? "Unser Media Kit findet ihr im Anhang.\n\n" : "Unser Media Kit schicke ich euch gleich persönlich zu.\n\n") : ""}Am einfachsten lernen wir uns in einem kurzen, kostenlosen Gespräch kennen (ca. 15 Minuten, unverbindlich)${book ? ". Hier könnt ihr direkt einen Termin wählen: " + book : ". Schickt mir einfach zwei, drei Zeitfenster, die euch passen"}.\n\nDamit ich mich gut vorbereiten kann: Wo seid ihr zu Hause, und an welchen Zeitraum denkt ihr?\n\nLiebe Grüße\nBasti\n\n${KONTAKT}`,
   };
 }
 
@@ -125,7 +125,7 @@ Antworte ausschließlich als JSON: {"betreff":"...","text":"..."} – ohne Konta
     if (!j.betreff || !j.text) throw new Error("leer");
     // Sicherheitsnetz: nie Preise verschicken
     if (/€|\beuro\b|\bEUR\b|\d+\s?(,-|€)|tagessatz|rabatt/i.test(j.text)) throw new Error("Preis erkannt");
-    return { betreff: j.betreff.slice(0, 150), text: j.text.trim() + "\n\n" + (lang === "en" ? "Our portfolio: " : lang === "fr" ? "Notre portfolio : " : "Unsere Arbeiten: ") + PORTFOLIO + "\n\n" + KONTAKT };
+    return { betreff: j.betreff.slice(0, 150), text: j.text.trim() + "\n\n" + KONTAKT };
   } catch (e) {
     console.error("KI-Antwort fehlgeschlagen, nutze Vorlage:", e.message);
     return null;
