@@ -30,6 +30,10 @@
     {
       "source": "/immobilien-en",
       "destination": "/immobilien-showcase-en.html"
+    },
+    {
+      "source": "/immobilien/ugc",
+      "destination": "/immobilien-ugc.html"
     }
   ]
 }

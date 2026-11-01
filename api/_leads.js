@@ -22,14 +22,31 @@ function kanalVon(lead) {
   return "Back to Outdoor";
 }
 
-const KONTAKT_IMMO = "Back to Outdoor · Immobilien-Content\ninfo@backtooutdoor.com · +43 (0)660 8422053\nbacktooutdoor.com/immobilien-showcase.html";
+const KONTAKT_IMMO = "Back to Outdoor · Immobilien-Content\ninfo@backtooutdoor.com · +43 (0)660 8422053\nbacktooutdoor.com/immobilien";
+const PORTFOLIO_UGC = "https://backtooutdoor.com/immobilien/ugc";
 
-// Immobilien: feste Vorlage (Sie-Form), passend zur Showcase-Seite: Gratis-Vorschau aus vorhandenen Fotos, 2 Werktage
-function immoMail(lead) {
+// Immobilien (Showcase-Seite): Eingangsbestätigung in Sie-Form, ohne Preise oder feste Fristen
+function immoMail(lead, lang) {
   const fmt = (String(lead.anliegen || "").match(/^Format: (.+)$/m) || [])[1];
+  const mitFmt = fmt && !/auswählen|offen|not sure/i.test(fmt) ? " (" + fmt + ")" : "";
+  if (lang === "en") {
+    return {
+      betreff: "Your enquiry – Back to Outdoor",
+      text: `Hello ${lead.name},\n\nthank you for your enquiry${mitFmt}. I will look at your property personally and get back to you shortly to talk about scope, formats and the best approach, whether we film on site or work with your existing material.\n\nIf you already have photos, videos or a link to the property, feel free to send them as a reply to this email. You will then get a free preview first.\n\nExamples from our portfolio: ${PORTFOLIO_UGC}\n\nBest regards\nBasti\n\nBack to Outdoor · Real Estate Content\ninfo@backtooutdoor.com · +43 (0)660 8422053\nbacktooutdoor.com/immobilien-en`,
+    };
+  }
   return {
-    betreff: "Ihre Vorschau-Anfrage – Back to Outdoor",
-    text: `Guten Tag ${lead.name},\n\ndanke für Ihre Anfrage${fmt && !/auswählen|offen/i.test(fmt) ? " (" + fmt + ")" : ""}. Für die kostenlose Vorschau brauche ich nur zwei Dinge von Ihnen:\n\n1. Die vorhandenen Fotos des Objekts, am besten 8 bis 15 Bilder. Sie können sie einfach als Antwort auf diese Mail schicken oder einen Download-Link senden.\n2. Kurz die Eckdaten, die im Video stehen sollen, zum Beispiel Art des Objekts, Ort und Fläche.\n\nSobald die Fotos da sind, bekommen Sie die Vorschau innerhalb von 2 Werktagen. Ein Termin vor Ort ist dafür nicht nötig.\n\nFreundliche Grüße\nBasti\n\n${KONTAKT_IMMO}`,
+    betreff: "Ihre Anfrage – Back to Outdoor",
+    text: `Guten Tag ${lead.name},\n\ndanke für Ihre Anfrage${mitFmt}. Ich schaue mir Ihr Objekt persönlich an und melde mich in Kürze bei Ihnen, um Umfang, Formate und den passenden Weg zu besprechen, ob mit Dreh vor Ort oder aus Ihrem vorhandenen Material.\n\nWenn Sie schon Fotos, Videos oder einen Link zum Objekt haben, können Sie diese gern als Antwort auf diese Mail schicken. Dann sehen Sie vorab eine kostenlose Vorschau.\n\nBeispiele aus unserem Portfolio: ${PORTFOLIO_UGC}\n\nFreundliche Grüße\nBasti\n\n${KONTAKT_IMMO}`,
+  };
+}
+
+// Immobilien | UGC (Portfolio-Seite): persönliche Eingangsbestätigung in Du-Form, ohne Preise, ohne Auftragszusage
+function ugcMail(lead) {
+  const n = vorname(lead.name);
+  return {
+    betreff: "Vielen Dank für deine Anfrage – Back to Outdoor",
+    text: `Hallo${n ? " " + n : ""},\n\nvielen Dank für deine Nachricht und dein Interesse an Back to Outdoor.\n\nIch freue mich, dass du dich für unsere Content- und Videoproduktion interessierst. Damit du dir direkt ein Bild davon machen kannst, was möglich ist, habe ich dir hier mein Immobilien-UGC-Portfolio zusammengestellt:\n\n${PORTFOLIO_UGC}\n\nDort findest du verschiedene Beispielvideos und Formate, von authentischen UGC-Reels über Cinematic Property Films bis hin zu Video-Walkthroughs.\n\nIch schaue mir deine Anfrage persönlich an und melde mich bei dir, damit wir gemeinsam besprechen können, was am besten zu deinem Projekt passt.\n\nViele Grüße\nBastian\nBack to Outdoor | Immobilien UGC\n\ninfo@backtooutdoor.com · +43 (0)660 8422053`,
   };
 }
 
@@ -141,13 +158,15 @@ async function verarbeiteLead(input, lang) {
   const kanal = kanalVon(lead);
   const antwort = produkt && lead.wunsch === "E-Book Teil 1"
     ? ebookMail(lead, produkt)
-    : kanal === "Immobilien" ? immoMail(lead)
+    : kanal === "Immobilien" ? (lead.wunsch === "Immobilien UGC" ? ugcMail(lead) : immoMail(lead, lang))
     : kanal === "Mindset Tetris" ? mindsetMail(lead)
     : (await kiAntwort(lead, lang)) || vorlage(lead, lang === "fr" ? "en" : lang);
   const mediaKitUrl = lead.wunsch === "Media Kit" ? process.env.MEDIA_KIT_URL || "" : "";
   // Für die Mailstrecke im Apps Script (nur E-Book-Anfragen)
   const ebook = produkt ? { titel: produkt.titel, teil2: teil2Link(lead.produkt), landing: produkt.landing } : undefined;
-  const payload = { secret: process.env.LEAD_SECRET || "", zeit: new Date().toISOString(), sprache: lang, kanal, ...lead, ebook, antwort_betreff: antwort.betreff, antwort_text: antwort.text, media_kit_url: mediaKitUrl };
+  // Aus-Schalter: IMMO_AUTO_ANTWORT=aus in Vercel → Immobilien-Antworten nur als Gmail-Entwurf (Apps Script beachtet nur_entwurf)
+  const nurEntwurf = kanal === "Immobilien" && String(process.env.IMMO_AUTO_ANTWORT || "").toLowerCase() === "aus";
+  const payload = { secret: process.env.LEAD_SECRET || "", zeit: new Date().toISOString(), sprache: lang, kanal, ...lead, ebook, antwort_betreff: antwort.betreff, antwort_text: antwort.text, media_kit_url: mediaKitUrl, nur_entwurf: nurEntwurf };
 
   console.log("NEUER LEAD", JSON.stringify({ ...payload, secret: undefined }));
   const ergebnis = await versenden(payload);

@@ -118,6 +118,16 @@ function labeln_(query, label) {
   return false;
 }
 
+// Schutz vor doppelten Antworten: gleiche Adresse + gleicher Betreff in den letzten 2 Tagen schon beantwortet?
+function schonBeantwortet_(d) {
+  try {
+    const q = 'in:sent to:' + d.email + ' subject:"' + String(d.antwort_betreff).replace(/"/g, '') + '" newer_than:2d';
+    return GmailApp.search(q, 0, 1).length > 0;
+  } catch (err) {
+    return false;
+  }
+}
+
 function verarbeiten_(d) {
   const blatt = blatt_();
   const kanal = kanal_(d);
@@ -145,7 +155,10 @@ function verarbeiten_(d) {
     const hm = htmlMail_(d.antwort_text, kanal);
     opts.htmlBody = hm.html;
     if (Object.keys(hm.inline).length) opts.inlineImages = hm.inline;
-    if (CONFIG.AUTO_ANTWORT) {
+    if (schonBeantwortet_(d)) {
+      // Doppelte Anfrage (z. B. zweimal abgeschickt): keine zweite automatische Antwort
+      status = 'Doppelt – keine 2. Antwort';
+    } else if (CONFIG.AUTO_ANTWORT && !d.nur_entwurf) {
       GmailApp.sendEmail(d.email, d.antwort_betreff, d.antwort_text, opts);
       status = 'Beantwortet';
       beantwortet = true;

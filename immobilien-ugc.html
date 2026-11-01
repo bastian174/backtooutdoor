@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Back to Outdoor Immobilien | UGC – Video-Portfolio</title>
+<meta name="description" content="Immobilien. Emotional erzählt. Digital erlebt. UGC Reels, Cinematic Property Films, Video-Walkthroughs und Social-Media-Content für Immobilien, mit Natur und Umgebung als Teil der Geschichte.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://backtooutdoor.com/immobilien/ugc">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Back to Outdoor">
+<meta property="og:title" content="Immobilien. Emotional erzählt. Digital erlebt. | Back to Outdoor Immobilien UGC">
+<meta property="og:description" content="Video-Portfolio: UGC Reels, Cinematic Property Films, Walkthroughs und Social-Media-Content für Immobilien.">
+<meta property="og:url" content="https://backtooutdoor.com/immobilien/ugc">
+<meta property="og:image" content="https://backtooutdoor.com/assets/video/immobilien-hero-poster.jpg?v=3">
+<link rel="icon" href="/assets/img/immobilien/favicon-immobilien.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1E2226; --bg2:#262B30; --bg3:#2D333A; --line:#3A4047; --field:#4C535B;
+  --text:#F5F1E6; --muted:#D8D2C5; --soft:#B9B3A6; --sand:#D4B8A5;
+  --accent:#E36D27; --accent-dark:#B9501A; --on-accent:#132030;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Hanken Grotesk',sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:var(--sand)} a:hover{color:#EADBC9}
+img,video{max-width:100%;display:block}
+em.s{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);font-weight:400}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.eyebrow{color:var(--sand);font-size:13px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:18px}
+h1,h2,h3{font-weight:400;margin:0;letter-spacing:-.02em}
+h2{font-size:clamp(36px,4.4vw,58px);line-height:1.05}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:16px 28px;font:700 14px 'Hanken Grotesk',sans-serif;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.btn-red{background:var(--accent);color:var(--on-accent)} .btn-red:hover{background:#F07E3A;color:var(--on-accent)}
+.btn-line{border:1.5px solid rgba(245,241,230,.6);color:var(--text)} .btn-line:hover{border-color:var(--accent);color:var(--text)}
+section{padding:110px 0;position:relative}
+
+/* Header */
+header.top{position:absolute;top:0;left:0;right:0;z-index:5}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:24px;padding-bottom:24px}
+.brand{display:inline-flex;align-items:center;gap:12px;color:var(--text);text-decoration:none}
+.brand img{height:68px;width:auto}
+.brand-txt{font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap}
+.brand-txt span{color:var(--accent)}
+.brand-txt small{display:block;font-size:10px;font-weight:600;letter-spacing:.22em;color:var(--soft);margin-top:4px}
+header nav{display:flex;gap:24px;font-size:15px}
+header nav a{color:var(--muted);text-decoration:none} header nav a:hover{color:var(--text)}
+.hdr-r{display:flex;align-items:center;gap:18px}
+.back{font-size:13px;color:var(--soft);text-decoration:none;white-space:nowrap} .back:hover{color:var(--text)}
+
+/* Hero */
+.hero{min-height:94vh;display:flex;align-items:flex-end;padding:170px 0 90px;overflow:hidden}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(20,23,27,.55) 0%,rgba(20,23,27,.25) 35%,rgba(20,23,27,.85) 85%,var(--bg) 100%),linear-gradient(90deg,rgba(20,23,27,.75) 0%,rgba(20,23,27,0) 65%)}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.kicker{display:flex;align-items:center;gap:14px;color:var(--sand);font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;margin-bottom:26px}
+.kicker i{width:46px;height:2px;background:var(--accent)}
+.hero h1{font-size:clamp(46px,6.6vw,96px);line-height:1;max-width:980px}
+.hero h1 em{display:block}
+.hero p{max-width:620px;margin:28px 0 0;font-size:19px;color:var(--muted)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.vidtoggle{position:absolute;left:32px;bottom:22px;z-index:3;background:rgba(20,23,27,.55);color:var(--text);border:1px solid rgba(245,241,230,.35);font:600 12px 'Hanken Grotesk',sans-serif;padding:7px 12px;cursor:pointer}
+.hero-logo{position:absolute;right:32px;bottom:34px;z-index:3;height:120px;width:auto;opacity:.92;filter:drop-shadow(0 6px 18px rgba(0,0,0,.45))}
+
+/* Portfolio */
+.portfolio{padding-top:40px}
+.pf-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px}
+.pf-head p{margin:0;max-width:440px;color:var(--soft);font-size:15px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:34px}
+.filters button{background:transparent;color:var(--muted);border:1px solid var(--field);padding:10px 18px;font:600 14px 'Hanken Grotesk',sans-serif;letter-spacing:.04em;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.filters button:hover{border-color:var(--accent);color:var(--text)}
+.filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.cat-intro{margin:26px 0 0;min-height:52px;color:var(--muted);max-width:760px;font-size:16px}
+.cat-intro b{color:var(--text)}
+.reel{display:flex;gap:18px;align-items:flex-end;flex-wrap:wrap;margin-top:28px}
+.tile{position:relative;margin:0;flex:none;height:var(--h,460px);aspect-ratio:var(--ar);background:#0E1013;border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px rgba(245,241,230,.1),0 30px 60px rgba(0,0,0,.4);transition:opacity .35s,transform .35s}
+.tile.hide{display:none}
+.tile video{width:100%;height:100%;object-fit:cover}
+.tile .play{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:16px;background:linear-gradient(180deg,rgba(14,16,19,.55) 0%,rgba(14,16,19,0) 30%,rgba(14,16,19,0) 55%,rgba(14,16,19,.88) 100%);border:0;color:var(--text);text-align:left;cursor:pointer;font:inherit;transition:opacity .3s}
+.tile.playing .play{opacity:0;pointer-events:none}
+.tile .badge{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;background:rgba(14,16,19,.6);border:1px solid rgba(245,241,230,.25);padding:4px 8px}
+.tile .pbtn{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:var(--accent);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .25s}
+.tile .pbtn::before{content:"";margin-left:5px;border-left:20px solid var(--on-accent);border-top:12px solid transparent;border-bottom:12px solid transparent}
+.tile:hover .pbtn{transform:scale(1.08)}
+.tile .cap b{display:block;font-size:17px;font-weight:600;line-height:1.25}
+.tile .cap span{display:block;font-size:13px;color:var(--sand);margin-top:4px}
+.demo-note{margin-top:22px;font-size:13px;color:var(--soft)}
+
+/* Eine Immobilie, fünf Formate */
+.same{background:var(--bg2)}
+.same .row{display:flex;gap:16px;align-items:flex-end;margin-top:40px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory}
+.same .tile{--h:330px;scroll-snap-align:start}
+.same .lbl{display:block;margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sand)}
+.same figure{margin:0;flex:none}
+
+/* Leistungen */
+.leist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px}
+.leist{background:var(--bg);padding:30px 28px;transition:background .25s}
+.leist:hover{background:var(--bg2)}
+.leist-cta{background:var(--accent);color:var(--on-accent);text-decoration:none}.leist-cta:hover{background:#F07E3A;color:var(--on-accent)}.leist.leist-cta .n,.leist.leist-cta h3,.leist.leist-cta p{color:var(--on-accent)}
+.leist .n{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);font-size:26px}
+.leist h3{font-size:22px;font-weight:600;margin:8px 0 8px;letter-spacing:0}
+.leist p{margin:0;color:var(--soft);font-size:15px}
+.platforms{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:34px}
+.platforms b{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--sand);margin-right:6px}
+.platforms span{border:1px solid var(--field);padding:7px 14px;font-size:14px}
+.versions{margin-top:40px;padding:30px 32px;border-left:3px solid var(--accent);background:var(--bg2);max-width:820px}
+.versions h3{font-size:24px;font-weight:600;letter-spacing:0}
+.versions p{margin:8px 0 0;color:var(--muted)}
+
+/* Ablauf */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px}
+.step{background:var(--bg);padding:28px 24px}
+.step .n{font-family:'Instrument Serif',serif;font-size:44px;line-height:1;color:var(--accent)}
+.step h3{font-size:18px;font-weight:600;letter-spacing:0;margin:14px 0 6px}
+.step p{margin:0;font-size:15px;color:var(--soft)}
+
+/* Anfrage */
+.anfrage{background:var(--bg2)}
+.anfrage .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.anfrage p.lead{color:var(--muted)}
+.contact{display:grid;gap:4px;margin-top:28px;font-size:16px}
+form{display:grid;gap:18px}
+form .row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+label{display:block;font-size:14px;font-weight:600;color:var(--muted)}
+label > input,label > select,label > textarea{display:block;margin-top:7px}
+.req{color:var(--accent);margin-left:3px}
+input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--field);color:var(--text);font:400 16px 'Hanken Grotesk',sans-serif;padding:13px 14px;border-radius:0}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:var(--accent)}
+textarea{min-height:130px;resize:vertical}
+fieldset{border:1px solid var(--field);padding:14px 16px 16px;margin:0}
+legend{font-size:14px;font-weight:600;color:var(--muted);padding:0 6px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin-top:6px}
+.checks label,.chk{display:flex;align-items:flex-start;gap:10px;font-weight:400;font-size:15px;color:var(--text)}
+.checks input,.chk input{width:18px;height:18px;margin:3px 0 0;flex:none;accent-color:var(--accent)}
+.chk span{color:var(--soft);font-size:14px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.msg{min-height:22px;font-size:15px;color:#F2A27A}
+.thanks{display:none;padding:34px;border:1px solid var(--line);background:var(--bg)}
+.thanks.show{display:block}
+.thanks .big{font-family:'Instrument Serif',serif;font-size:44px;color:var(--accent);line-height:1.1;margin-bottom:10px}
+
+footer{max-width:1280px;margin:0 auto;padding:40px 32px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:14px;color:var(--soft)}
+footer a{color:var(--soft)}
+.foot-brand{display:inline-flex;align-items:center;gap:12px}
+.foot-brand img{height:56px;width:auto}
+
+/* Einblenden */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:1100px){
+  header nav{display:none}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .anfrage .wrap{grid-template-columns:1fr;gap:40px}
+}
+@media (max-width:760px){
+  .wrap{padding:0 16px}
+  section{padding:76px 0}
+  .brand img{height:52px}
+  .brand-txt{display:none}
+  .back{display:none}
+  .hero{min-height:88vh;padding:130px 0 80px}
+  .hero p{font-size:17px}
+  .hero-logo{height:64px;right:16px;bottom:20px}
+  .vidtoggle{left:16px}
+  .reel{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;margin-right:-16px;padding-right:16px}
+  .tile{--h:420px;scroll-snap-align:start}
+  .tile[data-ar="16/9"]{--h:auto;width:86vw;height:auto}
+  .same .tile{--h:300px}
+  .steps{grid-template-columns:1fr}
+  form .row,.checks{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="/immobilien" class="brand"><img src="/assets/img/immobilien/logo-immobilien-weiss-384.png" alt="Back to Outdoor Immobilien Logo" width="55" height="68"><span class="brand-txt">Back to Outdoor <span>|</span> Immobilien UGC<small>Digital Experience &amp; Content Studio</small></span></a>
+    <nav aria-label="Hauptnavigation">
+      <a href="#portfolio">Portfolio</a>
+      <a href="#leistungen">Leistungen</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#anfrage">Anfrage</a>
+    </nav>
+    <div class="hdr-r">
+      <a class="back" href="/immobilien">← Immobilien-Übersicht</a>
+      <a class="btn btn-red" style="min-height:42px;padding:12px 20px;font-size:12px" href="#anfrage">Projekt anfragen</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="top">
+  <video id="heroVid" autoplay muted loop playsinline preload="auto" poster="/assets/video/immobilien-hero-poster.jpg?v=3" aria-hidden="true">
+    <source src="/assets/video/immobilien-hero-720.mp4?v=3" type="video/mp4" media="(max-width: 1600px)">
+    <source src="/assets/video/immobilien-hero-1080.mp4?v=3" type="video/mp4">
+  </video>
+  <div class="wrap">
+    <div class="kicker"><i></i>Back to Outdoor | Immobilien UGC</div>
+    <h1>Immobilien. Emotional erzählt. <em class="s">Digital erlebt.</em></h1>
+    <p>Wir produzieren authentischen Video- und Fotocontent, der Immobilien sichtbar macht, Emotionen weckt und Interessenten bereits online ein Gefühl für besondere Orte vermittelt.</p>
+    <div class="ctas">
+      <a href="#portfolio" class="btn btn-red">Portfolio entdecken →</a>
+      <a href="#anfrage" class="btn btn-line">Projekt anfragen</a>
+    </div>
+  </div>
+  <button type="button" class="vidtoggle" id="vidToggle" aria-pressed="false">❚❚ Video anhalten</button>
+  <img class="hero-logo" src="/assets/img/immobilien/logo-immobilien-weiss-384.png" alt="" aria-hidden="true" width="309" height="384">
+</section>
+
+<section class="portfolio" id="portfolio">
+  <div class="wrap">
+    <div class="pf-head rv">
+      <div><div class="eyebrow">Video-Portfolio</div><h2>Sehen statt lesen. <em class="s">Vier Formate.</em></h2></div>
+      <p>Alle Videos lassen sich direkt hier abspielen, ohne Ton. Auf dem Handy wischen Sie seitlich durch.</p>
+    </div>
+    <div class="filters rv" role="group" aria-label="Kategorie filtern">
+      <button type="button" data-f="alle" aria-pressed="true">Alle</button>
+      <button type="button" data-f="ugc" aria-pressed="false">UGC Reels</button>
+      <button type="button" data-f="cine" aria-pressed="false">Cinematic Property Films</button>
+      <button type="button" data-f="walk" aria-pressed="false">Property Walkthroughs</button>
+      <button type="button" data-f="social" aria-pressed="false">Social Media Content</button>
+    </div>
+    <p class="cat-intro" id="catIntro" aria-live="polite"></p>
+    <div class="reel" id="reel"></div>
+    <p class="demo-note">Alle Beispiele sind Demo-Videos aus lizenzfreiem Stock-Material (Pexels), von uns geschnitten. Es sind keine Kundenprojekte.</p>
+  </div>
+</section>
+
+<section class="same" id="formate">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Ein Objekt</div>
+      <h2>Eine Immobilie. <em class="s">Fünf Formate.</em></h2>
+      <p style="color:var(--muted);max-width:640px;margin:20px 0 0">Aus demselben Material entstehen mehrere Versionen: jede im richtigen Format und mit dem passenden Einstieg für ihren Kanal.</p>
+    </div>
+    <div class="row" id="sameRow"></div>
+  </div>
+</section>
+
+<section id="leistungen">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Leistungen</div>
+      <h2>Alles, was eine Immobilie <em class="s">online braucht.</em></h2>
+    </div>
+    <div class="leist-grid rv">
+      <div class="leist"><div class="n">01</div><h3>UGC Content</h3><p>Authentische Inhalte, die wirken wie von echten Bewohnern oder Gästen gefilmt: nah, ehrlich, nahbar.</p></div>
+      <div class="leist"><div class="n">02</div><h3>Immobilien-Reels</h3><p>Kurze Hochformat-Videos mit starkem Einstieg für Instagram, TikTok und YouTube Shorts.</p></div>
+      <div class="leist"><div class="n">03</div><h3>Cinematic Property Films</h3><p>Architektur, Licht, Details und Umgebung, ruhig und hochwertig erzählt, mit Musik.</p></div>
+      <div class="leist"><div class="n">04</div><h3>Video Walkthroughs</h3><p>Geführte Rundgänge durch Räume und Ausstattung, damit Interessenten sich orientieren können.</p></div>
+      <div class="leist"><div class="n">05</div><h3>Social Media Content</h3><p>Mehrere Schnittversionen und Einstiege für Feed, Storys, Pinterest und Anzeigen.</p></div>
+      <div class="leist"><div class="n">06</div><h3>Immobilienfotografie</h3><p>Fotos von Innenräumen, Außenbereichen und der Umgebung für Exposé, Website und Portale.</p></div>
+      <div class="leist"><div class="n">07</div><h3>Individuelle Content-Pakete</h3><p>Wir stellen zusammen, was Ihr Objekt braucht, vom einzelnen Reel bis zum kompletten Paket.</p></div>
+      <a class="leist leist-cta" href="#anfrage"><div class="n">→</div><h3>Ihr Projekt</h3><p>Erzählen Sie uns von Ihrer Immobilie. Wir melden uns persönlich.</p></a>
+    </div>
+    <div class="platforms rv"><b>Für</b><span>Instagram</span><span>TikTok</span><span>YouTube</span><span>Websites</span><span>Immobilienportale</span></div>
+    <div class="versions rv">
+      <h3>Ein Auftrag, viele Versionen.</h3>
+      <p>Aus einem Dreh entstehen auf Wunsch mehrere Formate: ein Reel im Hochformat, ein Film im Querformat für die Website, kurze Schnitte für Werbung und Bildmaterial für das Exposé.</p>
+    </div>
+  </div>
+</section>
+
+<section id="ablauf" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Zusammenarbeit</div>
+      <h2>So einfach <em class="s">geht's.</em></h2>
+    </div>
+    <div class="steps rv">
+      <div class="step"><div class="n">01</div><h3>Projektanfrage</h3><p>Sie schreiben uns über das Formular auf dieser Seite.</p></div>
+      <div class="step"><div class="n">02</div><h3>Abstimmung &amp; Briefing</h3><p>Wir sprechen persönlich über Objekt, Zielgruppe und Formate.</p></div>
+      <div class="step"><div class="n">03</div><h3>Content-Produktion</h3><p>Dreh vor Ort oder Arbeit mit Ihrem vorhandenen Material.</p></div>
+      <div class="step"><div class="n">04</div><h3>Schnitt &amp; Bearbeitung</h3><p>Wir schneiden die Versionen und bauen Ihre Änderungswünsche ein.</p></div>
+      <div class="step"><div class="n">05</div><h3>Bereitstellung</h3><p>Sie bekommen die fertigen Inhalte in allen vereinbarten Formaten.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="anfrage" id="anfrage">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Projekt anfragen</div>
+      <h2>Erzählen Sie uns <em class="s">von Ihrer Immobilie.</em></h2>
+      <p class="lead">Wir melden uns persönlich bei Ihnen. Preise und Umfang besprechen wir individuell, passend zu Ihrem Projekt.</p>
+      <div class="contact">
+        <b>Back to Outdoor · Bastian Prein</b>
+        <span style="color:var(--muted)">Salzburg, Österreich</span>
+        <a href="tel:+436608422053">+43 (0)660 8422053</a>
+        <a href="mailto:info@backtooutdoor.com">info@backtooutdoor.com</a>
+      </div>
+    </div>
+    <div>
+      <div class="thanks" id="thanks">
+        <div class="big" id="thanksTitle">Danke.</div>
+        <p style="margin:0;color:var(--muted)">Ihre Anfrage ist angekommen. Sie bekommen gleich eine kurze Bestätigung per E-Mail, und wir melden uns persönlich bei Ihnen.</p>
+      </div>
+      <form id="form" novalidate>
+        <div class="row">
+          <label>Name<span class="req" aria-hidden="true">*</span><input type="text" id="fName" required autocomplete="name"></label>
+          <label>Unternehmen<input type="text" id="fFirma" autocomplete="organization"></label>
+        </div>
+        <div class="row">
+          <label>E-Mail-Adresse<span class="req" aria-hidden="true">*</span><input type="email" id="fEmail" required autocomplete="email"></label>
+          <label>Website (optional)<input type="url" id="fWeb" inputmode="url" placeholder="https://"></label>
+        </div>
+        <div class="row">
+          <label>Art der Immobilie
+            <select id="fArt">
+              <option value="">Bitte wählen</option>
+              <option>Wohnung</option><option>Haus / Villa</option><option>Neubauprojekt</option><option>Ferienimmobilie / Chalet</option><option>Hotel / Unterkunft</option><option>Gewerbeimmobilie</option><option>Sonstiges</option>
+            </select>
+          </label>
+          <label>Gewünschter Zeitraum
+            <select id="fZeit">
+              <option value="">Bitte wählen</option>
+              <option>So bald wie möglich</option><option>In den nächsten 4 Wochen</option><option>In 1 bis 3 Monaten</option><option>Später / noch offen</option>
+            </select>
+          </label>
+        </div>
+        <fieldset>
+          <legend>Gewünschte Leistungen</legend>
+          <div class="checks" id="fLeist">
+            <label><input type="checkbox" value="UGC Content"> UGC Content</label>
+            <label><input type="checkbox" value="Immobilien-Reels"> Immobilien-Reels</label>
+            <label><input type="checkbox" value="Cinematic Property Film"> Cinematic Property Film</label>
+            <label><input type="checkbox" value="Video Walkthrough"> Video Walkthrough</label>
+            <label><input type="checkbox" value="Social Media Content"> Social Media Content</label>
+            <label><input type="checkbox" value="Immobilienfotografie"> Immobilienfotografie</label>
+            <label><input type="checkbox" value="Individuelles Paket"> Individuelles Paket</label>
+            <label><input type="checkbox" value="Noch unsicher"> Noch unsicher</label>
+          </div>
+        </fieldset>
+        <label>Kurze Beschreibung des Projekts<span class="req" aria-hidden="true">*</span>
+          <textarea id="fMsg" required placeholder="z. B. Lage, Größe, Besonderheiten, wofür die Videos gedacht sind"></textarea>
+        </label>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="chk"><input type="checkbox" id="fDsgvo" required> <span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage gespeichert und verwendet werden und ich eine Bestätigung per E-Mail bekomme. Mehr in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</span></label>
+        <div class="msg" id="msg" role="status" aria-live="polite"></div>
+        <p style="margin:0;font-size:13px;color:var(--soft)">* Pflichtfeld</p>
+        <button type="submit" class="btn btn-red" id="send" style="justify-self:start">Projekt anfragen →</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span class="foot-brand"><img src="/assets/img/immobilien/logo-immobilien-weiss-384.png" alt="" width="45" height="56" loading="lazy">Back to Outdoor | Immobilien UGC</span>
+  <span style="display:flex;gap:24px;flex-wrap:wrap"><a href="/immobilien">Immobilien-Übersicht</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></span>
+</footer>
+
+<script>
+// Portfolio-Daten: neue Bereiche (z. B. Hotels, Gastronomie) lassen sich später als weitere Einträge mit eigener Kategorie ergänzen.
+var CATS = {
+  ugc:   {name:'UGC Reels', text:'<b>Hochformat 9:16.</b> Authentische Kurzvideos mit dynamischen Schnitten und emotionalen Einblicken, für Instagram Reels, TikTok und YouTube Shorts.'},
+  cine:  {name:'Cinematic Property Films', text:'<b>Querformat 16:9, optional Hochformat.</b> Architektur, Räume, Licht und Atmosphäre, mit Natur und Umgebung als Teil der Geschichte.'},
+  walk:  {name:'Property Walkthroughs', text:'<b>Querformat 16:9.</b> Geführte Rundgänge durch Räume und Ausstattung, damit Interessenten einen realistischen Eindruck bekommen.'},
+  social:{name:'Social Media Content', text:'<b>Verschiedene Schnittversionen.</b> Unterschiedliche Formate, Einstiege und Längen für Feed, Pinterest, Websites und digitale Anzeigen.'}
+};
+var V = '/assets/video/';
+var ITEMS = [
+  {cat:'cine', ar:'16/9', src:V+'immobilien-hero-720.mp4?v=3', poster:V+'immobilien-hero-poster.jpg?v=3', title:'Von den Bergen ins Haus', sub:'Cinematic Film · 16:9'},
+  {cat:'ugc', ar:'9/16', src:V+'immobilien-reel.mp4', poster:V+'immobilien-reel.jpg', title:'Wohnhaus im Grünen', sub:'UGC Reel · 9:16'},
+  {cat:'cine', ar:'9/16', src:V+'ugc/cinematic-hoch.mp4', poster:V+'ugc/cinematic-hoch.jpg', title:'Natur & Architektur', sub:'Cinematic Film · 9:16'},
+  {cat:'walk', ar:'16/9', src:V+'immobilien-quer.mp4', poster:V+'immobilien-quer.jpg', title:'Rundgang Raum für Raum', sub:'Walkthrough · 16:9'},
+  {cat:'ugc', ar:'9/16', src:V+'immobilien-tiktok.mp4', poster:V+'immobilien-tiktok.jpg', title:'Schneller Schnitt', sub:'UGC Reel · TikTok & Shorts'},
+  {cat:'walk', ar:'16/9', src:V+'branchen/immobilie.mp4', poster:V+'branchen/immobilie.jpg', title:'Ruhiger Rundgang ohne Text', sub:'Walkthrough · 16:9'},
+  {cat:'social', ar:'4/5', src:V+'immobilien-feed.mp4', poster:V+'immobilien-feed.jpg', title:'Feed-Post', sub:'Instagram Feed · 4:5'},
+  {cat:'ugc', ar:'9/16', src:V+'hotel/hotel-reel.mp4', poster:V+'hotel/hotel-reel.jpg', title:'Ankommen im Zimmer', sub:'UGC Reel · Unterkunft'},
+  {cat:'social', ar:'2/3', src:V+'immobilien-pin.mp4', poster:V+'immobilien-pin.jpg', title:'Video-Pin', sub:'Pinterest · 2:3'},
+  {cat:'social', ar:'16/9', src:V+'hotel/hotel-quer.mp4', poster:V+'hotel/hotel-quer.jpg', title:'Website-Version', sub:'Website & Anzeigen · 16:9'}
+];
+var SAME = [
+  {ar:'9/16', src:V+'immobilien-reel.mp4', poster:V+'immobilien-reel.jpg', lbl:'Reel 9:16'},
+  {ar:'9/16', src:V+'immobilien-tiktok.mp4', poster:V+'immobilien-tiktok.jpg', lbl:'TikTok & Shorts'},
+  {ar:'4/5', src:V+'immobilien-feed.mp4', poster:V+'immobilien-feed.jpg', lbl:'Feed 4:5'},
+  {ar:'2/3', src:V+'immobilien-pin.mp4', poster:V+'immobilien-pin.jpg', lbl:'Pinterest 2:3'},
+  {ar:'16/9', src:V+'immobilien-quer.mp4', poster:V+'immobilien-quer.jpg', lbl:'Website 16:9'}
+];
+
+(function(){
+  function tile(it, withCap){
+    var f = document.createElement('figure');
+    f.className = 'tile'; f.dataset.cat = it.cat || ''; f.dataset.ar = it.ar;
+    f.style.setProperty('--ar', it.ar.replace('/', ' / '));
+    var v = document.createElement('video');
+    v.muted = true; v.playsInline = true; v.loop = true; v.preload = 'none'; v.poster = it.poster;
+    v.setAttribute('aria-label', (it.title || it.lbl) + ' – Demo-Video');
+    f.appendChild(v);
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'play'; b.setAttribute('aria-label', 'Video abspielen: ' + (it.title || it.lbl));
+    b.innerHTML = '<span class="badge">Demo · Stock</span><span class="pbtn" aria-hidden="true"></span>' + (withCap ? '<span class="cap"><b>' + it.title + '</b><span>' + it.sub + '</span></span>' : '<span></span>');
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.tile.playing video').forEach(function(o){ if (o !== v) { o.pause(); o.closest('.tile').classList.remove('playing'); o.controls = false; } });
+      if (!v.getAttribute('s' + 'rc')) v.setAttribute('s' + 'rc', it.src);
+      v.controls = true; f.classList.add('playing');
+      var q = v.play(); if (q && q.catch) q.catch(function(){});
+    });
+    v.addEventListener('pause', function(){ if (v.ended || v.currentTime === 0) { f.classList.remove('playing'); v.controls = false; } });
+    f.appendChild(b);
+    return f;
+  }
+  var reel = document.getElementById('reel');
+  ITEMS.forEach(function(it){ reel.appendChild(tile(it, true)); });
+  var row = document.getElementById('sameRow');
+  SAME.forEach(function(it){ var w = document.createElement('figure'); var t = tile(it, false); w.appendChild(t); var l = document.createElement('span'); l.className = 'lbl'; l.textContent = it.lbl; w.appendChild(l); row.appendChild(w); });
+
+  // Filter
+  var intro = document.getElementById('catIntro');
+  var btns = [].slice.call(document.querySelectorAll('.filters button'));
+  function filter(c){
+    btns.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.f === c ? 'true' : 'false'); });
+    [].forEach.call(reel.children, function(t){ var hide = c !== 'alle' && t.dataset.cat !== c; t.classList.toggle('hide', hide); if (hide) { var v = t.querySelector('video'); v.pause(); } });
+    intro.innerHTML = c === 'alle' ? '<b>Alle Formate.</b> UGC Reels, Cinematic Property Films, Walkthroughs und Social-Media-Versionen, bewusst in Hoch- und Querformat.' : CATS[c].text;
+  }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ filter(b.dataset.f); }); });
+  filter('alle');
+
+  // Hero-Video anhalten
+  var hv = document.getElementById('heroVid'), tg = document.getElementById('vidToggle');
+  function lbl(){ tg.textContent = hv.paused ? '▶ Video abspielen' : '❚❚ Video anhalten'; tg.setAttribute('aria-pressed', hv.paused ? 'true' : 'false'); }
+  tg.addEventListener('click', function(){ if (hv.paused) { var q = hv.play(); if (q && q.catch) q.catch(function(){}); } else hv.pause(); });
+  hv.addEventListener('play', lbl); hv.addEventListener('pause', lbl);
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) hv.pause();
+  lbl();
+
+  // Einblenden
+  var els = [].slice.call(document.querySelectorAll('.rv'));
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12});
+    els.forEach(function(e){ io.observe(e); });
+  } else els.forEach(function(e){ e.classList.add('in'); });
+
+  // Anfrage -> /api/lead (Kanal Immobilien, Bereich Immobilien UGC)
+  var t0 = Date.now(), form = document.getElementById('form'), msg = document.getElementById('msg'), go = document.getElementById('send'), busy = false;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (busy) return;
+    var val = function(id){ return document.getElementById(id).value.trim(); };
+    var name = val('fName'), email = val('fEmail'), text = val('fMsg');
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Bitte Name und eine gültige E-Mail-Adresse angeben.'; return; }
+    if (!text) { msg.textContent = 'Bitte beschreiben Sie Ihr Projekt kurz.'; return; }
+    if (!document.getElementById('fDsgvo').checked) { msg.textContent = 'Bitte bestätigen Sie kurz den Datenschutz-Hinweis.'; return; }
+    var leist = [].slice.call(document.querySelectorAll('#fLeist input:checked')).map(function(c){ return c.value; });
+    var anliegen = 'Bereich: Immobilien | UGC\n' +
+      'Art der Immobilie: ' + (val('fArt') || '-') + '\n' +
+      'Gewünschte Leistungen: ' + (leist.join(', ') || '-') + '\n' +
+      'Zeitraum: ' + (val('fZeit') || '-') + '\n' +
+      'Website: ' + (val('fWeb') || '-') + '\n\n' + text;
+    busy = true; msg.textContent = ''; go.disabled = true; go.textContent = 'Wird gesendet …';
+    fetch('/api/lead', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({
+      name:name, email:email, firma:val('fFirma'), telefon:'',
+      typ:'Immobilien', wunsch:'Immobilien UGC', anliegen:anliegen,
+      seite:location.pathname, website:form.website.value, t:t0, lang:'de'
+    })}).then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return {r:r, j:j}; }); })
+    .then(function(x){
+      if (!(x.r.ok && x.j.ok)) throw new Error();
+      document.getElementById('thanksTitle').textContent = 'Danke, ' + name.split(' ')[0] + '.';
+      form.style.display = 'none'; document.getElementById('thanks').classList.add('show');
+    }).catch(function(){
+      busy = false; go.disabled = false; go.textContent = 'Projekt anfragen →';
+      msg.innerHTML = 'Das Senden hat gerade nicht geklappt. Schreiben Sie uns bitte direkt an <a href="mailto:info@backtooutdoor.com">info@backtooutdoor.com</a>.';
+    });
+  });
+})();
+</script>
+</body>
+</html>
