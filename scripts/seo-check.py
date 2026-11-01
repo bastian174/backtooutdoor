@@ -19,6 +19,12 @@ IGNORE_LINK_PREFIXES = ("http:", "https:", "mailto:", "tel:", "data:", "javascri
 errors = []
 
 
+try:
+    import json as _json
+    REWRITES = {r.get("source") for r in _json.load(open("vercel.json")).get("rewrites", [])}
+except Exception:
+    REWRITES = set()
+
 def err(page, msg):
     errors.append(f"{page}: {msg}")
 
@@ -90,7 +96,7 @@ for page in pages:
         target = link.lstrip("/") if link.startswith("/") else os.path.normpath(os.path.join(base, link))
         if target in ("", "."):
             continue
-        if not (exists(target) or exists(target + ".html")):
+        if not (exists(target) or exists(target + ".html") or ("/" + target) in REWRITES):
             err(page, f"defekter interner Link: {link}")
 
     if noindex:
