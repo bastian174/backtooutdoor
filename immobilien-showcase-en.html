@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Back to Outdoor Real Estate – Digital Experience &amp; Content Studio</title>
+<link rel="icon" type="image/png" href="/assets/img/immobilien/favicon-immobilien.png">
+<link rel="apple-touch-icon" href="/assets/img/immobilien/favicon-immobilien.png">
+<meta name="description" content="We bring real estate and special places to life online: photos, videos, UGC and digital walkthroughs for properties, hotels, holiday rentals, restaurants and destinations.">
+<link rel="alternate" hreflang="de" href="https://backtooutdoor.com/immobilien">
+<link rel="alternate" hreflang="en" href="https://backtooutdoor.com/immobilien-en">
+<link rel="alternate" hreflang="x-default" href="https://backtooutdoor.com/immobilien">
+<link rel="canonical" href="https://backtooutdoor.com/immobilien-en">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Back to Outdoor">
+<meta property="og:title" content="Places you don't just see. You experience them. | Back to Outdoor Real Estate">
+<meta property="og:description" content="Photos, videos, UGC and digital walkthroughs for properties, hotels, holiday rentals, restaurants and destinations.">
+<meta property="og:url" content="https://backtooutdoor.com/immobilien-en">
+<meta property="og:image" content="https://backtooutdoor.com/assets/video/immobilien-hero-poster.jpg?v=3">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","name":"Immobilien-Videos und Projektseiten","serviceType":"Rundgang-Videos aus Fotos und Projektseiten für Neubauprojekte","provider":{"@type":"Organization","name":"Back to Outdoor","url":"https://backtooutdoor.com/","email":"info@backtooutdoor.com","telephone":"+43 660 8422053","address":{"@type":"PostalAddress","addressLocality":"Salzburg","addressCountry":"AT"}},"areaServed":["AT","DE"],"url":"https://backtooutdoor.com/immobilien-showcase.html"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1E2226; --bg2:#262B30; --line:#3A4047; --field:#4C535B;
+  --text:#F5F1E6; --muted:#D8D2C5; --soft:#B9B3A6; --sand:#D4B8A5;
+  --accent:#E36D27; --accent-dark:#B9501A; --on-accent:#132030; --paper:#F5F1E6; --ink:#1E2226;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Hanken Grotesk',sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:var(--sand)} a:hover{color:#EADBC9}
+img{max-width:100%}
+em.s{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);font-weight:400}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.eyebrow{color:var(--sand);font-size:13px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:20px}
+h2{margin:0;font-weight:400;letter-spacing:-.02em;font-size:clamp(38px,5vw,60px);line-height:1.05}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:18px 30px;font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.btn-red{background:var(--accent);color:var(--on-accent)} .btn-red:hover{background:#F08A4B;color:var(--on-accent)}
+.btn-line{border:1px solid #8E949B;color:var(--text);background:transparent} .btn-line:hover{border-color:var(--text);color:var(--text)}
+
+/* Header */
+header.top{position:relative;z-index:3;max-width:1280px;margin:0 auto;padding:28px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+.brand{color:var(--text);text-decoration:none;font-size:14px;font-weight:700;letter-spacing:.32em;text-transform:uppercase}
+.brand-txt span{color:var(--sand)}
+.brand{display:inline-flex;align-items:center;gap:12px}
+.brand img{height:72px;width:auto;flex-shrink:0}
+.foot-brand{display:inline-flex;align-items:center;gap:14px}
+.foot-brand img{height:84px;width:auto}
+header.top nav{display:flex;flex-wrap:wrap;gap:28px;font-size:15px}
+header.top nav a{color:var(--muted);text-decoration:none} header.top nav a:hover{color:var(--text)}
+.btn-small{padding:14px 22px;font-size:13px}
+
+/* Hero */
+.hero{position:relative;margin-top:-100px;min-height:860px;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#2A2F35}
+@keyframes kb{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.14) translate(-2%,-1.5%)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,23,27,.9) 0%,rgba(20,23,27,.6) 45%,rgba(20,23,27,.12) 100%)}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-bottom:72px}
+.hero-line{display:flex;align-items:center;gap:16px;color:var(--sand);font-size:13px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:28px}
+.hero-line i{display:inline-block;width:48px;height:2px;background:var(--accent)}
+.hero h1{margin:0;font-weight:400;font-size:clamp(52px,8vw,96px);line-height:.98;letter-spacing:-.01em;max-width:900px}
+.ticks{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:32px;font-size:16px;color:var(--muted)}
+.ticks b{color:var(--sand);font-weight:600}
+.hero p.lead{margin:24px 0 0;max-width:600px;color:var(--muted)}
+.ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:40px}
+.credit{position:absolute;right:16px;bottom:10px;z-index:2;font-size:11px;color:rgba(245,241,230,.45)}
+
+/* Facts */
+.facts{border-bottom:1px solid var(--line)}
+.facts .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.fact{padding:32px 20px;border-right:1px solid var(--line);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.fact:last-child{border-right:0}
+.fact .v{font-size:34px;font-weight:500;line-height:1.15}
+.fact .l{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin-top:6px}
+
+/* Formats */
+section.block{padding:120px 0}
+section.bordered{border-top:1px solid var(--line)}
+.head-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:40px}
+.filters{display:flex;flex-wrap:wrap;gap:10px}
+.filters button{background:transparent;color:var(--text);border:1px solid #8E949B;padding:12px 20px;min-height:44px;font:600 14px 'Hanken Grotesk',sans-serif;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--paper);color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.card{text-align:left;background:var(--bg2);color:var(--text);border:1px solid var(--line);padding:0;cursor:pointer;display:flex;flex-direction:column;font-family:inherit;font-size:17px;transition:border-color .2s}
+.card:hover{border-color:#6A7179}
+.card[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.card[hidden]{display:none}
+.prev{height:240px;width:100%;background:#30353B;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.card[aria-pressed="true"] .prev{background:var(--accent-dark)}
+.shot{background:center/cover no-repeat;animation:kb 14s ease-in-out infinite alternate;border:2px solid rgba(245,241,230,.85)}
+.r916{height:200px;aspect-ratio:9/16}
+.r169{width:84%;aspect-ratio:16/9}
+.r23{height:200px;aspect-ratio:2/3}
+.r-site{width:84%;aspect-ratio:16/10;border-top-width:14px;border-color:#F5F1E6}
+.r360{width:84%;aspect-ratio:2/1;border-radius:50%/40%}
+.badge{position:absolute;z-index:2;top:12px;left:12px;background:rgba(20,23,27,.75);color:var(--paper);font-size:11px;font-weight:700;letter-spacing:.14em;padding:5px 9px}
+.card .info{padding:24px;display:flex;flex-direction:column;gap:6px;width:100%}
+.card .name{font-family:'Instrument Serif',serif;font-size:32px;line-height:1.05}
+.card .use{font-weight:600}
+.card .meta{font-size:15px;opacity:.85}
+
+.detail{margin-top:40px;background:var(--paper);color:var(--ink);display:flex;flex-wrap:wrap}
+.detail[hidden]{display:none}
+.detail .media{flex:1 1 480px;min-width:0;background:#fff;display:flex;align-items:center;justify-content:center;padding:32px;min-height:420px}
+.detail .media .shot{border-color:var(--ink)}
+.detail .media .r916{height:380px}.detail .media .r23{height:380px}
+.detail .media .r169,.detail .media .r-site,.detail .media .r360{width:92%}
+.detail .txt{flex:1 1 380px;min-width:0;padding:48px;display:flex;flex-direction:column;gap:14px}
+.detail .kick{color:var(--accent-dark);font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase}
+.detail .ttl{font-family:'Instrument Serif',serif;font-size:56px;line-height:1}
+.detail dl{margin:12px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px}
+.detail dt{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5A5A52}
+.detail dd{margin:0;font-size:20px}
+.detail p{margin:8px 0 0;font-size:16px;color:#3E3E38}
+.btn-dark{background:var(--ink);color:var(--paper)} .btn-dark:hover{color:#fff}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid #8A8578}
+.note{color:var(--soft);font-size:14px;margin:24px 0 0}
+
+/* Split sections */
+.split{display:flex;flex-wrap:wrap;gap:64px;align-items:center}
+.split > *{flex:1 1 440px;min-width:0}
+.split img{height:560px;width:100%;object-fit:cover;display:block}
+.split p{color:var(--muted);margin:28px 0 0}
+.dash{list-style:none;padding:0;margin:32px 0 0;display:flex;flex-direction:column;gap:14px}
+.dash li{display:flex;gap:14px}.dash li::before{content:"—";color:var(--sand)}
+.mock{background:#14171B;border:1px solid var(--line);padding:0;overflow:hidden}
+.mock .bar{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.mock .bar i{width:9px;height:9px;border-radius:50%;background:#4C535B}
+.mock .mhero{height:220px;background:center/cover no-repeat;position:relative}
+.mock .mhero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,23,27,.85),rgba(20,23,27,.1))}
+.mock .mhero div{position:absolute;left:22px;bottom:20px;z-index:1;font-size:30px;line-height:1}
+.mock .units{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px}
+.mock .u{background:var(--bg2);border:1px solid var(--line);padding:10px;font-size:12px;line-height:1.35}
+.mock .u b{font-family:'Instrument Serif',serif;font-weight:400;font-size:20px;display:block}
+.st{display:inline-block;margin-top:4px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.st.ok{color:#7FC79A}.st.no{color:#E07A8F}.st.res{color:var(--sand)}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:48px}
+.step{background:var(--bg);padding:32px 28px}
+.step .n{font-family:'Instrument Serif',serif;font-size:48px;color:var(--accent);line-height:1}
+.step h3{margin:14px 0 8px;font-size:20px;font-weight:600}
+.step p{margin:0;color:var(--muted);font-size:16px}
+
+/* Form */
+#anfrage{background:var(--bg2);border-top:1px solid var(--line)}
+form{display:flex;flex-direction:column;gap:20px}
+label{display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+input,select,textarea{background:var(--bg);border:1px solid var(--field);color:var(--text);padding:14px 16px;min-height:48px;font:16px 'Hanken Grotesk',sans-serif;text-transform:none;letter-spacing:0;width:100%}
+textarea{resize:vertical;min-height:120px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--sand);outline-offset:1px}
+a:focus-visible,button:focus-visible,.card:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.req{color:var(--accent);margin-left:4px}
+.vidtoggle{position:absolute;z-index:3;left:16px;bottom:10px;background:rgba(20,23,27,.6);color:var(--paper);border:1px solid rgba(245,241,230,.35);font:600 12px 'Hanken Grotesk',sans-serif;letter-spacing:.08em;padding:8px 12px;min-height:36px;cursor:pointer}
+.mob-cta{display:none}
+.shot img,.shot video{width:100%;height:100%;object-fit:cover;display:block}
+.shot:has(video){animation:none}
+.row{display:flex;flex-wrap:wrap;gap:20px}.row label{flex:1 1 220px}
+.chk{flex-direction:row;align-items:flex-start;gap:12px;text-transform:none;letter-spacing:0;font-weight:400;font-size:14px;color:var(--muted)}
+.chk input{width:20px;min-height:20px;margin-top:2px;flex:0 0 auto}
+.hp{position:absolute;left:-9999px}
+.msg{min-height:1.4em;color:#E07A8F;font-size:15px}
+.thanks{border:1px solid var(--sand);padding:48px;display:none;flex-direction:column;gap:12px}
+.thanks.show{display:flex}
+.thanks .big{font-family:'Instrument Serif',serif;font-size:40px;color:var(--sand)}
+.contact{margin-top:40px;padding-top:32px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.contact a{text-decoration:none}
+
+footer{max-width:1280px;margin:0 auto;padding:40px 32px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:14px;color:var(--soft)}
+footer a{color:var(--soft)}
+
+@media (max-width:720px){
+  .wrap,header.top,footer{padding-left:16px;padding-right:16px}
+  header.top nav{display:none}
+  .btn-small{display:none}
+  .brand-txt{display:none}
+  .brand img{height:64px}
+  .mob-cta{display:inline-flex;color:var(--sand);font-size:14px;font-weight:600;text-decoration:none}
+  .hero{min-height:680px;margin-top:0}
+  .hero::after{background:linear-gradient(180deg,rgba(20,23,27,.55) 0%,rgba(20,23,27,.82) 55%,rgba(20,23,27,.9) 100%)}
+  section.block{padding:80px 0}
+  .fact{border-right:0;border-bottom:1px solid var(--line);padding:22px 0}
+  .fact:last-child{border-bottom:0}
+  .detail .txt{padding:28px}
+  .detail .ttl{font-size:42px}
+  .split img{height:340px}
+  .mock .units{grid-template-columns:repeat(2,1fr)}
+}
+@media (prefers-reduced-motion:reduce){.shot{animation:none}}
+
+/* Formate kompakt (ohne Videos, die zeigt die Bühne) */
+#grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:8px}
+.card.spec{padding:26px 24px;gap:8px;position:relative;transition:border-color .2s,transform .3s,background .2s}
+.card.spec:hover{border-color:var(--accent);transform:translateY(-4px)}
+.card.spec .badge{position:static;align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.14em;padding:5px 9px;border:1px solid var(--line);color:var(--sand);background:transparent}
+.card.spec .name{font-family:'Instrument Serif',serif;font-size:30px;line-height:1.05;margin-top:10px}
+.card.spec .use{font-weight:600;font-size:15px}
+.card.spec dl{margin:10px 0 0;display:grid;gap:8px;font-size:14px}
+.card.spec dt{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.card.spec dd{margin:0;color:var(--muted)}
+.card.spec .txt{font-size:14px;color:var(--soft);line-height:1.5;margin-top:6px}
+.card.spec .go{margin-top:auto;padding-top:14px;font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--accent)}
+
+
+.cats{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.cats button{background:transparent;color:var(--text);border:1px solid #6A7179;padding:9px 18px;min-height:40px;font:600 14px 'Hanken Grotesk',sans-serif;letter-spacing:.04em;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.cats button:hover{border-color:var(--accent)}
+.cats button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.dev video{transition:opacity .35s}
+.dev video.swap{opacity:0}
+/* Niedrige Fenster: Textblock der Bühnen kompakter, damit nichts abgeschnitten wird */
+@media (min-width:901px) and (max-height:860px){
+  .stage-copy p:not(.hotel-note){display:none}
+  .stage-copy .eyebrow{margin-bottom:10px}
+  .stage-copy h2{font-size:clamp(32px,3vw,44px)}
+  .stage-steps{margin-top:18px}
+  .stage-steps li{padding:7px 0 7px 18px}
+  .stage-steps li span{display:none}
+  .stage-steps li b{font-size:17px}
+  .cats{margin-top:16px}
+}
+@media (min-width:901px) and (max-height:640px){ .stage5 .hotel-note{display:none} .stage-steps li{padding:4px 0 4px 16px} }
+@media (max-width:900px){ .cats{margin-top:12px} .cats button{padding:7px 14px;min-height:36px;font-size:13px} }
+/* ===== Fließende Übergänge ===== */
+.bordered{border-top:0}
+.stage{border-top:0}
+.stage-copy h2{font-size:clamp(36px,3.6vw,54px)}
+#formate,#anfrage{position:relative}
+#formate::before,#anfrage::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at 85% 20%,rgba(227,109,39,.08),transparent 70%);pointer-events:none}
+.pinsec{position:relative;padding:0}
+.pinsec .pin-in{position:sticky;top:0;min-height:100vh;display:flex;align-items:center;padding:90px 0}
+.pinsec .pin-in > .wrap{width:100%}
+#projektseite.pinsec{height:240vh}
+#ablauf.pinsec{height:200vh}
+#projektseite .pin-in::before,#ablauf .pin-in::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 30% 50%,rgba(227,109,39,.10),transparent 70%);pointer-events:none}
+html.fx #projektseite .u{opacity:0;transform:translateY(16px) scale(.94);transition:opacity .5s,transform .5s cubic-bezier(.2,.7,.2,1)}
+html.fx #projektseite .u.show{opacity:1;transform:none}
+html.fx #ablauf .step{transition:background .5s,opacity .5s}
+html.fx #ablauf .step:not(.on){opacity:.42}
+html.fx #ablauf .step.on{background:var(--bg2)}
+@media (max-width:900px){
+  .pinsec,#projektseite.pinsec,#ablauf.pinsec{height:auto}
+  .pinsec .pin-in{position:relative;min-height:0;padding:80px 0}
+}
+@media (prefers-reduced-motion:reduce){ .pinsec,#projektseite.pinsec,#ablauf.pinsec{height:auto} .pinsec .pin-in{position:relative;min-height:0} }
+/* ===== Cinematic Scroll ===== */
+.scrollbar{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);z-index:50;pointer-events:none}
+html.fx .rv{opacity:0;transform:translateY(42px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+html.fx .rv.in{opacity:1;transform:none}
+/* Bühne: Ein Objekt, alle Kanäle */
+.stage{position:relative;height:340vh;border-top:1px solid var(--line)}
+.stage-pin{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
+.stage-pin::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 68% 50%,rgba(227,109,39,.16),transparent 70%);pointer-events:none}
+.stage-in{display:grid;grid-template-columns:minmax(300px,420px) 1fr;gap:40px;align-items:center;width:100%}
+.stage-copy p{color:var(--muted);margin:22px 0 0;max-width:400px}
+.stage-steps{list-style:none;margin:34px 0 0;padding:0;display:grid;gap:4px}
+.stage-steps li{padding:14px 0 14px 22px;border-left:2px solid var(--line);color:var(--soft);transition:color .4s,border-color .4s}
+.stage-steps li b{display:block;color:var(--muted);font-size:19px;font-weight:600;transition:color .4s}
+.stage-steps li.on{border-color:var(--accent);color:var(--muted)}
+.stage-steps li.on b{color:var(--text)}
+.scene{position:relative;height:min(78vh,640px);perspective:1400px;perspective-origin:50% 45%}
+.dev{position:absolute;left:50%;top:50%;transform-style:preserve-3d;will-change:transform,opacity;opacity:0}
+.dev video{display:block;width:100%;height:100%;object-fit:cover;background:#000}
+.dev.phone{width:250px;height:450px;margin:-225px 0 0 -125px;border-radius:36px;padding:10px;background:#0E1013;box-shadow:0 0 0 2px #3A4047,0 40px 80px rgba(0,0,0,.55)}
+.dev.phone video{border-radius:27px}
+.dev.phone::after{content:"";position:absolute;top:18px;left:50%;width:70px;height:20px;margin-left:-35px;border-radius:12px;background:#0E1013}
+.dev.laptop{width:560px;height:350px;margin:-175px 0 0 -280px}
+.dev.laptop .scr{height:316px;border-radius:14px 14px 4px 4px;padding:10px;background:#0E1013;box-shadow:0 0 0 2px #3A4047,0 40px 80px rgba(0,0,0,.55)}
+.dev.laptop .scr video{border-radius:4px}
+.dev.laptop .base{height:14px;margin:0 -34px;background:linear-gradient(#4C535B,#2A2F35);border-radius:0 0 18px 18px}
+.dev.pin{width:240px;height:360px;margin:-180px 0 0 -120px;border-radius:18px;overflow:hidden;background:#000;box-shadow:0 0 0 2px #3A4047,0 40px 80px rgba(0,0,0,.55)}
+.dev .tag{position:absolute;left:0;bottom:-38px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sand);white-space:nowrap}
+/* Projektseite kippt flach */
+html.fx #projektseite .mock{transform:perspective(1300px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(var(--sc,1));transform-origin:50% 60%;will-change:transform;box-shadow:0 50px 90px rgba(0,0,0,.45)}
+/* Hotel-Reihe dreht ein */
+html.fx .hotel-row{perspective:1200px}
+html.fx .hotel-row figure{transform:rotateY(var(--hy,0deg)) translateZ(var(--hz,0px));transition:transform .15s linear;transform-style:preserve-3d}
+/* Ablauf-Linie */
+.steps{position:relative}
+html.fx .steps::after{content:"";position:absolute;left:0;top:-1px;height:3px;width:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(var(--sp,0))}
+@media (max-width:900px){
+  .stage{height:300vh}
+  .stage-in{grid-template-columns:1fr;gap:6px;align-content:center}
+  .stage-copy h2{font-size:34px}
+  .stage-copy p{display:none}
+  .stage-steps{margin-top:14px;grid-template-columns:repeat(3,1fr);gap:8px}
+  .stage-steps li{padding:8px 0 0;border-left:0;border-top:2px solid var(--line);font-size:12px;line-height:1.35}
+  .stage-steps li span{display:none}
+  .stage-steps li b{font-size:13px}
+  .scene{height:56vh;transform:scale(.54);transform-origin:50% 40%}
+}
+
+.stage5{height:520vh}
+.dev.feed{width:300px;height:375px;margin:-187px 0 0 -150px;border-radius:14px;overflow:hidden;background:#000;box-shadow:0 0 0 2px #3A4047,0 40px 80px rgba(0,0,0,.55)}
+.stage5 .hotel-note{margin-top:22px;font-size:13px;color:var(--soft)}
+@media (max-width:900px){
+  .stage5{height:460vh}
+  .stage5 .stage-steps{grid-template-columns:repeat(5,1fr);gap:6px}
+  .stage5 .stage-steps li b{font-size:11px}
+  .stage5 .hotel-note{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .stage{height:auto}.stage-pin{position:relative;height:auto;padding:80px 0}
+  .dev{opacity:1!important}
+}
+
+/* ===== Branchen: Hauptbild je Branche, Klick öffnet die Formate ===== */
+.branchen{position:relative;padding:110px 0 90px}
+.branchen::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 40% at 50% 62%,color-mix(in srgb,var(--ca,#E36D27) 14%,transparent),transparent 70%);transition:background .8s;pointer-events:none}
+.br-head{max-width:760px;margin-bottom:40px;position:relative}
+.br-head p{color:var(--muted);margin:22px 0 0;max-width:620px;font-size:18px;line-height:1.6}
+.br-show{position:relative;height:min(78vh,700px);min-height:520px;border-radius:22px;overflow:hidden;background:#111;box-shadow:0 50px 110px rgba(0,0,0,.5),0 0 0 1px rgba(245,241,230,.08)}
+.br-slide{position:absolute;inset:0;display:block;width:100%;padding:0;border:0;margin:0;background:#111;color:var(--text);text-align:left;font:inherit;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .9s ease,visibility 0s .9s}
+.br-slide.on{opacity:1;visibility:visible;transition:opacity .9s ease,visibility 0s}
+.br-slide video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 8s linear}
+.br-slide.on video{transform:scale(1)}
+.br-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,16,19,.86) 0%,rgba(14,16,19,.55) 38%,rgba(14,16,19,0) 70%),linear-gradient(0deg,rgba(14,16,19,.75) 0%,rgba(14,16,19,0) 45%)}
+.br-txt{position:absolute;left:clamp(24px,5vw,72px);bottom:clamp(110px,14vh,150px);max-width:min(560px,80%);display:flex;flex-direction:column;gap:18px}
+.br-txt > *{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1)}
+.br-slide.on .br-txt > *{opacity:1;transform:none}
+.br-slide.on .br-txt > :nth-child(2){transition-delay:.12s}.br-slide.on .br-txt > :nth-child(3){transition-delay:.24s}.br-slide.on .br-txt > :nth-child(4){transition-delay:.36s}
+.br-brand{display:flex;align-items:center;gap:10px;white-space:nowrap;font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.br-brand i{width:8px;height:8px;transform:rotate(45deg);border:1.5px solid var(--ca,var(--accent))}
+.br-brand b{color:var(--ca,var(--accent));font-weight:700}
+.br-h{font-size:clamp(40px,5.4vw,78px);line-height:1;letter-spacing:-.025em}
+.br-h em{display:block;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--ca,var(--accent))}
+.br-p{font-size:17px;line-height:1.6;color:var(--muted);max-width:470px}
+.br-cta{align-self:flex-start;display:inline-flex;align-items:center;gap:14px;padding:15px 24px;border:1.5px solid var(--ca,var(--accent));font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:background .25s,color .25s}
+.br-cta i{font-style:normal;transition:transform .25s}
+.br-slide:hover .br-cta,.br-slide:focus-visible .br-cta{background:var(--ca,var(--accent));color:#14171A}
+.br-slide:hover .br-cta i{transform:translateX(5px)}
+.br-slide:focus-visible{outline:3px solid var(--ca,var(--accent));outline-offset:-3px}
+.br-num{position:absolute;right:clamp(20px,4vw,56px);top:clamp(16px,3vw,40px);font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(70px,10vw,150px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(245,241,230,.35)}
+.br-nav{position:absolute;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(245,241,230,.14);background:rgba(14,16,19,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:2}
+.br-nav button{position:relative;display:flex;align-items:baseline;gap:12px;padding:22px clamp(14px,2.4vw,32px);background:transparent;border:0;color:var(--soft);font:600 15px 'Hanken Grotesk',sans-serif;letter-spacing:.04em;text-align:left;cursor:pointer;transition:color .3s}
+.br-nav button + button{border-left:1px solid rgba(245,241,230,.1)}
+.br-nav button span{font-family:'Instrument Serif',serif;font-style:italic;font-size:20px;font-weight:400;color:inherit;opacity:.7}
+.br-nav button:hover,.br-nav button[aria-selected="true"]{color:var(--text)}
+.br-nav button[aria-selected="true"] span{color:var(--ca);opacity:1}
+.br-nav button i{position:absolute;left:0;right:0;top:-1px;height:2px;background:var(--ca);transform:scaleX(0);transform-origin:0 50%}
+.br-nav button[aria-selected="true"] i{transform:scaleX(1)}
+.br-nav button.run i{transform:scaleX(0);animation:brrun 8s linear forwards}
+@keyframes brrun{to{transform:scaleX(1)}}
+.branchen .hotel-note{margin-top:18px;font-size:13px;color:var(--soft)}
+/* Formate-Ansicht */
+html.br-lock{overflow:hidden}
+.br-modal{position:fixed;inset:0;z-index:100;background:rgba(10,12,14,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow:auto;opacity:0;transition:opacity .25s}
+.br-modal.open{opacity:1}
+.br-m-in{max-width:1240px;margin:0 auto;padding:clamp(24px,4vw,56px) clamp(16px,3vw,40px) 60px;transform:translateY(24px);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.br-modal.open .br-m-in{transform:none}
+.br-m-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:34px}
+.br-m-top h3{margin:14px 0 0;font-weight:400;font-size:clamp(32px,4vw,54px);letter-spacing:-.02em;line-height:1.05}
+.br-m-top h3 em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--ca,var(--accent))}
+.br-x{flex:none;width:52px;height:52px;border-radius:50%;border:1px solid rgba(245,241,230,.3);background:transparent;color:var(--text);font-size:30px;line-height:1;cursor:pointer;transition:border-color .2s,background .2s}
+.br-x:hover{border-color:var(--ca,var(--accent));background:rgba(245,241,230,.06)}
+.br-grid{display:grid;grid-template-columns:225fr 225fr 320fr 267fr;gap:22px;align-items:end}
+.br-grid figure{margin:0}
+.br-grid .fr{background:#000;border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px rgba(245,241,230,.12),0 30px 60px rgba(0,0,0,.45)}
+.br-grid video{display:block;width:100%;height:100%;object-fit:cover}
+.f916 .fr{aspect-ratio:9/16;border-radius:24px}.f45 .fr{aspect-ratio:4/5}.f23 .fr{aspect-ratio:2/3}.f169 .fr{aspect-ratio:16/9}
+.br-grid .f169{grid-column:1/-1;max-width:820px;width:100%;justify-self:center;margin-top:18px}
+.br-grid figcaption{margin-top:12px;font-size:14px;color:var(--soft);line-height:1.45}
+.br-grid figcaption b{display:block;color:var(--text);font-size:16px;font-weight:600}
+.br-m-cta{margin:40px 0 0;text-align:center}
+.br-m-cta .btn{background:var(--accent);color:var(--on-accent)}
+@media (max-width:900px){
+  .branchen{padding:80px 0 60px}
+  .br-head p{font-size:16px}
+  .br-show{height:78vh;min-height:540px;border-radius:16px}
+  .br-shade{background:linear-gradient(0deg,rgba(14,16,19,.92) 0%,rgba(14,16,19,.6) 48%,rgba(14,16,19,.1) 80%)}
+  .br-txt{left:20px;right:20px;max-width:none;bottom:96px;gap:14px}
+  .br-p{font-size:15px}
+  .br-brand{font-size:10px;letter-spacing:.16em;gap:7px}
+  .br-cta{padding:12px 18px;font-size:12px}
+  .br-nav button{flex-direction:column;gap:2px;padding:14px 10px 16px;font-size:12px}
+  .br-nav button span{font-size:16px}
+  .br-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;align-items:flex-end;padding-bottom:10px}
+  .br-grid figure{flex:none;scroll-snap-align:center}
+  .br-grid .fr{height:56vh;width:auto}
+  .br-grid .f169{max-width:none;margin:0}.br-grid .f169 .fr{height:auto;width:84vw}
+  .br-grid figure{max-width:84vw}
+  .br-grid figcaption{max-width:60vw}
+}
+@media (prefers-reduced-motion:reduce){ .br-slide,.br-slide video,.br-txt > *{transition:none!important} .br-nav button.run i{animation:none} }
+#ablauf .abl-lead{color:var(--muted);max-width:640px;margin:20px 0 0;font-size:18px;line-height:1.6}
+.brand-sub{display:block;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--soft);margin-top:4px}
+.hero p.lead .lead-b{display:block;color:var(--text);font-weight:600;margin-bottom:8px}
+/* Zwei Einstiege */
+.einstiege{padding:100px 0 40px}
+.ein-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.ein{position:relative;display:flex;flex-direction:column;gap:18px;min-height:460px;padding:clamp(28px,3.5vw,48px);border-radius:20px;overflow:hidden;text-decoration:none;color:var(--text);background:#111;isolation:isolate;box-shadow:0 0 0 1px rgba(245,241,230,.08),0 40px 90px rgba(0,0,0,.4)}
+.ein::before{content:"";position:absolute;inset:0;background:var(--img) center/cover;transform:scale(1.02);transition:transform 1.2s cubic-bezier(.2,.7,.2,1);z-index:-2}
+.ein::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,16,19,.45) 0%,rgba(14,16,19,.82) 55%,rgba(14,16,19,.94) 100%);z-index:-1}
+.ein:hover::before{transform:scale(1.08)}
+.ein-k{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sand)}
+.ein-h{font-size:clamp(34px,3.6vw,52px);line-height:1.02;letter-spacing:-.02em}
+.ein-h em{display:block;font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);font-weight:400}
+.ein-l{display:grid;gap:12px;margin-top:auto;font-size:15px;color:var(--muted)}
+.ein-l span{display:grid;grid-template-columns:minmax(0,190px) 1fr;gap:16px;padding-top:12px;border-top:1px solid rgba(245,241,230,.14)}
+.ein-l b{color:var(--text);font-weight:600}
+.ein-cta{align-self:flex-start;display:inline-flex;gap:12px;align-items:center;padding:14px 22px;border:1.5px solid var(--accent);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:background .25s,color .25s}
+.ein:hover .ein-cta,.ein:focus-visible .ein-cta{background:var(--accent);color:var(--on-accent)}
+.ein-cta i{font-style:normal}
+@media (max-width:900px){.einstiege{padding:70px 0 20px}.ein-grid{grid-template-columns:1fr}.ein{min-height:0}.ein-l span{grid-template-columns:1fr;gap:2px}}
+.hero-logo{position:absolute;right:clamp(24px,4vw,64px);bottom:clamp(28px,5vh,56px);z-index:2;width:auto;height:clamp(96px,11vw,140px);opacity:.92;filter:drop-shadow(0 6px 18px rgba(0,0,0,.45));pointer-events:none}
+@media (max-width:900px){.hero-logo{height:72px;right:16px;bottom:18px}}
+@media (min-width:901px){header.top{flex-wrap:nowrap;gap:24px}.brand-txt,header.top .btn-small{white-space:nowrap}.brand-txt{letter-spacing:.18em}header.top nav{flex-wrap:nowrap;gap:18px;white-space:nowrap;margin-left:auto}}
+@media (min-width:901px) and (max-width:1340px){header.top nav{gap:14px;font-size:14px}.brand-txt{display:none}}
+.lang-sw{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;letter-spacing:.14em}
+.lang-sw a{color:var(--soft);text-decoration:none;padding:6px 4px}
+.lang-sw a:hover{color:var(--text)}
+.lang-sw a[aria-current]{color:var(--text);border-bottom:2px solid var(--accent)}
+.lang-sw span{color:var(--line)}
+/* Hotel-Beispiele */
+.hotel-row{display:flex;flex-wrap:nowrap;gap:18px;align-items:flex-end;margin-top:40px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.hotel-row figure{margin:0;flex:none;scroll-snap-align:start}
+.hotel-row video{display:block;height:280px;width:auto;background:#000;border:2px solid rgba(245,241,230,.85)}
+.hotel-row .wide video{height:auto;width:400px;aspect-ratio:16/9}
+.hotel-row figcaption{margin-top:10px;font-size:14px;color:var(--muted);max-width:200px}
+.hotel-row .wide figcaption{max-width:none}
+.hotel-row figcaption b{display:block;color:var(--text);font-weight:600}
+.hotel-note{margin-top:14px;font-size:13px;color:var(--soft)}
+@media (max-width:720px){.hotel-row video{height:360px}.hotel-row .wide video{width:82vw}.hotel-row{margin-right:-16px;padding-right:16px}}
+
+</style>
+<script>(function(){try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('fl')}catch(e){}})();</script>
+<link rel="stylesheet" href="/assets/css/flow.css?v=1">
+</head>
+<body>
+
+<header class="top">
+  <a href="#top" class="brand"><img src="/assets/img/immobilien/logo-immobilien-weiss-384.png" alt="Back to Outdoor Real Estate Content logo" width="58" height="72"><span class="brand-txt">Back to Outdoor <span>·</span> Real Estate<small class="brand-sub">Digital Experience &amp; Content Studio</small></span></a>
+  <nav aria-label="Main navigation">
+    <a href="#branchen">Examples</a>
+    <a href="#formate">Formats</a>
+    <a href="#ablauf">Process</a>
+    <a href="#projektseite">Project page</a>
+    <a href="#kanaele">Channels</a>
+    <a href="#anfrage">Contact</a>
+  </nav>
+  <div class="lang-sw" aria-label="Language"><a href="/immobilien" hreflang="de" lang="de">DE</a><span aria-hidden="true">/</span><a href="/immobilien-en" hreflang="en" lang="en" aria-current="page">EN</a></div>
+  <a href="#anfrage" class="btn btn-red btn-small">Request a project</a>
+  <a href="#anfrage" class="mob-cta">Enquire →</a>
+</header>
+<main>
+
+<section class="hero" id="top">
+  <video class="hero-bg" id="heroVid" autoplay muted loop playsinline preload="auto" poster="/assets/video/immobilien-hero-poster.jpg?v=3" aria-hidden="true">
+    <source src="/assets/video/immobilien-hero-720.mp4?v=3" type="video/mp4" media="(max-width: 1600px)">
+    <source src="/assets/video/immobilien-hero-1080.mp4?v=3" type="video/mp4">
+  </video>
+  <div class="wrap">
+    <div class="hero-line"><i></i>Real estate · Hotels · Holiday rentals · Restaurants · Destinations</div>
+    <h1>Places you don't just see. <em class="s">You experience them.</em></h1>
+    <div class="ticks">
+      <span>Photo &amp; video</span>
+      <span>UGC &amp; Travel Content</span>
+      <span>Walkthroughs</span>
+      <span>Digital showcases</span>
+    </div>
+    <p class="lead"><b class="lead-b">We bring real estate and special places to life online.</b> With high-quality photos, videos, UGC and digital walkthroughs, we present properties, hotels, holiday rentals and restaurants from new perspectives. Authentic, emotional and digital.</p>
+    <div class="ctas">
+      <a href="#einstiege" class="btn btn-red">Discover projects →</a>
+      <a href="#anfrage" class="btn btn-line">Request a project</a>
+    </div>
+  </div>
+  <img class="hero-logo" src="/assets/img/immobilien/logo-immobilien-weiss-384.png" alt="" aria-hidden="true" width="309" height="384">
+  <button type="button" class="vidtoggle" id="vidToggle" aria-pressed="false">❚❚ Pause video</button>
+</section>
+
+<section class="facts" aria-label="Key facts">
+  <div class="wrap">
+    <div class="fact"><div class="v">Tailored</div><div class="l">Length to suit you</div></div>
+    <div class="fact"><div class="v">9:16 · 16:9</div><div class="l">Portrait and landscape</div></div>
+    <div class="fact"><div class="v">Flexible</div><div class="l">Delivery as agreed</div></div>
+    <div class="fact"><div class="v">On site</div><div class="l">or from your material</div></div>
+    <div class="fact"><div class="v" style="color:var(--sand)">Free</div><div class="l">Preview before you order</div></div>
+  </div>
+</section>
+
+
+<section class="block einstiege" id="einstiege" aria-label="Two ways in">
+  <div class="wrap">
+    <div class="eyebrow">Where to start</div>
+    <h2>What do you need <em class="s">content for?</em></h2>
+    <div class="ein-grid">
+      <a class="ein" href="#branchen" data-go="immobilie" style="--img:url('/assets/video/branchen/immobilie.jpg')">
+        <span class="ein-k">For agents, owners and developers</span>
+        <span class="ein-h">Real estate <em>&amp; projects</em></span>
+        <span class="ein-l">
+          <span><b>Estate agents</b>Property videos, walkthroughs, showcases</span>
+          <span><b>Developers</b>Project presentations, visual content</span>
+          <span><b>Private owners</b>Property presentations</span>
+        </span>
+        <span class="ein-cta">See examples <i aria-hidden="true">&rarr;</i></span>
+      </a>
+      <a class="ein" href="#branchen" data-go="hotel" style="--img:url('/assets/video/branchen/hotel.jpg')">
+        <span class="ein-k">For hosts, accommodation and destinations</span>
+        <span class="ein-h">Hotels, travel <em>&amp; hospitality</em></span>
+        <span class="ein-l">
+          <span><b>Hotels</b>UGC, reels, photo and video content</span>
+          <span><b>Holiday rentals &amp; Airbnb</b>Walkthroughs, travel UGC</span>
+          <span><b>Restaurants &amp; cafés</b>Food and location content</span>
+          <span><b>Destinations</b>Travel stories and experience content</span>
+        </span>
+        <span class="ein-cta">See examples <i aria-hidden="true">&rarr;</i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="block branchen" id="branchen" aria-label="Examples by industry">
+  <div class="wrap">
+    <div class="br-head">
+      <div class="eyebrow">01 · What it looks like</div>
+      <h2>Tailor-made. <em class="s">For every industry.</em></h2>
+      <p>No off-the-shelf videos. We show what makes your business special and cut it for your audience: close, real and in the style of content people would share themselves.</p>
+    </div>
+    <div class="br-show">
+      <button type="button" class="br-slide on" data-cat="hotel" style="--ca:#D9B48F" aria-label="Hotel: see five formats with example videos">
+        <video muted loop playsinline preload="none" poster="/assets/video/branchen/hotel.jpg" data-v="/assets/video/branchen/hotel.mp4"></video>
+        <span class="br-shade"></span>
+        <span class="br-txt">
+          <span class="br-brand">Back to Outdoor <i></i> <b>Hotel Content</b></span>
+          <span class="br-h">Your hotel. <em>As guests experience it.</em></span>
+          <span class="br-p">Not the hundredth room photo, but the feeling of arriving. Videos that show what only your place has and speak to exactly the guests who suit you.</span>
+          <span class="br-cta">See five formats <i aria-hidden="true">&rarr;</i></span>
+        </span>
+        <span class="br-num" aria-hidden="true">01</span>
+      </button>
+      <button type="button" class="br-slide" data-cat="restaurant" style="--ca:#E0675B" aria-label="Restaurant: see five formats with example videos" tabindex="-1" aria-hidden="true">
+        <video muted loop playsinline preload="none" poster="/assets/video/branchen/restaurant.jpg" data-v="/assets/video/branchen/restaurant.mp4"></video>
+        <span class="br-shade"></span>
+        <span class="br-txt">
+          <span class="br-brand">Back to Outdoor <i></i> <b>Restaurant Content</b></span>
+          <span class="br-h">Your restaurant. <em>Before anyone books.</em></span>
+          <span class="br-p">Light, service, the mood at the table. People often decide where to eat on their phone. We show your restaurant the way it feels.</span>
+          <span class="br-cta">See five formats <i aria-hidden="true">&rarr;</i></span>
+        </span>
+        <span class="br-num" aria-hidden="true">02</span>
+      </button>
+      <button type="button" class="br-slide" data-cat="essen" style="--ca:#B5C46F" aria-label="Food: see five formats with example videos" tabindex="-1" aria-hidden="true">
+        <video muted loop playsinline preload="none" poster="/assets/video/branchen/essen.jpg" data-v="/assets/video/branchen/essen.mp4"></video>
+        <span class="br-shade"></span>
+        <span class="br-txt">
+          <span class="br-brand">Back to Outdoor <i></i> <b>Food Content</b></span>
+          <span class="br-h">Your kitchen. <em>Close enough to taste.</em></span>
+          <span class="br-p">Plating, gloss, the first cut. Close, real images of your dishes that whet the appetite and show your signature.</span>
+          <span class="br-cta">See five formats <i aria-hidden="true">&rarr;</i></span>
+        </span>
+        <span class="br-num" aria-hidden="true">03</span>
+      </button>
+      <button type="button" class="br-slide" data-cat="immobilie" style="--ca:#8DB4D6" aria-label="Real estate: see five formats with example videos" tabindex="-1" aria-hidden="true">
+        <video muted loop playsinline preload="none" poster="/assets/video/branchen/immobilie.jpg" data-v="/assets/video/branchen/immobilie.mp4"></video>
+        <span class="br-shade"></span>
+        <span class="br-txt">
+          <span class="br-brand">Back to Outdoor <i></i> <b>Real Estate Content</b></span>
+          <span class="br-h">Your property. <em>Before anyone steps inside.</em></span>
+          <span class="br-p">A walkthrough that lets people feel the rooms, the light and the location. For brochures, project pages and social media, in the look of your project.</span>
+          <span class="br-cta">See five formats <i aria-hidden="true">&rarr;</i></span>
+        </span>
+        <span class="br-num" aria-hidden="true">04</span>
+      </button>
+      <div class="br-nav" role="tablist" aria-label="Choose industry">
+        <button type="button" role="tab" aria-selected="true" data-cat="hotel" style="--ca:#D9B48F"><span>01</span>Hotel<i></i></button>
+        <button type="button" role="tab" aria-selected="false" data-cat="restaurant" style="--ca:#E0675B"><span>02</span>Restaurant<i></i></button>
+        <button type="button" role="tab" aria-selected="false" data-cat="essen" style="--ca:#B5C46F"><span>03</span>Food<i></i></button>
+        <button type="button" role="tab" aria-selected="false" data-cat="immobilie" style="--ca:#8DB4D6"><span>04</span>Real estate<i></i></button>
+      </div>
+    </div>
+    <p class="hotel-note">Example videos made from stock footage. Tap to open all five formats.</p>
+  </div>
+</section>
+
+<div class="br-modal" id="brModal" role="dialog" aria-modal="true" aria-labelledby="brmTitle" hidden>
+  <div class="br-m-in">
+    <div class="br-m-top">
+      <div><div class="br-brand">Back to Outdoor <i></i> <b id="brmSub">Hotel Content</b></div>
+      <h3 id="brmTitle">Your hotel. <em>Five formats.</em></h3></div>
+      <button type="button" class="br-x" aria-label="Close">&times;</button>
+    </div>
+    <div class="br-grid">
+      <figure class="f916"><div class="fr"><video muted loop playsinline preload="none"></video></div><figcaption><b>Instagram Reel</b>9:16 for reels and stories</figcaption></figure>
+      <figure class="f916"><div class="fr"><video muted loop playsinline preload="none"></video></div><figcaption><b>Shorts &amp; TikTok</b>9:16, faster cuts</figcaption></figure>
+      <figure class="f45"><div class="fr"><video muted loop playsinline preload="none"></video></div><figcaption><b>Feed post</b>4:5 for the Instagram feed</figcaption></figure>
+      <figure class="f23"><div class="fr"><video muted loop playsinline preload="none"></video></div><figcaption><b>Pinterest Pin</b>2:3, found through search</figcaption></figure>
+      <figure class="f169"><div class="fr"><video muted loop playsinline preload="none"></video></div><figcaption><b>Landscape</b>16:9 for websites and booking platforms</figcaption></figure>
+    </div>
+    <p class="br-m-cta"><a class="btn" href="#anfrage">Request a video like this for your business</a></p>
+  </div>
+</div>
+
+<section class="block" id="formate">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="eyebrow">02 · What's included</div>
+        <h2>All formats. <em class="s">At a glance.</em></h2>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+
+    <p class="note">We quote prices in a personal offer. They depend on the number of properties and formats.</p>
+  </div>
+</section>
+
+<section class="block pinsec" id="ablauf">
+  <div class="pin-in">
+  <div class="wrap">
+    <div class="eyebrow">03 · How it's made</div>
+    <h2>From your photos and videos <em class="s">to content that fits you.</em></h2>
+    <p class="abl-lead">We move your business forward: web, photo, design and video, tailored to your business and the people you want to reach.</p>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3>Send your material</h3><p>Send us your photos, videos or a link to your website or listing.</p></div>
+      <div class="step"><div class="n">02</div><h3>Tailored to you</h3><p>We look at what makes your business special and who you want to reach, then shape web, photo, design and video around that.</p></div>
+      <div class="step"><div class="n">03</div><h3>Review the preview</h3><p>You get a free preview with a watermark. Only you see it, we publish nothing. We build in any changes you want.</p></div>
+      <div class="step"><div class="n">04</div><h3>Receive your content</h3><p>If you like it, you get an offer. The finished content arrives on the agreed date, without a watermark.</p></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="block pinsec" id="projektseite">
+  <div class="pin-in">
+  <div class="wrap split">
+    <div class="mock" aria-label="Example of a project page">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <div class="mhero" style="background-image:url('/assets/img/immobilien/mock.webp')"><div>Nine apartments.<br><em class="s">In the heart of the city.</em></div></div>
+      <div class="units">
+        <div class="u"><b>Apt 1</b>3 rooms · Garden<br><span class="st no">Sold</span></div>
+        <div class="u"><b>Apt 2</b>2 rooms · Garden<br><span class="st ok">Available</span></div>
+        <div class="u"><b>Apt 3</b>1 room · Garden<br><span class="st res">Reserved</span></div>
+        <div class="u"><b>Apt 4</b>3 rooms · Balcony<br><span class="st ok">Available</span></div>
+        <div class="u"><b>Apt 5</b>2 rooms · Balcony<br><span class="st ok">Available</span></div>
+        <div class="u"><b>Apt 6</b>Penthouse<br><span class="st no">Sold</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow">04 · What it can look like</div>
+      <h2>One project. <em class="s">Its own page.</em></h2>
+      <p>On portals, individual apartments get lost among hundreds of listings. A dedicated project page shows the whole building at a glance.</p>
+      <ul class="dash">
+        <li>Every apartment with floor plan, size, outdoor space and price</li>
+        <li>Status available, reserved or sold, kept up to date for you</li>
+        <li>Filters for garden, balcony or penthouse</li>
+        <li>Brochure requests per apartment, straight to your inbox</li>
+        <li>Walkthrough video in the header, your own domain on request</li>
+      </ul>
+      <div class="ctas"><a href="#anfrage" class="btn btn-red" data-pick="site">Request a project page →</a></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="stage" id="kanaele" aria-label="One property, every channel">
+  <div class="stage-pin">
+    <div class="wrap stage-in">
+      <div class="stage-copy">
+        <div class="eyebrow">05 · Where it runs</div>
+        <h2>One property. <em class="s">Every channel.</em></h2>
+        <p>From the same material we cut every format to fit, so your property looks good everywhere.</p>
+        <ol class="stage-steps">
+          <li data-i="0" class="on"><b>Instagram &amp; TikTok</b><span>Portrait 9:16 for reels, stories and shorts</span></li>
+          <li data-i="1"><b>Website &amp; portals</b><span>Landscape 16:9 for your site and property portals</span></li>
+          <li data-i="2"><b>Pinterest</b><span>Portrait 2:3, found through search</span></li>
+        </ol>
+      </div>
+      <div class="scene" aria-hidden="true">
+        <div class="dev laptop" data-d="laptop"><div class="scr"><video muted loop playsinline preload="none" poster="/assets/video/immobilien-quer.jpg" data-v="/assets/video/immobilien-quer.mp4"></video></div><div class="base"></div><span class="tag">16:9 · Website</span></div>
+        <div class="dev pin" data-d="pin"><video muted loop playsinline preload="none" poster="/assets/video/immobilien-pin.jpg" data-v="/assets/video/immobilien-pin.mp4"></video><span class="tag">2:3 · Pinterest</span></div>
+        <div class="dev phone" data-d="phone"><video muted loop playsinline preload="none" poster="/assets/video/immobilien-reel.jpg" data-v="/assets/video/immobilien-reel.mp4"></video><span class="tag">9:16 · Reel</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="anfrage">
+  <div class="wrap split" style="align-items:flex-start">
+    <div>
+      <div class="eyebrow">Preview &amp; offer</div>
+      <h2>Your property on video. <em class="s">Try it for free.</em></h2>
+      <p>Send us a current property. You get a short preview before you commit to anything.</p>
+      <div class="contact">
+        <div style="font-weight:700">Back to Outdoor · Bastian Prein</div>
+        <div style="color:var(--muted)">Salzburg, Austria</div>
+        <a href="tel:+436608422053">+43 (0)660 8422053</a>
+        <a href="mailto:info@backtooutdoor.com">info@backtooutdoor.com</a>
+      </div>
+    </div>
+    <div>
+      <div class="thanks" id="thanks">
+        <div class="big" id="thanksTitle">Thank you.</div>
+        <p style="margin:0;color:var(--muted)">Your enquiry has arrived. We will get back to you within 24 hours with the next steps.</p>
+      </div>
+      <form id="form" novalidate>
+        <label>Format
+          <select id="fFormat" name="format">
+            <option value="">Not sure yet / advice</option>
+          </select>
+        </label>
+        <div class="row">
+          <label>Name<span class="req" aria-hidden="true">*</span><input type="text" name="name" id="fName" required autocomplete="name"></label>
+          <label>Company<input type="text" name="firma" id="fFirma" autocomplete="organization"></label>
+        </div>
+        <div class="row">
+          <label>Email<span class="req" aria-hidden="true">*</span><input type="email" name="email" id="fEmail" required autocomplete="email"></label>
+          <label>Phone<input type="tel" name="telefon" id="fTel" autocomplete="tel"></label>
+        </div>
+        <label>Link to the property or message
+          <textarea name="anliegen" id="fMsg" placeholder="e.g. link to the listing on your website or a property portal"></textarea>
+        </label>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="chk"><input type="checkbox" id="fDsgvo" required> <span>I agree that my details may be used to process this enquiry. More in the <a href="/datenschutz.html">privacy policy</a> (German).</span></label>
+        <div class="msg" id="msg" role="status" aria-live="polite"></div>
+        <p style="margin:0;font-size:13px;color:var(--soft)">* Required field</p>
+        <button type="submit" class="btn btn-red" id="send" style="align-self:flex-start">Request a preview →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span class="foot-brand"><img src="/assets/img/immobilien/logo-immobilien-weiss-384.png" alt="" width="68" height="84" loading="lazy">Walkthrough videos &amp; project pages · Back to Outdoor</span>
+  <span style="display:flex;gap:24px"><a href="/impressum.html">Imprint</a><a href="/datenschutz.html">Privacy</a><a href="/">backtooutdoor.com</a></span>
+</footer>
+
+<script>
+(function(){
+  var hv=document.getElementById('heroVid');
+  if(hv){ var small=window.matchMedia('(max-width: 1600px)').matches;
+    hv.src='/assets/video/immobilien-hero-'+(small?'720':'1080')+'.mp4';
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ hv.removeAttribute('autoplay'); hv.pause(); }
+    else { var pr=hv.play(); if(pr&&pr.catch) pr.catch(function(){}); }
+    var tg=document.getElementById('vidToggle');
+    function lbl(){ var p=hv.paused; tg.textContent = p ? '▶ Play video' : '❚❚ Pause video'; tg.setAttribute('aria-pressed', p ? 'true':'false'); }
+    tg.addEventListener('click', function(){ if(hv.paused){ var q=hv.play(); if(q&&q.catch) q.catch(function(){}); } else hv.pause(); });
+    hv.addEventListener('play', lbl); hv.addEventListener('pause', lbl); lbl(); }
+  var P = function(n){ return '/assets/img/immobilien/' + n + '.webp'; };
+  var V = function(n){ return '/assets/video/immobilien-' + n + '.mp4'; };
+  var FORMATS = [
+    {id:'reel', group:'video', name:'Instagram Reel', badge:'9:16', ratio:'r916', img:'/assets/video/immobilien-reel.jpg', vid:V('reel'),
+     use:'Walkthrough for reels & stories', format:'1080 × 1920', len:'As agreed', where:'Instagram, WhatsApp status', mat:'Listing photos',
+     text:'Room by room, with calm camera movement. Location and size appear as short captions, with your logo at the end.'},
+    {id:'quer', group:'video', name:'Landscape property video', badge:'16:9', ratio:'r169', img:'/assets/video/immobilien-quer.jpg', vid:V('quer'),
+     use:'For websites & portals', format:'1920 × 1080', len:'As agreed', where:'Website, property portals', mat:'Listing photos',
+     text:'The same property in landscape, for your website, the video feature of portals and YouTube. With music and short info cards on request.'},
+    {id:'tiktok', group:'video', name:'TikTok & Shorts', badge:'9:16', ratio:'r916', img:'/assets/video/immobilien-tiktok.jpg', vid:V('tiktok'),
+     use:'Faster cuts', format:'1080 × 1920', len:'As agreed', where:'TikTok, YouTube Shorts', mat:'Listing photos',
+     text:'Shorter and faster than the reel. The first second shows in big letters what makes the property special.'},
+    {id:'site', group:'web', name:'Project page', badge:'Web', ratio:'r-site', img:P('projekt'),
+     use:'A dedicated page per new-build project', format:'Responsive website', len:'1 page', where:'Own domain or subpage', mat:'Floor plans, renderings, price list',
+     text:'Every apartment with floor plan, size and price, status available or sold, filters and brochure requests per apartment. We keep the status up to date after a short message.'},
+    {id:'pin', group:'web', name:'Pinterest Pin', badge:'2:3', ratio:'r23', img:'/assets/video/immobilien-pin.jpg', vid:V('pin'),
+     use:'Found through search', format:'1000 × 1500', len:'Image or video pin', where:'Pinterest', mat:'Listing photos',
+     text:'Portrait pins with search terms like “apartment with garden”. Every pin links straight to your listing.'}
+  ];
+  // Beispielvideos: in den Karten stumm in Schleife, sobald sichtbar; im Detail groß mit Steuerung
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function media(f, big){
+    if (!f.vid) return '<img s'+'rc="'+f.img+'" alt="'+(big?'Example image for '+f.name:'')+'" loading="lazy" decoding="async">';
+    return '<video muted loop playsinline preload="none" poster="'+f.img+'" data-v="'+f.vid+'"'+(big?' controls':'')+' aria-label="Example video '+f.name+'"></video>';
+  }
+  function startVid(v){
+    if (!v.getAttribute('s'+'rc')) v.setAttribute('s'+'rc', v.dataset.v);
+    if (still) return; var q = v.play(); if (q && q.catch) q.catch(function(){});
+  }
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) startVid(e.target); else e.target.pause(); });
+  }, {rootMargin:'100px'}) : null;
+  var grid = document.getElementById('grid');
+  var sel = document.getElementById('fFormat');
+
+  FORMATS.forEach(function(f){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'card spec'; b.dataset.id = f.id;
+    b.innerHTML = '<span class="badge">'+f.badge+'</span>'+
+      '<span class="name">'+f.name+'</span><span class="use">'+f.use+'</span>'+
+      '<dl><div><dt>Format</dt><dd>'+f.format+'</dd></div><div><dt>Length</dt><dd>'+f.len+'</dd></div><div><dt>Einsatz</dt><dd>'+f.where+'</dd></div></dl>'+
+      '<span class="txt">'+f.text+'</span><span class="go">Enquire →</span>';
+    b.addEventListener('click', function(){
+      sel.value = f.id;
+      document.getElementById('anfrage').scrollIntoView({behavior:'smooth', block:'start'});
+      setTimeout(function(){ var n = document.getElementById('fName'); if (n) n.focus({preventScroll:true}); }, 700);
+    });
+    grid.appendChild(b);
+    var o = document.createElement('option'); o.value = f.id; o.textContent = f.name + ': ' + f.use; sel.appendChild(o);
+  });
+  [].forEach.call(document.querySelectorAll('[data-pick]'), function(a){ a.addEventListener('click', function(){ sel.value = a.dataset.pick; }); });
+
+  // Formular -> /api/lead
+  var t0 = Date.now(), form = document.getElementById('form'), msg = document.getElementById('msg'), go = document.getElementById('send');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('fName').value.trim(), email = document.getElementById('fEmail').value.trim();
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter your name and a valid email address.'; return; }
+    if (!document.getElementById('fDsgvo').checked) { msg.textContent = 'Please confirm the privacy notice.'; return; }
+    var fmt = sel.options[sel.selectedIndex].text;
+    msg.textContent = ''; go.disabled = true; go.textContent = 'Sending …';
+    fetch('/api/lead', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({
+      name:name, email:email, firma:document.getElementById('fFirma').value.trim(), telefon:document.getElementById('fTel').value.trim(),
+      typ:'Immobilien', wunsch:'Vorschau Immobilien (EN)', anliegen:'Format: ' + fmt + '\n' + document.getElementById('fMsg').value.trim(),
+      seite:location.pathname, website:form.website.value, t:t0, lang:'en'
+    })}).then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return {r:r, j:j}; }); })
+    .then(function(x){
+      if (!(x.r.ok && x.j.ok)) throw new Error();
+      document.getElementById('thanksTitle').textContent = 'Thank you, ' + name.split(' ')[0] + '.';
+      form.style.display = 'none'; document.getElementById('thanks').classList.add('show');
+    }).catch(function(){
+      go.disabled = false; go.textContent = 'Request a preview →';
+      msg.innerHTML = 'Sending did not work just now. Please write to us directly at <a href="mailto:info@backtooutdoor.com">info@backtooutdoor.com</a>.';
+    });
+  });
+})();
+</script>
+
+
+<div class="scrollbar" id="scrollbar" aria-hidden="true"></div>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root = document.documentElement;
+  var bar = document.getElementById('scrollbar');
+  // Videos der Bühne laden, sobald sie in die Nähe kommen
+  var sv = [].slice.call(document.querySelectorAll('#kanaele video'));
+  function load(v){ if(!v.getAttribute('s'+'rc')) v.setAttribute('s'+'rc', v.dataset.v); if(!reduce){ var q=v.play(); if(q&&q.catch) q.catch(function(){}); } }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){ es.forEach(function(e){ sv.forEach(function(v){ if(e.isIntersecting) load(v); else v.pause(); }); }); }, {rootMargin:'300px'}).observe(document.getElementById('kanaele'));
+  } else sv.forEach(load);
+  if (reduce) { document.querySelectorAll('.dev').forEach(function(d,i){ d.style.position='relative'; d.style.left=d.style.top='auto'; d.style.margin='0 auto 60px'; }); return; }
+  root.classList.add('fx');
+  // Einblenden
+  var sel = '#formate .head-row, #grid .card, #projektseite .split > div:last-child, #ablauf .eyebrow, #ablauf h2, #anfrage .split > div, .fact, .stage-copy';
+  var rv = [].slice.call(document.querySelectorAll(sel));
+  rv.forEach(function(el,i){ el.classList.add('rv'); el.style.transitionDelay = (el.classList.contains('step')||el.classList.contains('fact') ? (([].indexOf.call(el.parentNode.children, el))*90) : 0)+'ms'; });
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  rv.forEach(function(el){ io.observe(el); });
+  // Bühnen: Posen je Fokus (x, y, z, rotY, rotX, Deckkraft)
+  function mix(a,b,t){ var o={}; for(var k in a) o[k]=a[k]+(b[k]-a[k])*t; return o; }
+  function ease(t){ return t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
+  var START = {x:0,y:60,z:-1100,ry:45,rx:14,o:0};
+  function autoPoses(n){ // Fokus vorne, die anderen gestaffelt dahinter
+    var P=[]; for(var i=0;i<n;i++){ var st={}; for(var j=0;j<n;j++){ var k=j-i, a=Math.abs(k);
+      st[j]= k===0 ? {x:40,y:0,z:190,ry:-12,rx:2,o:1} : {x:(k<0? k*120-60 : k*170+60), y:(k<0?20:30), z:-150-a*120, ry:(k<0? 26 : -28), rx:3, o:Math.max(.22,.55-.12*(a-1))}; }
+      P.push(st); } return P; }
+  var STAGES = [];
+  [].forEach.call(document.querySelectorAll('.stage'), function(stage){
+    var dev = {}; [].forEach.call(stage.querySelectorAll('.dev'), function(d){ dev[d.dataset.d] = {el:d, cur:mix(START,START,0)}; });
+    var P = stage.id === 'kanaele' ? [
+      {phone:{x:-40,y:0,z:180,ry:-14,rx:2,o:1}, laptop:{x:170,y:-40,z:-160,ry:-28,rx:4,o:.55}, pin:{x:310,y:40,z:-320,ry:-34,rx:4,o:.4}},
+      {laptop:{x:20,y:-10,z:140,ry:-10,rx:3,o:1}, phone:{x:-250,y:20,z:-120,ry:28,rx:2,o:.5}, pin:{x:300,y:30,z:-200,ry:-30,rx:4,o:.5}},
+      {pin:{x:90,y:0,z:190,ry:-12,rx:2,o:1}, laptop:{x:-130,y:-30,z:-240,ry:24,rx:4,o:.45}, phone:{x:-250,y:20,z:-160,ry:30,rx:2,o:.4}}
+    ] : autoPoses(Object.keys(dev).length);
+    STAGES.push({el:stage, dev:dev, P:P, steps:[].slice.call(stage.querySelectorAll('.stage-steps li')), last:-1});
+  });
+  function target(S, p, e){
+    var n = S.P.length, t = {};
+    if (e < 1) { var k = ease(e); for (var m in S.dev) t[m] = mix(START, S.P[0][m], k); return {t:t, i:0}; }
+    var q = p*n, i = Math.min(n-1, Math.floor(q)), f = q - i, tr = .3;
+    var k2 = (i<n-1 && f > 1-tr) ? ease((f-(1-tr))/tr) : 0;
+    for (var d in S.dev) t[d] = k2 ? mix(S.P[i][d], S.P[i+1][d], k2) : S.P[i][d];
+    return {t:t, i: k2>.5 ? i+1 : i};
+  }
+  // Videos jeder Bühne laden, sobald sie in die Nähe kommt
+  if ('IntersectionObserver' in window) STAGES.forEach(function(S){
+    var vs = [].slice.call(S.el.querySelectorAll('video'));
+    new IntersectionObserver(function(es){ es.forEach(function(e){ vs.forEach(function(v){ if(e.isIntersecting) load(v); else v.pause(); }); }); }, {rootMargin:'300px'}).observe(S.el);
+  });
+  var mock = document.querySelector('#projektseite .mock');
+  var hfig = [].slice.call(document.querySelectorAll('#hotel .hotel-row figure'));
+  var stepsEl = document.querySelector('#ablauf .steps');
+  var stepEls = [].slice.call(document.querySelectorAll('#ablauf .step'));
+  var units = [].slice.call(document.querySelectorAll('#projektseite .u'));
+  function prog(el, a, b){ var r = el.getBoundingClientRect(), h = innerHeight; return Math.min(1, Math.max(0, (h*a - r.top) / (h*a - h*b + r.height*0 + 1e-6))); }
+  var ticking = false, last = -1;
+  function frame(){
+    ticking = false;
+    var h = innerHeight, y = scrollY, max = document.documentElement.scrollHeight - h;
+    bar.style.transform = 'scaleX(' + (max>0 ? y/max : 0) + ')';
+    // Bühnen
+    STAGES.forEach(function(S){
+      var r = S.el.getBoundingClientRect();
+      if (!(r.bottom > 0 && r.top < h)) return;
+      var p = Math.min(1, Math.max(0, -r.top / (r.height - h)));
+      var e = Math.min(1, Math.max(0, (h - r.top) / h));
+      var tg = target(S, p, e), moving = false;
+      for (var n in S.dev) {
+        var d = S.dev[n], c = d.cur, g = tg.t[n];
+        for (var k in c) { var nv = c[k] + (g[k]-c[k])*.16; if (Math.abs(nv-g[k])>.05) moving = true; c[k] = nv; }
+        d.el.style.transform = 'translate3d('+c.x+'px,'+c.y+'px,'+c.z+'px) rotateY('+c.ry+'deg) rotateX('+c.rx+'deg)';
+        d.el.style.opacity = c.o; d.el.style.zIndex = Math.round(c.z + 1000);
+      }
+      if (tg.i !== S.last) { S.last = tg.i; S.steps.forEach(function(li,j){ li.classList.toggle('on', j===tg.i); }); }
+      if (moving) req();
+    });
+    // Fortschritt einer Sektion: gepinnt (Desktop) über die Scrollstrecke, sonst über den Viewport
+    function secProg(el, a){ var rr = el.getBoundingClientRect();
+      if (rr.height > h*1.3) return Math.min(1, Math.max(0, -rr.top / (rr.height - h)));
+      return Math.min(1, Math.max(0, (h - rr.top) / (h*a))); }
+    // Projektseite: Mockup kippt flach, dann erscheinen die Wohnungen
+    if (mock) { var ps = document.getElementById('projektseite'), mp = secProg(ps, 1.1);
+      var e = 1 - Math.min(1, mp/0.4);
+      mock.style.setProperty('--rx', (e*28).toFixed(2)+'deg'); mock.style.setProperty('--ry', (-e*18).toFixed(2)+'deg'); mock.style.setProperty('--sc', (0.88+0.12*(1-e)).toFixed(3));
+      units.forEach(function(u,i){ u.classList.toggle('show', mp > 0.3 + i*0.07); }); }
+    // Ablauf: Schritte leuchten nacheinander auf
+    if (stepsEl) { var ap = secProg(document.getElementById('ablauf'), 1.0);
+      stepsEl.style.setProperty('--sp', Math.min(1, ap*1.15).toFixed(3));
+      stepEls.forEach(function(st,i){ st.classList.toggle('on', ap >= i*0.24); }); }
+  }
+  function req(){ if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+  addEventListener('scroll', req, {passive:true}); addEventListener('resize', req); req();
+})();
+</script>
+
+<script>
+(function(){
+  var H = '/assets/video/hotel/hotel-', I = '/assets/video/immobilien-', R = '/assets/video/restaurant-', E = '/assets/video/essen-';
+  var V = {hotel:[H+'reel',H+'shorts',H+'feed',H+'pinterest',H+'quer'], immobilie:[I+'reel',I+'tiktok',I+'feed',I+'pin',I+'quer'],
+           restaurant:[R+'reel',R+'shorts',R+'feed',R+'pin',R+'quer'], essen:[E+'reel',E+'shorts',E+'feed',E+'pin',E+'quer']};
+  var sec = document.getElementById('branchen'); if (!sec) return;
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var slides = [].slice.call(sec.querySelectorAll('.br-slide')), tabs = [].slice.call(sec.querySelectorAll('.br-nav button'));
+  var cur = 0, timer = null, inView = false, hold = false, DUR = 8000;
+  function play(v){ if(!v.getAttribute('s'+'rc')) v.setAttribute('s'+'rc', v.dataset.v); if(still) return; var q=v.play(); if(q&&q.catch) q.catch(function(){}); }
+  function go(i){
+    cur = (i + slides.length) % slides.length;
+    slides.forEach(function(sl, j){ var on = j===cur; sl.classList.toggle('on', on); sl.setAttribute('tabindex', on?'0':'-1'); if(on) sl.removeAttribute('aria-hidden'); else sl.setAttribute('aria-hidden','true');
+      var v = sl.querySelector('video'); if (on && inView) play(v); else v.pause(); });
+    tabs.forEach(function(t, j){ t.setAttribute('aria-selected', j===cur?'true':'false'); t.classList.remove('run'); });
+    sec.style.setProperty('--ca', slides[cur].style.getPropertyValue('--ca'));
+    arm();
+  }
+  function arm(){ clearTimeout(timer); var t = tabs[cur]; t.classList.remove('run'); void t.offsetWidth;
+    if (still || hold || !inView || !modal.hidden) return; t.classList.add('run'); timer = setTimeout(function(){ go(cur+1); }, DUR); }
+  tabs.forEach(function(t, j){ t.addEventListener('click', function(){ go(j); }); });
+  var show = sec.querySelector('.br-show');
+  show.addEventListener('mouseenter', function(){ hold = true; arm(); }); show.addEventListener('mouseleave', function(){ hold = false; arm(); });
+  var sx = null; show.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, {passive:true});
+  show.addEventListener('touchend', function(e){ if (sx===null) return; var dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 50) { show.dataset.swiped = '1'; go(cur + (dx<0?1:-1)); } }, {passive:true});
+  if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ inView = es[0].isIntersecting; go(cur); }, {threshold:.35}).observe(show);
+  else { inView = true; go(0); }
+  // Formate-Ansicht
+  var modal = document.getElementById('brModal'), mv = [].slice.call(modal.querySelectorAll('video')), lastFocus = null;
+  function open(i){
+    var sl = slides[i], k = sl.dataset.cat;
+    modal.style.setProperty('--ca', sl.style.getPropertyValue('--ca'));
+    document.getElementById('brmSub').textContent = sl.querySelector('.br-brand b').textContent;
+    document.getElementById('brmTitle').innerHTML = sl.querySelector('.br-h').firstChild.textContent.trim() + ' <em>Five formats.</em>';
+    V[k].forEach(function(b, j){ var v = mv[j]; v.poster = b + '.jpg'; v.dataset.v = b + '.mp4'; v.removeAttribute('s'+'rc'); v.load(); });
+    lastFocus = document.activeElement; modal.hidden = false; document.documentElement.classList.add('br-lock');
+    requestAnimationFrame(function(){ modal.classList.add('open'); }); mv.forEach(play);
+    slides[cur].querySelector('video').pause(); arm(); modal.querySelector('.br-x').focus();
+  }
+  function close(){ modal.classList.remove('open'); mv.forEach(function(v){ v.pause(); });
+    setTimeout(function(){ modal.hidden = true; document.documentElement.classList.remove('br-lock'); go(cur); if (lastFocus) lastFocus.focus(); }, 250); }
+  slides.forEach(function(sl, j){ sl.addEventListener('click', function(){ if (show.dataset.swiped) { delete show.dataset.swiped; return; } open(j); }); });
+  modal.querySelector('.br-x').addEventListener('click', close);
+  modal.addEventListener('click', function(e){ if (e.target === modal) close(); });
+  modal.querySelector('.br-m-cta a').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (modal.hidden) { if (e.target.closest && e.target.closest('#branchen') && (e.key==='ArrowRight'||e.key==='ArrowLeft')) go(cur + (e.key==='ArrowRight'?1:-1)); return; }
+    if (e.key === 'Escape') close();
+    if (e.key === 'Tab') { var f = [modal.querySelector('.br-x'), modal.querySelector('.br-m-cta a')]; if (e.shiftKey && document.activeElement===f[0]) { e.preventDefault(); f[1].focus(); } else if (!e.shiftKey && document.activeElement===f[1]) { e.preventDefault(); f[0].focus(); } } });
+})();
+</script>
+<script src="/assets/js/flow.js?v=1" defer></script>
+<script>
+(function(){
+  [].forEach.call(document.querySelectorAll('.ein[data-go]'), function(a){
+    a.addEventListener('click', function(){ var t=document.querySelector('#branchen .br-nav button[data-cat="'+a.dataset.go+'"]'); if(t) setTimeout(function(){ t.click(); }, 50); });
+  });
+})();
+</script>
+</body>
+</html>

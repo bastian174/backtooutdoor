@@ -8,6 +8,9 @@
 <link rel="icon" type="image/png" href="/assets/img/immobilien/favicon-immobilien.png">
 <link rel="apple-touch-icon" href="/assets/img/immobilien/favicon-immobilien.png">
 <meta name="description" content="Wir machen Immobilien und besondere Orte digital erlebbar: Fotos, Videos, UGC und digitale Rundgänge für Immobilien, Hotels, Ferienunterkünfte, Gastronomie und Destinationen.">
+<link rel="alternate" hreflang="de" href="https://backtooutdoor.com/immobilien">
+<link rel="alternate" hreflang="en" href="https://backtooutdoor.com/immobilien-en">
+<link rel="alternate" hreflang="x-default" href="https://backtooutdoor.com/immobilien">
 <link rel="canonical" href="https://backtooutdoor.com/immobilien-showcase.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_AT">
@@ -408,6 +411,13 @@ html.br-lock{overflow:hidden}
 @media (max-width:900px){.einstiege{padding:70px 0 20px}.ein-grid{grid-template-columns:1fr}.ein{min-height:0}.ein-l span{grid-template-columns:1fr;gap:2px}}
 .hero-logo{position:absolute;right:clamp(24px,4vw,64px);bottom:clamp(28px,5vh,56px);z-index:2;width:auto;height:clamp(96px,11vw,140px);opacity:.92;filter:drop-shadow(0 6px 18px rgba(0,0,0,.45));pointer-events:none}
 @media (max-width:900px){.hero-logo{height:72px;right:16px;bottom:18px}}
+@media (min-width:901px){header.top{flex-wrap:nowrap;gap:24px}.brand-txt,header.top .btn-small{white-space:nowrap}.brand-txt{letter-spacing:.18em}header.top nav{flex-wrap:nowrap;gap:18px;white-space:nowrap;margin-left:auto}}
+@media (min-width:901px) and (max-width:1340px){header.top nav{gap:14px;font-size:14px}.brand-txt{display:none}}
+.lang-sw{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;letter-spacing:.14em}
+.lang-sw a{color:var(--soft);text-decoration:none;padding:6px 4px}
+.lang-sw a:hover{color:var(--text)}
+.lang-sw a[aria-current]{color:var(--text);border-bottom:2px solid var(--accent)}
+.lang-sw span{color:var(--line)}
 /* Hotel-Beispiele */
 .hotel-row{display:flex;flex-wrap:nowrap;gap:18px;align-items:flex-end;margin-top:40px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
 .hotel-row figure{margin:0;flex:none;scroll-snap-align:start}
@@ -435,6 +445,7 @@ html.br-lock{overflow:hidden}
     <a href="#kanaele">Kanäle</a>
     <a href="#anfrage">Kontakt</a>
   </nav>
+  <div class="lang-sw" aria-label="Sprache"><a href="/immobilien" hreflang="de" lang="de" aria-current="page">DE</a><span aria-hidden="true">/</span><a href="/immobilien-en" hreflang="en" lang="en">EN</a></div>
   <a href="#anfrage" class="btn btn-red btn-small">Projekt anfragen</a>
   <a href="#anfrage" class="mob-cta">Anfrage →</a>
 </header>

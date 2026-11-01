@@ -26,6 +26,10 @@
     {
       "source": "/immobilien",
       "destination": "/immobilien-showcase.html"
+    },
+    {
+      "source": "/immobilien-en",
+      "destination": "/immobilien-showcase-en.html"
     }
   ]
 }
