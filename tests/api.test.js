@@ -73,7 +73,8 @@ test("verarbeiteLead ordnet Kanäle zu (Immobilien, Mindset-E-Book) und sendet a
   assert.equal(calls[0].url, "https://script.example/exec");
   assert.equal(calls[0].body.kanal, "Immobilien");
   assert.equal(calls[0].body.secret, "geheim");
-  assert.match(calls[0].body.antwort_text, /^Guten Tag Max,/);
+  assert.match(calls[0].body.antwort_text, /^Hallo Max,/);
+  assert.match(calls[0].body.antwort_text, /https:\/\/backtooutdoor\.com\/portfolio/);
 
   await verarbeiteLead({ name: "Lea", email: "lea@x.de", wunsch: "E-Book Teil 1", produkt: "gewohnheits-tetris" });
   const eb = calls.at(-1).body; // calls[1] ist die Immobilien-Kopie an IMMO_MAIL
@@ -130,6 +131,38 @@ test("/api/lead: Spam wird still verworfen, ungültig → 400, gültig → 200, 
   res = fakeRes();
   await leadHandler({ method: "DELETE" }, res);
   assert.equal(res.statusCode, 405);
+});
+
+test("Immobilien-Bestätigung: nur bekannte Formate und echte Vornamen landen in der Mail", async () => {
+  process.env.LEAD_WEBHOOK_URL = "https://script.google.com/macros/s/test/exec";
+  mockFetch({ status: 200, json: { ok: true } });
+  const { verarbeiteLead } = require("../api/_leads");
+  await verarbeiteLead({ name: "Anna Muster", email: "anna@x.at", seite: "/immobilien", anliegen: "Format: Instagram Reel: Rundgang für Reels & Storys\nHallo" });
+  let t = calls[0].body.antwort_text;
+  assert.match(t, /^Hallo Anna,/);
+  assert.match(t, /Schön, dass du dich für ein Instagram Reel interessierst\./);
+  await verarbeiteLead({ name: "www.spam-link.com", email: "opfer@x.at", seite: "/immobilien", anliegen: "Format: Klick hier https://spam.example\n" });
+  t = calls.at(-1).url.includes("formsubmit") ? calls.at(-2).body.antwort_text : calls.at(-1).body.antwort_text;
+  assert.doesNotMatch(t, /spam/i);
+  assert.match(t, /^Hallo,\n/);
+  await verarbeiteLead({ name: "John", email: "john@x.at", seite: "/immobilien-en", anliegen: "Format: Project page: own site\n" }, "en");
+  t = calls.filter((c) => c.body && c.body.antwort_text).at(-1).body.antwort_text;
+  assert.match(t, /^Hello John,/);
+  assert.match(t, /a dedicated project page/);
+});
+
+test("/api/lead: fremde Herkunft wird abgewiesen, eigene Domain und Vorschau angenommen", async () => {
+  process.env.LEAD_WEBHOOK_URL = "https://script.google.com/macros/s/test/exec";
+  mockFetch({ status: 200, json: { ok: true } });
+  const body = { name: "Eva", email: "eva@x.at", t: Date.now() - 10000 };
+  let res = fakeRes();
+  await leadHandler({ method: "POST", headers: { origin: "https://evil.example" }, body }, res);
+  assert.equal(res.statusCode, 403);
+  for (const o of ["https://backtooutdoor.com", "https://www.backtooutdoor.com", "https://backtooutdoor-git-immobilien-ugc-backtooutdoor.vercel.app"]) {
+    res = fakeRes();
+    await leadHandler({ method: "POST", headers: { origin: o }, body }, res);
+    assert.equal(res.statusCode, 200, o);
+  }
 });
 
 // 3) /api/go – Klick-Tracking und Weiterleitung ohne offenen Redirect

@@ -25,20 +25,31 @@ function kanalVon(lead) {
 // Ein gemeinsamer Portfolio-Link für alle Branchen
 const PORTFOLIO = "https://backtooutdoor.com/portfolio";
 
+// Formatnamen aus dem Immobilien-Formular (DE/EN). Nur diese Werte gelangen in die Antwort-Mail – freier Text aus dem Formular nie.
+const IMMO_FORMATE = {
+  de: { "Instagram Reel": "ein Instagram Reel", "TikTok & Shorts": "TikTok und Shorts", "Objektvideo quer": "ein Objektvideo im Querformat", "Pinterest Pin": "Pinterest Pins", "Projektseite": "eine eigene Projektseite",
+        "Landscape property video": "ein Objektvideo im Querformat", "Project page": "eine eigene Projektseite" },
+  en: { "Instagram Reel": "an Instagram reel", "TikTok & Shorts": "TikTok and Shorts", "Landscape property video": "a landscape property video", "Pinterest Pin": "Pinterest pins", "Project page": "a dedicated project page",
+        "Objektvideo quer": "a landscape property video", "Projektseite": "a dedicated project page" },
+};
+function immoFormat(lead, lang) {
+  const roh = (String(lead.anliegen || "").match(/^Format: ([^:\n]+)/m) || [])[1];
+  return roh ? IMMO_FORMATE[lang === "en" ? "en" : "de"][roh.trim()] || "" : "";
+}
+
 // Immobilien (Showcase-Seite, DE/EN): persönliche Eingangsbestätigung in Du-Form (DE), ohne Preise oder feste Fristen
 function immoMail(lead, lang) {
   const n = vorname(lead.name);
-  const fmt = (String(lead.anliegen || "").match(/^Format: (.+)$/m) || [])[1];
-  const mitFmt = fmt && !/auswählen|offen|not sure/i.test(fmt) ? " (" + fmt + ")" : "";
+  const fmt = immoFormat(lead, lang);
   if (lang === "en") {
     return {
       betreff: "Thank you for your enquiry – Back to Outdoor",
-      text: `Hello${n ? " " + n : ""},\n\nthank you for your message${mitFmt} and your interest in Back to Outdoor.\n\nSo you can see straight away what is possible, here is our portfolio with reels, cinematic films, walkthroughs and social media formats:\n\n${PORTFOLIO}\n\nI will look at your enquiry personally and get back to you, so we can work out together what suits your project best. If you already have photos, videos or a link to the property, feel free to send them as a reply to this email.\n\nBest regards\nBastian\nBack to Outdoor\n\ninfo@backtooutdoor.com · +43 (0)660 8422053`,
+      text: `Hello${n ? " " + n : ""},\n\nthank you for your message and your interest in Back to Outdoor.${fmt ? " Great to hear you are interested in " + fmt + "." : ""}\n\nSo you can see straight away what is possible, here is our portfolio with reels, cinematic films, walkthroughs and social media formats:\n\n${PORTFOLIO}\n\nI will look at your enquiry personally and get back to you, so we can work out together what suits your project best. If you already have photos, videos or a link to the property, feel free to send them as a reply to this email.\n\nBest regards\nBastian\nBack to Outdoor\n\ninfo@backtooutdoor.com · +43 (0)660 8422053`,
     };
   }
   return {
     betreff: "Vielen Dank für deine Anfrage – Back to Outdoor",
-    text: `Hallo${n ? " " + n : ""},\n\nvielen Dank für deine Nachricht${mitFmt} und dein Interesse an Back to Outdoor.\n\nDamit du dir direkt ein Bild davon machen kannst, was möglich ist, findest du hier unser Portfolio mit Reels, Cinematic Films, Rundgängen und Social-Media-Formaten:\n\n${PORTFOLIO}\n\nIch schaue mir deine Anfrage persönlich an und melde mich bei dir, damit wir gemeinsam besprechen können, was am besten zu deinem Projekt passt. Wenn du schon Fotos, Videos oder einen Link zum Objekt hast, schick sie gern als Antwort auf diese Mail.\n\nViele Grüße\nBastian\nBack to Outdoor\n\ninfo@backtooutdoor.com · +43 (0)660 8422053`,
+    text: `Hallo${n ? " " + n : ""},\n\nvielen Dank für deine Nachricht und dein Interesse an Back to Outdoor.${fmt ? " Schön, dass du dich für " + fmt + " interessierst." : ""}\n\nDamit du dir direkt ein Bild davon machen kannst, was möglich ist, findest du hier unser Portfolio mit Reels, Cinematic Films, Rundgängen und Social-Media-Formaten:\n\n${PORTFOLIO}\n\nIch schaue mir deine Anfrage persönlich an und melde mich bei dir, damit wir gemeinsam besprechen können, was am besten zu deinem Projekt passt. Wenn du schon Fotos, Videos oder einen Link zum Objekt hast, schick sie mir gern als Antwort auf diese Mail.\n\nViele Grüße\nBastian\nBack to Outdoor\n\ninfo@backtooutdoor.com · +43 (0)660 8422053`,
   };
 }
 
@@ -51,7 +62,8 @@ function mindsetMail(lead) {
 }
 
 function vorname(name) {
-  return String(name || "").trim().split(/\s+/)[0] || "";
+  const v = String(name || "").trim().split(/\s+/)[0] || "";
+  return /^[\p{L}][\p{L}'’.-]{0,29}$/u.test(v) && !/\.[\p{L}]{2,}$/u.test(v) ? v : "";
 }
 
 function vorlage(lead, lang) {
@@ -160,7 +172,7 @@ async function verarbeiteLead(input, lang) {
   const nurEntwurf = kanal === "Immobilien" && String(process.env.IMMO_AUTO_ANTWORT || "").toLowerCase() === "aus";
   const payload = { secret: process.env.LEAD_SECRET || "", zeit: new Date().toISOString(), sprache: lang, kanal, ...lead, ebook, antwort_betreff: antwort.betreff, antwort_text: antwort.text, media_kit_url: mediaKitUrl, nur_entwurf: nurEntwurf };
 
-  console.log("NEUER LEAD", JSON.stringify({ ...payload, secret: undefined }));
+  console.log("NEUER LEAD", JSON.stringify({ zeit: payload.zeit, kanal, wunsch: lead.wunsch, seite: lead.seite, sprache: lang, quelle: lead.quelle, domain: lead.email.split("@")[1] }));
   const ergebnis = await versenden(payload);
   // Immobilien-Anfragen zusätzlich als Kopie an IMMO_MAIL – auch wenn der Hauptweg scheitert, Fehler der Kopie blockieren nichts
   if (kanal === "Immobilien" && IMMO_MAIL && IMMO_MAIL !== INFO_MAIL) await kopieAn(IMMO_MAIL, payload);
