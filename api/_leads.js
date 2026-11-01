@@ -22,31 +22,23 @@ function kanalVon(lead) {
   return "Back to Outdoor";
 }
 
-const KONTAKT_IMMO = "Back to Outdoor · Immobilien-Content\ninfo@backtooutdoor.com · +43 (0)660 8422053\nbacktooutdoor.com/immobilien";
-const PORTFOLIO_UGC = "https://backtooutdoor.com/immobilien/ugc";
+// Ein gemeinsamer Portfolio-Link für alle Branchen
+const PORTFOLIO = "https://backtooutdoor.com/portfolio";
 
-// Immobilien (Showcase-Seite): Eingangsbestätigung in Sie-Form, ohne Preise oder feste Fristen
+// Immobilien (Showcase-Seite, DE/EN): persönliche Eingangsbestätigung in Du-Form (DE), ohne Preise oder feste Fristen
 function immoMail(lead, lang) {
+  const n = vorname(lead.name);
   const fmt = (String(lead.anliegen || "").match(/^Format: (.+)$/m) || [])[1];
   const mitFmt = fmt && !/auswählen|offen|not sure/i.test(fmt) ? " (" + fmt + ")" : "";
   if (lang === "en") {
     return {
-      betreff: "Your enquiry – Back to Outdoor",
-      text: `Hello ${lead.name},\n\nthank you for your enquiry${mitFmt}. I will look at your property personally and get back to you shortly to talk about scope, formats and the best approach, whether we film on site or work with your existing material.\n\nIf you already have photos, videos or a link to the property, feel free to send them as a reply to this email. You will then get a free preview first.\n\nExamples from our portfolio: ${PORTFOLIO_UGC}\n\nBest regards\nBasti\n\nBack to Outdoor · Real Estate Content\ninfo@backtooutdoor.com · +43 (0)660 8422053\nbacktooutdoor.com/immobilien-en`,
+      betreff: "Thank you for your enquiry – Back to Outdoor",
+      text: `Hello${n ? " " + n : ""},\n\nthank you for your message${mitFmt} and your interest in Back to Outdoor.\n\nSo you can see straight away what is possible, here is our portfolio with reels, cinematic films, walkthroughs and social media formats:\n\n${PORTFOLIO}\n\nI will look at your enquiry personally and get back to you, so we can work out together what suits your project best. If you already have photos, videos or a link to the property, feel free to send them as a reply to this email.\n\nBest regards\nBastian\nBack to Outdoor\n\ninfo@backtooutdoor.com · +43 (0)660 8422053`,
     };
   }
   return {
-    betreff: "Ihre Anfrage – Back to Outdoor",
-    text: `Guten Tag ${lead.name},\n\ndanke für Ihre Anfrage${mitFmt}. Ich schaue mir Ihr Objekt persönlich an und melde mich in Kürze bei Ihnen, um Umfang, Formate und den passenden Weg zu besprechen, ob mit Dreh vor Ort oder aus Ihrem vorhandenen Material.\n\nWenn Sie schon Fotos, Videos oder einen Link zum Objekt haben, können Sie diese gern als Antwort auf diese Mail schicken. Dann sehen Sie vorab eine kostenlose Vorschau.\n\nBeispiele aus unserem Portfolio: ${PORTFOLIO_UGC}\n\nFreundliche Grüße\nBasti\n\n${KONTAKT_IMMO}`,
-  };
-}
-
-// Immobilien | UGC (Portfolio-Seite): persönliche Eingangsbestätigung in Du-Form, ohne Preise, ohne Auftragszusage
-function ugcMail(lead) {
-  const n = vorname(lead.name);
-  return {
     betreff: "Vielen Dank für deine Anfrage – Back to Outdoor",
-    text: `Hallo${n ? " " + n : ""},\n\nvielen Dank für deine Nachricht und dein Interesse an Back to Outdoor.\n\nIch freue mich, dass du dich für unsere Content- und Videoproduktion interessierst. Damit du dir direkt ein Bild davon machen kannst, was möglich ist, habe ich dir hier mein Immobilien-UGC-Portfolio zusammengestellt:\n\n${PORTFOLIO_UGC}\n\nDort findest du verschiedene Beispielvideos und Formate, von authentischen UGC-Reels über Cinematic Property Films bis hin zu Video-Walkthroughs.\n\nIch schaue mir deine Anfrage persönlich an und melde mich bei dir, damit wir gemeinsam besprechen können, was am besten zu deinem Projekt passt.\n\nViele Grüße\nBastian\nBack to Outdoor | Immobilien UGC\n\ninfo@backtooutdoor.com · +43 (0)660 8422053`,
+    text: `Hallo${n ? " " + n : ""},\n\nvielen Dank für deine Nachricht${mitFmt} und dein Interesse an Back to Outdoor.\n\nDamit du dir direkt ein Bild davon machen kannst, was möglich ist, findest du hier unser Portfolio mit Reels, Cinematic Films, Rundgängen und Social-Media-Formaten:\n\n${PORTFOLIO}\n\nIch schaue mir deine Anfrage persönlich an und melde mich bei dir, damit wir gemeinsam besprechen können, was am besten zu deinem Projekt passt. Wenn du schon Fotos, Videos oder einen Link zum Objekt hast, schick sie gern als Antwort auf diese Mail.\n\nViele Grüße\nBastian\nBack to Outdoor\n\ninfo@backtooutdoor.com · +43 (0)660 8422053`,
   };
 }
 
@@ -70,12 +62,12 @@ function vorlage(lead, lang) {
   if (lang === "en") {
     return {
       betreff: mk ? "Your Back to Outdoor media kit" : "Thanks for your enquiry – Back to Outdoor",
-      text: `Hi ${n},\n\nthanks for reaching out${lead.firma ? " on behalf of " + lead.firma : ""}! ${mk ? (mkUrl ? "Please find our media kit attached.\n\n" : "We'll send you our media kit personally shortly.\n\n") : ""}We'd love to hear more about your plans. The easiest next step is a short, free call (about 15 minutes)${book ? " – you can pick a time here: " + book : " – just reply with two or three times that suit you"}.\n\nTo prepare: where is your business located, and which period are you thinking of?\n\nBest regards\nBasti\n\n${KONTAKT}`,
+      text: `Hi ${n},\n\nthanks for reaching out${lead.firma ? " on behalf of " + lead.firma : ""}! ${mk ? (mkUrl ? "Please find our media kit attached.\n\n" : "We'll send you our media kit personally shortly.\n\n") : ""}We'd love to hear more about your plans. The easiest next step is a short, free call (about 15 minutes)${book ? " – you can pick a time here: " + book : " – just reply with two or three times that suit you"}.\n\nTo prepare: where is your business located, and which period are you thinking of?\n\nOur portfolio: ${PORTFOLIO}\n\nBest regards\nBasti\n\n${KONTAKT}`,
     };
   }
   return {
     betreff: mk ? "Euer Media Kit von Back to Outdoor" : "Danke für eure Anfrage – Back to Outdoor",
-    text: `Hallo ${n},\n\ndanke für eure Nachricht${lead.firma ? " – schön, von " + lead.firma + " zu hören" : ""}! ${mk ? (mkUrl ? "Unser Media Kit findet ihr im Anhang.\n\n" : "Unser Media Kit schicke ich euch gleich persönlich zu.\n\n") : ""}Am einfachsten lernen wir uns in einem kurzen, kostenlosen Gespräch kennen (ca. 15 Minuten, unverbindlich)${book ? ". Hier könnt ihr direkt einen Termin wählen: " + book : ". Schickt mir einfach zwei, drei Zeitfenster, die euch passen"}.\n\nDamit ich mich gut vorbereiten kann: Wo seid ihr zu Hause, und an welchen Zeitraum denkt ihr?\n\nLiebe Grüße\nBasti\n\n${KONTAKT}`,
+    text: `Hallo ${n},\n\ndanke für eure Nachricht${lead.firma ? " – schön, von " + lead.firma + " zu hören" : ""}! ${mk ? (mkUrl ? "Unser Media Kit findet ihr im Anhang.\n\n" : "Unser Media Kit schicke ich euch gleich persönlich zu.\n\n") : ""}Am einfachsten lernen wir uns in einem kurzen, kostenlosen Gespräch kennen (ca. 15 Minuten, unverbindlich)${book ? ". Hier könnt ihr direkt einen Termin wählen: " + book : ". Schickt mir einfach zwei, drei Zeitfenster, die euch passen"}.\n\nDamit ich mich gut vorbereiten kann: Wo seid ihr zu Hause, und an welchen Zeitraum denkt ihr?\n\nUnsere Arbeiten: ${PORTFOLIO}\n\nLiebe Grüße\nBasti\n\n${KONTAKT}`,
   };
 }
 
@@ -121,7 +113,7 @@ Antworte ausschließlich als JSON: {"betreff":"...","text":"..."} – ohne Konta
     if (!j.betreff || !j.text) throw new Error("leer");
     // Sicherheitsnetz: nie Preise verschicken
     if (/€|\beuro\b|\bEUR\b|\d+\s?(,-|€)|tagessatz|rabatt/i.test(j.text)) throw new Error("Preis erkannt");
-    return { betreff: j.betreff.slice(0, 150), text: j.text.trim() + "\n\n" + KONTAKT };
+    return { betreff: j.betreff.slice(0, 150), text: j.text.trim() + "\n\n" + (lang === "en" ? "Our portfolio: " : lang === "fr" ? "Notre portfolio : " : "Unsere Arbeiten: ") + PORTFOLIO + "\n\n" + KONTAKT };
   } catch (e) {
     console.error("KI-Antwort fehlgeschlagen, nutze Vorlage:", e.message);
     return null;
@@ -158,7 +150,7 @@ async function verarbeiteLead(input, lang) {
   const kanal = kanalVon(lead);
   const antwort = produkt && lead.wunsch === "E-Book Teil 1"
     ? ebookMail(lead, produkt)
-    : kanal === "Immobilien" ? (lead.wunsch === "Immobilien UGC" ? ugcMail(lead) : immoMail(lead, lang))
+    : kanal === "Immobilien" ? immoMail(lead, lang)
     : kanal === "Mindset Tetris" ? mindsetMail(lead)
     : (await kiAntwort(lead, lang)) || vorlage(lead, lang === "fr" ? "en" : lang);
   const mediaKitUrl = lead.wunsch === "Media Kit" ? process.env.MEDIA_KIT_URL || "" : "";

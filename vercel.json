@@ -20,6 +20,16 @@
       "source": "/journal/:slug",
       "destination": "/:slug",
       "permanent": true
+    },
+    {
+      "source": "/immobilien/ugc",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio.html",
+      "destination": "/portfolio",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -32,8 +42,8 @@
       "destination": "/immobilien-showcase-en.html"
     },
     {
-      "source": "/immobilien/ugc",
-      "destination": "/immobilien-ugc.html"
+      "source": "/portfolio",
+      "destination": "/portfolio.html"
     }
   ]
 }
