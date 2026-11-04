@@ -91,7 +91,7 @@ for page in pages:
     base = os.path.dirname(page)
     for link in re.findall(r'\b(?:href|src)\s*=\s*"([^"]*)"', html):
         link = link.split("#")[0].split("?")[0]
-        if not link or link.startswith(IGNORE_LINK_PREFIXES) or "${" in link or "{{" in link:
+        if not link or link.startswith(IGNORE_LINK_PREFIXES) or "${" in link or "{{" in link or "' +" in link or "+ '" in link:
             continue
         target = link.lstrip("/") if link.startswith("/") else os.path.normpath(os.path.join(base, link))
         if target in ("", "."):
