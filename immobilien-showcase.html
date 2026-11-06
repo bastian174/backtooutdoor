@@ -51,10 +51,10 @@ h2{margin:0;font-weight:400;letter-spacing:-.02em;font-size:clamp(38px,5vw,60px)
 .pillars h2{max-width:850px}
 .pillars-intro{max-width:760px;color:#555B60;margin:22px 0 36px;font-size:18px}
 .pillars-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
-.pillar{border:1px solid #D8D2C5;padding:22px 18px;min-height:210px;background:#fff}
-.pillar small{display:block;color:var(--accent-dark);font-weight:700;letter-spacing:.12em;margin-bottom:18px}
-.pillar h3{font-size:20px;line-height:1.15;margin:0 0 12px;font-weight:600}
-.pillar p{font-size:14px;line-height:1.55;color:#555B60;margin:0}
+.pillar{border:1px solid #D8D2C5;padding:22px 18px;min-height:210px;min-width:0;background:#fff;overflow-wrap:anywhere;hyphens:auto}
+.pillar small{display:block;color:var(--accent-dark);font-weight:700;letter-spacing:.12em;margin-bottom:18px;overflow-wrap:anywhere}
+.pillar h3{font-size:clamp(17px,1.45vw,20px);line-height:1.15;margin:0 0 12px;font-weight:600;min-width:0;overflow-wrap:anywhere;hyphens:auto;word-break:normal}
+.pillar p{font-size:14px;line-height:1.55;color:#555B60;margin:0;min-width:0;overflow-wrap:anywhere;hyphens:auto}
 @media(max-width:1000px){.pillars-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.pillars{padding:72px 0}.pillars-grid{grid-template-columns:1fr}.pillar{min-height:0}}
 /* Header */
