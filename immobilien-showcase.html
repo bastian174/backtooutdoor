@@ -542,6 +542,9 @@ header.top nav a[aria-current="page"]{color:var(--accent)}
 .cf span{display:block;margin-top:6px;color:var(--muted);font-size:15.5px;line-height:1.55}
 .op-formats .legend{margin:26px 0 0;color:var(--soft);font-size:14.5px;line-height:1.6;max-width:900px}
 .op-formats .legend b{color:var(--muted)}
+.stage-steps li small.op-vf{display:block;margin-top:5px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold,#D8A84E);opacity:.75}
+.op-anchor{display:block;position:relative;top:-80px}
+@media (max-width:900px){.stage-steps li small.op-vf{display:none}}
 /* Marken */
 .op-brands{padding:110px 0;background:var(--bg)}
 .brand-tree{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;margin-top:48px;position:relative}
@@ -808,51 +811,17 @@ footer.op-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:sp
   </div>
 </section>
 
-<section class="op-formats op" id="formate" aria-labelledby="fm-h">
-  <div class="wrap">
-    <div class="eyebrow">Videoformate</div>
-    <h2 id="fm-h">Ein Format. <em class="s">Mehrere Plattformen.</em></h2>
-    <p class="intro">Wir unterscheiden drei Dinge: das Seitenverhältnis (das Bildformat), die Plattform (wo das Video läuft) und das Videoformat (wie es erzählt ist). So wird jedes Format nur einmal produziert und dort eingesetzt, wo es passt.</p>
-    <div class="ratio-grid">
-      <article class="ratio">
-        <div class="ratio-top"><span class="ratio-frames"><span class="ratio-frame r916"><img src="/assets/video/op/immobilie-reel.jpg" alt="" loading="lazy" decoding="async"></span></span><div><h3>Vertikal</h3><span class="big">9:16</span></div></div>
-        <dl><div><dt>Plattformen</dt><dd><span>Instagram Reels</span><span>TikTok</span><span>YouTube Shorts</span></dd></div><div><dt>Typische Videoformate</dt><dd>UGC · Walkthrough · Social Clips</dd></div></dl>
-      </article>
-      <article class="ratio">
-        <div class="ratio-top"><span class="ratio-frames"><span class="ratio-frame r169"><img src="/assets/video/op/immobilie-quer.jpg" alt="" loading="lazy" decoding="async"></span></span><div><h3>Horizontal</h3><span class="big">16:9</span></div></div>
-        <dl><div><dt>Plattformen</dt><dd><span>YouTube</span><span>Website</span><span>Immobilienportale</span></dd></div><div><dt>Typische Videoformate</dt><dd>Cinematic · Imagefilm · Walkthrough</dd></div></dl>
-      </article>
-      <article class="ratio">
-        <div class="ratio-top"><span class="ratio-frames"><span class="ratio-frame r45"><img src="/assets/video/op/immobilie-feed.jpg" alt="" loading="lazy" decoding="async"></span><span class="ratio-frame r23"><img src="/assets/video/op/immobilie-pin.jpg" alt="" loading="lazy" decoding="async"></span></span><div><h3>Weitere Formate</h3><span class="big">4:5 · 2:3</span></div></div>
-        <dl><div><dt>Plattformen</dt><dd><span>Instagram-Feed (4:5)</span><span>Pinterest (2:3)</span></dd></div><div><dt>Typische Videoformate</dt><dd>Social Clips · Video-Pins</dd></div></dl>
-      </article>
-    </div>
-    <div class="content-formats">
-      <h3>Videoformate nach Inhalt</h3>
-      <div class="cf-grid">
-      <div class="cf"><b>UGC</b><span>Authentisch, im Handy-Look, so wie Menschen Orte selbst teilen.</span></div>
-      <div class="cf"><b>Cinematic</b><span>Ruhig und hochwertig erzählt, mit Natur und Umgebung als Teil der Geschichte.</span></div>
-      <div class="cf"><b>Walkthrough</b><span>Ein geführter Rundgang, Raum für Raum.</span></div>
-      <div class="cf"><b>Imagefilm</b><span>Unternehmen, Menschen und Haltung im Porträt.</span></div>
-      <div class="cf"><b>Travel & Nature</b><span>Landschaft, Reise und Erlebnis – nah am echten Moment.</span></div>
-      <div class="cf"><b>Showcase</b><span>Präsentationsvideos für Website, Projektseite und Termine.</span></div>
-      </div>
-    </div>
-    <p class="legend"><b>Seitenverhältnis</b> = Bildformat · <b>Plattform</b> = wo das Video läuft · <b>Videoformat</b> = wie es erzählt ist. Den Preis nennen wir im persönlichen Angebot; für Content-Projekte ist vorab eine kostenlose Vorschau aus vorhandenem Material möglich.</p>
-  </div>
-</section>
-
-<section class="stage op" id="kanaele" aria-label="Ein Objekt, alle Kanäle">
-  <div class="stage-pin">
+<section class="stage op" id="kanaele" aria-labelledby="fm-h">
+  <span id="formate" class="op-anchor"></span><div class="stage-pin">
     <div class="wrap stage-in">
       <div class="stage-copy">
-        <div class="eyebrow">Ein Objekt, alle Kanäle</div>
-        <h2>Ein Objekt. <em class="s">Alle Kanäle.</em></h2>
-        <p>Aus demselben Material schneiden wir jedes Format passend zu – das Seitenverhältnis bestimmt, wo es läuft.</p>
+        <div class="eyebrow">Videoformate</div>
+        <h2 id="fm-h">Ein Dreh. <em class="s">Alle Kanäle.</em></h2>
+        <p>Aus denselben Aufnahmen schneiden wir jedes Format passend für den Kanal, auf dem es läuft.</p>
         <ol class="stage-steps">
-          <li data-i="0" class="on"><b>Vertikal 9:16</b><span>Instagram Reels, TikTok und YouTube Shorts</span></li>
-          <li data-i="1"><b>Horizontal 16:9</b><span>YouTube, Website und Immobilienportale</span></li>
-          <li data-i="2"><b>Pinterest 2:3</b><span>Hochformat, gefunden über die Suche</span></li>
+          <li data-i="0" class="on"><b>Vertikal 9:16</b><span>Instagram Reels, TikTok und YouTube Shorts</span><small class="op-vf">UGC · Walkthrough · Social Clips</small></li>
+          <li data-i="1"><b>Horizontal 16:9</b><span>YouTube, Website und Immobilienportale</span><small class="op-vf">Cinematic · Imagefilm · Walkthrough</small></li>
+          <li data-i="2"><b>Hochformat 2:3&nbsp;·&nbsp;4:5</b><span>Pinterest und Instagram-Feed</span><small class="op-vf">Video-Pins · Social Clips</small></li>
         </ol>
       </div>
       <div class="scene" aria-hidden="true">
