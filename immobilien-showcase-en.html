@@ -434,7 +434,7 @@ html.br-lock{overflow:hidden}
 :root{
   --bg:#111416; --bg2:#171B1E; --bg3:#1D2226; --line:#2B3236; --field:#3B4348;
   --text:#F5F1E6; --muted:#D7D1C5; --soft:#ADA699; --sand:#DCC28F;
-  --accent:#D8A84E; --accent-dark:#A9802F; --on-accent:#14110B; --gold-soft:#EBCB86;
+  --accent:#E36D27; --accent-dark:#B9501A; --on-accent:#14110B; --gold-soft:#F09A62;
   --teal:#38B2B7; --petrol:#1C6C72; --paper:#F5F1E6; --ink:#111416;
 }
 body{background:var(--bg)}
@@ -459,11 +459,14 @@ header.top nav a[aria-current="page"]{color:var(--accent)}
 .hero-col{width:min(640px,52vw);max-width:100%}
 .hero-col .hero-line{display:flex;align-items:center;gap:16px;margin:0 0 26px;font-size:13px;font-weight:600;letter-spacing:.42em;color:var(--accent);text-transform:uppercase}
 .hero-col .hero-line i{display:block;width:52px;height:1px;background:var(--accent)}
-.hero-claim{margin:0;font-weight:400;line-height:1;letter-spacing:-.02em}
+.hero-claim{margin:0;font-weight:400;font-size:clamp(38px,3.7vw,54px);line-height:1.06;letter-spacing:-.02em;color:var(--text)}
+.hero-claim em{display:block;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:0;color:var(--accent)}
+.hero-col .lead + .lead{margin-top:12px}
+.hero-col .lead .not{color:var(--text);font-weight:600}
 .hero-claim .see{display:block;font-size:clamp(28px,2.7vw,40px);font-weight:400;color:var(--text);letter-spacing:-.01em;margin-bottom:10px}
 .hero-claim .shape{display:block;white-space:nowrap;font-size:clamp(40px,4.45vw,66px);font-weight:500;letter-spacing:-.02em;color:var(--accent)}
 .op-fields{list-style:none;margin:30px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.op-fields li{white-space:nowrap;font-size:12px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--text);padding:7px 12px;border:1px solid rgba(216,168,78,.45);background:rgba(11,13,15,.35)}
+.op-fields li{white-space:nowrap;font-size:12px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--text);padding:7px 12px;border:1px solid rgba(227,109,39,.45);background:rgba(11,13,15,.35)}
 .hero-col .kern{margin:30px 0 0;font-size:clamp(22px,1.75vw,27px);line-height:1.32;font-weight:600;letter-spacing:-.01em;color:var(--text)}
 .hero-col .kern em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--gold-soft)}
 .hero-col .lead{margin:16px 0 0;font-size:16.5px;line-height:1.6;color:var(--muted);max-width:none}
@@ -540,13 +543,13 @@ header.top nav a[aria-current="page"]{color:var(--accent)}
 .cf span{display:block;margin-top:6px;color:var(--muted);font-size:15.5px;line-height:1.55}
 .op-formats .legend{margin:26px 0 0;color:var(--soft);font-size:14.5px;line-height:1.6;max-width:900px}
 .op-formats .legend b{color:var(--muted)}
-.stage-steps li small.op-vf{display:block;margin-top:5px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold,#D8A84E);opacity:.75}
+.stage-steps li small.op-vf{display:block;margin-top:5px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);opacity:.75}
 .op-anchor{display:block;position:relative;top:-80px}
 @media (max-width:900px){.stage-steps li small.op-vf{display:none}}
 /* Marken */
 .op-brands{padding:110px 0;background:var(--bg)}
 .brand-tree{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;margin-top:48px;position:relative}
-.brand-root{grid-column:1/-1;display:flex;align-items:center;gap:32px;padding:30px 34px;border:1px solid var(--line);background:linear-gradient(120deg,rgba(28,108,114,.22),rgba(216,168,78,.08))}
+.brand-root{grid-column:1/-1;display:flex;align-items:center;gap:32px;padding:30px 34px;border:1px solid var(--line);background:linear-gradient(120deg,rgba(28,108,114,.22),rgba(227,109,39,.08))}
 .brand-root img{width:132px;height:132px;flex:none}
 .brand-root b{display:block;font-size:24px;font-weight:600;letter-spacing:.2em}
 .brand-root small{display:block;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-top:6px}
@@ -594,7 +597,7 @@ footer.op-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:sp
   .hero-col{width:100%}
   .op-hero .wrap{padding-top:120px;padding-bottom:70px}
   .hero.op-hero::after{background:linear-gradient(180deg,rgba(11,13,15,.6) 0%,rgba(11,13,15,.8) 50%,rgba(11,13,15,.92) 100%)}
-  .hero-claim .shape{font-size:min(9.4vw,58px)}
+  .hero-claim{font-size:min(10vw,52px)}
   .op-statement .wrap,.op-who .wrap,.op-philo .wrap{grid-template-columns:1fr;gap:36px}
   .cf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .brand-tree{grid-template-columns:1fr}
@@ -653,10 +656,10 @@ footer.op-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:sp
   <div class="wrap">
     <div class="hero-col">
       <div class="hero-line"><i></i>The Butterfly Effect</div>
-      <h1 class="hero-claim"><span class="sr-only">OPTIMIST PREIN – Creative Transformation Studio: </span><span class="see">See Beyond.</span><span class="shape">Shape What’s Next.</span></h1>
+      <h1 class="hero-claim"><span class="sr-only">OPTIMIST PREIN – Creative Transformation Studio: </span>We make companies visible. <em>And ready for tomorrow.</em></h1>
       <ul class="op-fields" aria-label="Fields of impact"><li>Strategy</li><li>Positioning</li><li>Digital</li><li>Storytelling</li><li>Industries</li></ul>
-      <p class="kern">We turn ideas into clear positioning <em>and special places into digital experiences.</em></p>
-      <p class="lead">As a Creative Transformation Studio we combine business coaching, strategic brand and product positioning, web design and photo, video and storytelling content. For companies, brands, real estate, tourism and hospitality – approachable, well thought through and focused on what really makes them special.</p>
+      <p class="lead">We help companies and the self-employed recognise their potential, sharpen their brand and develop strategically, visually and digitally.</p>
+      <p class="lead"><span class="not">Not a classic advertising agency. Not a pure consultancy.</span> We put ourselves in the shoes of companies, products and audiences and turn that into a clear strategy with fitting creative and digital execution.</p>
       <div class="ctas">
         <a href="#anfrage" class="btn btn-red">Start a project</a>
         <a href="#studio" class="btn btn-line">Explore our fields</a>
@@ -666,17 +669,10 @@ footer.op-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:sp
   <button type="button" class="vidtoggle" id="vidToggle" aria-pressed="false">❚❚ Pause video</button>
 </section>
 
-<section class="op-statement op" aria-labelledby="st-h">
-  <div class="wrap">
-    <div><div class="eyebrow">Creative Transformation Studio</div><h2 id="st-h">We make companies visible. <em class="s">And ready for tomorrow.</em></h2></div>
-    <div><p>We help companies and the self-employed recognise their potential, sharpen their brand and adapt strategically, visually and digitally to what today demands.</p><p><span class="not">Not a classic advertising agency. Not a pure consultancy.</span> We see connections, put ourselves in the shoes of companies, people, products and audiences, and turn that into a clear strategy with fitting creative and digital execution.</p></div>
-  </div>
-</section>
-
 <section class="op-fields5 op" id="studio" aria-labelledby="studio-h">
   <div class="wrap">
     <div class="eyebrow">Studio · Five fields of impact</div>
-    <h2 id="studio-h">Five fields of impact. <em class="s">One connected system.</em></h2>
+    <h2 id="studio-h">See Beyond. <em class="s">Shape What’s Next.</em></h2>
     <p class="intro">Each field stands on its own – the effect comes from how they work together. From strategy to finished content, we keep the whole picture in view.</p>
     <div class="f5-grid">
       <article class="f5"><span class="n">01</span><span class="k">Strategy</span><h3>Business development & coaching</h3><p>Questioning business models, offers and processes, recognising potential and setting clear next steps.</p></article>
