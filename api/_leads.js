@@ -17,12 +17,12 @@ const KONTAKT = "Back to Outdoor · Salzburg\ninfo@backtooutdoor.com · +43 (0)6
 // Drei Kanäle: Back to Outdoor (Outdoor-Content), Mindset Tetris (E-Books/Mindset), Immobilien (Showcase-Seite)
 function kanalVon(lead) {
   const seite = String(lead.seite || "").toLowerCase();
-  if (lead.typ === "Immobilien" || seite.includes("immobilien")) return "Immobilien";
+  if (lead.typ === "Immobilien" || seite.includes("immobilien") || seite.includes("optimist-prein")) return "Immobilien";
   if (PRODUKTE[lead.produkt] || String(lead.produkt || "").startsWith("mindset") || /tetris|mindset/.test(seite)) return "Mindset Tetris";
   return "Back to Outdoor";
 }
 
-// Projektanfragen von /immobilien und /immobilien-en (OPTIMIST PREIN – Creative Transformation Studio)
+// Projektanfragen von /optimist-prein und /optimist-prein-en (OPTIMIST PREIN – Creative Transformation Studio)
 const KONTAKT_OP = "Bastian Prein\nOPTIMIST PREIN – Creative Transformation Studio\nSee Beyond. Shape What’s Next.\n\ninfo@backtooutdoor.com · +43 (0)660 8422053";
 // Bereiche aus dem Formular. Nur diese festen Werte gelangen in die Antwort – freier Text aus dem Formular nie.
 const OP_BEREICHE = {
@@ -53,12 +53,12 @@ function immoMail(lead, lang) {
   if (lang === "en") {
     return {
       betreff: "Your enquiry – OPTIMIST PREIN",
-      text: `Hello${n ? " " + n : ""},\n\nthank you for your message and your interest in OPTIMIST PREIN.${b ? " You are interested in " + b + "." : ""}\n\nI will look at your enquiry personally and get back to you to discuss the next steps. If you already have documents, a link or images, feel free to send them as a reply to this email.\n\nBest regards\n${KONTAKT_OP}\nbacktooutdoor.com/immobilien-en`,
+      text: `Hello${n ? " " + n : ""},\n\nthank you for your message and your interest in OPTIMIST PREIN.${b ? " You are interested in " + b + "." : ""}\n\nI will look at your enquiry personally and get back to you to discuss the next steps. If you already have documents, a link or images, feel free to send them as a reply to this email.\n\nBest regards\n${KONTAKT_OP}\nbacktooutdoor.com/optimist-prein-en`,
     };
   }
   return {
     betreff: "Ihre Anfrage – OPTIMIST PREIN",
-    text: `Guten Tag${n ? " " + n : ""},\n\nvielen Dank für Ihre Nachricht und Ihr Interesse an OPTIMIST PREIN.${b ? " Sie interessieren sich für " + b + "." : ""}\n\nIch schaue mir Ihre Anfrage persönlich an und melde mich bei Ihnen, um die nächsten Schritte zu besprechen. Wenn Sie bereits Unterlagen, einen Link oder Bildmaterial haben, können Sie diese gern als Antwort auf diese Mail schicken.\n\nFreundliche Grüße\n${KONTAKT_OP}\nbacktooutdoor.com/immobilien`,
+    text: `Guten Tag${n ? " " + n : ""},\n\nvielen Dank für Ihre Nachricht und Ihr Interesse an OPTIMIST PREIN.${b ? " Sie interessieren sich für " + b + "." : ""}\n\nIch schaue mir Ihre Anfrage persönlich an und melde mich bei Ihnen, um die nächsten Schritte zu besprechen. Wenn Sie bereits Unterlagen, einen Link oder Bildmaterial haben, können Sie diese gern als Antwort auf diese Mail schicken.\n\nFreundliche Grüße\n${KONTAKT_OP}\nbacktooutdoor.com/optimist-prein`,
   };
 }
 

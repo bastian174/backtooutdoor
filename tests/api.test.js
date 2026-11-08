@@ -137,7 +137,7 @@ test("OPTIMIST PREIN: Bestätigung nennt nur bekannte Bereiche und keine Links a
   process.env.LEAD_WEBHOOK_URL = "https://script.google.com/macros/s/test/exec";
   mockFetch({ status: 200, json: { ok: true } });
   const { verarbeiteLead } = require("../api/_leads");
-  await verarbeiteLead({ name: "Anna Muster", email: "anna@x.at", typ: "Immobilien", seite: "/immobilien", anliegen: "Bereich: Website & digitale Erlebnisse\nHallo" });
+  await verarbeiteLead({ name: "Anna Muster", email: "anna@x.at", typ: "Immobilien", seite: "/optimist-prein", anliegen: "Bereich: Website & digitale Erlebnisse\nHallo" });
   let t = calls[0].body.antwort_text;
   assert.match(t, /^Guten Tag Anna Muster,/);
   assert.match(t, /Sie interessieren sich für Website & digitale Erlebnisse\./);
@@ -145,7 +145,7 @@ test("OPTIMIST PREIN: Bestätigung nennt nur bekannte Bereiche und keine Links a
   t = calls.filter((c) => c.body && c.body.antwort_text).at(-1).body.antwort_text;
   assert.doesNotMatch(t, /spam/i);
   assert.match(t, /^Guten Tag,\n/);
-  await verarbeiteLead({ name: "John", email: "j@x.at", typ: "Immobilien", seite: "/immobilien-en", anliegen: "Bereich: Strategy & coaching\n" }, "en");
+  await verarbeiteLead({ name: "John", email: "j@x.at", typ: "Immobilien", seite: "/optimist-prein-en", anliegen: "Bereich: Strategy & coaching\n" }, "en");
   t = calls.filter((c) => c.body && c.body.antwort_text).at(-1).body.antwort_text;
   assert.match(t, /^Hello John,/);
   assert.match(t, /strategy & coaching/);

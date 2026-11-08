@@ -20,15 +20,25 @@
       "source": "/journal/:slug",
       "destination": "/:slug",
       "permanent": true
+    },
+    {
+      "source": "/immobilien",
+      "destination": "/optimist-prein",
+      "permanent": true
+    },
+    {
+      "source": "/immobilien-en",
+      "destination": "/optimist-prein-en",
+      "permanent": true
     }
   ],
   "rewrites": [
     {
-      "source": "/immobilien",
+      "source": "/optimist-prein",
       "destination": "/immobilien-showcase.html"
     },
     {
-      "source": "/immobilien-en",
+      "source": "/optimist-prein-en",
       "destination": "/immobilien-showcase-en.html"
     }
   ]
