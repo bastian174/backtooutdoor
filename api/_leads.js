@@ -22,14 +22,43 @@ function kanalVon(lead) {
   return "Back to Outdoor";
 }
 
-const KONTAKT_IMMO = "Back to Outdoor · Immobilien-Content\ninfo@backtooutdoor.com · +43 (0)660 8422053\nbacktooutdoor.com/immobilien-showcase.html";
+// Projektanfragen von /immobilien und /immobilien-en (OPTIMIST PREIN – Creative Transformation Studio)
+const KONTAKT_OP = "Bastian Prein\nOPTIMIST PREIN – Creative Transformation Studio\nSee Beyond. Shape What’s Next.\n\ninfo@backtooutdoor.com · +43 (0)660 8422053";
+// Bereiche aus dem Formular. Nur diese festen Werte gelangen in die Antwort – freier Text aus dem Formular nie.
+const OP_BEREICHE = {
+  "Strategie & Coaching": ["Strategie & Coaching", "strategy & coaching"],
+  "Positionierung (Marke & Produkt)": ["Positionierung von Marke & Produkt", "brand & product positioning"],
+  "Website & digitale Erlebnisse": ["Website & digitale Erlebnisse", "website & digital experiences"],
+  "Foto, Video & Content": ["Foto, Video & Content", "photo, video & content"],
+  "Projektseite für Immobilien": ["eine Projektseite für Immobilien", "a project page for real estate"],
+  "Strategy & coaching": ["Strategie & Coaching", "strategy & coaching"],
+  "Positioning (brand & product)": ["Positionierung von Marke & Produkt", "brand & product positioning"],
+  "Website & digital experiences": ["Website & digitale Erlebnisse", "website & digital experiences"],
+  "Photo, video & content": ["Foto, Video & Content", "photo, video & content"],
+  "Project page for real estate": ["eine Projektseite für Immobilien", "a project page for real estate"],
+};
+function opBereich(lead, lang) {
+  const roh = (String(lead.anliegen || "").match(/^Bereich: ([^\n]+)/m) || [])[1];
+  const b = roh && OP_BEREICHE[roh.trim()];
+  return b ? b[lang === "en" ? 1 : 0] : "";
+}
+// Name nur übernehmen, wenn er wie ein Name aussieht (keine Links oder Adressen in der automatischen Antwort)
+function anredeName(name) {
+  const n = String(name || "").trim();
+  return n && n.length <= 80 && !/(https?:|www\.|@|\.[a-z]{2,}\b|\/)/i.test(n) ? n : "";
+}
 
-// Immobilien: feste Vorlage (Sie-Form), passend zur Showcase-Seite: Gratis-Vorschau aus vorhandenen Fotos, 2 Werktage
-function immoMail(lead) {
-  const fmt = (String(lead.anliegen || "").match(/^Format: (.+)$/m) || [])[1];
+function immoMail(lead, lang) {
+  const n = anredeName(lead.name), b = opBereich(lead, lang);
+  if (lang === "en") {
+    return {
+      betreff: "Your enquiry – OPTIMIST PREIN",
+      text: `Hello${n ? " " + n : ""},\n\nthank you for your message and your interest in OPTIMIST PREIN.${b ? " You are interested in " + b + "." : ""}\n\nI will look at your enquiry personally and get back to you to discuss the next steps. If you already have documents, a link or images, feel free to send them as a reply to this email.\n\nBest regards\n${KONTAKT_OP}\nbacktooutdoor.com/immobilien-en`,
+    };
+  }
   return {
-    betreff: "Ihre Vorschau-Anfrage – Back to Outdoor",
-    text: `Guten Tag ${lead.name},\n\ndanke für Ihre Anfrage${fmt && !/auswählen|offen/i.test(fmt) ? " (" + fmt + ")" : ""}. Für die kostenlose Vorschau brauche ich nur zwei Dinge von Ihnen:\n\n1. Die vorhandenen Fotos des Objekts, am besten 8 bis 15 Bilder. Sie können sie einfach als Antwort auf diese Mail schicken oder einen Download-Link senden.\n2. Kurz die Eckdaten, die im Video stehen sollen, zum Beispiel Art des Objekts, Ort und Fläche.\n\nSobald die Fotos da sind, bekommen Sie die Vorschau innerhalb von 2 Werktagen. Ein Termin vor Ort ist dafür nicht nötig.\n\nFreundliche Grüße\nBasti\n\n${KONTAKT_IMMO}`,
+    betreff: "Ihre Anfrage – OPTIMIST PREIN",
+    text: `Guten Tag${n ? " " + n : ""},\n\nvielen Dank für Ihre Nachricht und Ihr Interesse an OPTIMIST PREIN.${b ? " Sie interessieren sich für " + b + "." : ""}\n\nIch schaue mir Ihre Anfrage persönlich an und melde mich bei Ihnen, um die nächsten Schritte zu besprechen. Wenn Sie bereits Unterlagen, einen Link oder Bildmaterial haben, können Sie diese gern als Antwort auf diese Mail schicken.\n\nFreundliche Grüße\n${KONTAKT_OP}\nbacktooutdoor.com/immobilien`,
   };
 }
 
@@ -141,7 +170,7 @@ async function verarbeiteLead(input, lang) {
   const kanal = kanalVon(lead);
   const antwort = produkt && lead.wunsch === "E-Book Teil 1"
     ? ebookMail(lead, produkt)
-    : kanal === "Immobilien" ? immoMail(lead)
+    : kanal === "Immobilien" ? immoMail(lead, lang)
     : kanal === "Mindset Tetris" ? mindsetMail(lead)
     : (await kiAntwort(lead, lang)) || vorlage(lead, lang === "fr" ? "en" : lang);
   const mediaKitUrl = lead.wunsch === "Media Kit" ? process.env.MEDIA_KIT_URL || "" : "";
@@ -149,7 +178,7 @@ async function verarbeiteLead(input, lang) {
   const ebook = produkt ? { titel: produkt.titel, teil2: teil2Link(lead.produkt), landing: produkt.landing } : undefined;
   const payload = { secret: process.env.LEAD_SECRET || "", zeit: new Date().toISOString(), sprache: lang, kanal, ...lead, ebook, antwort_betreff: antwort.betreff, antwort_text: antwort.text, media_kit_url: mediaKitUrl };
 
-  console.log("NEUER LEAD", JSON.stringify({ ...payload, secret: undefined }));
+  console.log("NEUER LEAD", JSON.stringify({ zeit: payload.zeit, kanal, wunsch: lead.wunsch, seite: lead.seite, sprache: lang, quelle: lead.quelle }));
   const ergebnis = await versenden(payload);
   // Immobilien-Anfragen zusätzlich als Kopie an IMMO_MAIL – auch wenn der Hauptweg scheitert, Fehler der Kopie blockieren nichts
   if (kanal === "Immobilien" && IMMO_MAIL && IMMO_MAIL !== INFO_MAIL) await kopieAn(IMMO_MAIL, payload);

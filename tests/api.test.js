@@ -74,6 +74,7 @@ test("verarbeiteLead ordnet Kanäle zu (Immobilien, Mindset-E-Book) und sendet a
   assert.equal(calls[0].body.kanal, "Immobilien");
   assert.equal(calls[0].body.secret, "geheim");
   assert.match(calls[0].body.antwort_text, /^Guten Tag Max,/);
+  assert.match(calls[0].body.antwort_text, /OPTIMIST PREIN/);
 
   await verarbeiteLead({ name: "Lea", email: "lea@x.de", wunsch: "E-Book Teil 1", produkt: "gewohnheits-tetris" });
   const eb = calls.at(-1).body; // calls[1] ist die Immobilien-Kopie an IMMO_MAIL
@@ -130,6 +131,24 @@ test("/api/lead: Spam wird still verworfen, ungültig → 400, gültig → 200, 
   res = fakeRes();
   await leadHandler({ method: "DELETE" }, res);
   assert.equal(res.statusCode, 405);
+});
+
+test("OPTIMIST PREIN: Bestätigung nennt nur bekannte Bereiche und keine Links aus dem Namensfeld", async () => {
+  process.env.LEAD_WEBHOOK_URL = "https://script.google.com/macros/s/test/exec";
+  mockFetch({ status: 200, json: { ok: true } });
+  const { verarbeiteLead } = require("../api/_leads");
+  await verarbeiteLead({ name: "Anna Muster", email: "anna@x.at", typ: "Immobilien", seite: "/immobilien", anliegen: "Bereich: Website & digitale Erlebnisse\nHallo" });
+  let t = calls[0].body.antwort_text;
+  assert.match(t, /^Guten Tag Anna Muster,/);
+  assert.match(t, /Sie interessieren sich für Website & digitale Erlebnisse\./);
+  await verarbeiteLead({ name: "www.spam.example", email: "x@x.at", typ: "Immobilien", seite: "/immobilien", anliegen: "Bereich: Klick https://spam.example\n" });
+  t = calls.filter((c) => c.body && c.body.antwort_text).at(-1).body.antwort_text;
+  assert.doesNotMatch(t, /spam/i);
+  assert.match(t, /^Guten Tag,\n/);
+  await verarbeiteLead({ name: "John", email: "j@x.at", typ: "Immobilien", seite: "/immobilien-en", anliegen: "Bereich: Strategy & coaching\n" }, "en");
+  t = calls.filter((c) => c.body && c.body.antwort_text).at(-1).body.antwort_text;
+  assert.match(t, /^Hello John,/);
+  assert.match(t, /strategy & coaching/);
 });
 
 // 3) /api/go – Klick-Tracking und Weiterleitung ohne offenen Redirect
