@@ -255,3 +255,33 @@ section.rf .portfolio-cta{margin-top:40px}
   .rf-meta h3{font-size:1.8rem}
 }
 @media (prefers-reduced-motion:reduce){.rf-pane.on{animation:none}.rf-regions button i{transition:none}}
+
+/* ---------- Warum mit uns + Zielgruppen (ein Abschnitt) ---------- */
+.aud-row{margin-top:64px;padding-top:44px;border-top:1px solid var(--line,rgba(19,32,48,.14))}
+.aud-row-title{margin:0;font-family:'Big Shoulders Display',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(1.7rem,2.8vw,2.3rem);line-height:1.05}
+.aud-row .section-note{margin:12px 0 0;max-width:56ch}
+.aud-cols{margin-top:30px}
+.aud-cols .why-item{padding-left:22px;border-left:2px solid var(--line,rgba(19,32,48,.14))}
+
+/* ---------- Abschluss: Anfrage + Media Kit in einem Block ---------- */
+section.closing.cta2{text-align:left;padding:96px 0}
+.cta2-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:56px;align-items:center}
+section.closing.cta2 h2{margin:16px 0 0;max-width:15ch}
+section.closing.cta2 .hero-sub{margin:20px 0 0;text-align:left;max-width:46ch}
+section.closing.cta2 .hero-actions{justify-content:flex-start;margin-top:30px}
+.cta2 .mk-leitfaden{margin:22px 0 0;font-size:.92rem;color:rgba(247,245,240,.82)}
+.cta2 .mk-leitfaden a{color:var(--foam,#f7f5f0);font-weight:600;text-underline-offset:3px}
+.cta2 .mk-card{background:rgba(247,245,240,.05);border-radius:4px}
+.cta2 .mk-card p{margin:12px 0 0;font-size:.9rem;line-height:1.6;color:rgba(247,245,240,.72)}
+@media (max-width:860px){
+  section.closing.cta2{padding:64px 0}
+  .cta2-grid{grid-template-columns:1fr;gap:36px}
+  .aud-row{margin-top:48px;padding-top:34px}
+}
+.why-split{grid-template-columns:minmax(0,.56fr) minmax(0,1.44fr);gap:56px}
+@media (max-width:960px){.why-split{grid-template-columns:1fr}}
+@media (max-width:800px){
+  .aud-cols{gap:18px;margin-top:22px}
+  .aud-cols .why-item{padding-top:2px;padding-bottom:2px}
+  .cta2 .mk-card{padding:24px 22px}
+}

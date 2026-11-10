@@ -40,7 +40,7 @@
 .dev.pin .tag{bottom:-34px}
 
 /* Bühne aktiv (nur mit fx): gepinnt, Geräte fliegen durch den Raum */
-html.fx .pstage{height:340vh}
+html.fx .pstage{height:260vh}
 html.fx .pstage-pin{position:sticky;top:var(--navh,68px);height:calc(100vh - var(--navh,68px));height:calc(100svh - var(--navh,68px));padding:0;display:flex;align-items:center;overflow:hidden}
 html.fx .pstage-pin::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 68% 50%,rgba(227,109,39,.16),transparent 70%);pointer-events:none}
 html.fx .pstage-in{width:100%;position:relative}
@@ -57,7 +57,7 @@ html.fx .pstage-steps li{cursor:pointer}
   .pstage-scene{gap:50px 20px}
   .dev.laptop{width:min(560px,92vw);height:auto}
   .dev.laptop .scr{height:auto;aspect-ratio:16/9}
-  html.fx .pstage{height:320vh}
+  html.fx .pstage{height:230vh}
   html.fx .pstage-in{grid-template-columns:1fr;gap:0;align-content:center}
   html.fx .pstage h2{font-size:2.1rem;margin-top:8px}
   html.fx .pstage-copy > p{display:none}
