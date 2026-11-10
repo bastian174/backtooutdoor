@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Energietechnik Seitz – Photovoltaik, Wärmepumpe & Energie-Management | Großgmain</title>
+<meta name="description" content="Energietechnik Seitz aus Großgmain plant und installiert Photovoltaikanlagen, Wärmepumpen und Energie-Management-Systeme – passend zum tatsächlichen Bedarf, zwischen Chiemsee und Mondsee.">
+<link rel="icon" href="https://img.expoya.com/bXCZlkiYafrlxDCNPruG7OLN1fYFaN2tcIbD06xvpG0/rt:fit/w:256/YWJzOi8vY29tcGFueS8xNzMyNTE1NjcxNDk3X0xvZ28uanBn">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --morning:#F5F7F1;   /* heller Morgenhimmel, Seitenhintergrund */
+  --paper:#FFFFFF;
+  --ink:#1D2733;       /* Schiefer, aus dem Seitz-Grau abgeleitet */
+  --ink-soft:#4A5664;
+  --leaf:#3F8F0E;      /* Seitz-Grün, textsicher */
+  --leaf-bright:#5ACC12; /* Seitz-Grün aus dem Logo */
+  --sun:#F3A73B;       /* Sonnen-Akzent */
+  --sky:#E3ECF2;
+  --line:#DCE2D6;
+  --radius-lg:28px; --radius-md:16px; --radius-sm:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--morning);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;line-height:1.05;letter-spacing:-.02em;margin:0;font-weight:800}
+h2{font-size:clamp(34px,4.6vw,58px)}
+h3{font-size:24px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+p{margin:0}
+.wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font-weight:700;font-size:17px;text-decoration:none;border:2px solid transparent;cursor:pointer;font-family:inherit;transition:background .2s,color .2s,border-color .2s}
+.btn-leaf{background:var(--leaf);color:#fff}.btn-leaf:hover{background:#327309}
+.btn-ghost{border-color:var(--ink);color:var(--ink);background:transparent}.btn-ghost:hover{background:var(--ink);color:#fff}
+.btn svg{width:18px;height:18px}
+
+/* Kopf */
+.top{position:sticky;top:0;z-index:20;background:rgba(245,247,241,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:28px;min-height:76px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:48px;height:48px;border-radius:50%}
+.brand b{font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:800;letter-spacing:-.01em;line-height:1.1}
+.brand small{display:block;font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.top nav{display:flex;gap:24px;margin-left:auto}
+.top nav a{text-decoration:none;font-weight:600;font-size:16px;color:var(--ink-soft)}
+.top nav a:hover{color:var(--leaf)}
+.top .call{min-height:44px;padding:0 18px;font-size:16px}
+@media (max-width:960px){.top nav{display:none}.top .call{margin-left:auto}}
+@media (max-width:480px){.brand small{display:none}.top .call span{display:none}.top .call{padding:0 14px}}
+
+/* Hero */
+.hero{padding:64px 0 0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:end}
+.hero h1{font-size:clamp(46px,7vw,96px);letter-spacing:-.035em;line-height:.98}
+.hero h1 .quiet{display:block;color:var(--leaf)}
+.hero-side p{font-size:20px;color:var(--ink-soft);max-width:44ch}
+.hero-side .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero-side .where{margin-top:22px;font-size:16px;color:var(--ink-soft)}
+.panorama{margin-top:56px;position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:1717/420;min-height:220px;background:var(--ink)}
+.panorama img{width:100%;height:100%;object-fit:cover}
+.sunline{position:absolute;left:0;right:0;bottom:0;height:6px;background:linear-gradient(90deg,var(--leaf-bright),var(--sun))}
+@media (max-width:900px){.hero{padding-top:40px}.hero-grid{grid-template-columns:1fr;gap:24px}.panorama{aspect-ratio:4/3;min-height:0;margin-top:36px}}
+
+/* Grundsatz + Bedarfs-Check */
+.idea{padding:120px 0 40px}
+.idea-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:end}
+.idea-head p{color:var(--ink-soft);font-size:19px;max-width:46ch}
+.check{margin-top:56px;background:var(--paper);border-radius:var(--radius-lg);padding:44px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;box-shadow:0 1px 0 var(--line)}
+.check h3{font-size:28px}
+.check .hint{color:var(--ink-soft);margin-top:10px;font-size:17px}
+.uses{display:flex;flex-direction:column;gap:12px;margin-top:26px}
+.use{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:16px 18px;border-radius:var(--radius-md);border:2px solid var(--line);background:var(--morning);font:inherit;font-weight:600;color:var(--ink);cursor:pointer;transition:border-color .2s,background .2s}
+.use:hover{border-color:#B9C7AE}
+.use[aria-pressed="true"]{border-color:var(--leaf);background:#EEF7E6}
+.use .box{flex:none;width:26px;height:26px;border-radius:8px;border:2px solid #AEB9A4;display:grid;place-items:center;background:#fff;transition:background .2s,border-color .2s}
+.use[aria-pressed="true"] .box{background:var(--leaf);border-color:var(--leaf)}
+.use .box svg{width:16px;height:16px;opacity:0;color:#fff}
+.use[aria-pressed="true"] .box svg{opacity:1}
+.use small{display:block;font-weight:400;color:var(--ink-soft);font-size:15.5px}
+.result{border-radius:var(--radius-md);background:var(--ink);color:#fff;padding:36px;display:flex;flex-direction:column;min-height:100%}
+.result .lbl{font-size:15px;color:#A8B6C4;font-weight:600}
+.result h4{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3vw,38px);line-height:1.08;letter-spacing:-.02em;margin:8px 0 0}
+.result p{margin-top:16px;color:#D6DEE6;font-size:17.5px}
+.result ul{margin:20px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.result li{padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.1);font-size:15px;font-weight:600}
+.result .btn{margin-top:auto;align-self:flex-start;background:var(--leaf-bright);color:var(--ink)}
+.result .btn:hover{background:#7BDB3D}
+.result .spacer{flex:1;min-height:24px}
+.result.flash{animation:flash .5s ease}
+@keyframes flash{from{transform:translateY(6px);opacity:.6}to{transform:none;opacity:1}}
+@media (max-width:900px){.idea{padding-top:84px}.idea-head,.check{grid-template-columns:1fr;gap:24px}.check{padding:26px}.result{padding:28px}}
+
+/* Leistungen */
+.services{padding:100px 0}
+.services h2{max-width:16ch}
+.svc-grid{margin-top:48px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.svc{background:var(--paper);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column}
+.svc .ph{aspect-ratio:4/3;overflow:hidden;background:var(--sky)}
+.svc .ph img{width:100%;height:100%;object-fit:cover}
+.svc .tx{padding:28px 30px 32px}
+.svc p{margin-top:10px;color:var(--ink-soft)}
+.svc-pv{grid-column:span 7}.svc-pv .ph{aspect-ratio:16/10}
+.svc-wp{grid-column:span 5}
+.svc-ems{grid-column:span 12;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center}
+.svc-ems .logo{padding:48px;display:grid;place-items:center;background:#fff;height:100%;border-right:1px solid var(--line)}
+.svc-ems .logo img{width:min(320px,100%)}
+.svc-ems .logo small{display:block;margin-top:14px;text-align:center;color:var(--ink-soft);font-size:15px}
+@media (max-width:900px){.svc-pv,.svc-wp{grid-column:span 12}.svc-ems{grid-template-columns:1fr}.svc-ems .logo{border-right:0;border-bottom:1px solid var(--line);padding:32px}}
+
+/* Ablauf */
+.flow{padding:100px 0;background:var(--ink);color:#fff}
+.flow h2{max-width:18ch}
+.flow .intro{color:#C4CFD9;margin-top:18px;max-width:52ch;font-size:19px}
+.steps{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;counter-reset:st}
+.steps li{counter-increment:st;position:relative;padding-top:64px}
+.steps li::before{content:counter(st);position:absolute;top:0;left:0;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;background:var(--leaf-bright);color:var(--ink)}
+.steps li::after{content:"";position:absolute;top:21px;left:56px;right:-8px;height:2px;background:rgba(255,255,255,.18)}
+.steps li:last-child::after{display:none}
+.steps h3{font-size:22px}
+.steps p{margin-top:8px;color:#C4CFD9;font-size:17px}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr;gap:36px 20px}.steps li::after{display:none}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* Warum */
+.why{padding:110px 0}
+.why-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:64px;align-items:center}
+.why .ph{border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/5}
+.why .ph img{width:100%;height:100%;object-fit:cover}
+.reasons{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:0}
+.reasons li{display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+.reasons li:last-child{border-bottom:1px solid var(--line)}
+.reasons svg{flex:none;width:26px;height:26px;color:var(--leaf);margin-top:2px}
+.reasons b{display:block;font-weight:700}
+.reasons span{color:var(--ink-soft);font-size:17px}
+@media (max-width:900px){.why-grid{grid-template-columns:1fr;gap:36px}.why .ph{aspect-ratio:16/10}}
+
+/* Region */
+.region{padding:0 0 110px}
+.region-card{background:var(--sky);border-radius:var(--radius-lg);padding:56px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+.region-card p{color:var(--ink-soft);margin-top:16px;font-size:19px;max-width:42ch}
+.towns{display:flex;flex-wrap:wrap;gap:10px}
+.towns span{padding:10px 18px;border-radius:999px;background:#fff;font-weight:600;font-size:16.5px}
+.towns span.home{background:var(--leaf);color:#fff}
+@media (max-width:900px){.region-card{grid-template-columns:1fr;padding:30px;gap:28px}}
+
+/* Ratgeber */
+.guide{padding:0 0 110px}
+.guide-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.guide-head p{color:var(--ink-soft);max-width:44ch}
+.rail{margin-top:40px;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}
+.article{scroll-snap-align:start;background:var(--paper);border-radius:var(--radius-md);overflow:hidden;text-decoration:none;display:flex;flex-direction:column;border:1px solid transparent;transition:border-color .2s}
+.article:hover{border-color:var(--leaf)}
+.article .ph{aspect-ratio:16/10;background:var(--sky);overflow:hidden}
+.article .ph img{width:100%;height:100%;object-fit:cover}
+.article b{display:block;padding:18px 20px 22px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;line-height:1.25;letter-spacing:-.01em}
+@media (min-width:1100px){.rail{grid-auto-flow:row;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible}}
+
+/* Kontakt */
+.contact{padding:110px 0;background:var(--paper)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px}
+.contact .lead{color:var(--ink-soft);margin-top:18px;font-size:19px;max-width:44ch}
+.direct{margin-top:36px;display:grid;gap:14px}
+.direct a,.direct div{display:flex;gap:16px;align-items:center;padding:20px 22px;border-radius:var(--radius-md);background:var(--morning);text-decoration:none}
+.direct svg{flex:none;width:26px;height:26px;color:var(--leaf)}
+.direct small{display:block;color:var(--ink-soft);font-size:15px}
+.direct b{font-size:20px}
+form{display:grid;gap:16px;align-content:start}
+label{display:grid;gap:6px;font-weight:600;font-size:16px}
+input,textarea{font:inherit;font-size:17px;padding:14px 16px;border-radius:var(--radius-sm);border:1.5px solid #C9D1C2;background:var(--morning);color:var(--ink)}
+input:focus,textarea:focus{outline:none;border-color:var(--leaf);box-shadow:0 0 0 3px rgba(90,204,18,.25)}
+textarea{min-height:130px;resize:vertical}
+.form-note{font-size:15px;color:var(--ink-soft)}
+.form-msg{display:none;padding:14px 16px;border-radius:var(--radius-sm);background:#FFF4E2;border:1px solid #F2D2A0;font-size:16px}
+.form-msg.show{display:block}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr;gap:44px}}
+
+footer{padding:40px 0 48px;font-size:15px;color:var(--ink-soft)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+footer a{text-decoration:none;font-weight:600}
+.preview-flag{position:fixed;left:16px;bottom:16px;z-index:30;background:var(--ink);color:#fff;font-size:13.5px;padding:8px 14px;border-radius:999px;box-shadow:0 6px 20px rgba(29,39,51,.25)}
+@media (max-width:520px){.preview-flag{left:auto;right:12px;bottom:12px}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#start" aria-label="Energietechnik Seitz, zum Seitenanfang">
+      <img src="https://img.expoya.com/bXCZlkiYafrlxDCNPruG7OLN1fYFaN2tcIbD06xvpG0/rt:fit/w:256/YWJzOi8vY29tcGFueS8xNzMyNTE1NjcxNDk3X0xvZ28uanBn" alt="" width="48" height="48">
+      <span><b>Energietechnik Seitz</b><small>Photovoltaik und Wärmepumpe aus Großgmain</small></span>
+    </a>
+    <nav aria-label="Hauptnavigation">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#region">Region</a>
+      <a href="#ratgeber">Ratgeber</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="btn btn-leaf call" href="tel:+436763602544"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>0676 3602544</span></a>
+  </div>
+</header>
+
+<main id="start">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <h1>Strom vom eigenen Dach. <span class="quiet">So viel, wie Sie brauchen.</span></h1>
+      <div class="hero-side">
+        <p>Energietechnik Seitz plant und installiert Photovoltaikanlagen, Wärmepumpen und Energie-Management-Systeme. Nicht die größte Anlage, sondern die, die zu Ihrem Verbrauch passt.</p>
+        <div class="ctas">
+          <a class="btn btn-leaf" href="#kontakt">Beratung anfragen</a>
+          <a class="btn btn-ghost" href="#bedarf">Bedarf prüfen</a>
+        </div>
+        <p class="where">Leopoldstalerweg 100, 5084 Großgmain. Persönlich betreut zwischen Chiemsee und Mondsee.</p>
+      </div>
+    </div>
+    <div class="panorama">
+      <img src="https://img.expoya.com/3MbznYpOGF9ReVtaIqyu-NkrV6bYX_7Xw1fhbGq1Pw4/h:512/rt:fill/w:1920/YWJzOi8vY29tcGFueS8xNzMyMTg0NzIzNzkzX0hlYWRlciAyLnBuZw" alt="Photovoltaikmodule auf einem Hausdach im Abendlicht" width="1920" height="512" fetchpriority="high">
+      <span class="sunline" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+<section class="idea" id="bedarf" aria-labelledby="idea-h">
+  <div class="wrap">
+    <div class="idea-head">
+      <h2 id="idea-h">Effizienz trifft auf Individualität.</h2>
+      <p>Das Ziel ist nicht die größte Photovoltaikanlage, sondern genau die Menge an Energie, die Sie tatsächlich benötigen. Deshalb steht am Anfang immer eine genaue Analyse Ihrer Situation.</p>
+    </div>
+
+    <div class="check">
+      <div>
+        <h3>Wofür möchten Sie Ihren Sonnenstrom nutzen?</h3>
+        <p class="hint">Wählen Sie aus, was auf Sie zutrifft. Sie sehen sofort, welche Lösung Energietechnik Seitz dafür anbietet.</p>
+        <div class="uses" role="group" aria-label="Verwendungszwecke">
+          <button type="button" class="use" data-use="strom" aria-pressed="true"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg></span><span>Strom für den Haushalt<small>Den eigenen Bedarf decken und weniger zukaufen</small></span></button>
+          <button type="button" class="use" data-use="wasser" aria-pressed="false"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg></span><span>Warmwasser<small>Warmwasser mit Sonnenstrom bereiten</small></span></button>
+          <button type="button" class="use" data-use="heizung" aria-pressed="false"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg></span><span>Heizung<small>Die Heizung unterstützen oder neu aufstellen</small></span></button>
+          <button type="button" class="use" data-use="steuern" aria-pressed="false"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg></span><span>Alles klug steuern<small>Strom, Wärme und Mobilität aufeinander abstimmen</small></span></button>
+        </div>
+      </div>
+      <div class="result" id="result" aria-live="polite">
+        <span class="lbl">Passende Lösung</span>
+        <h4 id="rTitle">Photovoltaikanlage nach Maß</h4>
+        <p id="rText">Geplant nach Ihrem tatsächlichen Verbrauch, für mehr Unabhängigkeit und niedrigere Energiekosten.</p>
+        <ul id="rTags"><li>Photovoltaik</li></ul>
+        <span class="spacer"></span>
+        <a class="btn" href="#kontakt">Dazu beraten lassen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="leistungen" aria-labelledby="svc-h">
+  <div class="wrap">
+    <h2 id="svc-h">Drei Bausteine, ein Energiekonzept.</h2>
+    <div class="svc-grid">
+      <article class="svc svc-pv">
+        <div class="ph"><img src="https://img.expoya.com/fw6oFHlwIN2b9pRnOfiNJ-C8XZsOWlM5V0fpWEKHG3E/rt:fit/w:1080/YWJzOi8vY29tcGFueS8xNzI2NjUyMzIwMDIxX0JpbGQgbmV1LmpwZWc" alt="Großes Photovoltaikdach unter blauem Himmel" width="800" height="630" loading="lazy"></div>
+        <div class="tx"><h3>Photovoltaik</h3><p>Planung und Installation von Photovoltaikanlagen. Jede Anlage wird auf Ihre Bedürfnisse und Gegebenheiten abgestimmt: für mehr Energieunabhängigkeit und langfristig niedrige Energiekosten.</p></div>
+      </article>
+      <article class="svc svc-wp">
+        <div class="ph"><img src="https://img.expoya.com/UIHU2TbpS7Fa_3MJaWcvfbVOuJPlPc9SRQHoi_J_tIw/rt:fit/w:1080/YWJzOi8vY29tcGFueS8xNzI2NjUyOTkxNjQ3X25ldSBCaWxkLmpwZWc" alt="Photovoltaikmodule auf einem Dach vor bewaldetem Hang" width="800" height="679" loading="lazy"></div>
+        <div class="tx"><h3>Wärmepumpe mit Photovoltaik</h3><p>Die Kombination aus Photovoltaikanlage und Wärmepumpe macht Ihre Heizung effizienter und zukunftssicher. Seitz berät, wie beide Systeme optimal zusammenspielen.</p></div>
+      </article>
+      <article class="svc svc-ems">
+        <div class="logo"><div><img src="https://img.expoya.com/sIFgv5DSi56cBu2iYFxaBbzMUDGVgkqsR9ZPm_H70Gk/rt:fit/w:1080/YWJzOi8vY29tcGFueS8xNzMyMTg1Nzk5Njc2X20tdGVjLWVuZXJneS1mb3ItZnV0dXJlLWxvZ28tcHJyZGoyb3Z0ODVuM2xhOW96bGE2d29iMDQ3bzJkYjYwOHVlbGRxMHZnLnBuZw" alt="M-Tec Energy for Future" width="222" height="59" loading="lazy"><small>Partner für Gesamtenergielösungen</small></div></div>
+        <div class="tx"><h3>Energie-Management-Systeme</h3><p>Individuelle Beratung und Lösungen, die Ihre Energieeffizienz erhöhen. Gemeinsam mit dem Partner M-Tec, einem Anbieter von Gesamtenergielösungen für Strom, Wärme und Mobilität, entstehen Konzepte, die genau zu Ihren Anforderungen passen.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="flow" id="ablauf" aria-labelledby="flow-h">
+  <div class="wrap">
+    <h2 id="flow-h">Von der ersten Frage bis zur Wartung.</h2>
+    <p class="intro">Beratung, Planung, Installation und Wartung kommen aus einer Hand. Sie haben einen Ansprechpartner, vom ersten Gespräch an.</p>
+    <ol class="steps">
+      <li><h3>Beratungsgespräch</h3><p>Unverbindlich: Sie erzählen, was Sie vorhaben und wie Sie Energie heute nutzen.</p></li>
+      <li><h3>Bedarfsanalyse</h3><p>Ihre Situation wird genau angeschaut: Verbrauch, Dach, Heizung und Pläne.</p></li>
+      <li><h3>Energiekonzept</h3><p>Daraus entsteht ein Konzept, das zu Ihrem Bedarf passt, nicht zur maximalen Anlagengröße.</p></li>
+      <li><h3>Installation und Wartung</h3><p>Montage der Anlage und Betreuung danach, persönlich und aus der Region.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="why" aria-labelledby="why-h">
+  <div class="wrap why-grid">
+    <div class="ph"><img src="https://img.expoya.com/oniXj39GdweEanryflFnTlDcRCKZZ2WPzHvdF6LI4kA/rt:fit/w:1080/YWJzOi8vY29tcGFueS8xNzMyMTg1NzQyMzEzX0lNRzk5MTYuanBlZw" alt="Nahaufnahme montierter Photovoltaikmodule" width="800" height="454" loading="lazy"></div>
+    <div>
+      <h2 id="why-h">Warum Energietechnik Seitz?</h2>
+      <ul class="reasons">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><div><b>Kurze Wege</b><span>Der Standort zwischen Chiemsee und Mondsee ermöglicht persönliche und schnelle Betreuung.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><div><b>Alles aus einer Hand</b><span>Enge Zusammenarbeit von der Beratung bis zur Installation und Wartung.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><div><b>Erfahrung</b><span>Langjährige Erfahrung in der Energietechnik.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><div><b>Durchdachte Technik</b><span>Technisch ausgereifte und zukunftssichere Energiekonzepte.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><div><b>Flexibel</b><span>Lösungen, die sich an Ihre Bedürfnisse anpassen lassen.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><div><b>Starker Partner</b><span>Zusammenarbeit mit M-Tec für Strom, Wärme und Mobilität.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="region" id="region" aria-labelledby="region-h">
+  <div class="wrap">
+    <div class="region-card">
+      <div>
+        <h2 id="region-h">Zuhause zwischen Chiemsee und Mondsee.</h2>
+        <p>Von Großgmain aus betreut Energietechnik Seitz Kundinnen und Kunden im Salzburger Land, im Berchtesgadener Land und im Chiemgau.</p>
+      </div>
+      <div class="towns" aria-label="Orte in der Region">
+        <span class="home">Großgmain</span><span>Salzburg</span><span>Hallein</span><span>Eugendorf</span><span>Mondsee</span><span>Bad Reichenhall</span><span>Freilassing</span><span>Teisendorf</span><span>Traunstein</span><span>Grassau</span><span>Chiemsee</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="guide" id="ratgeber" aria-labelledby="guide-h">
+  <div class="wrap">
+    <div class="guide-head">
+      <h2 id="guide-h">Ratgeber</h2>
+      <p>Antworten auf Fragen, die vor einer Entscheidung oft auftauchen. Die Beiträge öffnen sich auf seitz.solar.</p>
+    </div>
+    <div class="rail">
+      <a class="article" href="https://seitz.solar/expos/photovoltaik-im-winter-lohnt-sich-eine-photovoltaik-in-salzburg-trotzdem"><span class="ph"><img src="https://img.expoya.com/uGZfB7TeQHnhglWgkf55KjJ6X3JOO4_3xRSGq1o1L4I/rt:fit/w:600/YWJzOi8vY29tcGFueS8xNzcxNDAwMTE2MDUzdW5hbjV3bXMzaGUzdG5hZ2xxdTN5dWgxLS05MzE0NmVjOS1kZWZhdWx0LndlYnA" alt="" loading="lazy"></span><b>Photovoltaik im Winter: Lohnt sich eine Anlage in Salzburg trotzdem?</b></a>
+      <a class="article" href="https://seitz.solar/expos/waermepumpe-photovoltaik-kombinieren-salzburg"><span class="ph"><img src="https://img.expoya.com/GLf2dy7Sjec1yi39imIi6xRdy2OOh3gOxAfzUrE2pCU/rt:fit/w:600/YWJzOi8vY29tcGFueS9ibGgzdWxlOHM0NTE0YWVkNGNmY3p4NmEud2VicA" alt="" loading="lazy"></span><b>Wärmepumpe mit Photovoltaik kombinieren</b></a>
+      <a class="article" href="https://seitz.solar/expos/so-senken-sie-die-heizkosten-im-raum-salzburg"><span class="ph"><img src="https://img.expoya.com/13wmQTx1iAwI-HmkhZIArXub5rbTGS1FTe0sn5Xq5Vk/rt:fit/w:600/YWJzOi8vY29tcGFueS8xNzcxNDAwMDIyMTgyYWRvYmVzdG9jazE1NDE2NDY5NzUtLTkxYzQ0ZmRjLWRlZmF1bHQud2VicA" alt="" loading="lazy"></span><b>So senken Sie die Heizkosten im Raum Salzburg</b></a>
+      <a class="article" href="https://seitz.solar/expos/energie-management-systeme-salzburg"><span class="ph"><img src="https://img.expoya.com/eR2FlUdThsAtPEW80Mg7yYWTp06Zqg0jEfnCJ8LHLd0/rt:fit/w:600/YWJzOi8vY29tcGFueS9neHQ5cGtuYjdjeG1obHgxZXJmcmVnaWYud2VicA" alt="" loading="lazy"></span><b>Energie-Management-Systeme in Salzburg</b></a>
+      <a class="article" href="https://seitz.solar/expos/dynamische-stromtarife-salzburg"><span class="ph"><img src="https://img.expoya.com/NIZfD31xsX3fjHyzC4oqoh4eY2H2rPjazwhx3vIxH14/rt:fit/w:600/YWJzOi8vY29tcGFueS92MWFid3E4Z2NpYWlibjNmY3htNjQxbWUud2VicA" alt="" loading="lazy"></span><b>Dynamische Stromtarife in Salzburg</b></a>
+      <a class="article" href="https://seitz.solar/expos/waermepumpe-im-raum-mondsee-welche-systeme-sind-besonders-effizient"><span class="ph"><img src="https://img.expoya.com/MEUqa-6Vdw97db5n3g1wpx0NBZWnjFkuv-YPThN1JBU/rt:fit/w:600/YWJzOi8vY29tcGFueS8xNzcxMzk5OTYyODMyYWRvYmVzdG9jazU5NjM3NDkyNC0tZWJlMWE4MTUtZGVmYXVsdC53ZWJw" alt="" loading="lazy"></span><b>Wärmepumpe im Raum Mondsee: Welche Systeme sind besonders effizient?</b></a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontakt" aria-labelledby="contact-h">
+  <div class="wrap contact-grid">
+    <div>
+      <h2 id="contact-h">Interesse geweckt?</h2>
+      <p class="lead">Vereinbaren Sie ein unverbindliches Beratungsgespräch. Gemeinsam entsteht eine Lösung, die zu Ihrem Energiebedarf passt.</p>
+      <div class="direct">
+        <a href="tel:+436763602544"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span><small>Anrufen</small><b>+43 676 3602544</b></span></a>
+        <a href="https://www.openstreetmap.org/search?query=Leopoldstalerweg%20100%2C%205084%20Gro%C3%9Fgmain" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span><small>Adresse</small><b>Leopoldstalerweg 100, 5084 Großgmain</b></span></a>
+      </div>
+    </div>
+    <form id="form" novalidate>
+      <label>Name<input name="name" autocomplete="name" required></label>
+      <label>E-Mail<input name="email" type="email" autocomplete="email" required></label>
+      <label>Telefon<input name="tel" type="tel" autocomplete="tel"></label>
+      <label>Worum geht es?<textarea name="msg" id="fMsg" placeholder="Zum Beispiel: Einfamilienhaus, Photovoltaik mit Wärmepumpe"></textarea></label>
+      <button class="btn btn-leaf" type="submit">Anfrage senden</button>
+      <p class="form-msg" id="formMsg" role="status">Dies ist eine Vorschau: Das Formular wird erst nach Freigabe mit dem Postfach von Energietechnik Seitz verbunden. Bis dahin erreichen Sie Seitz telefonisch unter +43 676 3602544.</p>
+      <p class="form-note">Ihre Angaben werden nur zur Bearbeitung Ihrer Anfrage verwendet.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Energietechnik Seitz, Leopoldstalerweg 100, 5084 Großgmain</span>
+    <span>Vorschau gestaltet von <a href="https://backtooutdoor.com/optimist-prein">OPTIMIST PREIN</a></span>
+  </div>
+</footer>
+<div class="preview-flag">Entwurf zur Ansicht</div>
+
+<script>
+(function(){
+  var uses=[].slice.call(document.querySelectorAll('.use'));
+  var R={
+    strom:{t:'Photovoltaikanlage nach Maß',p:'Geplant nach Ihrem tatsächlichen Verbrauch, für mehr Unabhängigkeit und niedrigere Energiekosten.',tags:['Photovoltaik']},
+    wasser:{t:'Photovoltaik für Warmwasser',p:'Die Anlage wird so ausgelegt, dass Ihr Sonnenstrom auch Ihr Warmwasser bereitet.',tags:['Photovoltaik','Warmwasser']},
+    heizung:{t:'Photovoltaik und Wärmepumpe',p:'Die Kombination aus beiden Systemen macht Ihre Heizung effizienter und zukunftssicher.',tags:['Photovoltaik','Wärmepumpe']},
+    steuern:{t:'Energie-Management mit M-Tec',p:'Ein Energie-Management-System stimmt Erzeugung und Verbrauch aufeinander ab, gemeinsam mit dem Partner M-Tec.',tags:['Energie-Management','M-Tec']}
+  };
+  var res=document.getElementById('result');
+  function render(){
+    var on=uses.filter(function(b){return b.getAttribute('aria-pressed')==='true';}).map(function(b){return b.dataset.use;});
+    if(!on.length){document.getElementById('rTitle').textContent='Noch offen';document.getElementById('rText').textContent='Wählen Sie mindestens einen Punkt aus, oder lassen Sie sich einfach beraten.';document.getElementById('rTags').innerHTML='';return;}
+    var heat=on.indexOf('heizung')>-1, ctrl=on.indexOf('steuern')>-1, water=on.indexOf('wasser')>-1;
+    var t,p;
+    if(heat&&ctrl){t='Photovoltaik, Wärmepumpe und Energie-Management';p='Strom und Wärme greifen ineinander: Photovoltaik, Wärmepumpe und ein Energie-Management-System von M-Tec, abgestimmt auf Ihren Bedarf.';}
+    else if(heat){t=R.heizung.t;p=R.heizung.p;}
+    else if(ctrl){t=on.length>1?'Photovoltaik mit Energie-Management':R.steuern.t;p=R.steuern.p;}
+    else if(water){t=R.wasser.t;p=R.wasser.p;}
+    else {t=R.strom.t;p=R.strom.p;}
+    var tags=[];on.forEach(function(k){R[k].tags.forEach(function(x){if(tags.indexOf(x)<0)tags.push(x);});});
+    if(tags.indexOf('Photovoltaik')<0)tags.unshift('Photovoltaik');
+    document.getElementById('rTitle').textContent=t;document.getElementById('rText').textContent=p;
+    document.getElementById('rTags').innerHTML=tags.map(function(x){return '<li>'+x+'</li>';}).join('');
+    res.classList.remove('flash');void res.offsetWidth;res.classList.add('flash');
+    var m=document.getElementById('fMsg');if(m&&!m.dataset.touched){m.value='Interesse an: '+tags.join(', ');}
+  }
+  uses.forEach(function(b){b.addEventListener('click',function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');render();});});
+  var m=document.getElementById('fMsg');m.addEventListener('input',function(){m.dataset.touched='1';});
+  document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();document.getElementById('formMsg').classList.add('show');});
+})();
+</script>
+</body>
+</html>
