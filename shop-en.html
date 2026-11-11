@@ -1537,5 +1537,231 @@
   })();
 </script>
 <!-- ===== Ende BTO Shop-Hero Mobil-Upgrade ===== --><script src="/assets/js/flow.js?v=1" defer></script>
+<!-- ===== BTO Shop 3D-Style (Kino-Hero, Kategorie-Leiste, 3D-Karten) ===== -->
+<style id="bto-shop-3d">
+  /* ---------- Karten: größer, runder, mit Tiefe (gilt überall) ---------- */
+  .shop-grid{ gap:22px; }
+  .shop-grid .shop-card{
+    position:relative; overflow:hidden; isolation:isolate;
+    min-height:300px; border-radius:14px; padding:26px 24px;
+    box-shadow:0 1px 0 rgba(255,255,255,.06) inset, 0 14px 34px -18px rgba(19,32,48,.55);
+  }
+  .shop-grid .shop-card.shop-card-wide{ min-height:340px; }
+  .shop-grid .shop-card h3{ font-size:1.42rem; letter-spacing:.01em; }
+  .shop-grid .shop-card.shop-card-wide h3{ font-size:clamp(1.6rem,2.6vw,2.2rem); max-width:16ch; }
+  .shop-grid .shop-card p{ color:rgba(247,245,240,.82); font-size:.9rem; max-width:44ch; }
+  .shop-grid .shop-card .shop-ad-label{ color:rgba(247,245,240,.72); }
+  .shop-grid .shop-card > a{
+    border-radius:999px; padding:11px 18px; font-weight:600; background:rgba(19,32,48,.35);
+    -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+  }
+  .shop-grid .shop-card > a:hover, .shop-grid .shop-card > a:focus-visible{ background:var(--teal-bright); color:var(--ink); }
+  .shop-grid .shop-thumb img{ transform:translate3d(0,var(--py,0px),0) scale(1.16); transition:transform .5s cubic-bezier(.2,.7,.2,1); will-change:transform; }
+  .shop-grid .shop-card:hover .shop-thumb img{ transform:translate3d(0,var(--py,0px),0) scale(1.24); }
+  /* Lichtschein, der dem Mauszeiger folgt */
+  .shop-grid .shop-card::after{
+    content:""; position:absolute; inset:0; z-index:1; pointer-events:none; opacity:0; transition:opacity .3s ease;
+    background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.2), transparent 60%);
+  }
+  .shop-grid .shop-card:hover::after{ opacity:1; }
+
+  /* ---------- Kategorien: große Ziffer + Linie ---------- */
+  .shop-grid-wrap > .wrap{ counter-reset:btocat; }
+  .shop-cat{ counter-increment:btocat; margin-bottom:96px; scroll-margin-top:140px; }
+  .shop-cat-header{ position:relative; margin-bottom:30px; padding-top:22px; border-top:1px solid var(--line); }
+  .shop-cat-header::before{
+    content:counter(btocat, decimal-leading-zero);
+    position:absolute; right:0; top:6px; z-index:0; pointer-events:none;
+    font-family:'Big Shoulders Display',sans-serif; font-weight:900; line-height:.8;
+    font-size:clamp(4.5rem,11vw,9rem); color:transparent; -webkit-text-stroke:1.5px rgba(19,32,48,.14);
+  }
+  .shop-cat-header::after{
+    content:""; position:absolute; left:0; top:-1px; height:3px; width:72px; background:var(--teal-bright);
+  }
+  .shop-cat-header > *{ position:relative; z-index:1; }
+  .shop-cat-header h2{ font-size:clamp(2rem,5vw,3.6rem); line-height:1; font-weight:800; max-width:14ch; }
+  .shop-cat-header p{ font-size:1rem; margin-top:14px; }
+  @media (max-width:560px){
+    .shop-cat{ margin-bottom:72px; }
+    .shop-grid .shop-card, .shop-grid .shop-card.shop-card-wide{ min-height:260px; }
+  }
+
+  /* ---------- B2B-Banner ---------- */
+  .shop-b2b{
+    border-radius:14px; padding:44px 40px; position:relative; overflow:hidden;
+    background:radial-gradient(ellipse 60% 120% at 100% 0%, rgba(227,109,39,.32), transparent 60%), var(--ink);
+  }
+  .shop-b2b p{ font-size:1.08rem; }
+  .shop-b2b a{ border-radius:999px; padding:14px 22px; font-weight:600; }
+
+  /* ---------- Schwebende Kategorie-Leiste ---------- */
+  .bto-catbar{
+    position:fixed; left:0; right:0; top:var(--bto-navh,70px); z-index:40;
+    background:rgba(19,32,48,.92); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-light);
+    transform:translate3d(0,-110%,0); visibility:hidden;
+    transition:transform .4s cubic-bezier(.2,.7,.2,1), visibility 0s .4s;
+  }
+  .bto-catbar.on{ transform:none; visibility:visible; transition:transform .4s cubic-bezier(.2,.7,.2,1), visibility 0s; }
+  .bto-catbar-in{
+    max-width:var(--maxw); margin:0 auto; padding:10px 32px; display:flex; gap:8px;
+    overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;
+  }
+  .bto-catbar-in::-webkit-scrollbar{ display:none; }
+  .bto-catbar a{
+    flex:none; font-family:'Work Sans',sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    color:rgba(247,245,240,.78); text-decoration:none; padding:8px 14px; border-radius:999px; border:1px solid transparent;
+    transition:color .2s ease, background .2s ease, border-color .2s ease;
+  }
+  .bto-catbar a:hover{ color:var(--foam); border-color:var(--line-light); }
+  .bto-catbar a.on{ background:var(--teal-bright); color:var(--ink); }
+  .bto-catbar a:focus-visible, .shop-grid .shop-card > a:focus-visible{ outline:2px solid var(--foam); outline-offset:2px; }
+  @media (max-width:760px){ .bto-catbar-in{ padding:8px 16px; } }
+
+  /* ---------- Kino-Hero (nur Desktop/Tablet – das Handy hat seine eigene Inszenierung) ---------- */
+  @media (min-width:761px){
+    .shop-page-hero{
+      position:relative; overflow:hidden; min-height:min(92vh,860px);
+      display:flex; align-items:flex-end; padding:170px 0 84px;
+    }
+    .shop-page-hero > .wrap{ position:relative; z-index:2; width:100%; }
+    .shop-page-hero h1{ font-size:clamp(5rem,15vw,12.5rem); font-weight:900; line-height:.82; letter-spacing:-.01em; margin:14px 0 0 -.04em; }
+    .shop-page-hero p{ font-size:1.22rem; max-width:46ch; color:rgba(247,245,240,.92); margin-top:26px; }
+    .shop-page-hero .shop-jump{ margin-top:34px; gap:12px; }
+    .shop-page-hero .shop-jump a{
+      border-radius:999px; padding:12px 20px; font-weight:600; border-color:rgba(247,245,240,.45);
+      background:rgba(255,255,255,.08); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    }
+    .shop-page-hero .shop-jump a:hover{ background:var(--teal-bright); border-color:var(--teal-bright); color:var(--ink); }
+    .shop-page-hero .hero-video-overlay{
+      background:
+        radial-gradient(ellipse 55% 60% at var(--bto-lx,78%) var(--bto-ly,12%), rgba(227,109,39,.26), transparent 65%),
+        linear-gradient(180deg, rgba(16,24,28,.5) 0%, rgba(16,24,28,.38) 38%, rgba(19,32,48,.94) 100%);
+    }
+    /* Kamerafahrt beim Scrollen: JS setzt --hp von 0 bis 1 */
+    html.fl .shop-page-hero .hero-video-bg{
+      transform:translate3d(0,calc(var(--hp,0) * 110px),0) scale(calc(1.06 + var(--hp,0) * .2)); will-change:transform;
+    }
+    html.fl .shop-page-hero > .wrap{
+      transform:translate3d(0,calc(var(--hp,0) * -90px),0); opacity:calc(1 - var(--hp,0) * 1.25); will-change:transform,opacity;
+    }
+    html.fl .shop-page-hero h1{ transform:translate3d(0,calc(var(--hp,0) * -60px),0) scale(calc(1 + var(--hp,0) * .08)); transform-origin:0 100%; }
+    /* Auftritt beim Laden */
+    html.fl .shop-page-hero > .wrap > *{ animation:bto3dRise 1s cubic-bezier(.2,.7,.2,1) both; }
+    html.fl .shop-page-hero > .wrap > h1{ animation-name:bto3dTitle; animation-duration:1.2s; animation-delay:.08s; }
+    html.fl .shop-page-hero > .wrap > p{ animation-delay:.28s; }
+    html.fl .shop-page-hero > .wrap > .shop-jump{ animation-delay:.42s; }
+
+    /* Karten kippen aus der Tiefe herein … */
+    html.fl .shop-grid .shop-card.fl-r:not(.in){ transform:perspective(1000px) translate3d(0,56px,0) rotateX(16deg) scale(.95); }
+    html.fl .shop-grid .shop-card.fl-r{ transform-origin:50% 100%; }
+  }
+  @keyframes bto3dRise{ from{ opacity:0; transform:translate3d(0,34px,0); } }
+  @keyframes bto3dTitle{ from{ opacity:0; transform:translate3d(0,70px,0) scale(1.06); } }
+
+  /* … und neigen sich zur Maus (nur Geräte mit Maus) */
+  @media (hover:hover) and (pointer:fine){
+    html.fl .shop-grid .shop-card:not(.fl-r){
+      transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translate3d(0,var(--ty,0px),0);
+      transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease;
+    }
+    html.fl .shop-grid .shop-card.bto-tilt{ transition:transform .08s linear, box-shadow .35s ease; box-shadow:0 34px 60px -24px rgba(19,32,48,.7); }
+  }
+</style>
+<script>
+(function(){
+  'use strict';
+  try{
+    var root=document.documentElement;
+    var motion=root.classList.contains('fl');
+    var nav=document.querySelector('header.site-nav');
+    var hero=document.querySelector('.shop-page-hero');
+    var jump=document.querySelector('.shop-page-hero .shop-jump');
+    var desktop=window.matchMedia('(min-width:761px)');
+    function clamp(v,a,b){ return Math.min(b,Math.max(a,v)); }
+
+    /* ---------- Schwebende Kategorie-Leiste (aus den vorhandenen Sprung-Links gebaut) ---------- */
+    var bar=null, links=[], cats=[];
+    if(jump){
+      bar=document.createElement('nav'); bar.className='bto-catbar';
+      bar.setAttribute('aria-label', jump.getAttribute('aria-label')||'Kategorien');
+      var inner=document.createElement('div'); inner.className='bto-catbar-in';
+      [].forEach.call(jump.querySelectorAll('a[href^="#"]'),function(a){
+        var sec=document.getElementById(a.getAttribute('href').slice(1)); if(!sec) return;
+        var l=document.createElement('a'); l.href=a.getAttribute('href'); l.textContent=a.textContent;
+        inner.appendChild(l); links.push(l); cats.push(sec);
+      });
+      if(links.length){ bar.appendChild(inner); document.body.appendChild(bar); } else { bar=null; }
+    }
+    function navH(){ var hgt=nav?nav.offsetHeight:0; root.style.setProperty('--bto-navh',hgt+'px'); return hgt; }
+    var nh=navH(), active=-1;
+    function setActive(i){
+      if(i===active) return; active=i;
+      links.forEach(function(l,k){ if(k===i){ l.classList.add('on'); l.setAttribute('aria-current','true'); } else { l.classList.remove('on'); l.removeAttribute('aria-current'); } });
+      var l=links[i]; if(l && bar.classList.contains('on')){ var p=l.parentNode; p.scrollTo({left:l.offsetLeft-(p.clientWidth-l.offsetWidth)/2, behavior:motion?'smooth':'auto'}); }
+    }
+
+    /* ---------- Bild-Parallaxe in den Karten: nur sichtbare Karten werden bewegt ---------- */
+    var visible=new Set();
+    if(motion && 'IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) visible.add(e.target); else visible.delete(e.target); }); },{rootMargin:'10% 0px'});
+      [].forEach.call(document.querySelectorAll('.shop-grid .shop-card'),function(c){ if(c.querySelector('.shop-thumb img')) io.observe(c); });
+    }
+
+    /* ---------- Eine Scroll-Schleife für alles ---------- */
+    var ticking=false;
+    function frame(){
+      ticking=false;
+      var vh=window.innerHeight;
+      if(hero){
+        var r=hero.getBoundingClientRect();
+        if(motion && desktop.matches && r.bottom>0) hero.style.setProperty('--hp',clamp(-r.top/r.height,0,1).toFixed(3));
+        if(bar) bar.classList.toggle('on', r.bottom < nh+8);
+      }
+      if(bar){
+        var idx=0, line=nh+bar.offsetHeight+60;
+        for(var i=0;i<cats.length;i++){ if(cats[i].getBoundingClientRect().top<=line) idx=i; }
+        setActive(idx);
+      }
+      visible.forEach(function(c){
+        var cr=c.getBoundingClientRect();
+        var t=clamp((cr.top+cr.height/2-vh/2)/(vh/2+cr.height/2),-1,1);   // -1 oben … 1 unten
+        c.style.setProperty('--py',(t*-18).toFixed(1)+'px');
+      });
+    }
+    function req(){ if(!ticking){ ticking=true; requestAnimationFrame(frame); } }
+    window.addEventListener('scroll',req,{passive:true});
+    window.addEventListener('resize',function(){ nh=navH(); req(); });
+    req();
+
+    /* ---------- Maus: Karten neigen sich, Licht im Hero folgt ---------- */
+    if(motion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+      [].forEach.call(document.querySelectorAll('.shop-grid .shop-card'),function(c){
+        c.addEventListener('pointermove',function(e){
+          var r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+          var max=r.width>420?3.5:6;
+          c.classList.add('bto-tilt');
+          c.style.setProperty('--ry',((x-.5)*2*max).toFixed(2)+'deg');
+          c.style.setProperty('--rx',((.5-y)*2*max).toFixed(2)+'deg');
+          c.style.setProperty('--ty','-6px');
+          c.style.setProperty('--mx',(x*100).toFixed(1)+'%'); c.style.setProperty('--my',(y*100).toFixed(1)+'%');
+        });
+        c.addEventListener('pointerleave',function(){
+          c.classList.remove('bto-tilt');
+          c.style.setProperty('--rx','0deg'); c.style.setProperty('--ry','0deg'); c.style.setProperty('--ty','0px');
+        });
+      });
+      if(hero){
+        hero.addEventListener('pointermove',function(e){
+          var r=hero.getBoundingClientRect();
+          hero.style.setProperty('--bto-lx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+          hero.style.setProperty('--bto-ly',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
+        });
+      }
+    }
+  }catch(err){ /* Im Fehlerfall bleibt die Seite ganz normal benutzbar */ }
+})();
+</script>
+<!-- ===== Ende BTO Shop 3D-Style ===== -->
 </body>
 </html>
