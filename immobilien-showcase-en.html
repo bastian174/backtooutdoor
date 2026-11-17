@@ -823,9 +823,9 @@ footer.op-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:sp
         </ol>
       </div>
       <div class="scene" aria-hidden="true">
-        <div class="dev laptop" data-d="laptop"><div class="scr"><video muted loop playsinline preload="none" poster="/assets/video/op/immobilie-quer.jpg" data-v="/assets/video/op/immobilie-quer.mp4"></video></div><div class="base"></div><span class="tag">16:9 · Website</span></div>
-        <div class="dev pin" data-d="pin"><video muted loop playsinline preload="none" poster="/assets/video/op/immobilie-pin.jpg" data-v="/assets/video/op/immobilie-pin.mp4"></video><span class="tag">2:3 · Pinterest</span></div>
-        <div class="dev phone" data-d="phone"><video muted loop playsinline preload="none" poster="/assets/video/op/immobilie-reel.jpg" data-v="/assets/video/op/immobilie-reel.mp4"></video><span class="tag">9:16 · Reel</span></div>
+        <div class="dev laptop" data-d="laptop"><div class="scr"><video muted loop playsinline preload="none" poster="/assets/video/op/immobilie-quer.jpg?v=2" data-v="/assets/video/op/immobilie-quer.mp4?v=2"></video></div><div class="base"></div><span class="tag">16:9 · Website</span></div>
+        <div class="dev pin" data-d="pin"><video muted loop playsinline preload="none" poster="/assets/video/op/immobilie-pin.jpg?v=2" data-v="/assets/video/op/immobilie-pin.mp4?v=2"></video><span class="tag">2:3 · Pinterest</span></div>
+        <div class="dev phone" data-d="phone"><video muted loop playsinline preload="none" poster="/assets/video/op/immobilie-reel.jpg?v=2" data-v="/assets/video/op/immobilie-reel.mp4?v=2"></video><span class="tag">9:16 · Reel</span></div>
       </div>
     </div>
   </div>
@@ -1125,7 +1125,7 @@ footer.op-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:sp
     modal.style.setProperty('--ca', sl.style.getPropertyValue('--ca'));
     document.getElementById('brmSub').textContent = sl.querySelector('.br-brand b').textContent;
     document.getElementById('brmTitle').innerHTML = sl.querySelector('.br-h').firstChild.textContent.trim() + ' <em>Five formats.</em>';
-    V[k].forEach(function(b, j){ var v = mv[j]; v.poster = b + '.jpg'; v.dataset.v = b + '.mp4'; v.removeAttribute('s'+'rc'); v.load(); });
+    V[k].forEach(function(b, j){ var v = mv[j]; v.poster = b + '.jpg?v=2'; v.dataset.v = b + '.mp4?v=2'; v.removeAttribute('s'+'rc'); v.load(); });
     lastFocus = document.activeElement; modal.hidden = false; document.documentElement.classList.add('br-lock');
     requestAnimationFrame(function(){ modal.classList.add('open'); }); mv.forEach(play);
     slides[cur].querySelector('video').pause(); arm(); modal.querySelector('.br-x').focus();
