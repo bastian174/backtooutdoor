@@ -1,0 +1,4 @@
+/* Lokal gehostete Schriften (statt Google Fonts). Lizenz SIL OFL 1.1 */
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:500 600;font-display:swap;src:url(playfair-display.woff) format('woff')}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:500;font-display:swap;src:url(playfair-display-italic.woff) format('woff')}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:400 700;font-display:swap;src:url(source-sans-3.woff) format('woff')}

@@ -1,0 +1,11 @@
+/* Lokal gehostete Schriften (statt Google Fonts) – keine Verbindung zu Google-Servern.
+   Quelle: github.com/google/fonts, Lizenz SIL Open Font License 1.1 (siehe assets/fonts/LICENSES). */
+@font-face{font-family:'Work Sans';font-style:normal;font-weight:400 700;font-display:swap;src:url(/assets/fonts/work-sans.woff) format('woff')}
+@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:500 900;font-display:swap;src:url(/assets/fonts/big-shoulders-display.woff) format('woff')}
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:400 700;font-display:swap;src:url(/assets/fonts/fraunces.woff) format('woff')}
+@font-face{font-family:'Fraunces';font-style:italic;font-weight:400;font-display:swap;src:url(/assets/fonts/fraunces-italic.woff) format('woff')}
+@font-face{font-family:'Schibsted Grotesk';font-style:normal;font-weight:400 700;font-display:swap;src:url(/assets/fonts/schibsted-grotesk.woff) format('woff')}
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url(/assets/fonts/hanken-grotesk.woff) format('woff')}
+@font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/instrument-serif.woff) format('woff')}
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url(/assets/fonts/instrument-serif-italic.woff) format('woff')}
+@font-face{font-family:'Anton';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/anton.woff) format('woff')}
