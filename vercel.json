@@ -34,6 +34,10 @@
   ],
   "rewrites": [
     {
+      "source": "/px/:path*",
+      "destination": "https://images.pexels.com/photos/:path*"
+    },
+    {
       "source": "/optimist-prein",
       "destination": "/immobilien-showcase.html"
     },
@@ -44,6 +48,17 @@
     {
       "source": "/optimist-prein/agb",
       "destination": "/op-agb.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/px/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ]
 }

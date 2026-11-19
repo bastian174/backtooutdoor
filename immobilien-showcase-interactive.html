@@ -263,7 +263,7 @@ footer a{color:var(--soft)}
   <div class="wrap split">
     <div class="mock" aria-label="Beispiel einer Projektseite">
       <div class="bar"><i></i><i></i><i></i></div>
-      <div class="mhero" style="background-image:url('https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200')"><div>Neun Wohnungen.<br><em class="s">Mitten in der Stadt.</em></div></div>
+      <div class="mhero" style="background-image:url('/px/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200')"><div>Neun Wohnungen.<br><em class="s">Mitten in der Stadt.</em></div></div>
       <div class="units">
         <div class="u"><b>Top 1</b>3 Zi. · Garten<br><span class="st no">Verkauft</span></div>
         <div class="u"><b>Top 2</b>2 Zi. · Garten<br><span class="st ok">Verfügbar</span></div>
@@ -364,7 +364,7 @@ footer a{color:var(--soft)}
     hv.src='/assets/video/immobilien-hero-'+(small?'720':'1080')+'.mp4';
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ hv.removeAttribute('autoplay'); hv.pause(); }
     else { var pr=hv.play(); if(pr&&pr.catch) pr.catch(function(){}); } }
-  var P = function(id){ return 'https://images.pexels.com/photos/' + id + '/pexels-photo-' + id + '.jpeg?auto=compress&cs=tinysrgb&w=1200'; };
+  var P = function(id){ return '/px/' + id + '/pexels-photo-' + id + '.jpeg?auto=compress&cs=tinysrgb&w=1200'; };
   var FORMATS = [
     {id:'reel', group:'video', name:'Instagram Reel', badge:'9:16', ratio:'r916', img:P(1571460),
      use:'Rundgang für Reels & Storys', format:'1080 × 1920', len:'15–30 Sek.', where:'Instagram, WhatsApp-Status', mat:'Exposé-Fotos',
