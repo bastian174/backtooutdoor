@@ -1134,7 +1134,7 @@
   <div class="wrap">
     <span class="eyebrow">Back to Outdoor</span>
     <h1>Shop.</h1>
-    <p>Travel guides, tours and gear we use and recommend ourselves – picked on our own adventures.</p>
+    <p>Tours, travel guides and gear from the places we have been ourselves.</p>
     <nav class="shop-jump" aria-label="Categories">
       <a href="#aktivitaeten">Tours in Salzburg</a>
       <a href="#erlebnisse">Top experiences</a>
@@ -1147,9 +1147,8 @@
 
     <div class="shop-cat" id="aktivitaeten">
       <div class="shop-cat-header">
-        <span class="eyebrow">Category</span>
         <h2>Activities & Tours</h2>
-        <p>Guided rafting and canyoning tours in the Salzburg region with our partner Torrent Outdoor – bookable online.</p>
+        <p>Guided rafting and canyoning tours in the Salzburg region with our partner Torrent Outdoor, bookable online.</p>
       </div>
       <div class="shop-grid">
         <div class="shop-card shop-card-wide">
@@ -1157,7 +1156,7 @@
           <div>
             <span class="shop-ad-label">Ad · Partnership</span>
             <h3>Rafting & Canyoning Salzburg</h3>
-            <p>Guided tours with Torrent Outdoor – all tours, dates and prices on the booking page.</p>
+            <p>Guided tours with Torrent Outdoor. Dates and prices are on the booking page.</p>
           </div>
           <a href="/api/go?l=torrent-outdoor" target="_blank" rel="noopener noreferrer sponsored">See the tours →</a>
         </div>
@@ -1166,7 +1165,7 @@
           <div>
             <span class="shop-ad-label">Ad · Affiliate link</span>
             <h3>Tours in the Canaries, Madeira & southern France</h3>
-            <p>Guided tours and activities in the Canary Islands, Madeira, the Verdon Gorge and on the French Riviera – via GetYourGuide.</p>
+            <p>Guided tours and activities in the Canary Islands, Madeira, the Verdon Gorge and on the French Riviera, booked via GetYourGuide.</p>
           </div>
           <a href="https://www.getyourguide.com/?partner_id=CEICMBC&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer sponsored">Find tours →</a>
         </div>
@@ -1175,9 +1174,8 @@
 
     <div class="shop-cat" id="erlebnisse">
       <div class="shop-cat-header">
-        <span class="eyebrow">Category</span>
         <h2>Top experiences</h2>
-        <p>Selected tours at the destinations from the journal – guided tours and activities, bookable via GetYourGuide.</p>
+        <p>Tours at the destinations from the journal, bookable via GetYourGuide.</p>
       </div>
       <div class="shop-grid">
         <div class="shop-card">
@@ -1221,9 +1219,8 @@
 
     <div class="shop-cat" id="ebooks">
       <div class="shop-cat-header">
-        <span class="eyebrow">Category</span>
         <h2>E-books & Travel Guides</h2>
-        <p>Travel guides and photo books for Tenerife, Gran Canaria, Fuerteventura, Lanzarote, La Palma, La Gomera and Madeira – with highlights, hikes and island tips. (Guides in German.)</p>
+        <p>Travel guides and photo books for Tenerife, Gran Canaria, Fuerteventura, Lanzarote, La Palma, La Gomera and Madeira, with highlights, hikes and island tips. (Guides in German.)</p>
       </div>
       <div class="shop-grid">
       <div class="shop-card">
@@ -1331,9 +1328,8 @@
     <!-- Produkte-Kategorie ausgeblendet, bis die erste Produktkarte drin ist: "hidden" entfernen + Jump-Link "Equipment" oben ergänzen -->
     <div class="shop-cat" id="produkte" hidden>
       <div class="shop-cat-header">
-        <span class="eyebrow">Category</span>
         <h2>Products & Gear</h2>
-        <p>Cameras, mics and gear we film with outdoors — only equipment we use ourselves.</p>
+        <p>Cameras, mics and gear we film with outdoors. Only equipment we use ourselves.</p>
       </div>
       <div class="shop-grid">
         <!-- Neue Partnerschaft: Karte nach diesem Muster einfügen —
@@ -1351,7 +1347,7 @@
     </div>
 
     <div class="shop-b2b">
-      <p><strong>Are you a hotel, tour operator or outdoor brand?</strong> We produce photo, video and UGC content that moves people – outdoors and online.</p>
+      <p><strong>Are you a hotel, tour operator or outdoor brand?</strong> We shoot photo, video and UGC content for your website and channels.</p>
       <a href="index-en.html#leistungen">To the Content Studio →</a>
     </div>
 
@@ -1761,5 +1757,14 @@
 })();
 </script>
 <!-- ===== Ende BTO Shop 3D-Style ===== -->
+<style id="bto-shop-ruhig">
+  /* Ruhiger: keine Konturziffern, kein Lichtschein, keine Pillen, keine orangen Glows */
+  .shop-cat-header::before{ content:none !important; }
+  .shop-grid .shop-card::after, .shop-page-hero::after{ display:none !important; }
+  .shop-grid .shop-card{ border-radius:6px; }
+  .shop-grid .shop-card > a, .shop-b2b a, .bto-catbar a, .shop-page-hero .shop-jump a{ border-radius:3px !important; }
+  .shop-b2b{ border-radius:6px; background:var(--ink) !important; }
+  .shop-page-hero .hero-video-overlay{ background:linear-gradient(180deg, rgba(16,24,28,.5) 0%, rgba(16,24,28,.38) 38%, rgba(19,32,48,.94) 100%) !important; }
+</style>
 </body>
 </html>

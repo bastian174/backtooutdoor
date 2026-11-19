@@ -1135,7 +1135,7 @@
   <div class="wrap">
     <span class="eyebrow">Back to Outdoor</span>
     <h1>Boutique.</h1>
-    <p>Guides de voyage, sorties et équipement que nous utilisons et recommandons – choisis lors de nos propres aventures.</p>
+    <p>Sorties, guides de voyage et équipement des endroits où nous sommes allés nous-mêmes.</p>
     <nav class="shop-jump" aria-label="Catégories">
       <a href="#aktivitaeten">Sorties à Salzbourg</a>
       <a href="#erlebnisse">Expériences phares</a>
@@ -1148,9 +1148,8 @@
 
     <div class="shop-cat" id="aktivitaeten">
       <div class="shop-cat-header">
-        <span class="eyebrow">Catégorie</span>
         <h2>Activités & sorties</h2>
-        <p>Sorties guidées de rafting et de canyoning dans la région de Salzbourg avec notre partenaire Torrent Outdoor – réservables en ligne.</p>
+        <p>Sorties guidées de rafting et de canyoning dans la région de Salzbourg avec notre partenaire Torrent Outdoor, réservables en ligne.</p>
       </div>
       <div class="shop-grid">
         <div class="shop-card shop-card-wide">
@@ -1158,7 +1157,7 @@
           <div>
             <span class="shop-ad-label">Publicité · Partenariat</span>
             <h3>Rafting & Canyoning Salzbourg</h3>
-            <p>Sorties guidées avec Torrent Outdoor – toutes les sorties, dates et prix sur la page de réservation.</p>
+            <p>Sorties guidées avec Torrent Outdoor. Dates et prix sur la page de réservation.</p>
           </div>
           <a href="/api/go?l=torrent-outdoor" target="_blank" rel="noopener noreferrer sponsored">Voir les sorties →</a>
         </div>
@@ -1167,7 +1166,7 @@
           <div>
             <span class="shop-ad-label">Publicité · Lien affilié</span>
             <h3>Activités aux Canaries, à Madère & dans le Sud</h3>
-            <p>Visites guidées et activités aux Canaries, à Madère, dans le Verdon et sur la Côte d’Azur – via GetYourGuide.</p>
+            <p>Visites guidées et activités aux Canaries, à Madère, dans le Verdon et sur la Côte d’Azur, réservées via GetYourGuide.</p>
           </div>
           <a href="https://www.getyourguide.fr/?partner_id=CEICMBC&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer sponsored">Trouver une activité →</a>
         </div>
@@ -1176,9 +1175,8 @@
 
     <div class="shop-cat" id="erlebnisse">
       <div class="shop-cat-header">
-        <span class="eyebrow">Catégorie</span>
         <h2>Expériences phares</h2>
-        <p>Une sélection d’activités dans les destinations du journal – visites et activités guidées, réservables via GetYourGuide.</p>
+        <p>Des activités dans les destinations du journal, réservables via GetYourGuide.</p>
       </div>
       <div class="shop-grid">
         <div class="shop-card">
@@ -1222,9 +1220,8 @@
 
     <div class="shop-cat" id="ebooks">
       <div class="shop-cat-header">
-        <span class="eyebrow">Catégorie</span>
         <h2>E-books & Guides de voyage</h2>
-        <p>Guides et beaux livres pour Tenerife, Grande Canarie, Fuerteventura, Lanzarote, La Palma, La Gomera et Madère – avec incontournables, randonnées et conseils. (Guides en allemand.)</p>
+        <p>Guides et beaux livres pour Tenerife, Grande Canarie, Fuerteventura, Lanzarote, La Palma, La Gomera et Madère, avec incontournables, randonnées et conseils. (Guides en allemand.)</p>
       </div>
       <div class="shop-grid">
       <div class="shop-card">
@@ -1332,9 +1329,8 @@
     <!-- Produkte-Kategorie ausgeblendet, bis die erste Produktkarte drin ist: "hidden" entfernen + Jump-Link "Equipment" oben ergänzen -->
     <div class="shop-cat" id="produkte" hidden>
       <div class="shop-cat-header">
-        <span class="eyebrow">Catégorie</span>
         <h2>Produits & équipement</h2>
-        <p>Caméras, micros et matériel avec lesquels nous filmons dehors — uniquement ce que nous utilisons nous-mêmes.</p>
+        <p>Caméras, micros et matériel avec lesquels nous filmons dehors. Uniquement ce que nous utilisons nous-mêmes.</p>
       </div>
       <div class="shop-grid">
         <!-- Neue Partnerschaft: Karte nach diesem Muster einfügen —
@@ -1352,7 +1348,7 @@
     </div>
 
     <div class="shop-b2b">
-      <p><strong>Vous êtes un hôtel, un organisateur de sorties ou une marque outdoor ?</strong> Nous produisons des contenus photo, vidéo et UGC qui marquent – dehors comme en ligne.</p>
+      <p><strong>Vous êtes un hôtel, un organisateur de sorties ou une marque outdoor ?</strong> Nous tournons des contenus photo, vidéo et UGC pour votre site et vos réseaux.</p>
       <a href="index-fr.html#leistungen">Vers le Content Studio →</a>
     </div>
 
@@ -1762,5 +1758,14 @@
 })();
 </script>
 <!-- ===== Ende BTO Shop 3D-Style ===== -->
+<style id="bto-shop-ruhig">
+  /* Ruhiger: keine Konturziffern, kein Lichtschein, keine Pillen, keine orangen Glows */
+  .shop-cat-header::before{ content:none !important; }
+  .shop-grid .shop-card::after, .shop-page-hero::after{ display:none !important; }
+  .shop-grid .shop-card{ border-radius:6px; }
+  .shop-grid .shop-card > a, .shop-b2b a, .bto-catbar a, .shop-page-hero .shop-jump a{ border-radius:3px !important; }
+  .shop-b2b{ border-radius:6px; background:var(--ink) !important; }
+  .shop-page-hero .hero-video-overlay{ background:linear-gradient(180deg, rgba(16,24,28,.5) 0%, rgba(16,24,28,.38) 38%, rgba(19,32,48,.94) 100%) !important; }
+</style>
 </body>
 </html>
