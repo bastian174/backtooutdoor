@@ -40,6 +40,10 @@
     {
       "source": "/optimist-prein-en",
       "destination": "/immobilien-showcase-en.html"
+    },
+    {
+      "source": "/optimist-prein/agb",
+      "destination": "/op-agb.html"
     }
   ]
 }
