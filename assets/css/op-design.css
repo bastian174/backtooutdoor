@@ -7,7 +7,6 @@
 
 :root{
   --op-font:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;
-  --op-dim:#8F897E;           /* zweiter Ton in Überschriften */
   --op-hair:rgba(245,241,230,.14);
 }
 
@@ -19,12 +18,12 @@ body{font-size:17px;letter-spacing:-.003em;font-feature-settings:"ss01","tnum" 0
 h2,.op h2{font-weight:500;letter-spacing:-.035em;line-height:1.02;font-size:clamp(38px,5.2vw,74px)}
 .op-statement h2,.op-philo h2{font-size:clamp(36px,4.6vw,64px)}
 
-/* Der zweite Teil der Überschrift: gleiche Schrift, gedämpfter Ton statt
-   oranger Serif-Kursive */
+/* Der zweite Teil der Überschrift: Farbe wie bisher, aber gleiche Schrift
+   statt Serif-Kursive */
 em.s,.op h2 em.s,.op .s,.hero-claim em,.br-h em,.br-m-top h3 em,.ein-h em,
 .hero-col .kern em,.mock .mhero em{
   font-family:var(--op-font)!important;font-style:normal!important;
-  font-weight:inherit!important;color:var(--op-dim)!important;letter-spacing:inherit!important}
+  font-weight:inherit!important;letter-spacing:inherit!important}
 .op h2 em.s{display:inline}
 .op-statement h2 em{display:inline}
 
@@ -32,8 +31,8 @@ em.s,.op h2 em.s,.op .s,.hero-claim em,.br-h em,.br-m-top h3 em,.ein-h em,
 .f5 .n,.step .n,.br-num,.br-nav button span,.card .name,.card.spec .name,
 .detail .ttl,.thanks .big,.mock .u b{
   font-family:var(--op-font)!important;font-style:normal!important}
-.f5 .n,.step .n{font-size:15px;font-weight:500;color:var(--op-dim);font-variant-numeric:tabular-nums;letter-spacing:0}
-.br-num{font-weight:300;-webkit-text-stroke:0;color:rgba(245,241,230,.22);font-size:clamp(56px,7vw,110px);letter-spacing:-.04em}
+.f5 .n,.step .n{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:0}
+.br-num{font-weight:300;-webkit-text-stroke:0;color:rgba(245,241,230,.28);font-size:clamp(56px,7vw,110px);letter-spacing:-.04em}
 .br-nav button span{font-size:13px;font-weight:500;opacity:.6}
 .thanks .big{font-weight:500;letter-spacing:-.03em;color:var(--text)}
 .mock .u b{font-weight:600;font-size:17px}
@@ -47,16 +46,16 @@ em.s,.op h2 em.s,.op .s,.hero-claim em,.br-h em,.br-m-top h3 em,.ein-h em,
 .op-word small,label,.fact .l,.st,.lang-sw,.brand-sub{
   text-transform:none!important;letter-spacing:0!important}
 
-.eyebrow,.op .eyebrow{font-size:14px;font-weight:500;color:var(--soft)!important;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.eyebrow,.op .eyebrow{font-size:14px;font-weight:600;margin-bottom:22px;display:flex;align-items:center;gap:10px}
 .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
 
 /* Hero-Zeile ohne Strich */
-.hero-col .hero-line{font-size:15px;font-weight:500;color:var(--sand)!important;gap:10px}
+.hero-col .hero-line{font-size:15px;font-weight:600;gap:10px}
 .hero-col .hero-line i{width:7px;height:7px;border-radius:50%;background:var(--accent)}
 
 /* Kopfzeile */
 .op-word b{letter-spacing:.14em;font-weight:600}
-.op-word small{font-size:11px;color:var(--soft);font-weight:400;margin-top:4px}
+.op-word small{font-size:11px;font-weight:500;margin-top:4px}
 header.top nav a{font-size:15px}
 
 /* ---------- Hero ---------- */
@@ -64,8 +63,8 @@ header.top nav a{font-size:15px}
 .hero-claim em{display:block;margin-top:.08em}
 /* Wirkungsfelder als Textzeile statt Chips */
 .op-fields{gap:0!important;margin-top:28px!important}
-.op-fields li{text-transform:none!important;letter-spacing:0!important;border:0!important;background:none!important;padding:0!important;font-size:15px!important;font-weight:500!important;color:var(--muted)!important}
-.op-fields li + li::before{content:"/";margin:0 .6em;color:var(--op-dim)}
+.op-fields li{text-transform:none!important;letter-spacing:0!important;border:0!important;background:none!important;padding:0!important;font-size:15px!important;font-weight:500!important}
+.op-fields li + li::before{content:"/";margin:0 .6em;color:var(--accent)}
 .hero-col .lead{font-size:17px}
 .vidtoggle{font-size:13px;letter-spacing:0;border-radius:2px}
 
@@ -89,7 +88,7 @@ header.top nav a{font-size:15px}
 .f5:nth-child(3),.f5:nth-child(5){border-right:0}
 .f5:nth-child(4){padding-left:0}
 .f5:nth-child(4),.f5:nth-child(5){border-top:1px solid var(--op-hair)}
-.f5 .k{margin-top:22px;font-size:14px;font-weight:500;color:var(--soft)}
+.f5 .k{margin-top:22px;font-size:14px;font-weight:600}
 .f5 h3{font-weight:600;letter-spacing:-.015em;font-size:clamp(21px,1.8vw,26px)}
 @media (max-width:1100px){
   .f5,.f5:not(:first-child){padding:28px 24px 30px 0;border-right:0;border-top:1px solid var(--op-hair)}
@@ -101,7 +100,7 @@ header.top nav a{font-size:15px}
 /* ---------- Leistungen: Liste mit Haarlinien ---------- */
 .svc-grid{gap:0;background:none;border:0;border-top:1px solid var(--op-hair)}
 .svc{background:none;border-bottom:1px solid var(--op-hair);padding:26px 24px 30px 0}
-.svc small{font-size:14px;font-weight:500;color:var(--op-dim)}
+.svc small{font-size:14px;font-weight:600}
 .svc h3{font-weight:600;letter-spacing:-.015em;font-size:20px}
 
 /* Für wen, Formate, Marken: ruhiger */
@@ -109,12 +108,12 @@ header.top nav a{font-size:15px}
 .cf-grid{gap:0;background:none;border:0;border-top:1px solid var(--op-hair)}
 .cf{background:none;border-bottom:1px solid var(--op-hair);padding:22px 24px 22px 0}
 .ratio{background:none;border:0;border-top:1px solid var(--op-hair);padding:28px 0}
-.ratio h3{font-size:14px;font-weight:500;color:var(--soft)}
+.ratio h3{font-size:14px;font-weight:600}
 .op-own a{border-left:1px solid var(--line);border-radius:2px}
-.op-own small{font-size:14px;color:var(--soft)}
+.op-own small{font-size:14px;font-weight:600}
 .brand-card{border-radius:2px}
 .brand-card .wm{letter-spacing:.12em}
-.brand-card .role{font-size:14px;font-weight:500;color:var(--soft)}
+.brand-card .role{font-size:14px;font-weight:600}
 .brand-root b{letter-spacing:.12em}
 
 /* Branchen-Bühne */
@@ -128,8 +127,8 @@ header.top nav a{font-size:15px}
 
 /* Videoformate-Bühne */
 .stage-steps li b{font-weight:600;letter-spacing:-.01em}
-.dev .tag{font-size:13px;font-weight:500;color:var(--soft)}
-.stage-steps li small.op-vf{font-size:13px;color:var(--soft)}
+.dev .tag{font-size:13px;font-weight:600}
+.stage-steps li small.op-vf{font-size:13px}
 
 /* Projektseite */
 .dash li::before{content:"";width:6px;height:6px;margin-top:.62em;background:var(--accent);flex:none}
