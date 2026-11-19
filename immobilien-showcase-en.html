@@ -654,9 +654,9 @@ footer.op-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:sp
 <main>
 
 <section class="hero op-hero" id="top">
-  <video class="hero-bg" id="heroVid" autoplay muted loop playsinline preload="auto" poster="/assets/video/immobilien-hero-poster.jpg?v=3" aria-hidden="true">
-    <source src="/assets/video/immobilien-hero-720.mp4?v=3" type="video/mp4" media="(max-width: 1600px)">
-    <source src="/assets/video/immobilien-hero-1080.mp4?v=3" type="video/mp4">
+  <video class="hero-bg" id="heroVid" autoplay muted loop playsinline preload="auto" poster="/assets/video/op/op-hero-poster.jpg?v=1" aria-hidden="true">
+    <source src="/assets/video/op/op-hero-720.mp4?v=1" type="video/mp4" media="(max-width: 1600px)">
+    <source src="/assets/video/op/op-hero-1080.mp4?v=1" type="video/mp4">
   </video>
   <div class="wrap">
     <div class="hero-col">
@@ -958,7 +958,7 @@ footer.op-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:sp
 (function(){
   var hv=document.getElementById('heroVid');
   if(hv){ var small=window.matchMedia('(max-width: 1600px)').matches;
-    hv.src='/assets/video/immobilien-hero-'+(small?'720':'1080')+'.mp4';
+    hv.src='/assets/video/op/op-hero-'+(small?'720':'1080')+'.mp4?v=1';
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ hv.removeAttribute('autoplay'); hv.pause(); }
     else { var pr=hv.play(); if(pr&&pr.catch) pr.catch(function(){}); }
     var tg=document.getElementById('vidToggle');
