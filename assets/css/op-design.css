@@ -1,0 +1,160 @@
+/* OPTIMIST PREIN – Design-Schicht (Nov 2026)
+   Ziel: Aufbau, Inhalte und Videos bleiben. Entfernt werden die typischen
+   „KI-Seiten"-Merkmale: Serif-Kursiv-Akzent in jeder Überschrift, gesperrte
+   Versalien-Labels, Chips, orange Glows, Karten mit farbiger Oberkante,
+   Fortschrittsbalken. Dazu kommt der fliegende Schmetterling (op-flyer.js).
+   Wird NACH dem Seiten-CSS geladen und überschreibt nur Darstellung. */
+
+:root{
+  --op-font:'Schibsted Grotesk','Helvetica Neue',Arial,sans-serif;
+  --op-dim:#8F897E;           /* zweiter Ton in Überschriften */
+  --op-hair:rgba(245,241,230,.14);
+}
+
+/* ---------- Schrift: eine Familie, klare Gewichte ---------- */
+body,button,input,select,textarea,
+.filters button,.cats button,.br-nav button,.vidtoggle{font-family:var(--op-font)!important}
+body{font-size:17px;letter-spacing:-.003em;font-feature-settings:"ss01","tnum" 0}
+
+h2,.op h2{font-weight:500;letter-spacing:-.035em;line-height:1.02;font-size:clamp(38px,5.2vw,74px)}
+.op-statement h2,.op-philo h2{font-size:clamp(36px,4.6vw,64px)}
+
+/* Der zweite Teil der Überschrift: gleiche Schrift, gedämpfter Ton statt
+   oranger Serif-Kursive */
+em.s,.op h2 em.s,.op .s,.hero-claim em,.br-h em,.br-m-top h3 em,.ein-h em,
+.hero-col .kern em,.mock .mhero em{
+  font-family:var(--op-font)!important;font-style:normal!important;
+  font-weight:inherit!important;color:var(--op-dim)!important;letter-spacing:inherit!important}
+.op h2 em.s{display:inline}
+.op-statement h2 em{display:inline}
+
+/* Zahlen nicht mehr kursiv-serif, sondern ruhig und tabellarisch */
+.f5 .n,.step .n,.br-num,.br-nav button span,.card .name,.card.spec .name,
+.detail .ttl,.thanks .big,.mock .u b{
+  font-family:var(--op-font)!important;font-style:normal!important}
+.f5 .n,.step .n{font-size:15px;font-weight:500;color:var(--op-dim);font-variant-numeric:tabular-nums;letter-spacing:0}
+.br-num{font-weight:300;-webkit-text-stroke:0;color:rgba(245,241,230,.22);font-size:clamp(56px,7vw,110px);letter-spacing:-.04em}
+.br-nav button span{font-size:13px;font-weight:500;opacity:.6}
+.thanks .big{font-weight:500;letter-spacing:-.03em;color:var(--text)}
+.mock .u b{font-weight:600;font-size:17px}
+
+/* ---------- Labels: keine gesperrten Versalien mehr ---------- */
+.eyebrow,.op .eyebrow,
+.hero-col .hero-line,.f5 .k,.svc small,.who-list em,.op-own small,.op-own em,
+.brand-card .role,.brand-card em,.brand-root small,.ratio h3,.ratio dt,
+.content-formats h3,.br-brand,.br-cta,.ein-k,.ein-cta,.dev .tag,.badge,
+.detail .kick,.detail dt,.card.spec dt,.card.spec .go,.stage-steps li small.op-vf,
+.op-word small,label,.fact .l,.st,.lang-sw,.brand-sub{
+  text-transform:none!important;letter-spacing:0!important}
+
+.eyebrow,.op .eyebrow{font-size:14px;font-weight:500;color:var(--soft)!important;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
+
+/* Hero-Zeile ohne Strich */
+.hero-col .hero-line{font-size:15px;font-weight:500;color:var(--sand)!important;gap:10px}
+.hero-col .hero-line i{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+
+/* Kopfzeile */
+.op-word b{letter-spacing:.14em;font-weight:600}
+.op-word small{font-size:11px;color:var(--soft);font-weight:400;margin-top:4px}
+header.top nav a{font-size:15px}
+
+/* ---------- Hero ---------- */
+.hero h1.hero-claim{font-weight:500;letter-spacing:-.04em;line-height:1;font-size:clamp(44px,4.6vw,72px)}
+.hero-claim em{display:block;margin-top:.08em}
+/* Wirkungsfelder als Textzeile statt Chips */
+.op-fields{gap:0!important;margin-top:28px!important}
+.op-fields li{text-transform:none!important;letter-spacing:0!important;border:0!important;background:none!important;padding:0!important;font-size:15px!important;font-weight:500!important;color:var(--muted)!important}
+.op-fields li + li::before{content:"/";margin:0 .6em;color:var(--op-dim)}
+.hero-col .lead{font-size:17px}
+.vidtoggle{font-size:13px;letter-spacing:0;border-radius:2px}
+
+/* ---------- Buttons: normaler Satz, ruhig ---------- */
+.btn{text-transform:none;letter-spacing:-.005em;font-size:16px;font-weight:600;padding:16px 26px;border-radius:2px}
+.btn-small{padding:12px 20px;font-size:15px}
+.btn-line{border-color:rgba(245,241,230,.3)}
+.br-cta,.ein-cta{font-size:15px;font-weight:600;padding:12px 20px;border-width:1px;border-radius:2px}
+.who-list em,.op-own em,.brand-card em{font-size:15px;font-weight:600}
+
+/* ---------- Keine orangen Glows und Fortschrittsbalken ---------- */
+#formate::before,#anfrage::before,#projektseite .pin-in::before,#ablauf .pin-in::before,
+.stage-pin::before,.branchen::before{display:none!important}
+.scrollbar,.fl-bar{display:none!important}
+.brand-root{background:var(--bg2)!important}
+
+/* ---------- Wirkungsfelder: offene Spalten statt Kästen mit Farbkante ---------- */
+.f5-grid{gap:0;border-top:1px solid var(--op-hair)}
+.f5{background:none;border:0;border-top:0;border-right:1px solid var(--op-hair);padding:30px 30px 36px 0}
+.f5:not(:first-child){padding-left:30px}
+.f5:nth-child(3),.f5:nth-child(5){border-right:0}
+.f5:nth-child(4){padding-left:0}
+.f5:nth-child(4),.f5:nth-child(5){border-top:1px solid var(--op-hair)}
+.f5 .k{margin-top:22px;font-size:14px;font-weight:500;color:var(--soft)}
+.f5 h3{font-weight:600;letter-spacing:-.015em;font-size:clamp(21px,1.8vw,26px)}
+@media (max-width:1100px){
+  .f5,.f5:not(:first-child){padding:28px 24px 30px 0;border-right:0;border-top:1px solid var(--op-hair)}
+  .f5:nth-child(even){padding-left:24px;border-left:1px solid var(--op-hair)}
+  .f5:nth-child(5){padding-left:0;border-left:0}
+}
+@media (max-width:600px){.f5,.f5:nth-child(even){padding:26px 0;border-left:0}}
+
+/* ---------- Leistungen: Liste mit Haarlinien ---------- */
+.svc-grid{gap:0;background:none;border:0;border-top:1px solid var(--op-hair)}
+.svc{background:none;border-bottom:1px solid var(--op-hair);padding:26px 24px 30px 0}
+.svc small{font-size:14px;font-weight:500;color:var(--op-dim)}
+.svc h3{font-weight:600;letter-spacing:-.015em;font-size:20px}
+
+/* Für wen, Formate, Marken: ruhiger */
+.who-list b{font-weight:600;letter-spacing:-.01em;font-size:22px}
+.cf-grid{gap:0;background:none;border:0;border-top:1px solid var(--op-hair)}
+.cf{background:none;border-bottom:1px solid var(--op-hair);padding:22px 24px 22px 0}
+.ratio{background:none;border:0;border-top:1px solid var(--op-hair);padding:28px 0}
+.ratio h3{font-size:14px;font-weight:500;color:var(--soft)}
+.op-own a{border-left:1px solid var(--line);border-radius:2px}
+.op-own small{font-size:14px;color:var(--soft)}
+.brand-card{border-radius:2px}
+.brand-card .wm{letter-spacing:.12em}
+.brand-card .role{font-size:14px;font-weight:500;color:var(--soft)}
+.brand-root b{letter-spacing:.12em}
+
+/* Branchen-Bühne */
+.br-show{border-radius:6px}
+.br-brand{font-size:14px;font-weight:500;gap:8px}
+.br-brand i{display:none}
+.br-h{font-weight:500;letter-spacing:-.04em}
+.br-nav button{font-size:15px;letter-spacing:0;font-weight:500}
+.br-grid .fr{border-radius:6px}.f916 .fr{border-radius:10px}
+.br-x{border-radius:2px}
+
+/* Videoformate-Bühne */
+.stage-steps li b{font-weight:600;letter-spacing:-.01em}
+.dev .tag{font-size:13px;font-weight:500;color:var(--soft)}
+.stage-steps li small.op-vf{font-size:13px;color:var(--soft)}
+
+/* Projektseite */
+.dash li::before{content:"";width:6px;height:6px;margin-top:.62em;background:var(--accent);flex:none}
+
+/* Ablauf */
+.steps{background:none;border:0;border-top:1px solid var(--op-hair);gap:0}
+.step{background:none!important;padding:28px 28px 0 0}
+.step h3{font-weight:600;letter-spacing:-.015em;font-size:21px}
+
+/* Philosophie */
+.op-philo .sig{font-weight:600}
+
+/* Formular */
+label{font-size:14px;font-weight:500;color:var(--soft)}
+input,select,textarea{border-radius:2px}
+
+/* ---------- Fliegender Schmetterling (echtes Logo, Flügel schlagen) ---------- */
+#opFly{position:fixed;left:0;top:0;width:78px;height:56px;z-index:40;pointer-events:none;opacity:0;transition:opacity .8s ease;will-change:transform}
+#opFly.on{opacity:1}
+#opFly .w{position:absolute;inset:0;background:url(/assets/img/optimist-prein/butterfly-mark-220.webp) center/contain no-repeat;filter:drop-shadow(0 6px 14px rgba(0,0,0,.45))}
+#opFly .wl{clip-path:inset(0 50% 0 0);transform-origin:50% 50%;animation:opFlapL .5s ease-in-out infinite alternate}
+#opFly .wr{clip-path:inset(0 0 0 50%);transform-origin:50% 50%;animation:opFlapR .5s ease-in-out infinite alternate}
+#opFly.glide .wl,#opFly.glide .wr{animation-duration:1.6s}
+@keyframes opFlapL{from{transform:perspective(200px) rotateY(0)}to{transform:perspective(200px) rotateY(62deg)}}
+@keyframes opFlapR{from{transform:perspective(200px) rotateY(0)}to{transform:perspective(200px) rotateY(-62deg)}}
+html.br-lock #opFly{opacity:0}
+@media (max-width:900px){#opFly{width:48px;height:34px}#opFly.on{opacity:.9}}
+@media (prefers-reduced-motion:reduce){#opFly{display:none}}
