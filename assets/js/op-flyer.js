@@ -7,7 +7,7 @@
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var mobile = matchMedia('(max-width:900px)').matches;
   var WP = [ // Abschnitt-ID, Desktop x/y, Handy x/y
-    ['top',          [80, 30], [86, 16]],
+    ['top',          [60, 16], [86, 16]],
     ['studio',       [90, 22], [88, 14]],
     ['fuer-wen',     [12, 70], [10, 14]],
     ['leistungen',   [91, 18], [88, 12]],
@@ -43,7 +43,7 @@
             (a.p[1] + (b.p[1] - a.p[1]) * e) / 100 * innerHeight];
   }
 
-  var x = innerWidth * .8, y = innerHeight * .3, rot = 0, lastY = scrollY, idle = 0;
+  var x = innerWidth * .6, y = innerHeight * .16, rot = 0, lastY = scrollY, idle = 0;
   setTimeout(function () { fly.classList.add('on'); }, 900);
 
   function frame(now) {
