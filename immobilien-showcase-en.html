@@ -629,7 +629,7 @@ footer.op-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:sp
 </style>
 <script>(function(){try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('fl')}catch(e){}})();</script>
 <link rel="stylesheet" href="/assets/css/flow.css?v=1">
-<link rel="stylesheet" href="/assets/css/op-design.css?v=2">
+<link rel="stylesheet" href="/assets/css/op-design.css?v=3">
 </head>
 <body>
 
@@ -653,9 +653,9 @@ footer.op-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:sp
 <main>
 
 <section class="hero op-hero" id="top">
-  <video class="hero-bg" id="heroVid" autoplay muted loop playsinline preload="auto" poster="/assets/video/op/op-hero-poster.jpg?v=2" aria-hidden="true">
-    <source src="/assets/video/op/op-hero-720.mp4?v=2" type="video/mp4" media="(max-width: 1600px)">
-    <source src="/assets/video/op/op-hero-1080.mp4?v=2" type="video/mp4">
+  <video class="hero-bg" id="heroVid" autoplay muted loop playsinline preload="auto" poster="/assets/video/op/op-hero-poster.jpg?v=3" aria-hidden="true">
+    <source src="/assets/video/op/op-hero-720.mp4?v=3" type="video/mp4" media="(max-width: 1600px)">
+    <source src="/assets/video/op/op-hero-1080.mp4?v=3" type="video/mp4">
   </video>
   <div class="wrap">
     <div class="hero-col">
@@ -663,7 +663,6 @@ footer.op-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:sp
       <h1 class="hero-claim"><span class="sr-only">OPTIMIST PREIN – Creative Transformation Studio: </span>We make companies visible. <em>And ready for tomorrow.</em></h1>
       <ul class="op-fields" aria-label="Fields of impact"><li>Strategy</li><li>Positioning</li><li>Digital</li><li>Storytelling</li><li>Industries</li></ul>
       <p class="lead">We help companies and the self-employed recognise their potential, sharpen their brand and develop strategically, visually and digitally.</p>
-      <p class="lead"><span class="not">Not a classic advertising agency. Not a pure consultancy.</span> We put ourselves in the shoes of companies, products and audiences and turn that into a clear strategy with fitting creative and digital execution.</p>
       <div class="ctas">
         <a href="#anfrage" class="btn btn-red">Start a project</a>
         <a href="#studio" class="btn btn-line">Explore our fields</a>
@@ -679,6 +678,7 @@ footer.op-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:sp
     <div class="eyebrow">Studio · Five fields of impact</div>
     <h2 id="studio-h">See Beyond. <em class="s">Shape What’s Next.</em></h2>
     <p class="intro">Each field stands on its own – the effect comes from how they work together. From strategy to finished content, we keep the whole picture in view.</p>
+    <p class="intro intro-not"><span class="not">Not a classic advertising agency. Not a pure consultancy.</span> We put ourselves in the shoes of companies, products and audiences and turn that into a clear strategy with fitting creative and digital execution.</p>
     <div class="f5-grid">
       <article class="f5"><span class="n">01</span><span class="k">Strategy</span><h3>Business development & coaching</h3><p>Questioning business models, offers and processes, recognising potential and setting clear next steps.</p></article>
       <article class="f5"><span class="n">02</span><span class="k">Positioning</span><h3>Brands & products</h3><p>Working out what is special and placing products so they fit the audience and the market.</p></article>
@@ -958,7 +958,7 @@ footer.op-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:sp
 (function(){
   var hv=document.getElementById('heroVid');
   if(hv){ var small=window.matchMedia('(max-width: 1600px)').matches;
-    hv.src='/assets/video/op/op-hero-'+(small?'720':'1080')+'.mp4?v=2';
+    hv.src='/assets/video/op/op-hero-'+(small?'720':'1080')+'.mp4?v=3';
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ hv.removeAttribute('autoplay'); hv.pause(); }
     else { var pr=hv.play(); if(pr&&pr.catch) pr.catch(function(){}); }
     var tg=document.getElementById('vidToggle');
@@ -1125,7 +1125,7 @@ footer.op-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:sp
     modal.style.setProperty('--ca', sl.style.getPropertyValue('--ca'));
     document.getElementById('brmSub').textContent = sl.querySelector('.br-brand b').textContent;
     document.getElementById('brmTitle').innerHTML = sl.querySelector('.br-h').firstChild.textContent.trim() + ' <em>Five formats.</em>';
-    V[k].forEach(function(b, j){ var v = mv[j]; v.poster = b + '.jpg?v=2'; v.dataset.v = b + '.mp4?v=2'; v.removeAttribute('s'+'rc'); v.load(); });
+    V[k].forEach(function(b, j){ var v = mv[j]; v.poster = b + '.jpg?v=2'; v.dataset.v = b + '.mp4?v=3'; v.removeAttribute('s'+'rc'); v.load(); });
     lastFocus = document.activeElement; modal.hidden = false; document.documentElement.classList.add('br-lock');
     requestAnimationFrame(function(){ modal.classList.add('open'); }); mv.forEach(play);
     slides[cur].querySelector('video').pause(); arm(); modal.querySelector('.br-x').focus();

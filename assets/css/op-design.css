@@ -163,3 +163,11 @@ html.br-lock #opFly{opacity:0}
 @keyframes opMarkIn{from{opacity:0;transform:translateY(16px) scale(.96)}to{opacity:1;transform:none}}
 @media (max-width:1000px){.op-hero .op-hero-mark{display:none}}
 @media (prefers-reduced-motion:reduce){.op-hero .op-hero-mark{animation:none;opacity:1}}
+
+/* Hero-Feinschliff 20.11.: ein Absatz, breitere Textspalte, kräftigerer Verlauf links */
+.op-hero .hero-col{width:min(900px,60vw)}
+.op-hero .hero-col .lead{max-width:600px}
+.hero.op-hero::after{background:linear-gradient(90deg,rgba(11,13,15,.92) 0%,rgba(11,13,15,.8) 34%,rgba(11,13,15,.4) 60%,rgba(11,13,15,.08) 100%),linear-gradient(0deg,rgba(11,13,15,.6) 0%,rgba(11,13,15,0) 30%)!important}
+@media (max-width:900px){.op-hero .hero-col{width:100%}.hero.op-hero::after{background:linear-gradient(180deg,rgba(11,13,15,.6) 0%,rgba(11,13,15,.8) 50%,rgba(11,13,15,.92) 100%)!important}}
+.op-fields5 .intro-not{margin-top:14px}
+.op-fields5 .intro-not .not{color:var(--text);font-weight:600}
