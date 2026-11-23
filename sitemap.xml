@@ -1838,4 +1838,16 @@
   <url><loc>https://backtooutdoor.com/ausruestung.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://backtooutdoor.com/unterkuenfte.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://backtooutdoor.com/leitfaden.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url>
+    <loc>https://backtooutdoor.com/optimist-prein</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://backtooutdoor.com/optimist-prein"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://backtooutdoor.com/optimist-prein-en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://backtooutdoor.com/optimist-prein"/>
+  </url>
+  <url>
+    <loc>https://backtooutdoor.com/optimist-prein-en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://backtooutdoor.com/optimist-prein"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://backtooutdoor.com/optimist-prein-en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://backtooutdoor.com/optimist-prein"/>
+  </url>
 </urlset>
