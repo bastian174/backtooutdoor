@@ -21,9 +21,16 @@ errors = []
 
 try:
     import json as _json
-    REWRITES = {r.get("source") for r in _json.load(open("vercel.json")).get("rewrites", [])}
+    _rw = _json.load(open(os.path.join(ROOT, "vercel.json"))).get("rewrites", [])
 except Exception:
-    REWRITES = set()
+    _rw = []
+# Exakte Rewrites (/optimist-prein -> /immobilien-showcase.html) und Platzhalter-Rewrites (/px/:path* -> Pexels)
+REWRITES = {r["source"]: r["destination"] for r in _rw if ":" not in r.get("source", "")}
+REWRITE_PREFIXES = tuple(r["source"].split(":", 1)[0] for r in _rw if ":" in r.get("source", ""))
+# Datei -> öffentliche URL-Pfade, unter denen sie per Rewrite ausgeliefert wird
+REWRITTEN_AS = defaultdict(set)
+for _src, _dst in REWRITES.items():
+    REWRITTEN_AS[_dst.lstrip("/")].add(_src.lstrip("/"))
 
 def err(page, msg):
     errors.append(f"{page}: {msg}")
@@ -37,6 +44,13 @@ def url_to_path(url):
 def exists(path):
     full = os.path.join(ROOT, path)
     return os.path.isfile(full) or os.path.isfile(os.path.join(full, "index.html"))
+
+
+def routable(path):
+    """Datei existiert oder der Pfad wird über vercel.json-Rewrites ausgeliefert."""
+    url = "/" + path.lstrip("/")
+    return (exists(path) or exists(path + ".html") or url in REWRITES
+            or (REWRITE_PREFIXES and url.startswith(REWRITE_PREFIXES)))
 
 
 def strip_comments(html):
@@ -71,10 +85,10 @@ for url in tree.getroot().findall("s:url", ns):
     loc = url.find("s:loc", ns).text.strip()
     path = url_to_path(loc)
     sitemap_paths.add(path)
-    if not exists(path):
+    if not routable(path):
         err("sitemap.xml", f"<loc> zeigt auf fehlende Datei: {loc}")
     for alt in url.findall("x:link", ns):
-        if not exists(url_to_path(alt.get("href"))):
+        if not routable(url_to_path(alt.get("href"))):
             err("sitemap.xml", f"hreflang={alt.get('hreflang')} zeigt auf fehlende Datei: {alt.get('href')}")
 
 # --- HTML-Seiten -----------------------------------------------------------
@@ -96,7 +110,9 @@ for page in pages:
         target = link.lstrip("/") if link.startswith("/") else os.path.normpath(os.path.join(base, link))
         if target in ("", "."):
             continue
-        if not (exists(target) or exists(target + ".html") or ("/" + target) in REWRITES):
+        if "'" in link:  # String-Verkettung in JavaScript, kein echter Link
+            continue
+        if not routable(target):
             err(page, f"defekter interner Link: {link}")
 
     if noindex:
@@ -130,16 +146,18 @@ for page in pages:
         err(page, "fehlender canonical")
     else:
         expected = "" if page == "index.html" else page
-        if canon[0] not in (DOMAIN + expected, DOMAIN + expected.removesuffix(".html")):
+        allowed = {DOMAIN + expected, DOMAIN + expected.removesuffix(".html")}
+        allowed |= {DOMAIN + a for a in REWRITTEN_AS.get(page, ())}
+        if canon[0] not in allowed:
             err(page, f"canonical zeigt nicht auf die Seite selbst: {canon[0]}")
 
     for t in links:
         if attr(t, "rel") == "alternate" and attr(t, "hreflang"):
             href = attr(t, "href") or ""
-            if href.startswith(DOMAIN) and not exists(url_to_path(href)):
+            if href.startswith(DOMAIN) and not routable(url_to_path(href)):
                 err(page, f"hreflang={attr(t, 'hreflang')} zeigt auf fehlende Datei: {href}")
 
-    if page not in sitemap_paths:
+    if page not in sitemap_paths and not (REWRITTEN_AS.get(page, set()) & sitemap_paths):
         err(page, "indexierbare Seite fehlt in sitemap.xml (oder noindex setzen)")
 
 for label, coll in (("Titel", titles), ("meta description", descs)):
